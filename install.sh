@@ -45,12 +45,16 @@ if [[ -e $HOME/.zshrc ]]; then
 fi
 
 echox " "
-echox "Symlinking .zshrc file..."
+echox "Symlinking .zshrc..."
 setopt EXTENDED_GLOB
 for rcfile in $DOTFILES_DIR/prezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "$HOME/.${rcfile:t}"
+  ln -s "$rcfile" "$HOME/."`basename "$rcfile"`
 done
 
-#symlink gitconfig
+echox " "
+echox "Symlinking .gitconfig..."
+ln -s $DOTFILES_DIR/git/.gitconfig $HOME/.gitconfig
+
 #symlink vimrc?
 #config term color + font?
+#do smth bout system/* files
