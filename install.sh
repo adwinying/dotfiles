@@ -10,10 +10,10 @@ echox() {
 }
 
 # Configuring dotfiles dir
-export DOTFILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
+export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # macOS-specific stuff
-if [[ $OSTYPE != "darwin"* ]]; then
+if [[ $OSTYPE == "darwin"* ]]; then
   echox " "
   echox "macOS detected. Running macOS-specific commands"
 
