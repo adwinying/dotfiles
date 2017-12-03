@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 
 # Source .localrc if exists
-if [[ -e $HOME/.localrc ]]; then
+if [[ -s $HOME/.localrc ]]; then
   source $HOME/.localrc
 fi
 
