@@ -6,8 +6,8 @@
 #
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "$DOTFILES_DIR/prezto/init.zsh" ]]; then
+  source "$DOTFILES_DIR/prezto/init.zsh"
 fi
 
 # Customize to your needs...
@@ -18,4 +18,4 @@ if [[ -e $HOME/.localrc ]]; then
 fi
 
 #load z
-. `brew --prefix`/etc/profile.d/z.sh
+. $DOTFILES_DIR/prezto/modules/z.sh

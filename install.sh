@@ -57,7 +57,6 @@ echox " "
 echox "Symlinking .gitconfig..."
 ln -s $DOTFILES_DIR/git/.gitconfig $HOME/.gitconfig
 
-#symlink gitconfig
 #symlink vimrc?
 #config term color + font?
 #do smth bout system/* files
