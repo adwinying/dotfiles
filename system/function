@@ -8,3 +8,22 @@ cdll() {
 lla() {
   ls -al;
 }
+
+# pull dotfiles
+dotpull() {
+  cd $DOTFILES_DIR;
+  git pull;
+  git submodule update --init --recursive;
+}
+
+# temporarily switch to minimal theme
+minimalterm() {
+  prompt minimal;
+}
+
+# add everything and commit with message then push to remote server
+gitcamp() {
+  git add -A;
+  git commit -am $1;
+  git push origin master;
+}
