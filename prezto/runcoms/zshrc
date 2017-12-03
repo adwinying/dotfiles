@@ -18,4 +18,4 @@ if [[ -s $HOME/.localrc ]]; then
 fi
 
 #load z
-. $DOTFILES_DIR/prezto/modules/z.sh
+. $DOTFILES_DIR/prezto/modules/z/z.sh
