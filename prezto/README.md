@@ -9,25 +9,29 @@ Installation
 ------------
 
 Prezto will work with any recent release of Zsh, but the minimum required
-version is 4.3.17.
+version is 4.3.11.
 
   1. Launch Zsh:
 
-        `zsh`
+     ```console
+     zsh
+     ```
 
   2. Clone the repository:
 
-        `git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"`
+     ```console
+     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+     ```
 
   3. Create a new Zsh configuration by copying the Zsh configuration files
      provided:
 
-        ```
-        setopt EXTENDED_GLOB
-        for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-          ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-        done
-        ```
+     ```sh
+     setopt EXTENDED_GLOB
+     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+     done
+     ```
 
      Note: If you already have any of the given config files, ln will error. In
      simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to
@@ -37,7 +41,9 @@ version is 4.3.17.
 
   4. Set Zsh as your default shell:
 
-        `chsh -s /bin/zsh`
+     ```console
+     chsh -s /bin/zsh
+     ```
 
   5. Open a new Zsh terminal window or tab.
 
@@ -51,15 +57,17 @@ Updating
 --------
 
 Run `zprezto-update` to automatically check if there is an update to zprezto.
-If there are no file conflicts, zprezto its submodules will be automatically
-be updated. If there are conflicts you will instructed to go
-into the `$ZPREZTODIR` directory and resolve them yourself.
+If there are no file conflicts, zprezto and its submodules will be
+automatically updated. If there are conflicts you will instructed to go into
+the `$ZPREZTODIR` directory and resolve them yourself.
 
 To pull the latest changes and update submodules manually:
 
-    cd $ZPREZTODIR
-    git pull
-    git submodule update --init --recursive
+```console
+cd $ZPREZTODIR
+git pull
+git submodule update --init --recursive
+```
 
 Usage
 -----
@@ -81,6 +89,19 @@ accompanying README files to learn of what is available.
      window or tab.
 
      ![sorin theme][2]
+
+### External Modules
+
+  1. By default modules will be loaded from */modules* and */contrib*.
+  2. Additional module directories can be added to the
+     `:prezto:load:pmodule-dirs` setting in *~/.zpreztorc*.
+
+     Note that module names need to be unique or they will cause an error when
+     loading.
+
+     ```console
+     zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+     ```
 
 Customization
 -------------
