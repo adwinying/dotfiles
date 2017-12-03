@@ -39,7 +39,7 @@ echox " "
 echox "Changing default shell to zsh..."
 chsh -s /bin/zsh
 
-if [[ -e $HOME/.zshrc ]]; then
+if [[ -f $HOME/.zshrc ] & [ ! -L $HOME/.zshrc]]; then
   echox " "
   echox ".zshrc exists. Renaming to .localrc..."
   mv $HOME/.zshrc $HOME/.localrc
