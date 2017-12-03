@@ -39,7 +39,7 @@ echox " "
 echox "Changing default shell to zsh..."
 chsh -s /bin/zsh
 
-if [[ -f $HOME/.zshrc ] & [ ! -L $HOME/.zshrc]]; then
+if [[ -f $HOME/.zshrc && ! -L $HOME/.zshrc ]]; then
   echox " "
   echox ".zshrc exists. Renaming to .localrc..."
   mv $HOME/.zshrc $HOME/.localrc
@@ -47,7 +47,6 @@ fi
 
 echox " "
 echox "Symlinking .zshrc..."
-setopt EXTENDED_GLOB
 for rcfile in $DOTFILES_DIR/prezto/runcoms/*; do
   ln -s "$rcfile" "$HOME/."`basename "$rcfile"`
 done
