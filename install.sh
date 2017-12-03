@@ -11,6 +11,7 @@ echox() {
 
 # Configuring dotfiles dir
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo $DOTFILES_DIR
 
 # macOS-specific stuff
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -47,9 +48,11 @@ fi
 echox " "
 echox "Symlinking .zshrc file..."
 setopt EXTENDED_GLOB
-for rcfile in $DOTFILES_DIR/prezto/runcoms/^README.md(.N); do
+for rcfile in $DOTFILES_DIR/prezto/runcoms/*; do
   ln -s "$rcfile" "$HOME/.${rcfile:t}"
 done
+
+rm -rf $HOME/.README.md
 
 #symlink gitconfig
 #symlink vimrc?
