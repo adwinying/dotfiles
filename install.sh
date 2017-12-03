@@ -25,12 +25,11 @@ else
   echox " "
   echox "non-macOS install detected."
 
-  echo -n ">> Did you install zsh & vim? [y/N]"
-  read choice
-  if [[ "$choice" == y || "$choice" == Y ]]; then
-    echox " "
+  if [[ -x "$(command -v zsh)" ]]; then
+    echox "zsh install detected."
+    sleep 1
   else
-    echox "Please install zsh & vim before proceeding."
+    echox "Please install zsh before proceeding."
     return 1
   fi
 fi
