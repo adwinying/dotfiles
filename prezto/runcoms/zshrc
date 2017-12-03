@@ -6,16 +6,8 @@
 #
 
 # Source Prezto.
-if [[ -s "$DOTFILES_DIR/prezto/init.zsh" ]]; then
-  source "$DOTFILES_DIR/prezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Customize to your needs...
-
-# Source .localrc if exists
-if [[ -s $HOME/.localrc ]]; then
-  source $HOME/.localrc
-fi
-
-#load z
-. $DOTFILES_DIR/prezto/modules/z/z.sh
