@@ -1,3 +1,6 @@
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/adwinying/prezto
+[submodule "modules/vim/bundle/Vundle.vim"]
+	path = modules/vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git

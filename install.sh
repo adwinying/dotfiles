@@ -55,4 +55,10 @@ echox " "
 echox "Symlinking .gitconfig..."
 ln -s $DOTFILES_DIR/modules/.gitconfig $HOME/.gitconfig
 
-#symlink vimrc?
+echox " "
+echox "Symlinking .vim..."
+ln -s $DOTFILES_DIR/modules/vim $HOME/.vim
+
+echox " "
+echox "install.sh done. Enjoy!"
+sleep 2
