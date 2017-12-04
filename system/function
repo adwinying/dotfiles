@@ -11,7 +11,7 @@ lla() {
 
 # pull dotfiles
 dotpull() {
-  cd $DOTFILES_DIR;
+  cd $HOME/.dotfiles;
   git pull;
   git submodule update --init --recursive;
 }
