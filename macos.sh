@@ -35,6 +35,10 @@ echox "Installing zsh..."
 brew install zsh
 
 echox " "
+echox "Installing powerline font..."
+curl -o /Library/Fonts/Inconsolata.otf -k "https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf"
+
+echox " "
 echox "Installing node..."
 brew install node
 
