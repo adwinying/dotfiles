@@ -11,7 +11,8 @@ echox() {
 
 # Configuring dotfiles dir
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo $DOTFILES_DIR
+echox " "
+echox "$DOTFILES_DIR: "$DOTFILES_DIR
 
 # macOS-specific stuff
 if [[ $OSTYPE == "darwin"* ]]; then
