@@ -36,7 +36,8 @@ brew install zsh
 
 echox " "
 echox "Installing powerline font..."
-curl -o /Library/Fonts/Inconsolata.otf -k "https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf"
+brew tap caskroom/fonts
+brew cask install font-inconsolata
 
 echox " "
 echox "Installing node..."
@@ -60,6 +61,10 @@ brew cask install google-chrome iterm2 flux sublime-text
 brew cask install goofy discord skype
 brew cask install dropbox cyberduck iina the-unarchiver
 brew cask install spotify soundcleod kodi
+
+echox " "
+echox "Creating subl symlink..."
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 
 echox " "
 echox "macOS script done."

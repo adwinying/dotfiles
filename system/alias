@@ -1,0 +1,4 @@
+#sublime
+
+# List files when cd triggered
+alias cd="cdll"

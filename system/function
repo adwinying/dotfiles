@@ -1,0 +1,10 @@
+# ls after cd
+cdll() {
+  cd $1;
+  ls -l;
+}
+
+# ls all files (incl. hidden files) in list form
+lla() {
+  ls -al;
+}
