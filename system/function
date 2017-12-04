@@ -21,7 +21,7 @@ minimalterm() {
   prompt minimal;
 }
 
-# add everything and commit with message then push to remote server
+# git Commit All with Message then Push to remote
 gitcamp() {
   git add -A;
   git commit -am $1;

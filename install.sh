@@ -53,6 +53,6 @@ rm -rf $HOME/.README.md
 
 echox " "
 echox "Symlinking .gitconfig..."
-ln -s $DOTFILES_DIR/git/.gitconfig $HOME/.gitconfig
+ln -s $DOTFILES_DIR/modules/.gitconfig $HOME/.gitconfig
 
 #symlink vimrc?
