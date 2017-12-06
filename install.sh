@@ -61,5 +61,9 @@ echox "Symlinking .vim..."
 ln -s $DOTFILES_DIR/modules/vim $HOME/.vim
 
 echox " "
+echox "Symlinking .tmux.conf..."
+ln -s $DOTFILES_DIR/modules/tmux/tmux.conf $HOME/.tmux.conf
+
+echox " "
 echox "install.sh done. Enjoy!"
 sleep 2
