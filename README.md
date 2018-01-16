@@ -7,9 +7,9 @@ First, clone the repository recursively:
 $ git clone --recursive https://github.com/adwinying/dotfiles .dotfiles
 ```
 
-Then, run the following command in a bash shell:
+Then, `cd` into the `.dotfiles` directory and run the install script:
 ```
-$ source install.sh
+$ cd .dotfiles && bash install.sh
 ```
 
-If running on linux, be sure to have zsh and vim installed before running the above command.
+If running on linux, be sure to have vim installed before running the above command.
