@@ -37,7 +37,7 @@ brew install zsh
 echox " "
 echox "Installing powerline font..."
 brew tap caskroom/fonts
-brew cask install font-inconsolata
+brew cask install font-inconsolata-for-powerline
 
 echox " "
 echox "Installing node..."
@@ -45,7 +45,7 @@ brew install node
 
 echox " "
 echox "Installing vim..."
-brew install macvim --override-system-vim
+brew install macvim --with-override-system-vim
 
 echox " "
 echox "Installing tmux..."
