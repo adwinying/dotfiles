@@ -10,12 +10,12 @@ echox " "
 echox "Starting preconfig..."
 
 echox " "
-echox "Installing Xcode command-based tools..."
-xcode-select --install
-
-echox " "
 echox "Searching and installing macOS updates..."
 softwareupdate -i -a
+
+echox " "
+echox "Installing Xcode command-based tools..."
+xcode-select --install
 
 echox " "
 echox "Preconfig done."
