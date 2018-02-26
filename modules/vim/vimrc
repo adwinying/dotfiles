@@ -17,10 +17,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'valloric/youcompleteme'
 Plugin 'othree/html5.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
