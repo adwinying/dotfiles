@@ -2,3 +2,6 @@
 
 # List files when cd triggered
 alias cd="cdll"
+
+# docker-compose alias
+alias dc="docker-compose"
