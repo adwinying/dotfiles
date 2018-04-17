@@ -61,6 +61,7 @@ brew cask install google-chrome iterm2 flux sublime-text
 brew cask install goofy discord skype
 brew cask install dropbox cyberduck iina the-unarchiver
 brew cask install spotify soundcleod kodi
+brew cask install tunnelblick
 
 echox " "
 echox "Creating subl symlink..."
