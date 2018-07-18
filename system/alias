@@ -5,3 +5,6 @@ alias cd="cdll"
 
 # docker-compose alias
 alias dc="docker-compose"
+
+# vagrant alias
+alias vt="vagrant"
