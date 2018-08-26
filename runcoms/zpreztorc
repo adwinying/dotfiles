@@ -35,8 +35,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'fasd' \
   'homebrew' \
-  'osx' \
   'git' \
   'syntax-highlighting' \
   'history-substring-search'\
