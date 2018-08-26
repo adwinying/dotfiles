@@ -21,5 +21,9 @@ fi
 source $HOME/.dotfiles/system/function
 source $HOME/.dotfiles/system/alias
 
+# Load nvm
+export NVM_LAZY_LOAD=true
+source $HOME/.dotfiles/modules/nvm/zsh-nvm.plugin.zsh
+
 # Load z
 . $HOME/.dotfiles/modules/z/z.sh
