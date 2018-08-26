@@ -22,7 +22,7 @@ source $HOME/.dotfiles/system/function
 source $HOME/.dotfiles/system/alias
 
 # Load z
-. $HOME/.dotfiles/prezto/modules/z/z.sh
+. $HOME/.dotfiles/modules/z/z.sh
 
 # Show only current folder path
 prompt_dir() {
