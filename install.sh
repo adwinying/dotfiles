@@ -10,7 +10,7 @@ echox() {
 }
 
 # Configuring dotfiles dir
-export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echox " "
 echox "\$DOTFILES_DIR: "$DOTFILES_DIR
 
@@ -46,11 +46,19 @@ if [[ -f $HOME/.zshrc && ! -L $HOME/.zshrc ]]; then
 fi
 
 echox " "
+echox "Cloning prezto..."
+git clone --recursive https://github.com/sorin-ionescu/prezto.git $DOTFILES_DIR/prezto
+
+echox " "
+echox "Replacing runcoms folder in prezto..."
+rm -rf $DOTFILES_DIR/prezto/runcoms
+ln -s $DOTFILES_DIR/runcoms $DOTFILES_DIR/prezto/runcoms
+
+echox " "
 echox "Symlinking .zshrc..."
 for rcfile in $DOTFILES_DIR/prezto/runcoms/*; do
   ln -s "$rcfile" "$HOME/."`basename "$rcfile"`
 done
-rm -rf $HOME/.README.md
 
 echox " "
 echox "Symlinking .gitconfig..."
