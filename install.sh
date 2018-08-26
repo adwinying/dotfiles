@@ -33,11 +33,11 @@ else
     echox "Please install zsh before proceeding."
     return 1
   fi
-fi
 
-echox " "
-echox "Changing default shell to zsh..."
-chsh -s /bin/zsh
+  echox " "
+  echox "Changing default shell to zsh..."
+  chsh -s /bin/zsh
+fi
 
 if [[ -f $HOME/.zshrc && ! -L $HOME/.zshrc ]]; then
   echox " "
