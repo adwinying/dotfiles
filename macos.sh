@@ -40,20 +40,12 @@ brew tap caskroom/fonts
 brew cask install font-inconsolata-for-powerline
 
 echox " "
-echox "Installing node..."
-brew install node
-
-echox " "
 echox "Installing vim..."
 brew install macvim --with-override-system-vim
 
 echox " "
 echox "Installing tmux..."
 brew install tmux
-
-echox " "
-echox "Installing brew cask..."
-brew tap caskroom/cask
 
 echox " "
 echox "Installing GUI programs..."
