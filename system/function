@@ -27,3 +27,8 @@ gitcamp() {
   git commit -am $1;
   git push origin master;
 }
+
+# Show only current folder path
+prompt_dir() {
+  prompt_segment blue $PRIMARY_FG " `basename ${PWD/#$HOME/'~'}` "
+}

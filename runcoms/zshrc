@@ -23,8 +23,3 @@ source $HOME/.dotfiles/system/alias
 
 # Load z
 . $HOME/.dotfiles/modules/z/z.sh
-
-# Show only current folder path
-prompt_dir() {
-  prompt_segment blue $PRIMARY_FG " `basename ${PWD/#$HOME/'~'}` "
-}
