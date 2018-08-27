@@ -4,11 +4,6 @@ cdll() {
   ls -l;
 }
 
-# ls all files (incl. hidden files) in list form
-lla() {
-  ls -al;
-}
-
 # pull dotfiles
 dotpull() {
   cd $HOME/.dotfiles;
