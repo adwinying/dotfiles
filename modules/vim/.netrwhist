@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/adwin/.dotfiles'
+let g:netrw_dirhist_2='/Users/adwin'
+let g:netrw_dirhist_3='/Users/adwin/.bash_sessions'
+let g:netrw_dirhist_4='/Users/adwin'
+let g:netrw_dirhist_5='/Users/adwin/.dotfiles'
+let g:netrw_dirhist_6='/Users/adwin/.dotfiles/system'
+let g:netrw_dirhist_7='/Users/adwin'
+let g:netrw_dirhist_8='/Users/adwin/.dotfiles'
