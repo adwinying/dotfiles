@@ -67,6 +67,7 @@ ln -s $DOTFILES_DIR/modules/.gitconfig $HOME/.gitconfig
 echox " "
 echox "Symlinking .vim..."
 ln -s $DOTFILES_DIR/modules/vim $HOME/.vim
+ln -s $DOTFILES_DIR/modules/vim $HOME/.config/nvim
 
 echox " "
 echox "Symlinking .tmux.conf..."

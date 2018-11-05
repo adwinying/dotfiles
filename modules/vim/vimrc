@@ -53,15 +53,15 @@ Plugin 'junegunn/fzf.vim'
 " autocompletion
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " js autocompletion
+  Plugin 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  " php autocompletion
+  Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 else
   Plugin 'Shougo/deoplete.nvim'
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
-" js autocompletion
-Plugin 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" php autocompletion
-Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 
 " snippets
 Plugin 'Shougo/neosnippet.vim'
@@ -128,6 +128,16 @@ map <C-T> :tabnew<CR>
 " # split vertically and switch to new pane
 map <C-;> :vsp<CR><C-W><C-L>
 
+" # source vimrc
+map <leader>0 :source ~/.dotfiles/modules/vim/vimrc<CR>
+
+" # : key alternative
+nnoremap ; :
+
+
+
+
+
 " Emmet settings
 " # expand with tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -147,6 +157,10 @@ let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 " fzf settings
 " # set fzf trigger key
 noremap <leader>t :FZF<CR>
+" # set the_silver_searcher trigger key
+" requires the_silver_searcher to be installed:
+" brew install the_silver_searcher
+noremap <leader>f :Ag<CR>
 
 " lightline settings
 " # show statusline
@@ -173,11 +187,13 @@ autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 
 " deoplete settings
 " # enable autocomplete on startup
+" requires neovim python client to be installed:
+" pip3 install neovim
 let g:deoplete#enable_at_startup = 1
 
 " deoplete-ternjs settings
 " # set tern path
-let g:deoplete#sources#ternjs#tern_bin = '/Users/adwin/.nvm/versions/node/v8.12.0/bin/tern'
+let g:deoplete#sources#ternjs#tern_bin = '/Users/adwin/.nvm/versions/node/v8.12.0/bin/'
 " # enable ternjs in other file formats
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
