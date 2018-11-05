@@ -44,9 +44,12 @@ Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 " vue syntax highlighting
 Plugin 'posva/vim-vue'
+" php auto-import classes
+Plugin 'arnaud-lb/vim-php-namespace'
 " fuzzy file finder
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+
 " autocompletion
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -55,6 +58,14 @@ else
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
+" js autocompletion
+Plugin 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" php autocompletion
+Plugin 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+
+" snippets
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,11 +87,15 @@ filetype plugin indent on    " required
 	colorscheme molokai
 	syntax enable
 
-" # Spaces & Tabs
+" # Spaces & Tabs (default to 2 spaces)
 	set autoindent
 	set tabstop=2
+  set shiftwidth=2
 	set softtabstop=2
 	set expandtab
+
+" For php, set to 4
+autocmd Filetype php setlocal ts=4 sw=4 sts=4 expandtab
 
 " # UI Config
 	set number
@@ -90,6 +105,8 @@ filetype plugin indent on    " required
 	set lazyredraw
 	set showmatch
   set hlsearch
+  set colorcolumn=80
+  set signcolumn=yes
   set updatetime=100
 	filetype indent on
 
@@ -99,6 +116,17 @@ filetype plugin indent on    " required
 
 " # Backups
 	set dir=/tmp/
+
+" # Remap pane switching
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" # new tab shortcut
+map <C-T> :tabnew<CR>
+" # split vertically and switch to new pane
+map <C-;> :vsp<CR><C-W><C-L>
 
 " Emmet settings
 " # expand with tab
@@ -130,6 +158,41 @@ set noshowmode
 " # remap select all instance
 let g:multi_cursor_select_all_key = '<leader>d'
 
+" vim-php-namespace settings
+" auto-insert use class
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call PhpSortUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+" sort imported classes
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+
 " deoplete settings
 " # enable autocomplete on startup
 let g:deoplete#enable_at_startup = 1
+
+" deoplete-ternjs settings
+" # set tern path
+let g:deoplete#sources#ternjs#tern_bin = '/Users/adwin/.nvm/versions/node/v8.12.0/bin/tern'
+" # enable ternjs in other file formats
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ ]
+
+" phpcd settings
+" # deoplete integration
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+
+" neosnippet settings
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
