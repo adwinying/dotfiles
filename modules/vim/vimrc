@@ -46,6 +46,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'posva/vim-vue'
 " php auto-import classes
 Plugin 'arnaud-lb/vim-php-namespace'
+" align blocks of text
+Plugin 'godlygeek/tabular'
 " fuzzy file finder
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
@@ -94,8 +96,11 @@ filetype plugin indent on    " required
 	set softtabstop=2
 	set expandtab
 
-" For php, set to 4
-autocmd Filetype php setlocal ts=4 sw=4 sts=4 expandtab
+" # language specific indentation
+augroup configgroup
+  autocmd!
+  autocmd Filetype php setlocal ts=4 sw=4 sts=4 expandtab
+augroup END
 
 " # UI Config
 	set number
@@ -111,11 +116,15 @@ autocmd Filetype php setlocal ts=4 sw=4 sts=4 expandtab
 	filetype indent on
 
 " # Leader Shortcuts
-	let mapleader=" "
+	let mapleader=","
 	inoremap jk <esc>
 
 " # Backups
-	set dir=/tmp/
+  set backup
+  set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+  set backupskip=/tmp/*,/private/tmp/*
+  set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+  set writebackup
 
 " # Remap pane switching
 nnoremap <C-J> <C-W><C-J>
@@ -123,16 +132,22 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" # new tab shortcut
+" # tab shortcuts
 map <C-T> :tabnew<CR>
+map <C-X> :tabclose<CR>
 " # split vertically and switch to new pane
 map <C-;> :vsp<CR><C-W><C-L>
 
-" # source vimrc
-map <leader>0 :source ~/.dotfiles/modules/vim/vimrc<CR>
+" # edit/source vimrc
+nnoremap <leader>ev :tabnew $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " # : key alternative
 nnoremap ; :
+
+" # save/load session
+nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
+nnoremap <leader>o :source ~/.vimsession.vim<CR>
 
 
 
@@ -172,6 +187,10 @@ set noshowmode
 " # remap select all instance
 let g:multi_cursor_select_all_key = '<leader>d'
 
+" IndentLine settings
+" # toggle indent lines
+nnoremap <C-I> :IndentLinesToggle<CR>
+
 " vim-php-namespace settings
 " auto-insert use class
 function! IPhpInsertUse()
@@ -179,11 +198,19 @@ function! IPhpInsertUse()
     call PhpSortUse()
     call feedkeys('a',  'n')
 endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <Leader>pu <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 " sort imported classes
-autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
-autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+autocmd FileType php inoremap <Leader>ps <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>ps :call PhpSortUse()<CR>
+
+" tabular settings
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>aa :Tabularize /=><CR>
+vmap <Leader>aa :Tabularize /=><CR>
 
 " deoplete settings
 " # enable autocomplete on startup
@@ -192,19 +219,16 @@ autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 let g:deoplete#enable_at_startup = 1
 
 " deoplete-ternjs settings
-" # set tern path
-let g:deoplete#sources#ternjs#tern_bin = '/Users/adwin/.nvm/versions/node/v8.12.0/bin/'
 " # enable ternjs in other file formats
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ ]
+" disabled as it crashes with vue files
+"let g:deoplete#sources#ternjs#filetypes = ['vue']
 
 " phpcd settings
 " # deoplete integration
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#ignore_sources.php = ['omni']
+" # set autoload default path
+let g:phpcd_autoload_path = '.autoload.php'
 
 " neosnippet settings
 " Plugin key-mappings.
