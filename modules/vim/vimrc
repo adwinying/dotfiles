@@ -133,11 +133,11 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " # tab shortcuts
-map <C-T> :tabnew<CR>
-map <C-X> :tabclose<CR>
+nnoremap <C-T> :tabnew<CR>
+nnoremap <C-X> :tabclose<CR>
 
 " # split vertically and switch to new pane
-map <C-;> :vsp<CR><C-W><C-L>
+nnoremap <C-;> :vsp<CR><C-W><C-L>
 
 " # edit/source vimrc
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
