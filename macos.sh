@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#
+# macos.sh
+# Install and configure commonly used apps in macOS.
+#
+
 echox() {
   echo ">> "$1
 }
@@ -37,6 +42,10 @@ brew doctor
 echox " "
 echox "Installing zsh..."
 brew install zsh
+
+echox " "
+echox "Installing fzf..."
+brew install fzf
 
 echox " "
 echox "Installing powerline font..."
