@@ -31,6 +31,20 @@ else # root!
   COLOR_ACCENT="${COLOR_ROOT}"
 fi
 
+# Show hostname if it's an SSH session
+HOSTNAME() {
+  if [[ -z $SSH_CLIENT ]] && [[ -z $SSH_TTY ]] && [[ -z $SSH_CONNECTION ]]; then
+    return
+  fi
+
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%M${COLOR_ACCENT}]─"
+}
+
+# Show current directory
+CURR_DIR() {
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%~${COLOR_ACCENT}]"
+}
+
 # git prompt
 GIT_PROMPT() {
   is_git_directory=$(git rev-parse --is-inside-work-tree 2> /dev/null)
@@ -67,4 +81,4 @@ GIT_PROMPT() {
   echo "${COLOR_ACCENT}─[${COLOR_GIT}"${ref}${stat}"${COLOR_ACCENT}]"
 }
 
-PROMPT='${COLOR_ACCENT}[${COLOR_NORMAL}%~${COLOR_ACCENT}]$(GIT_PROMPT) » %f'
+PROMPT='$(HOSTNAME)$(CURR_DIR)$(GIT_PROMPT) » %f'
