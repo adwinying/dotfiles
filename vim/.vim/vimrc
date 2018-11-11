@@ -1,0 +1,18 @@
+"
+" vim config
+" inspired by xero's dotfiles [https://github.com/xero/dotfiles]
+"
+
+let configs = [
+\  "general",
+\  "ui",
+\  "plugins",
+\  "plugin-settings",
+\]
+
+for file in configs
+  let x = expand("~/.vim/".file.".vim")
+  if filereadable(x)
+    execute 'source' x
+  endif
+endfor

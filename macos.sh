@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echox() {
+  echo ">> "$1
+}
+
 echo " "
 echo "# "
 echo "# macos.sh"

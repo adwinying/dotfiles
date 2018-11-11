@@ -1,2 +1,3 @@
 .DS_Store
-prezto
+vim/.vim/autoload
+vim/.vim/plugged
