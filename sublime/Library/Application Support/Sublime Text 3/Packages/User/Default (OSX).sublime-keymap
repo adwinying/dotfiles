@@ -1,0 +1,46 @@
+[
+  {
+    "keys": ["super+shift+h"],
+    "command": "format_eslint",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.js"
+      }
+    ]
+  },
+  {
+    "keys": ["super+shift+h"],
+    "command": "fmt_now",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.php"
+      }
+    ]
+  },
+  {
+    "keys": ["f5"],
+    "command": "import_namespace",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.php"
+      }
+    ]
+  },
+  {
+    "keys": ["f6"],
+    "command": "find_use",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.php"
+      }
+    ]
+  }
+]

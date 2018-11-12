@@ -1,0 +1,5 @@
+// These settings override both User and Default settings for the PHP syntax
+{
+  "tab_size": 4,
+  "translate_tab_to_spaces": true
+}

@@ -1,0 +1,12 @@
+{
+	"format_on_save": false,
+	"passes":
+	[
+		"AlignEquals",
+		"AlignGroupDoubleArrow",
+		"IndentTernaryConditions"
+	],
+	"psr2": true,
+	"readini": true,
+	"version": 1
+}

@@ -1,0 +1,18 @@
+// Settings in here override those in "ESLint-Formatter/ESLint-Formatter.sublime-settings",
+
+{
+  "node_path": {
+    "osx": "/Users/adwin/.nvm/versions/node/v8.11.4/bin/node"
+  },
+  "eslint_path": {
+    "osx": "/Users/adwin/.nvm/versions/node/v8.11.4/bin/eslint"
+  },
+  "format_on_save_extensions": [
+    "js",
+    "jsx",
+    "es",
+    "es6",
+    "babel",
+    "vue"
+  ]
+}

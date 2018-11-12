@@ -1,0 +1,30 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"CodeComplice",
+		"DocBlockr",
+		"Dockerfile Syntax Highlighting",
+		"EditorConfig",
+		"Emmet",
+		"ESLint-Formatter",
+		"GitGutter",
+		"Laravel Blade Highlighter",
+		"Monokai - Spacegray",
+		"Package Control",
+		"PackageResourceViewer",
+		"PHP Companion",
+		"phpfmt",
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"SublimeLinter-phpcs",
+		"tern_for_sublime",
+		"Theme - Spacegray",
+		"Vue Syntax Highlight",
+		"Vuejs Snippets"
+	]
+}

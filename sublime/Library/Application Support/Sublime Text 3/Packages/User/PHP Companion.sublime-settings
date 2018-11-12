@@ -1,0 +1,7 @@
+{
+  "namespace_prefix": "App",
+  "exclude_dir": [
+    "evms/node_modules",
+    "evms/resources/js"
+  ]
+}

@@ -1,0 +1,24 @@
+// SublimeLinter Settings - User
+{
+	"linters": {
+	    "eslint": {
+	        "selector": "text.html.vue, source.js - meta.attribute-with-value",
+            "env": {
+                "PATH": "/Users/adwin/.nvm/versions/node/v8.11.4/bin"
+            }
+	    },
+        "phpcs": {
+            "executable": "${folder}/vendor/bin/phpcs",
+            "args": "--standard=${folder}/phpcs.xml"
+        }
+	},
+
+    "paths": {
+        "linux": [],
+        "osx": [
+            "/Users/adwin/.nvm/versions/node/v8.11.4/bin",
+        ],
+        "windows": []
+    }
+
+}
