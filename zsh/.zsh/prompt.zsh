@@ -53,14 +53,17 @@ GIT_PROMPT() {
     return
   fi
 
+  is_dirty() {
+    test -n "$(git status --porcelain --ignore-submodules)"
+  }
+
   ref=$(git name-rev --name-only HEAD | sed 's!remotes/!!' 2> /dev/null)
-  diff=$(git diff --shortstat 2> /dev/null | tail -n1) 
   stat=$(git status | sed -n 2p)
 
-  if [[ $diff == "" ]]; then
-    COLOR_GIT=$COLOR_CLEAN
-  else
+  if is_dirty; then
     COLOR_GIT=$COLOR_DIRTY
+  else
+    COLOR_GIT=$COLOR_CLEAN
   fi
 
   case "$stat" in
