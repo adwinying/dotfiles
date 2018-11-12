@@ -20,13 +20,15 @@ alias cp="cp -r"
 
 # git
 alias ga="git add"
-alias gc="git commit -m"
+alias gc="git commit"
 alias gs="git status"
 alias gd="git diff"
 alias gf="git fetch"
+alias gl="git log"
 alias gm="git merge"
 alias gr="git rebase"
 alias gp="git push"
+alias gcm="git commit -m"
 alias gco="git checkout"
 
 # homebrew
