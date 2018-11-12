@@ -37,7 +37,7 @@ HOSTNAME() {
     return
   fi
 
-  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%M${COLOR_ACCENT}]─"
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%m${COLOR_ACCENT}]─"
 }
 
 # Show current directory
