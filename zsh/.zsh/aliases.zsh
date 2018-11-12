@@ -41,10 +41,10 @@ alias caskl='brew cask list'
 alias caskx='brew cask uninstall'
 
 # applications
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias emacs="nvim"
+alias v="nvim 2> /dev/null || vim"
+alias vi="nvim 2> /dev/null || vim"
+alias vim="nvim 2> /dev/null || vim"
+alias emacs="nvim 2> /dev/null || vim"
 alias dc="docker-compose"
 alias vt="vagrant"
 
