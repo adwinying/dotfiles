@@ -1,7 +1,6 @@
 #
-# qkeybindings.zsh
+# keybindings.zsh
 # keybindings
-# appended 'q' as a shitty hack to load this after plugins.zsh
 #
 
 # zsh-history-substring-search

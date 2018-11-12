@@ -1,5 +1,6 @@
 #
-# plugins.zsh
+# _plugins.zsh
+# gotta load plugins first
 # plugins powered by zgen
 #
 

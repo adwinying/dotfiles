@@ -1,5 +1,6 @@
 #
-# environment.zsh
+# _environment.zsh
+# gotta load this before plugins
 # environment variables
 #
 
