@@ -49,7 +49,7 @@ CURR_DIR() {
 GIT_PROMPT() {
   is_git_directory=$(git rev-parse --is-inside-work-tree 2> /dev/null)
 
-  if [[ ! $is_git_directory ]]; then
+  if [[ ! $is_git_directory ]] || [[ $SHOW_GIT_PROMPT == "false" ]]; then
     return
   fi
 
