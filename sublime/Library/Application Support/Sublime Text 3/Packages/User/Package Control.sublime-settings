@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"ActualVim",
 		"CodeComplice",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
