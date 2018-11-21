@@ -40,6 +40,8 @@ let g:multi_cursor_select_all_key = '<leader>d'
 " # IndentLine settings
 " toggle indent lines
 nnoremap <C-I> :IndentLinesToggle<CR>
+" disabled by default
+let g:indentLine_enabled = 0
 
 " # vim-php-namespace settings
 " auto-insert use class

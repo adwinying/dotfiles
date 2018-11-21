@@ -2,3 +2,5 @@
 vim/.vim/autoload
 vim/.vim/plugged
 vim/.vim/.netrwhist
+tmux/.tmux/plugins
+tmux/.tmux/resurrect

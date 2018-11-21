@@ -35,6 +35,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 " indent lines
 Plug 'Yggdroot/indentLine'
+" tmux integration
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'melonmanchan/vim-tmux-resizer'
 
 " fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

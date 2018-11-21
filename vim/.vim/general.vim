@@ -29,6 +29,7 @@ augroup END
 " # Leader Shortcuts
 let mapleader=","
 inoremap jk <esc>
+iunmap <esc>
 
 " # Backups
 set backup
@@ -52,7 +53,7 @@ nnoremap <C-T> :tabnew<CR>
 nnoremap <C-X> :tabclose<CR>
 
 " split vertically and switch to new pane
-nnoremap <C-;> :vsp<CR><C-W><C-L>
+nnoremap <leader>vv :vsp<CR><C-W><C-L>
 
 " edit/source vimrc
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
