@@ -31,6 +31,11 @@ alias gp="git push"
 alias gcm="git commit -m"
 alias gco="git checkout"
 
+# tmux
+alias tnew='tmux new -s'
+alias tatt='tmux attach -t'
+alias tlist='tmux list-sessions'
+
 # homebrew
 alias brewi='brew install'
 alias brewl='brew list'
