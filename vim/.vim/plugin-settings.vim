@@ -43,9 +43,13 @@ set noshowmode
 " remap select all instance
 let g:multi_cursor_select_all_key = '<leader>d'
 
+" # vim-smooth-scroll settings
+noremap <silent> <C-U> :call smooth_scroll#up(&scroll, 0, 4)<CR>
+noremap <silent> <C-D> :call smooth_scroll#down(&scroll, 0, 4)<CR>
+noremap <silent> <C-B> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
 " # IndentLine settings
-" toggle indent lines
-nnoremap <C-I> :IndentLinesToggle<CR>
 " disabled by default
 let g:indentLine_enabled = 0
 
@@ -83,6 +87,6 @@ let g:phpcd_autoload_path = '.autoload.php'
 " # neosnippet settings
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
+xmap <C-K> <Plug>(neosnippet_expand_target)

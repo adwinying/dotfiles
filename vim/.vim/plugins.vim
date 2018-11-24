@@ -33,6 +33,8 @@ Plug 'wincent/terminus'
 Plug 'itchyny/lightline.vim'
 " multiple cursor selection
 Plug 'terryma/vim-multiple-cursors'
+" smooth scroll
+Plug 'terryma/vim-smooth-scroll'
 " indent lines
 Plug 'Yggdroot/indentLine'
 " tmux integration
@@ -68,8 +70,10 @@ Plug 'tomtom/tcomment_vim'
 Plug 'junegunn/vim-easy-align'
 " syntax checker
 Plug 'w0rp/ale'
-" replace surrounding quotes/parenthesis 
+" replace surrounding quotes/parenthesis
 Plug 'tpope/vim-surround'
+" enable . support for plugins
+Plug 'tpope/vim-repeat'
 " auto insert quotes/parenthesis
 Plug 'jiangmiao/auto-pairs'
 
