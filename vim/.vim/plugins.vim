@@ -62,10 +62,10 @@ Plug 'Shougo/neosnippet-snippets'
 
 
 " # programming
-" powerful commenter
-Plug 'scrooloose/nerdcommenter'
+" commenter
+Plug 'tomtom/tcomment_vim'
 " align blocks of text
-Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 " syntax checker
 Plug 'w0rp/ale'
 " replace surrounding quotes/parenthesis 

@@ -27,6 +27,12 @@ noremap <leader>t :FZF<CR>
 " brew install the_silver_searcher
 noremap <leader>f :Ag<CR>
 
+" # vim-easy-align settings
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " # lightline settings
 " show statusline
 set laststatus=2
@@ -55,14 +61,6 @@ autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 " sort imported classes
 autocmd FileType php inoremap <Leader>ps <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <Leader>ps :call PhpSortUse()<CR>
-
-" # tabular settings
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-nmap <Leader>aa :Tabularize /=><CR>
-vmap <Leader>aa :Tabularize /=><CR>
 
 " # deoplete settings
 " enable autocomplete on startup
