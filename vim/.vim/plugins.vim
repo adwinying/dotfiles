@@ -25,6 +25,8 @@ Plug 'airblade/vim-gitgutter'
 
 
 " # features
+" colors
+Plug 'chriskempson/base16-vim'
 " file tree pane
 Plug 'scrooloose/nerdtree'
 " better terminal integration

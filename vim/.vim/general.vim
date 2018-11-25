@@ -10,7 +10,6 @@
 set nocompatible
 
 " # Color
-colorscheme molokai
 syntax enable
 
 " # Spaces & Tabs (default to 2 spaces)
@@ -38,9 +37,20 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 
-
 " security
 set modelines=1
+
+" no arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" " turn up a notch by disabling vimarrows
+" noremap h <NOP>
+" noremap j <NOP>
+" noremap k <NOP>
+" noremap l <NOP>
 
 " remap pane switching
 nnoremap <C-J> <C-W><C-J>

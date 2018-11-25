@@ -19,6 +19,10 @@ nmap <leader>j :NERDTreeFind<CR>
 " ignore these files in tree
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 
+" # base16-vim settings
+" set colorscheme
+colorscheme base16-monokai
+
 " # fzf settings
 " set fzf trigger key
 noremap <leader>t :FZF<CR>
