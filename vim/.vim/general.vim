@@ -72,6 +72,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " : key alternative
 nnoremap ; :
 
+" clear highlight
+nnoremap <esc> :noh<CR><esc>
+
 " # save/load session
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
 nnoremap <leader>o :source ~/.vimsession.vim<CR>
