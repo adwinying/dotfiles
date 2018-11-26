@@ -27,8 +27,7 @@ augroup END
 
 " # Leader Shortcuts
 let mapleader=","
-inoremap jk <esc>
-iunmap <esc>
+imap jk <esc>
 
 " # Backups
 set backup
