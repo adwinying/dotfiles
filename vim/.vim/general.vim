@@ -39,6 +39,13 @@ set writebackup
 " security
 set modelines=1
 
+" Start scrolling when 8 lines away from bottom
+set scrolloff=8
+
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
 " no arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -61,18 +68,21 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-T> :tabnew<CR>
 nnoremap <C-X> :tabclose<CR>
 
-" split vertically and switch to new pane
-nnoremap <leader>vv :vsp<CR><C-W><C-L>
-
 " edit/source vimrc
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" J to join lines, K to split lines
+nnoremap K i<CR><esc>
 
 " : key alternative
 nnoremap ; :
 
 " clear highlight
 nnoremap <esc> :noh<CR><esc>
+
+" reload file changed outside vim
+set autoread
 
 " # save/load session
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
@@ -81,3 +91,4 @@ nnoremap <leader>o :source ~/.vimsession.vim<CR>
 " save/close buffer
 nnoremap <C-Q> :q<CR>
 nnoremap <C-S> :w<CR>
+inoremap <C-S> <C-O>:w<CR>
