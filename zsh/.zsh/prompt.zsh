@@ -6,6 +6,7 @@
 COLOR_ROOT="%F{red}"
 COLOR_USER="%F{cyan}"
 COLOR_NORMAL="%F{white}"
+COLOR_VIM="%F{green}"
 
 COLOR_CLEAN="%F{green}"
 COLOR_DIRTY="%F{red}"
@@ -23,13 +24,27 @@ setopt PROMPT_SUBST
 autoload -Uz colors && colors
 
 
-# prompt color
-if [[ "$EUID" -ne "0" ]]
-then  # if user is not root
-  COLOR_ACCENT="${COLOR_USER}"
-else # root!
-  COLOR_ACCENT="${COLOR_ROOT}"
-fi
+# prompt accent color
+function set-prompt() {
+  if [[ "$EUID" -ne "0" ]]
+  then  # if user is not root
+    COLOR_ACCENT="${COLOR_USER}"
+  else # root!
+    COLOR_ACCENT="${COLOR_ROOT}"
+  fi
+}
+
+# switch colors when in vi mode
+function zle-line-init zle-keymap-select {
+  case ${KEYMAP} in
+    (vicmd)      COLOR_ACCENT="${COLOR_VIM}" ;;
+    (*)          set-prompt ;;
+  esac
+
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Show hostname if it's an SSH session
 HOSTNAME() {
