@@ -6,7 +6,7 @@
 COLOR_ROOT="%F{red}"
 COLOR_USER="%F{cyan}"
 COLOR_NORMAL="%F{white}"
-COLOR_VIM="%F{green}"
+COLOR_VIM="%F{yellow}"
 
 COLOR_CLEAN="%F{green}"
 COLOR_DIRTY="%F{red}"
