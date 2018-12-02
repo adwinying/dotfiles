@@ -56,6 +56,7 @@ noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " # IndentLine settings
 " disabled by default
 let g:indentLine_enabled = 0
+noremap <leader>ii :IndentLinesToggle<CR>
 
 " # vim-php-namespace settings
 " auto-insert use class
