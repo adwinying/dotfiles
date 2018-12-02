@@ -75,9 +75,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " J to join lines, K to split lines
 nnoremap K i<CR><esc>
 
-" : key alternative
-nnoremap ; :
-
 " clear highlight
 nnoremap <esc> :noh<CR><esc>
 
