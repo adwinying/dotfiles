@@ -63,7 +63,7 @@ brew install tmux
 echox " "
 echox "Installing GUI programs..."
 brew cask install google-chrome iterm2 flux sublime-text
-brew cask install cyberduck iina the-unarchiver tunnelblick
+brew cask install cyberduck mpv the-unarchiver tunnelblick
 brew cask install goofy discord skype dropbox
 
 echox " "

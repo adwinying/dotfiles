@@ -67,3 +67,10 @@ gitcamp() {
   git commit -am $1;
   git push origin master;
 }
+
+# watch youtube via mpv
+# requires youtube-dl
+# pip install youtube-dl
+yt() {
+  youtube-dl $1 -o - | mpv -;
+}
