@@ -53,7 +53,8 @@ if has('nvim')
   " js autocompletion
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   " php autocompletion
-  Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+  Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+  Plug 'kristijanhusak/deoplete-phpactor'
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'

@@ -59,14 +59,6 @@ let g:indentLine_enabled = 0
 noremap <leader>ii :IndentLinesToggle<CR>
 
 " # vim-php-namespace settings
-" auto-insert use class
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call PhpSortUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>pu <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 " sort imported classes
 autocmd FileType php inoremap <Leader>ps <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <Leader>ps :call PhpSortUse()<CR>
@@ -82,12 +74,11 @@ let g:deoplete#enable_at_startup = 1
 " disabled as it crashes with vue files
 "let g:deoplete#sources#ternjs#filetypes = ['vue']
 
-" # phpcd settings
-" deoplete integration
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
-" set autoload default path
-let g:phpcd_autoload_path = '.autoload.php'
+" # phpactor settings
+" Include use statement
+nmap <Leader>pu :call phpactor#UseAdd()<CR>
+" Invoke the context menu
+nmap <Leader>pm :call phpactor#ContextMenu()<CR>
 
 " # neosnippet settings
 " Plugin key-mappings.
