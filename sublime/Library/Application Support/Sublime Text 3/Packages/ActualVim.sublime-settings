@@ -1,0 +1,68 @@
+{
+	"bufopts":
+	{
+		"completefunc": "ActualVimComplete"
+	},
+	"enabled": false,
+	"large_file_disable":
+	{
+		"bytes": 52428800,
+		"lines": 50000
+	},
+	"neovim_args":
+	[
+		"--cmd",
+		"let g:actualvim = 1"
+	],
+	"neovim_path": "",
+	"settings":
+	{
+		"sublime":
+		{
+			"inverse_caret_state": false
+		},
+		"vim":
+		{
+			"bell":
+			{
+				"color_scheme": "Packages/ActualVim/Bell.tmTheme",
+				"duration": 0.001
+			},
+			"inverse_caret_state": false,
+			"modes":
+			{
+				"all insert":
+				{
+				},
+				"all visual":
+				{
+				},
+				"command":
+				{
+					"inverse_caret_state": true
+				},
+				"insert":
+				{
+				},
+				"normal":
+				{
+					"inverse_caret_state": true
+				},
+				"replace":
+				{
+				},
+				"visual":
+				{
+				},
+				"visual block":
+				{
+				},
+				"visual line":
+				{
+				}
+			}
+		}
+	},
+	"settings_priority": "sublime",
+	"smooth_scroll": false
+}

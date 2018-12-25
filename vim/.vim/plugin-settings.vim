@@ -37,6 +37,23 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" # ALE settings
+" set fixer trigger key
+nmap <leader>ll :ALEFix<CR>
+" set info trigger key
+nmap <leader>li :ALEInfo<CR>
+" configure linters
+let g:ale_linters = {
+\   'vue': ['vls', 'eslint'],
+\}
+" configure fixers
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'vue': ['eslint'],
+\   'php': ['phpcbf', 'php_cs_fixer'],
+\}
+
 " # lightline settings
 " show statusline
 set laststatus=2
