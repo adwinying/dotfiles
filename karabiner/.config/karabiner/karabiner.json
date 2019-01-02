@@ -37,7 +37,7 @@
                                         "key_code": "japanese_eisuu"
                                     },
                                     {
-                                        "shell_command": "/usr/local/bin/uberrefresh"
+                                        "shell_command": "/usr/local/bin/uberrefresh Input"
                                     }
                                 ],
                                 "type": "basic"
@@ -62,7 +62,7 @@
                                         "key_code": "japanese_kana"
                                     },
                                     {
-                                        "shell_command": "/usr/local/bin/uberrefresh"
+                                        "shell_command": "/usr/local/bin/uberrefresh Input"
                                     }
                                 ],
                                 "type": "basic"
