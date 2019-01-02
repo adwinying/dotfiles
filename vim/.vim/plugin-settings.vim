@@ -3,6 +3,20 @@
 " plugin settings
 "
 
+" # Fugitive settings
+" Workaround for patch mode not responding
+augroup nvim_term
+  au!
+  au TermOpen * startinsert
+  au TermClose * stopinsert
+augroup END
+" display git status
+nmap <leader>gs :Gstatus<CR>
+" git diff mode
+nmap <leader>gd :Gdiff<CR>
+" push commits
+nmap <leader>gp :Git push<CR>
+
 " # Emmet settings
 " expand with tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
