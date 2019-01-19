@@ -121,12 +121,12 @@ alt - r : chunkc tiling::desktop --rotate 90
 alt - a : chunkc tiling::desktop --toggle offset
 
 # switch workspace
-alt - 1 : skhd -k "cmd + alt - 1" && uberrefresh Workspace
-alt - 2 : skhd -k "cmd + alt - 2" && uberrefresh Workspace
-alt - 3 : skhd -k "cmd + alt - 3" && uberrefresh Workspace
-alt - 4 : skhd -k "cmd + alt - 4" && uberrefresh Workspace
-alt - 5 : skhd -k "cmd + alt - 5" && uberrefresh Workspace
-alt - 6 : skhd -k "cmd + alt - 6" && uberrefresh Workspace
+alt - 1 : skhd -k "cmd + alt - 1" && sleep 0.1s && uberrefresh Workspace
+alt - 2 : skhd -k "cmd + alt - 2" && sleep 0.1s && uberrefresh Workspace
+alt - 3 : skhd -k "cmd + alt - 3" && sleep 0.1s && uberrefresh Workspace
+alt - 4 : skhd -k "cmd + alt - 4" && sleep 0.1s && uberrefresh Workspace
+alt - 5 : skhd -k "cmd + alt - 5" && sleep 0.1s && uberrefresh Workspace
+alt - 6 : skhd -k "cmd + alt - 6" && sleep 0.1s && uberrefresh Workspace
 
 # move focused container to workspace
 shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
