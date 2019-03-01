@@ -4,7 +4,7 @@
 	    "eslint": {
 	        "selector": "text.html.vue, source.js - meta.attribute-with-value",
             "env": {
-                "PATH": "/Users/adwin/.nvm/versions/node/v8.11.4/bin"
+                "PATH": "/Users/adwin/.nvm/versions/node/v10.15.1/bin"
             }
 	    },
         "phpcs": {
@@ -16,7 +16,7 @@
     "paths": {
         "linux": [],
         "osx": [
-            "/Users/adwin/.nvm/versions/node/v8.11.4/bin",
+            "/Users/adwin/.nvm/versions/node/v10.15.1/bin",
         ],
         "windows": []
     }

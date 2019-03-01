@@ -2,10 +2,10 @@
 
 {
   "node_path": {
-    "osx": "/Users/adwin/.nvm/versions/node/v8.11.4/bin/node"
+    "osx": "/Users/adwin/.nvm/versions/node/v10.15.1/bin/node"
   },
   "eslint_path": {
-    "osx": "/Users/adwin/.nvm/versions/node/v8.11.4/bin/eslint"
+    "osx": "/Users/adwin/.nvm/versions/node/v10.15.1/bin/eslint"
   },
   "format_on_save_extensions": [
     "js",
