@@ -37,6 +37,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 " smooth scroll
 Plug 'terryma/vim-smooth-scroll'
+" advanced substitution
+Plug 'tpope/vim-abolish'
 " indent lines
 Plug 'Yggdroot/indentLine'
 " tmux integration
