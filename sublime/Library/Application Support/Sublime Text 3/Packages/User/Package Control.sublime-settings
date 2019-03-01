@@ -21,6 +21,7 @@
 		"PHP Companion",
 		"phpfmt",
 		"Sass",
+		"SqlBeautifier",
 		"SublimeLinter",
 		"SublimeLinter-eslint",
 		"SublimeLinter-phpcs",
