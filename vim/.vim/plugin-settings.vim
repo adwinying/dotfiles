@@ -21,18 +21,6 @@ nmap <leader>gp :Git push<CR>
 " expand with tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-" # NERDTree settings
-" right arrow to open node
-let NERDTreeMapActivateNode = '<right>'
-" display hidden files
-let NERDTreeShowHidden = 1
-" toggle display of tree with <Leader> + n
-nmap <leader>n :NERDTreeToggle<CR>
-" locate the focused file in tree with <Leader> + j
-nmap <leader>j :NERDTreeFind<CR>
-" ignore these files in tree
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
-
 " # base16-vim settings
 " set colorscheme
 colorscheme base16-monokai

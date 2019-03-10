@@ -29,6 +29,16 @@ augroup END
 let mapleader=","
 imap jk <esc>
 
+" # netrw configs
+" Hide banner
+let g:netrw_banner = 0
+" Set tree view as default
+let g:netrw_liststyle = 3
+" toggle display of tree with <Leader> + n
+noremap <leader>n :vsplit .<CR>
+" locate the focused file in tree with <Leader> + j
+noremap <leader>j :Vexplore<CR>
+
 " # Backups
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
