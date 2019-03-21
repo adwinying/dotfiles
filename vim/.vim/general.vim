@@ -37,7 +37,7 @@ let g:netrw_liststyle = 3
 " toggle display of tree with <Leader> + n
 noremap <leader>n :vsplit .<CR>
 " locate the focused file in tree with <Leader> + j
-noremap <leader>j :Vexplore<CR>
+noremap <leader>j :vsplit<CR>:Explore<CR>
 
 " # Backups
 set backup
