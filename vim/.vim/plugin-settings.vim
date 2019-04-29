@@ -17,10 +17,6 @@ nmap <leader>gd :Gdiff<CR>
 " push commits
 nmap <leader>gp :Git push<CR>
 
-" # Emmet settings
-" expand with tab
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
 " # base16-vim settings
 " set colorscheme
 colorscheme base16-monokai
@@ -82,16 +78,20 @@ noremap <leader>ii :IndentLinesToggle<CR>
 autocmd FileType php inoremap <Leader>ps <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <Leader>ps :call PhpSortUse()<CR>
 
-" # deoplete settings
-" enable autocomplete on startup
-" requires neovim python client to be installed:
-" pip3 install neovim
-let g:deoplete#enable_at_startup = 1
-
-" # deoplete-ternjs settings
-" enable ternjs in other file formats
-" disabled as it crashes with vue files
-"let g:deoplete#sources#ternjs#filetypes = ['vue']
+" # coc settings
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <C-n>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+" confirm complete
+inoremap <silent><expr> <cr> pumvisible()
+  \ ? coc#_select_confirm()
+  \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " # phpactor settings
 " Include use statement

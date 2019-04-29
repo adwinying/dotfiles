@@ -61,6 +61,10 @@ echox "Installing tmux..."
 brew install tmux
 
 echox " "
+echox "Installing yarn..."
+brew install yarn
+
+echox " "
 echox "Installing GUI programs..."
 brew cask install google-chrome iterm2 flux sublime-text
 brew cask install cyberduck mpv the-unarchiver tunnelblick

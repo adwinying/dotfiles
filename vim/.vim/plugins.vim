@@ -48,18 +48,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " autocompletion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " js autocompletion
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  " php autocompletion
-  Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
-  Plug 'kristijanhusak/deoplete-phpactor'
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" php autocompletion
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 
 " snippets
 Plug 'Shougo/neosnippet.vim'
@@ -87,8 +78,6 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'pangloss/vim-javascript'
 " html5 omnicomplete and syntax
 Plug 'othree/html5.vim'
-" emmet
-Plug 'mattn/emmet-vim'
 " vue syntax highlighting
 Plug 'posva/vim-vue'
 " php auto-import classes
