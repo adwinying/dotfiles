@@ -112,14 +112,14 @@ bind generic <C-w><C-w> view-next
 
 # https://github.com/jonas/tig/wiki/Bindings
 bind generic F !git fetch %(remote)
-bind generic P !git push origin
-bind main    F !git fetch %(remote)
+bind generic P !git push -u %(remote) %(repo:head)
 bind main    B !git rebase -i %(commit)
 bind main    H ?git reset --hard %(commit)
 bind main    E ?git reset %(commit)
 bind status  S !git stash save "%(prompt Enter stash comment: )"
 bind refs    U ?git pull %(remote)
-bind refs    N !@git branch "%(prompt Enter branch name: )"
+bind refs    C +git checkout %(branch)
+bind refs    N !git branch "%(prompt Enter branch name: )"
 bind refs    D ?git branch -D %(branch)
-bind refs    R ?git rebase %(branch)
+bind refs    B ?git rebase %(branch)
 bind stage   1 stage-update-line
