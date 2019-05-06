@@ -92,6 +92,17 @@ inoremap <silent><expr> <C-n>
 inoremap <silent><expr> <cr> pumvisible()
   \ ? coc#_select_confirm()
   \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" default extensions
+let g:coc_global_extensions = [
+  \ 'coc-neosnippet',
+  \ 'coc-phpls',
+  \ 'coc-json',
+  \ 'coc-css',
+  \ 'coc-vetur',
+  \ 'coc-html',
+  \ 'coc-emmet',
+  \ 'coc-tsserver'
+\]
 
 " # phpactor settings
 " Include use statement
