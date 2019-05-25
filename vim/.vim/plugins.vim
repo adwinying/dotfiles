@@ -37,8 +37,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 " advanced substitution
 Plug 'tpope/vim-abolish'
-" indent lines
-Plug 'Yggdroot/indentLine'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
