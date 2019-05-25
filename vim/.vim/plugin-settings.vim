@@ -94,6 +94,7 @@ inoremap <silent><expr> <cr> pumvisible()
   \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " default extensions
 let g:coc_global_extensions = [
+  \ 'coc-pairs',
   \ 'coc-neosnippet',
   \ 'coc-phpls',
   \ 'coc-json',

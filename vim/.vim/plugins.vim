@@ -68,8 +68,6 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
 " enable . support for plugins
 Plug 'tpope/vim-repeat'
-" auto insert quotes/parenthesis
-Plug 'jiangmiao/auto-pairs'
 
 " # language-specific
 " color previewer for css
