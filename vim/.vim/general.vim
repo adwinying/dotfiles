@@ -39,6 +39,10 @@ noremap <leader>n :vsplit .<CR>
 " locate the focused file in tree with <Leader> + j
 noremap <leader>j :vsplit<CR>:Explore<CR>
 
+" # Markdown settings
+" Enabled syntax highlight for code blocks
+let g:markdown_fenced_languages = ['html', 'vue', 'javascript', 'js=javascript', 'css']
+
 " # Backups
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
