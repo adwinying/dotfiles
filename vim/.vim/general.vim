@@ -85,6 +85,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " J to join lines, K to split lines
 nnoremap K i<CR><esc>
 
+" Y to copy to clipboard
+nnoremap Y "*y
+
 " clear highlight
 nnoremap <esc> :noh<CR><esc>
 
