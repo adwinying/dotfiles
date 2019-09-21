@@ -69,6 +69,7 @@ echox "Installing GUI programs..."
 brew cask install google-chrome iterm2 flux sublime-text
 brew cask install cyberduck mpv the-unarchiver tunnelblick
 brew cask install goofy discord skype dropbox
+brew cask install vanilla browserosaurus
 
 echox " "
 echox "Creating subl symlink..."
