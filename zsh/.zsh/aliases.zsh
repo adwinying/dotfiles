@@ -45,6 +45,7 @@ alias brewx='brew remove'
 alias cask='brew cask'
 alias caski='brew cask install'
 alias caskl='brew cask list'
+alias casku='brew cask upgrade'
 alias caskx='brew cask uninstall'
 
 # applications
