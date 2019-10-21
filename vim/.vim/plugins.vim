@@ -26,7 +26,7 @@ Plug 'airblade/vim-gitgutter'
 
 " # features
 " colors
-Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 " better terminal integration
 Plug 'wincent/terminus'
 " statusbar

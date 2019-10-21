@@ -17,9 +17,9 @@ nmap <leader>gd :Gdiff<CR>
 " push commits
 nmap <leader>gp :Git push<CR>
 
-" # base16-vim settings
+" # nord-vim settings
 " set colorscheme
-colorscheme base16-monokai
+colorscheme nord
 
 " # fzf settings
 " set fzf trigger key
@@ -57,6 +57,9 @@ let g:ale_fixers = {
 set laststatus=2
 " hide default statusline
 set noshowmode
+let g:lightline = {
+\   'colorscheme': 'nord',
+\}
 
 " # vim-multiple-cursors settings
 " remap select all instance
