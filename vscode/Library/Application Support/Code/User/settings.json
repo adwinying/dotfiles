@@ -1,0 +1,23 @@
+{
+    "editor.lineNumbers": "relative",
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["\"*y"]
+        },
+        {
+            "before": ["<leader>", "t"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "t"],
+            "commands": ["workbench.view.search"]
+        },
+        {
+            "before": ["K"],
+            "after": ["i", "<CR>", "<Esc>"]
+        },
+    ],
+    "workbench.colorTheme": "Nord"
+}
