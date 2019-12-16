@@ -1,5 +1,7 @@
 {
     "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.rulers": [80],
     "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -11,7 +13,7 @@
             "commands": ["workbench.action.quickOpen"]
         },
         {
-            "before": ["<leader>", "t"],
+            "before": ["<leader>", "f"],
             "commands": ["workbench.view.search"]
         },
         {
