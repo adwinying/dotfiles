@@ -40,15 +40,21 @@ nmap ga <Plug>(EasyAlign)
 nmap <leader>ll :ALEFix<CR>
 " set info trigger key
 nmap <leader>li :ALEInfo<CR>
+" configure linter aliases
+let g:ale_linter_aliases = {
+\   'svelte': ['css', 'javascript'],
+\}
 " configure linters
 let g:ale_linters = {
 \   'vue': ['vls', 'eslint'],
+\   'svelte': ['eslint'],
 \}
 " configure fixers
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'vue': ['eslint'],
+\   'svelte': ['eslint'],
 \   'php': ['phpcbf', 'php_cs_fixer'],
 \}
 
@@ -103,6 +109,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-css',
   \ 'coc-vetur',
+  \ 'coc-svelte',
   \ 'coc-html',
   \ 'coc-emmet',
   \ 'coc-tsserver'
