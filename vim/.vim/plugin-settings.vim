@@ -77,16 +77,6 @@ noremap <silent> <C-D> :call smooth_scroll#down(&scroll, 0, 4)<CR>
 noremap <silent> <C-B> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
-" # IndentLine settings
-" disabled by default
-let g:indentLine_enabled = 0
-noremap <leader>ii :IndentLinesToggle<CR>
-
-" # vim-php-namespace settings
-" sort imported classes
-autocmd FileType php inoremap <Leader>ps <Esc>:call PhpSortUse()<CR>
-autocmd FileType php noremap <Leader>ps :call PhpSortUse()<CR>
-
 " # coc settings
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort

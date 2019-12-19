@@ -78,7 +78,5 @@ Plug 'othree/html5.vim'
 Plug 'posva/vim-vue'
 " svelte syntax highlighting
 Plug 'burner/vim-svelte'
-" php auto-import classes
-Plug 'arnaud-lb/vim-php-namespace'
 
 call plug#end()
