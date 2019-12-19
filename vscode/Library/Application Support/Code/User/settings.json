@@ -17,9 +17,20 @@
             "commands": ["workbench.view.search"]
         },
         {
+            "before": ["<leader>", "l", "l"],
+            "after": ["editor.action.formatDocument"]
+        },
+        {
             "before": ["K"],
             "after": ["i", "<CR>", "<Esc>"]
         },
     ],
-    "workbench.colorTheme": "Nord"
+    "workbench.colorTheme": "Nord",
+    "workbench.colorCustomizations": {
+        "[Nord]": {
+            "editor.background": "#111318",
+            "terminal.background": "#111318",
+            "editorGutter.background": "#111318"
+        }
+    }
 }
