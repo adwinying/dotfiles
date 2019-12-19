@@ -78,5 +78,7 @@ Plug 'othree/html5.vim'
 Plug 'posva/vim-vue'
 " svelte syntax highlighting
 Plug 'burner/vim-svelte'
+" dart syntax highlighting
+Plug 'dart-lang/dart-vim-plugin'
 
 call plug#end()

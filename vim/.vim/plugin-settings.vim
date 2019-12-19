@@ -37,9 +37,9 @@ nmap ga <Plug>(EasyAlign)
 
 " # ALE settings
 " set fixer trigger key
-nmap <leader>ll :ALEFix<CR>
+nnoremap <leader>ll :ALEFix<CR>
 " set info trigger key
-nmap <leader>li :ALEInfo<CR>
+nnoremap <leader>li :ALEInfo<CR>
 " configure linter aliases
 let g:ale_linter_aliases = {
 \   'svelte': ['css', 'javascript'],
@@ -77,7 +77,13 @@ noremap <silent> <C-D> :call smooth_scroll#down(&scroll, 0, 4)<CR>
 noremap <silent> <C-B> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
+" # flutter settings
+" flutter lint command
+autocmd FileType dart nnoremap <leader>ll :!flutter format %<CR>
+
 " # coc settings
+" :CocList shortcut
+nnoremap <leader>cc :CocList<CR>
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -102,7 +108,8 @@ let g:coc_global_extensions = [
   \ 'coc-svelte',
   \ 'coc-html',
   \ 'coc-emmet',
-  \ 'coc-tsserver'
+  \ 'coc-tsserver',
+  \ 'coc-flutter'
 \]
 
 " # phpactor settings
