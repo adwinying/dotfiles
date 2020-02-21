@@ -80,5 +80,7 @@ Plug 'posva/vim-vue'
 Plug 'burner/vim-svelte'
 " dart syntax highlighting
 Plug 'dart-lang/dart-vim-plugin'
+" blade syntax highlighting
+Plug 'jwalton512/vim-blade'
 
 call plug#end()

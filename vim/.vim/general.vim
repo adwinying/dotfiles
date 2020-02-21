@@ -22,6 +22,7 @@ set expandtab
 " # language specific indentation
 augroup configgroup
   autocmd!
+  autocmd Filetype blade setlocal ts=2 sw=2 sts=2 expandtab
   autocmd Filetype php setlocal ts=4 sw=4 sts=4 expandtab
 augroup END
 
