@@ -12,10 +12,14 @@ augroup nvim_term
 augroup END
 " display git status
 nmap <leader>gs :Gstatus<CR>
-" git diff mode
-nmap <leader>gd :Gdiff<CR>
 " push commits
 nmap <leader>gp :Git push<CR>
+" git diff mode
+nmap <leader>gdd :Gdiff<CR>
+" git diff mode (against master)
+nmap <leader>gdm :Gdiff master<CR>
+" launch difftool (against master)
+nmap <leader>gdt :Git difftool --name-status master<CR>
 
 " # nord-vim settings
 " set colorscheme
