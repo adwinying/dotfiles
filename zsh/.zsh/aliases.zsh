@@ -55,6 +55,7 @@ alias vim="nvim"
 alias emacs="nvim"
 alias dc="docker-compose"
 alias vt="vagrant"
+alias lg="lazygit"
 
 # ls after cd
 function chpwd() {
