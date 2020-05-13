@@ -1,5 +1,5 @@
 {
-  "coc.preferences.diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": true,
   "emmet.includeLanguages": {
     "vue-html": "html",
     "svelte": "html",
