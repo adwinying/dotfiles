@@ -32,7 +32,7 @@ echox "Preconfig done."
 # Install stuff
 echox " "
 echox "Installing homebrew..."
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echox " "
 echox "Updating homebrew..."
@@ -49,12 +49,13 @@ brew install fzf
 
 echox " "
 echox "Installing powerline font..."
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 brew cask install font-inconsolata-for-powerline
 
 echox " "
 echox "Installing vim..."
 brew install macvim --with-override-system-vim
+brew install neovim
 
 echox " "
 echox "Installing tmux..."
@@ -68,8 +69,7 @@ echox " "
 echox "Installing GUI programs..."
 brew cask install google-chrome iterm2 flux sublime-text
 brew cask install cyberduck mpv the-unarchiver tunnelblick
-brew cask install goofy discord skype dropbox
-brew cask install vanilla browserosaurus
+brew cask install goofy discord
 
 echox " "
 echox "Creating subl symlink..."
