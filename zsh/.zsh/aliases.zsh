@@ -50,8 +50,6 @@ alias caskx='brew cask uninstall'
 
 # applications
 alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
 alias emacs="nvim"
 alias dc="docker-compose"
 alias vt="vagrant"
