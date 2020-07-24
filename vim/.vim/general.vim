@@ -28,7 +28,6 @@ augroup END
 
 " # Leader Shortcuts
 let mapleader=","
-imap jk <esc>
 
 " # netrw configs
 " Hide banner
@@ -67,18 +66,6 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" " turn up a notch by disabling vimarrows
-" noremap h <NOP>
-" noremap j <NOP>
-" noremap k <NOP>
-" noremap l <NOP>
-
-" remap pane switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " tab shortcuts
 nnoremap <C-T> :tabnew<CR>
 nnoremap <C-X> :tabclose<CR>
@@ -94,10 +81,7 @@ nnoremap K i<CR><esc>
 nnoremap Y "*y
 
 " clear highlight
-nnoremap <esc> :noh<CR><esc>
-
-" reload file changed outside vim
-set autoread
+nnoremap <esc><esc> :noh<CR>
 
 " # save/load session
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>

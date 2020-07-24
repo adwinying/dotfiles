@@ -5,10 +5,12 @@
 
 " # Fugitive settings
 " Workaround for patch mode not responding
-augroup nvim_term
-  au!
-  au TermOpen * startinsert
-  au TermClose * stopinsert
+if has('nvim')
+  augroup nvim_term
+    au!
+    au TermOpen * startinsert
+    au TermClose * stopinsert
+endif
 augroup END
 " display git status
 nmap <leader>gs :Gstatus<CR>

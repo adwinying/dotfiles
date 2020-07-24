@@ -6,11 +6,13 @@
 " # UI Config
 set number
 set cursorline
-set relativenumber 
+set relativenumber
 set wildmenu
 set lazyredraw
 set showmatch
 set hlsearch
+set incsearch
+set showcmd
 set colorcolumn=80
 set signcolumn=yes
 set updatetime=100
