@@ -40,11 +40,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
 
 " fuzzy file finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " autocompletion
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " php autocompletion
 Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 
