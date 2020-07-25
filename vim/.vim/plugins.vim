@@ -38,16 +38,23 @@ Plug 'tpope/vim-abolish'
 " tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'melonmanchan/vim-tmux-resizer'
-
 " fuzzy file finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" IDE-like features (autocompletion, linting, lookup etc.)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " snippets
 Plug 'honza/vim-snippets'
+" IDE-like features (autocompletion, linting, lookup etc.)
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for' : [
+  \'javascript',
+  \'json',
+  \'vue',
+  \'php',
+  \'html',
+  \'css',
+  \'blade',
+  \'svelte',
+  \'dart'
+\] }
 
 
 " # programming
@@ -59,6 +66,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 " enable . support for plugins
 Plug 'tpope/vim-repeat'
+
 
 " # language-specific
 " color previewer for css

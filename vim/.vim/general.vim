@@ -83,7 +83,10 @@ nnoremap Y "*y
 " clear highlight
 nnoremap <esc><esc> :noh<CR>
 
-" # save/load session
+" remap K to gK
+nnoremap gK K
+
+" save/load session
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
 nnoremap <leader>o :source ~/.vimsession.vim<CR>
 
