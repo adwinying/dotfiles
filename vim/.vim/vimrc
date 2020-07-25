@@ -8,6 +8,7 @@ let configs = [
 \  "ui",
 \  "plugins",
 \  "plugin-settings",
+\  "coc",
 \]
 
 for file in configs
