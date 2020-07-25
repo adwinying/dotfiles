@@ -94,12 +94,6 @@ let g:coc_global_extensions = [
 " autofix linting for JS
 autocmd FileType js,vue nnoremap <leader>ll :CocCommand eslint.executeAutofix<CR>
 
-" # phpactor settings
-" Include use statement
-nmap <Leader>pu :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-nmap <Leader>pm :call phpactor#ContextMenu()<CR>
-
 " # neosnippet settings
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.

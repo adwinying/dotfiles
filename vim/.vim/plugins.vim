@@ -43,10 +43,8 @@ Plug 'melonmanchan/vim-tmux-resizer'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" autocompletion
+" IDE-like features (autocompletion, linting, lookup etc.)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" php autocompletion
-Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
 
 " snippets
 Plug 'Shougo/neosnippet.vim'
