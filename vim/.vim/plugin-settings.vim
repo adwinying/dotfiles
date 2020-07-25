@@ -73,10 +73,6 @@ let g:lightline = {
 \   'colorscheme': 'nord',
 \}
 
-" # vim-multiple-cursors settings
-" remap select all instance
-let g:multi_cursor_select_all_key = '<leader>d'
-
 " # vim-smooth-scroll settings
 noremap <silent> <C-U> :call smooth_scroll#up(&scroll, 0, 4)<CR>
 noremap <silent> <C-D> :call smooth_scroll#down(&scroll, 0, 4)<CR>

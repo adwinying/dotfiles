@@ -31,8 +31,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'wincent/terminus'
 " statusbar
 Plug 'itchyny/lightline.vim'
-" multiple cursor selection
-Plug 'terryma/vim-multiple-cursors'
 " smooth scroll
 Plug 'terryma/vim-smooth-scroll'
 " advanced substitution
