@@ -60,10 +60,3 @@ noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " # flutter settings
 " flutter lint command
 autocmd FileType dart nnoremap <leader>ll :!flutter format %<CR>
-
-" # neosnippet settings
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
-xmap <C-K> <Plug>(neosnippet_expand_target)

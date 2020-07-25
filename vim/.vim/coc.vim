@@ -14,7 +14,7 @@ inoremap <silent><expr> <cr> pumvisible()
 " default extensions
 let g:coc_global_extensions = [
   \ 'coc-pairs',
-  \ 'coc-neosnippet',
+  \ 'coc-snippets',
   \ 'coc-phpls',
   \ 'coc-json',
   \ 'coc-css',
@@ -53,3 +53,11 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   endif
 endfunction
+
+" # coc-snippets
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
