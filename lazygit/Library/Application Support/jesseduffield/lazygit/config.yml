@@ -1,0 +1,7 @@
+geporting: "off"
+keybinding:
+  commits:
+    movedowncommit: <c-b>
+    moveupcommit: <c-g>
+reporting: "off"
+startuppopupversion: 1
