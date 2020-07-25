@@ -41,29 +41,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-" # ALE settings
-" set fixer trigger key
-nnoremap <leader>ll :ALEFix<CR>
-" set info trigger key
-nnoremap <leader>li :ALEInfo<CR>
-" configure linter aliases
-let g:ale_linter_aliases = {
-\   'svelte': ['css', 'javascript'],
-\}
-" configure linters
-let g:ale_linters = {
-\   'vue': ['vls', 'eslint'],
-\   'svelte': ['eslint'],
-\}
-" configure fixers
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'vue': ['eslint'],
-\   'svelte': ['eslint'],
-\   'php': ['phpcbf', 'php_cs_fixer'],
-\}
-
 " # lightline settings
 " show statusline
 set laststatus=2
@@ -107,12 +84,15 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-css',
   \ 'coc-vetur',
+  \ 'coc-eslint',
   \ 'coc-svelte',
   \ 'coc-html',
   \ 'coc-emmet',
   \ 'coc-tsserver',
   \ 'coc-flutter'
 \]
+" autofix linting for JS
+autocmd FileType js,vue nnoremap <leader>ll :CocCommand eslint.executeAutofix<CR>
 
 " # phpactor settings
 " Include use statement

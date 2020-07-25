@@ -58,8 +58,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'tomtom/tcomment_vim'
 " align blocks of text
 Plug 'junegunn/vim-easy-align'
-" syntax checker
-Plug 'w0rp/ale'
 " replace surrounding quotes/parenthesis
 Plug 'tpope/vim-surround'
 " enable . support for plugins

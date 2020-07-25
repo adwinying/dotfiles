@@ -1,8 +1,15 @@
 {
-  "diagnostic.displayByAle": true,
   "emmet.includeLanguages": {
     "vue-html": "html",
     "svelte": "html",
     "blade": "html"
-  }
+  },
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "svelte"
+  ]
 }
