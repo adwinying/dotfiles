@@ -6,4 +6,4 @@
 	user = adwinying
 
 [core]
-	editor = nvim
+	editor = vim

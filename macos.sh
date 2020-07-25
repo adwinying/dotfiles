@@ -55,7 +55,6 @@ brew cask install font-inconsolata-for-powerline
 echox " "
 echox "Installing vim..."
 brew install macvim --with-override-system-vim
-brew install neovim
 
 echox " "
 echox "Installing tmux..."

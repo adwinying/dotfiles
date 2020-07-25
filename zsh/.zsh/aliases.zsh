@@ -49,8 +49,8 @@ alias casku='brew cask upgrade'
 alias caskx='brew cask uninstall'
 
 # applications
-alias v="nvim"
-alias emacs="nvim"
+alias v="vim"
+alias emacs="vim"
 alias dc="docker-compose"
 alias vt="vagrant"
 alias lg="lazygit"
