@@ -8,6 +8,8 @@ alias sa="alias | grep -i"
 
 # navigation
 alias ..="cd .."
+alias ....="cd ../.."
+alias ......="cd ../../.."
 alias ls="ls -G"
 alias ll="ls -lh"
 alias la="ll -A"
