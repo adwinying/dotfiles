@@ -11,5 +11,8 @@
     "typescriptreact",
     "vue",
     "svelte"
-  ]
+  ],
+  "prettier.semi": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true
 }

@@ -28,7 +28,9 @@ let g:coc_global_extensions = [
 \]
 
 " autofix linting for JS
-autocmd FileType js,vue nnoremap <leader>ll :CocCommand eslint.executeAutofix<CR>
+autocmd FileType js,vue nnoremap <silent><buffer><leader>ll :CocCommand eslint.executeAutofix<CR>
+" format buffer
+nnoremap <silent> <leader>ll :call CocActionAsync('format')<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
