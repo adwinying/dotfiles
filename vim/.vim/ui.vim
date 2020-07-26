@@ -16,6 +16,7 @@ set showcmd
 set colorcolumn=80
 set signcolumn=yes
 set updatetime=100
+set encoding=utf8
 filetype indent on
 
 " show invisibles
