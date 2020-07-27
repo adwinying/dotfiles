@@ -36,6 +36,7 @@ alias gco="git checkout"
 # tmux
 alias tnew='tmux new -s'
 alias tatt='tmux attach -t'
+alias tkill='tmux kill-session -t'
 alias tlist='tmux list-sessions'
 
 # homebrew
