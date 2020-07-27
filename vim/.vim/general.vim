@@ -86,6 +86,16 @@ nnoremap <esc><esc> :noh<CR>
 " remap K to gK
 nnoremap gK K
 
+" remap pane switching
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+execute "set <M-l>=\el"
+execute "set <M-h>=\eh"
+nnoremap <A-j> :resize +5
+nnoremap <A-k> :resize -5
+nnoremap <A-l> :vertical resize -5
+nnoremap <A-h> :vertical resize +5
+
 " save/load session
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
 nnoremap <leader>o :source ~/.vimsession.vim<CR>
