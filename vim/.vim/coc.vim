@@ -35,7 +35,7 @@ function! LoadCocConfig() abort
   \]
 
   " autofix linting for JS
-  autocmd FileType js,vue nnoremap <silent><buffer><leader>ll :CocCommand eslint.executeAutofix<CR>
+  autocmd FileType javascript,vue,svelte nnoremap <silent><buffer><leader>ll :CocCommand eslint.executeAutofix<CR>
   " format buffer
   nnoremap <silent> <leader>ll :call CocActionAsync('format')<CR>
 
