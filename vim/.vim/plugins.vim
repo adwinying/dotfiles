@@ -53,7 +53,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for' : [
   \'css',
   \'blade',
   \'svelte',
-  \'dart'
+  \'dart',
+  \'go'
 \] }
 
 
