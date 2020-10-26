@@ -8,7 +8,7 @@ startuppopupversion: 1
 
 customCommands:
   - key: c
-    command: "git checkout -b {{.SelectedRemoteBranch.Name}}"
+    command: "git checkout {{.SelectedRemoteBranch.Name}}"
     context: remoteBranches
     description: Checkout remote branch
     loadingText: Checking out remote branch...
