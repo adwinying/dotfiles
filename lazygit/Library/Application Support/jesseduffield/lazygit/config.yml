@@ -5,3 +5,10 @@ keybinding:
     moveupcommit: <c-g>
 reporting: "off"
 startuppopupversion: 1
+
+customCommands:
+  - key: c
+    command: "git checkout -b {{.SelectedRemoteBranch.Name}}"
+    context: remoteBranches
+    description: Checkout remote branch
+    loadingText: Checking out remote branch...
