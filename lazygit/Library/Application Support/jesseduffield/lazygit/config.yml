@@ -1,8 +1,8 @@
 geporting: "off"
 keybinding:
   commits:
-    movedowncommit: <c-b>
-    moveupcommit: <c-g>
+    moveDownCommit: <c-b>
+    moveUpCommit: <c-g>
 reporting: "off"
 startuppopupversion: 1
 
