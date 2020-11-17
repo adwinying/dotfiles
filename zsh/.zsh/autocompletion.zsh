@@ -3,6 +3,10 @@
 # autocomplete
 #
 
+# enable autocompletion
+autoload -U compinit
+compinit
+
 # highlight select
 zstyle ':completion:*' menu select
 
