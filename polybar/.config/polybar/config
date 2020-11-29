@@ -54,7 +54,7 @@ font-2 = Inconsolata Nerd Font:pixelsize=15;1
 
 modules-left = xwindow mpd
 modules-center = i3
-modules-right = xkeyboard xbacklight pulseaudio wlan eth battery date sep powermenu
+modules-right = input xbacklight pulseaudio wlan eth battery date sep powermenu
 
 wm-restack = i3
 
@@ -69,6 +69,13 @@ cursor-scroll = ns-resize
 [module/sep]
 type = custom/text
 content = |
+
+[module/input]
+type = custom/script
+exec = ~/.config/polybar/scripts/input_status.sh
+click-left = ~/.config/polybar/scripts/input_change.sh
+label =   %output%
+interval = 0.5
 
 [module/xwindow]
 type = internal/xwindow
