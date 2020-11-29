@@ -6,6 +6,9 @@
 # Map left control to Esc when pressed alone
 xcape -e 'Control_L=Escape'
 
+# Compositor
+picom -b
+
 # IME
 ibus-daemon -drx
 

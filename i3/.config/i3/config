@@ -164,8 +164,8 @@ gaps top 36
 # Set desktop wallpaper
 exec_always feh --bg-fill ~/Pictures/wallpaper.jpg
 
-# Compositor
-exec_always --no-startup-id pkill picom; picom
+# Notifications
+exec_always --no-startup-id pkill dunst; dunst
 
 # Launch these applications on specific workspaces:
 # Workspace 1: Main
