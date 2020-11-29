@@ -23,7 +23,7 @@ foreground = #eceff4
 foreground-alt = #eceff4
 primary = #8fbcbb
 secondary = #bf616a
-alert = #bd2c40
+alert = #bf616a
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -93,26 +93,25 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-ws-icon-0 = 1;%{T3}%{T-}
-ws-icon-1 = 2;%{T2}爵%{T-}
-ws-icon-2 = 3;%{T2}%{T-}
-ws-icon-3 = 4;%{T2}%{T-}
-ws-icon-4 = 5;%{T2}%{T-}
-ws-icon-5 = 6;%{T2}%{T-}
-ws-icon-6 = 7;%{T2}%{T-}
-ws-icon-7 = 8;%{T2}%{T-}
-ws-icon-8 = 9;%{T2}%{T-}
-ws-icon-9 = 10;%{T2}%{T-}
+ws-icon-0 = 1;%{T3} %{T-}
+ws-icon-1 = 2;%{T2}爵 %{T-}
+ws-icon-2 = 3;%{T2} %{T-}
+ws-icon-3 = 4;%{T2} %{T-}
+ws-icon-4 = 5;%{T2} %{T-}
+ws-icon-5 = 6;%{T2} %{T-}
+ws-icon-6 = 7;%{T2} %{T-}
+ws-icon-7 = 8;%{T2} %{T-}
+ws-icon-8 = 9;%{T2} %{T-}
+ws-icon-9 = 10;%{T2} %{T-}
 ws-icon-default = " "
 
-label-mode-padding = 2
-label-mode-foreground = #000
+label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.primary}
+label-mode-padding = 2
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
 label-focused-background = #0000
-label-focused-underline = ${colors.background}
 label-focused-foreground = ${colors.primary}
 label-focused-padding = 2
 
