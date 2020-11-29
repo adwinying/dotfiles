@@ -6,5 +6,8 @@
 # Map left control to Esc when pressed alone
 xcape -e 'Control_L=Escape'
 
+# IME
+ibus-daemon -drx
+
 # Lauch i3 wm
 exec i3
