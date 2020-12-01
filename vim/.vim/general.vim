@@ -78,7 +78,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap K i<CR><esc>
 
 " Y to copy to clipboard
-nnoremap Y "*y
+nnoremap Y "+y
 
 " clear highlight
 nnoremap <esc><esc> :noh<CR>
