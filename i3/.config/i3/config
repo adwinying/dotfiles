@@ -156,6 +156,20 @@ mode "resize" {
   bindsym $mod+r mode "default"
 }
 
+#Theme
+set $bgcolor #2e3440
+set $ibgcolor #3b4252
+set $indicolor #88c0d0
+set $textcolor #eceff4
+set $itextcolor #4c566a
+set $ubgcolor #bf616a
+
+#                        border     background  text         indicator
+client.focused           $indicolor $bgcolor    $textcolor   $indicolor
+client.unfocused         $ibgcolor  $ibgcolor   $itextcolor  $ibgcolor
+client.focused_inactive  $ibgcolor  $ibgcolor   $itextcolor  $ibgcolor
+client.urgent            $ubgcolor  $ubgcolor   $textcolor   $ubgcolor
+
 bindsym $mod+r mode "resize"
 
 # Disable window title
