@@ -72,8 +72,8 @@ content = |
 
 [module/input]
 type = custom/script
-exec = ~/.config/polybar/scripts/input_status.sh
-click-left = ~/.config/polybar/scripts/input_change.sh
+exec = ~/.dotfiles/scripts/input_status.sh
+click-left = ~/.dotfiles/scripts/input_change.sh
 label =   %output%
 interval = 0.5
 
