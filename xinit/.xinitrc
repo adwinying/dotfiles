@@ -6,6 +6,10 @@
 # Map left control to Esc when pressed alone
 xcape -e 'Control_L=Escape'
 
+# Map left and right Super keys to input change
+xcape -e 'Super_L=Hangul_Hanja'
+xcape -e 'Super_R=Hangul'
+
 # Compositor
 picom -b
 

@@ -45,6 +45,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -modi drun,run,window,ssh -show drun -theme nord"
 bindsym $mod+Shift+d exec "rofi -modi window -show window -theme nord"
 
+# Input switch shortcut
+bindsym Hangul_Hanja exec "ibus engine xkb:us::eng"
+bindsym Hangul exec "ibus engine mozc-jp"
+
 # Take screenshot
 bindsym $mod+Control+Shift+3 exec "maim --format png /dev/stdout | xclip -selection clipboard -t image/png && notify-send Screenshot 'Saved to clipboard.'"
 bindsym $mod+Control+Shift+4 exec "maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png && notify-send Screenshot 'Saved to clipboard.'"
