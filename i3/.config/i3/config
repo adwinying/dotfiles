@@ -178,5 +178,6 @@ exec_always --no-startup-id pkill dunst; dunst
 # Workspace 4: Chat
 # Workspace 5: Music
 # Workspace 6: Files
-assign [class="Brave"] $ws2
+assign [class="Brave"]   $ws2
 assign [class="Firefox"] $ws2
+for_window [class="^Spotify*"] move to workspace $ws5
