@@ -66,9 +66,8 @@ brew install yarn
 
 echox " "
 echox "Installing GUI programs..."
-brew cask install google-chrome iterm2 flux sublime-text
-brew cask install cyberduck mpv the-unarchiver tunnelblick
-brew cask install goofy discord
+brew cask install brave-browser iterm2 flux sublime-text
+brew cask install cyberduck mpv the-unarchiver discord
 
 echox " "
 echox "Creating subl symlink..."
