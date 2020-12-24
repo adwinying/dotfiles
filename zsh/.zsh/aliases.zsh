@@ -45,11 +45,10 @@ alias brewl='brew list'
 alias brews='brew search'
 alias brewu='brew update && brew upgrade'
 alias brewx='brew remove'
-alias cask='brew cask'
-alias caski='brew cask install'
-alias caskl='brew cask list'
-alias casku='brew cask upgrade'
-alias caskx='brew cask uninstall'
+alias caski='brew install --cask'
+alias caskl='brew list --cask'
+alias casku='brew upgrade --cask'
+alias caskx='brew uninstall --cask'
 
 # applications
 alias v="vim"
