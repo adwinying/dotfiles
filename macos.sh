@@ -48,13 +48,17 @@ echox "Installing fzf..."
 brew install fzf
 
 echox " "
+echox "Installing lazygit..."
+brew install lazygit
+
+echox " "
 echox "Installing powerline font..."
 brew tap homebrew/cask-fonts
-brew cask install font-inconsolata-for-powerline
+brew install --cask font-inconsolata-for-powerline
 
 echox " "
 echox "Installing vim..."
-brew install macvim --with-override-system-vim
+brew install macvim
 
 echox " "
 echox "Installing tmux..."
@@ -66,12 +70,8 @@ brew install yarn
 
 echox " "
 echox "Installing GUI programs..."
-brew cask install brave-browser iterm2 flux sublime-text
-brew cask install cyberduck mpv the-unarchiver discord
-
-echox " "
-echox "Creating subl symlink..."
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+brew install --cask brave-browser iterm2 flux rectangle sublime-text karabiner-elements
+brew install --cask cyberduck mpv the-unarchiver discord messenger
 
 echox " "
 echox "macOS script done."
