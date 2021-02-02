@@ -22,6 +22,7 @@ $ stow -v zsh
 3. If using macOS, there is also an optional install script:
 ```bash
 $ ./macos.sh
+$ brew bundle
 ```
 
 4. If you want to remove the symlinks, just use the `-D` arguement:

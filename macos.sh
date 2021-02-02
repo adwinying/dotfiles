@@ -40,39 +40,5 @@ brew update
 brew doctor
 
 echox " "
-echox "Installing zsh..."
-brew install zsh
-
-echox " "
-echox "Installing fzf..."
-brew install fzf
-
-echox " "
-echox "Installing lazygit..."
-brew install lazygit
-
-echox " "
-echox "Installing powerline font..."
-brew tap homebrew/cask-fonts
-brew install --cask font-inconsolata-for-powerline
-
-echox " "
-echox "Installing vim..."
-brew install macvim
-
-echox " "
-echox "Installing tmux..."
-brew install tmux
-
-echox " "
-echox "Installing yarn..."
-brew install yarn
-
-echox " "
-echox "Installing GUI programs..."
-brew install --cask brave-browser iterm2 flux rectangle sublime-text karabiner-elements
-brew install --cask cyberduck mpv the-unarchiver discord messenger
-
-echox " "
 echox "macOS script done."
 sleep 1
