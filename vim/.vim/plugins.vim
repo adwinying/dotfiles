@@ -59,6 +59,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for' : [
 
 
 " # programming
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
 " commenter
 Plug 'tomtom/tcomment_vim'
 " align blocks of text
