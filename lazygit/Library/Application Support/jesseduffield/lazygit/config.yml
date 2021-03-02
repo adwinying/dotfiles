@@ -12,3 +12,9 @@ customCommands:
     context: remoteBranches
     description: Checkout remote branch
     loadingText: Checking out remote branch...
+
+  - key: <c-r>
+    command: "git remote prune {{.SelectedRemote.Name}}"
+    context: remoteBranches
+    description: Prune deleted branches
+    loadingText: Pruning remote...
