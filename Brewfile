@@ -7,6 +7,7 @@ brew "tmux"
 brew "mosh"
 brew "macvim"
 brew "lazygit"
+brew "lazydocker"
 brew "node"
 brew "yarn"
 
