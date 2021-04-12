@@ -3,11 +3,14 @@
 # inspired by https://github.com/xero/dotfiles
 #
 
-# set collate
-export LC_COLLATE=C
-
 # disable software flow control (Enable C-Q/C-S in terminal)
 stty -ixon
 
 # load configs
-for config (~/.zsh/*.zsh) source $config
+source ~/.zsh/plugins.zsh
+source ~/.zsh/aliases.zsh
+source ~/.zsh/autocompletion.zsh
+source ~/.zsh/history.zsh
+source ~/.zsh/keybindings.zsh
+source ~/.zsh/prompt.zsh
+source ~/.zsh/source.zsh
