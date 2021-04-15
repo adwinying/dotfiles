@@ -22,6 +22,10 @@ zinit load zdharma/fast-syntax-highlighting
 zinit ice wait lucid blockf
 zinit load zsh-users/zsh-completions
 
+# fish-like autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit load zsh-users/zsh-autosuggestions
+
 # subtring search
 zinit ice wait lucid atload" \
 bindkey '^[[A' history-substring-search-up && \
