@@ -57,6 +57,7 @@ alias dc="docker compose"
 alias vt="vagrant"
 alias lg="lazygit"
 alias ldc="lazydocker"
+alias art="php artisan"
 
 # ls after cd
 function chpwd() {
