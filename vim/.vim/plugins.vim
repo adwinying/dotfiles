@@ -45,6 +45,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 " IDE-like features (autocompletion, linting, lookup etc.)
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for' : [
+  \'typescript',
   \'javascript',
   \'json',
   \'vue',
