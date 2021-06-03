@@ -15,5 +15,6 @@
   "prettier.semi": false,
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
+  "tailwindCSS.headwind.runOnSave": false,
   "vetur.experimental.templateInterpolationService": true
 }

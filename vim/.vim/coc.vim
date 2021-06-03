@@ -30,6 +30,7 @@ function! LoadCocConfig() abort
     \ 'coc-svelte',
     \ 'coc-html',
     \ 'coc-emmet',
+    \ 'coc-tailwindcss',
     \ 'coc-tsserver',
     \ 'coc-flutter',
     \ 'coc-go',
