@@ -13,6 +13,9 @@ function! LoadCocConfig() abort
   " :CocList shortcut
   nnoremap <leader>cc :CocList<CR>
 
+  " :CocRestart shortcut
+  nnoremap <leader>cr :CocRestart<CR>
+
   " confirm complete
   inoremap <silent><expr> <cr> pumvisible()
     \ ? coc#_select_confirm()
