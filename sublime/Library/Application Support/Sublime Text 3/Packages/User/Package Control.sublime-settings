@@ -2,6 +2,7 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"ConvertToUTF8",
 	],
 	"installed_packages":
 	[
@@ -30,5 +31,5 @@
 		"Theme - Spacegray",
 		"Vue Syntax Highlight",
 		"Vuejs Snippets"
-	]
+	],
 }

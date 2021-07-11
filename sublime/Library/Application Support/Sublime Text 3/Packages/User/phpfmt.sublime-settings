@@ -8,5 +8,5 @@
 	],
 	"psr2": true,
 	"readini": true,
-	"version": 1
+	"version": 1,
 }
