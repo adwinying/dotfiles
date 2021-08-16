@@ -28,7 +28,7 @@ function! LoadCocConfig() abort
     \ 'coc-phpls',
     \ 'coc-json',
     \ 'coc-css',
-    \ 'coc-vetur',
+    \ '@yaegassy/coc-volar',
     \ 'coc-eslint',
     \ 'coc-svelte',
     \ 'coc-html',
