@@ -22,7 +22,7 @@ cask "iina"
 cask "the-unarchiver"
 cask "discord"
 cask "messenger"
-cask "google-backup-and-sync"
+cask "google-drive"
 cask "notion"
 
 mas "LINE", id: 539883307
