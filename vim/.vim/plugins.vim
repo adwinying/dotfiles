@@ -4,14 +4,10 @@
 "
 
 " Load vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent call system('mkdir -p ~/.vim/autoload')
-  silent call system('curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-  execute 'source  ~/.vim/autoload/plug.vim'
-  augroup plugsetup
-    au!
-    autocmd VimEnter * PlugInstall
-  augroup end
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
