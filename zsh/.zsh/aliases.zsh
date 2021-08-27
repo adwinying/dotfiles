@@ -3,6 +3,9 @@
 # aliases
 #
 
+# enable aliases with sudo
+alias sudo="sudo "
+
 # search aliases
 alias sa="alias | grep -i"
 
