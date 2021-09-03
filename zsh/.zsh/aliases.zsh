@@ -56,7 +56,7 @@ alias caskx='brew uninstall --cask'
 # applications
 alias v="vim"
 alias emacs="vim"
-alias dc="docker compose"
+alias dc="docker-compose"
 alias vt="vagrant"
 alias lg="lazygit"
 alias ldc="lazydocker"
