@@ -1,0 +1,46 @@
+[KFileDialog Settings]
+detailViewIconSize=16
+
+[KPropertiesDialog]
+eDP-1 Height 1366x768=454
+eDP-1 Width 1366x768=417
+
+[LatteSettingsDialog]
+downloadWindowSize=980,600
+windowSize=1102,640
+
+[LatteSettingsDialog][DetailsDialog]
+windowSize=560,640
+
+[LatteSettingsDialog][TabLayouts]
+columnWidths=49,508,129,104
+sortColumn=3
+sortOrder=0
+
+[LatteSettingsDialog][ViewsDialog]
+columnWidths=59,256,142,135,131
+sortColumn=2
+sortOrder=0
+windowSize=980,630
+
+[PlasmaThemeExtended]
+outlineWidth=1
+
+[ScreenConnectors]
+10=eDP-1:::0,0 1366x768
+
+[UniversalSettings]
+badges3DStyle=false
+canDisableBorders=true
+contextMenuActionsAlwaysShown=
+inAdvancedModeForEditSettings=true
+isAvailableGeometryBroadcastedToPlasma=true
+launchers=
+memoryUsage=0
+metaPressAndHoldEnabled=false
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+singleModeLayoutName=My Layout
+userConfiguredAutostart=true
+version=2

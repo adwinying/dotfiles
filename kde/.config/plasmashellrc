@@ -1,0 +1,31 @@
+[KFileDialog Settings]
+Recent Files[$e]=bg.jpg,file:$HOME/Downloads/bg.jpg
+Recent URLs[$e]=file:$HOME/Downloads/
+detailViewIconSize=16
+
+[PlasmaViews][Panel 15][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 15][Horizontal1366]
+thickness=27
+
+[PlasmaViews][Panel 2][Defaults]
+maxLength=1325
+minLength=1298
+offset=0
+thickness=28
+
+[PlasmaViews][Panel 2][Horizontal1366]
+maxLength=1325
+minLength=1298
+offset=17
+thickness=28
+
+[PlasmaViews][Panel 2][Vertical768]
+offset=0
+
+[ScreenConnectors]
+0=eDP-1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js
