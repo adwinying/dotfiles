@@ -88,6 +88,13 @@ DialogWidth=720
 [Containments][17][Applets][118][Configuration][General]
 showFlag=true
 
+[Containments][17][Applets][125]
+immutability=1
+plugin=org.kde.plasma.networkmanagement
+
+[Containments][17][Applets][125][Configuration]
+PreloadWeight=65
+
 [Containments][17][Applets][88]
 immutability=1
 plugin=org.kde.plasma.notifications
@@ -117,9 +124,9 @@ DialogWidth=963
 PreloadWeight=26
 
 [Containments][17][General]
-extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.plasma.keyboardlayout
+extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
 hiddenItems=org.kde.plasma.devicenotifier
-knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.plasma.keyboardlayout
+knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement
 scaleIconsToFit=true
 
 [Containments][19]
@@ -151,7 +158,7 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][19][Applets][112][Configuration]
-PreloadWeight=92
+PreloadWeight=100
 
 [Containments][19][Applets][112][Configuration][ConfigDialog]
 DialogHeight=674
@@ -186,7 +193,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][19][Applets][114][Configuration]
-PreloadWeight=28
+PreloadWeight=32
 SystrayContainmentId=17
 
 [Containments][19][Applets][115]
@@ -242,7 +249,7 @@ immutability=1
 plugin=org.kde.plasma.marginsseparator
 
 [Containments][19][Applets][124][Configuration]
-PreloadWeight=42
+PreloadWeight=26
 
 [Containments][19][ConfigDialog]
 DialogHeight=1254

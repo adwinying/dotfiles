@@ -1,2 +1,12 @@
 [$Version]
 update_info=kwinrules.upd:replace-placement-string-to-enum
+
+[1]
+Description=Settings for Brave
+desktop=2
+desktoprule=3
+wmclass=brave-browser
+wmclassmatch=1
+
+[General]
+count=1
