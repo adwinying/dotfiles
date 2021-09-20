@@ -8,5 +8,12 @@ desktoprule=3
 wmclass=brave-browser
 wmclassmatch=1
 
+[2]
+Description=Settings for st-256color
+desktop=3
+desktoprule=3
+wmclass=st-256color
+wmclassmatch=1
+
 [General]
-count=1
+count=2
