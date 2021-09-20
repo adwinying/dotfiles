@@ -282,7 +282,7 @@ _k_friendly_name=Emoji Selector
 _launch=Meta+.,Meta+.,Emoji Selector
 
 [plasmashell]
-_k_friendly_name=Latte Dock
+_k_friendly_name=Activity switching
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=,Meta+0,Activate Task Manager Entry 10
 activate task manager entry 2=none,Meta+2,Activate Task Manager Entry 2
