@@ -29,7 +29,7 @@ _k_friendly_name=KDE Daemon
 
 [ksmserver]
 Halt Without Confirmation=none,none,Halt Without Confirmation
-Lock Session=,Meta+L\tCtrl+Alt+L\tScreensaver,Lock Session
+Lock Session=Meta+Shift+Q,Meta+L\tCtrl+Alt+L\tScreensaver,Lock Session
 Log Out=Ctrl+Alt+Del,Ctrl+Alt+Del,Log Out
 Log Out Without Confirmation=Meta+Ctrl+Q,none,Log Out Without Confirmation
 Reboot Without Confirmation=none,none,Reboot Without Confirmation
