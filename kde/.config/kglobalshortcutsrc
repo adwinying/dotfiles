@@ -272,6 +272,12 @@ playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
 
+[org.kde.konsole.desktop]
+NewTab=,,Open a New Tab
+NewWindow=,,Open a New Window
+_k_friendly_name=Konsole
+_launch=Meta+Return,,Konsole
+
 [org.kde.krunner.desktop]
 RunClipboard=Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
@@ -310,10 +316,6 @@ stop current activity=none,Meta+S,Stop Current Activity
 switch to next activity=none,none,Switch to Next Activity
 switch to previous activity=none,none,Switch to Previous Activity
 toggle do not disturb=none,none,Toggle do not disturb
-
-[st]
-_k_friendly_name=st
-_launch=Meta+Return,,st
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings

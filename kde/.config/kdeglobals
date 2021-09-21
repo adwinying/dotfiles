@@ -136,8 +136,8 @@ ForegroundVisited=143,188,187
 [General]
 BrowserApplication=brave-browser.desktop
 Name=Nordic
-TerminalApplication=st
-TerminalService=/home/adwin/.local/share/applications/st.desktop
+TerminalApplication=konsole
+TerminalService=org.kde.konsole.desktop
 shadeSortColumn=true
 widgetStyle=Breeze
 
