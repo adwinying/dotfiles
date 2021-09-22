@@ -3,11 +3,6 @@
 -- taglist component
 --
 
--- ===================================================================
--- Initialization
--- ===================================================================
-
-
 local awful = require('awful')
 local gears = require("gears")
 local wibox = require('wibox')
@@ -16,62 +11,86 @@ local dpi = beautiful.xresources.apply_dpi
 
 local keys = require("keys")
 
--- define taglist button behaviour
-local buttons = gears.table.join(
-  awful.button(
-    {}, 1,
-    function (t) t:view_only() end
-  ),
+-- define taglist buttons
+local buttons = function (screen)
+  return gears.table.join(
+    awful.button(
+      {}, 1,
+      function (t) t:view_only() end
+    ),
 
-  awful.button(
-    { keys.modkey }, 1,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
+    awful.button(
+      { keys.modkey }, 1,
+      function (t)
+        if client.focus then
+          client.focus:move_to_tag(t)
+        end
       end
-    end
-  ),
+    ),
 
-  awful.button(
-    {}, 3,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
+    awful.button(
+      {}, 3,
+      function (t)
+        if client.focus then
+          client.focus:move_to_tag(t)
+        end
       end
-    end
-  ),
+    ),
 
-  awful.button(
-    { keys.modkey }, 3,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
+    awful.button(
+      { keys.modkey }, 3,
+      function (t)
+        if client.focus then
+          client.focus:move_to_tag(t)
+        end
       end
-    end
-  ),
+    ),
 
-  awful.button(
-    { }, 4,
-    function (t) awful.tag.viewprev(t.screen) end
-  ),
+    awful.button(
+      { }, 4,
+      function (t) awful.tag.viewprev(t.screen) end
+    ),
 
-  awful.button(
-    { }, 5,
-    function (t) awful.tag.viewnext(t.screen) end
+    awful.button(
+      { }, 5,
+      function (t) awful.tag.viewnext(t.screen) end
+    )
   )
-)
+end
 
 
 -- determine icon to show for each tag
 local update_tag_icon = function (widget, tag, index, taglist)
-  if tag.selected then
-    widget.text = beautiful.taglist_icon_focus
+  if tag.selected and #tag:clients() > 0 then
+    widget.markup = string.format(
+      '<span fgcolor="%s">%s</span>',
+      beautiful.taglist_fg_focus,
+      beautiful.taglist_icon_occupied
+    )
+  elseif tag.selected then
+    widget.markup = string.format(
+      '<span fgcolor="%s">%s</span>',
+      beautiful.taglist_fg_focus,
+      beautiful.taglist_icon_empty
+    )
   elseif tag.urgent then
-    widget.text = beautiful.taglist_icon_urgent
+    widget.markup = string.format(
+      '<span fgcolor="%s">%s</span>',
+      beautiful.taglist_fg_urgent,
+      beautiful.taglist_icon_urgent
+    )
   elseif #tag:clients() > 0 then
-    widget.text = beautiful.taglist_icon_occupied
+    widget.markup = string.format(
+      '<span fgcolor="%s">%s</span>',
+      beautiful.taglist_fg_occupied,
+      beautiful.taglist_icon_occupied
+    )
   else
-    widget.text = beautiful.taglist_icon_empty
+    widget.markup = string.format(
+      '<span fgcolor="%s">%s</span>',
+      beautiful.taglist_fg_empty,
+      beautiful.taglist_icon_empty
+    )
   end
 end
 
@@ -84,14 +103,13 @@ local create_widget = function (screen)
     spacing = beautiful.taglist_spacing,
     widget_template = {
       widget = wibox.widget.textbox,
-      text = "asdf",
-      visible = true,
+      text = "taglist_widget",
       valign = "center",
       align = "center",
       create_callback = update_tag_icon,
       update_callback = update_tag_icon,
     },
-    buttons = buttons,
+    buttons = buttons(screen),
   }
 end
 

@@ -21,8 +21,8 @@ awful.screen.connect_for_each_screen(function (s)
     top = beautiful.topbar_height + beautiful.topbar_margin * 2,
   }
   s.topbar:setup {
-    expand = "none",
     layout = wibox.layout.align.horizontal,
+    expand = "none",
     -- Left widgets
     {
       widget = wibox.container.margin,

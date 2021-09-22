@@ -53,21 +53,26 @@ theme.border_marked = color.red
 theme.topbar_position = "top"
 theme.topbar_height   = dpi(28)
 theme.topbar_margin   = theme.useless_gap
-theme.topbar_padding  = dpi(10)
+theme.topbar_padding  = dpi(12)
 theme.topbar_spacing  = dpi(10)
 
 -- Taglist
-theme.taglist_spacing = dpi(10)
+theme.taglist_spacing = dpi(5)
 
 theme.taglist_bg_empty    = theme.bg_normal
 theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent   = theme.bg_normal
 theme.taglist_bg_focus    = theme.bg_normal
 
-theme.taglist_icon_empty    = "empty"
-theme.taglist_icon_occupied = "occ"
-theme.taglist_icon_urgent   = "urgent"
-theme.taglist_icon_focus    = "focus"
+theme.taglist_fg_empty    = color.white
+theme.taglist_fg_occupied = color.white
+theme.taglist_fg_urgent   = color.red
+theme.taglist_fg_focus    = color.lightblue
+
+theme.taglist_icon_empty    = " "
+theme.taglist_icon_occupied = " "
+theme.taglist_icon_urgent   = " "
+theme.taglist_icon_focus    = " "
 
 -- Tasklist
 theme.tasklist_font      = theme.font
