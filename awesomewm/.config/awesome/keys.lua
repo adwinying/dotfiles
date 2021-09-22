@@ -24,8 +24,8 @@ local shiftkey = "Shift"
 local leftclick  = 1
 local midclick   = 2
 local rightclick = 3
-local prevclick  = 4
-local nextclick  = 5
+local scrolldown = 4
+local scrollup   = 5
 
 local keys = {}
 
@@ -37,8 +37,8 @@ keys.shiftkey = shiftkey
 keys.leftclick  = leftclick
 keys.midclick   = midclick
 keys.rightclick = rightclick
-keys.prevclick  = prevclick
-keys.nextclick  = nextclick
+keys.scrolldown = scrolldown
+keys.scrollup   = scrollup
 
 
 -- ========================================
@@ -137,7 +137,7 @@ end
 -- Mouse buttons on desktop
 keys.desktopbuttons = gears.table.join(
   awful.button(
-    {}, 1,
+    {}, leftclick,
     function () naughty.destroy_all_notifications() end
   )
 )
@@ -145,20 +145,20 @@ keys.desktopbuttons = gears.table.join(
 -- Mouse buttons on client
 keys.clientbuttons = gears.table.join(
   awful.button(
-    {}, 1,
+    {}, leftclick,
     function (c)
       c:emit_signal("request::activate", "mouse_click", {raise = true})
     end
   ),
   awful.button(
-    { modkey }, 1,
+    { modkey }, leftclick,
     function (c)
       c:emit_signal("request::activate", "mouse_click", {raise = true})
       awful.mouse.client.move(c)
     end
   ),
   awful.button(
-    { modkey }, 3,
+    { modkey }, rightclick,
     function (c)
       c:emit_signal("request::activate", "mouse_click", {raise = true})
       awful.mouse.client.resize(c)
