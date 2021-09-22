@@ -44,6 +44,7 @@ awful.screen.connect_for_each_screen(function (s)
       right = beautiful.topbar_padding,
       {
         layout = wibox.layout.fixed.horizontal,
+        spacing = beautiful.topbar_spacing,
         s.mytaglist,
         require("widgets.task-list").create(s),
       },
@@ -51,7 +52,6 @@ awful.screen.connect_for_each_screen(function (s)
     -- Middle widgets
     {
       layout = wibox.layout.fixed.horizontal,
-      require("widgets.calendar").create(s),
     },
     -- Right widgets
     {
@@ -60,11 +60,17 @@ awful.screen.connect_for_each_screen(function (s)
       right = beautiful.topbar_padding,
       {
         layout = wibox.layout.fixed.horizontal,
-        wibox.layout.margin(wibox.widget.systray(), dpi(5), dpi(5), dpi(5), dpi(5)),
-        require("widgets.calendar").create(s),
+        spacing = beautiful.topbar_spacing,
+        {
+          widget = wibox.layout.margin,
+          top = dpi(7),
+          bottom = dpi(7),
+          wibox.widget.systray(),
+        },
         require("widgets.bluetooth"),
         require("widgets.network")(),
         require("widgets.battery"),
+        require("widgets.calendar").create(s),
         {
           widget = wibox.layout.margin,
           top = dpi(7),
