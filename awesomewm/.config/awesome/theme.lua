@@ -76,7 +76,11 @@ theme.taglist_icon_urgent   = " "
 theme.taglist_icon_focus    = " "
 
 -- Tasklist
-theme.tasklist_font      = theme.font
+theme.tasklist_font = theme.font
+
+theme.tasklist_icon_visible = " "
+theme.tasklist_icon_hidden  = " "
+
 theme.tasklist_bg_normal = theme.bg_normal
 theme.tasklist_bg_focus  = theme.bg_focus
 theme.tasklist_bg_urgent = theme.bg_urgent
