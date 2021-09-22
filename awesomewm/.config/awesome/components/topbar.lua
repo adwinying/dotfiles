@@ -23,7 +23,7 @@ awful.screen.connect_for_each_screen(function (s)
     buttons = keys.taglist_buttons,
   }
 
-  s.mywibox = wibox({
+  s.topbar = wibox({
     screen = s,
     visible = true,
     x = s.geometry.x + beautiful.topbar_margin * 2,
@@ -31,10 +31,10 @@ awful.screen.connect_for_each_screen(function (s)
     width = s.geometry.width - beautiful.topbar_margin * 4,
     height = beautiful.topbar_height,
   })
-  s.mywibox:struts {
+  s.topbar:struts {
     top = beautiful.topbar_height + beautiful.topbar_margin * 2,
   }
-  s.mywibox:setup {
+  s.topbar:setup {
     expand = "none",
     layout = wibox.layout.align.horizontal,
     -- Left widgets
@@ -67,8 +67,8 @@ awful.screen.connect_for_each_screen(function (s)
         require("widgets.battery"),
         {
           widget = wibox.layout.margin,
-          top = dpi(5),
-          bottom = dpi(5),
+          top = dpi(7),
+          bottom = dpi(7),
           require("widgets.layout-box"),
         },
       },

@@ -2,9 +2,9 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local helpers = require("helpers")
 
 -- ========================================
 -- User Config
@@ -97,6 +97,16 @@ awful.screen.connect_for_each_screen(function(s)
   awful.tag(tag_names, s, tag_layouts)
 end)
 
+-- Remove gaps if layout is set to max
+tag.connect_signal("property::layout", function(t)
+  helpers.set_gaps(t.screen, t)
+end)
+-- Layout might change in different tag
+-- so update again when switched to another tag
+tag.connect_signal("property::selected", function(t)
+  helpers.set_gaps(t.screen, t)
+end)
+
 
 -- ========================================
 -- Keybindings
@@ -118,17 +128,6 @@ awful.rules.rules = rules
 -- ========================================
 -- Misc.
 -- ========================================
-
--- Remove gaps if layout is set to max
-tag.connect_signal("property::layout", function(t)
-  local current_layout = awful.tag.getproperty(t, "layout")
-  if (current_layout == awful.layout.suit.max) then
-    t.gap = 0
-  else
-    t.gap = beautiful.useless_gap
-  end
-end)
-
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
