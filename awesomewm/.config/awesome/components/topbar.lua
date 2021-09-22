@@ -36,7 +36,7 @@ awful.screen.connect_for_each_screen(function (s)
         layout = wibox.layout.fixed.horizontal,
         spacing = beautiful.topbar_spacing,
         require("widgets.taglist")(s),
-        require("widgets.tasklist")(s),
+        require("widgets.client_name")(s),
       },
     },
 
