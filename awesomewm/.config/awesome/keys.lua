@@ -236,6 +236,12 @@ keys.clientkeys = gears.table.join(
   ),
 
   awful.key(
+    { modkey, shiftkey }, "c",
+    function (c) c:kill() end,
+    { description = "close", group = "client" }
+  ),
+
+  awful.key(
     { modkey }, "q",
     function (c) c:kill() end,
     { description = "close", group = "client" }
@@ -508,7 +514,7 @@ keys.globalkeys = gears.table.join(
 )
 
 -- Bind all key numbers to tags
-for i = 1, 9 do
+for i, _ in ipairs(tags) do
   keys.globalkeys = gears.table.join(keys.globalkeys,
     -- Switch to tags
     awful.key(

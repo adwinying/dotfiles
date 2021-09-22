@@ -12,17 +12,34 @@ local awful = require("awful")
 
 -- define default apps
 apps = {
-  terminal = "st",
-  launcher = "rofi -modi drun,run,window,ssh -show drun -theme nord",
+  terminal        = "st",
+  launcher        = "rofi -modi drun,run,window,ssh -show drun -theme nord",
   network_manager = "nm-connection-editor",
-  power_manager = "xfce4-power-manager",
-  screenshot = "scrot -e 'mv $f ~/Pictures 2>/dev/null",
-  filebrowser = "thunar",
+  power_manager   = "xfce4-power-manager",
+  screenshot      = "scrot -e 'mv $f ~/Pictures 2>/dev/null",
+  filebrowser     = "thunar",
 }
 
+-- network interfaces for widgets
 network_interfaces = {
   "wlp3s0",
   "enp0s25",
+}
+
+-- layouts
+awful.layout.layouts = {
+  awful.layout.suit.tile,
+  awful.layout.suit.floating,
+  awful.layout.suit.max,
+}
+
+-- tag configs
+tags = {
+  { name = "main" , layout = awful.layout.layouts[1] },
+  { name = "web"  , layout = awful.layout.layouts[1] },
+  { name = "code" , layout = awful.layout.layouts[1] },
+  { name = "chat" , layout = awful.layout.layouts[1] },
+  { name = "music", layout = awful.layout.layouts[1] },
 }
 
 -- run these apps on start up
@@ -55,37 +72,29 @@ end
 -- Visualizations
 -- ========================================
 
-require("components.notifications")
-require("components.bar")
-
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
+-- Load theme vars
 local beautiful = require("beautiful")
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
 
-
--- ========================================
--- Layouts
--- ========================================
-
-awful.layout.layouts = {
-  awful.layout.suit.tile,
-  awful.layout.suit.floating,
-  awful.layout.suit.max,
-}
-
+-- Load components
+require("components.notifications")
+require("components.topbar")
 
 -- ========================================
 -- Tags
 -- ========================================
 
+local tag_names = {}
+local tag_layouts = {}
+
+for i, tag in ipairs(tags) do
+  tag_names[i] = tag.name
+  tag_layouts[i] = tag.layout
+end
+
+-- Each screen has its own tag table.
 awful.screen.connect_for_each_screen(function(s)
-  -- Each screen has its own tag table.
-  awful.tag(
-    { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-    s,
-    awful.layout.layouts[1]
-  )
+  awful.tag(tag_names, s, tag_layouts)
 end)
 
 
