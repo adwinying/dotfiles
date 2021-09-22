@@ -15,12 +15,31 @@ local dpi = beautiful.xresources.apply_dpi
 require("awful.hotkeys_popup.keys")
 
 -- Define mod keys
-local modkey = "Mod4"
-local altkey = "Mod1"
-local ctrlkey = "Control"
+local modkey   = "Mod4"
+local altkey   = "Mod1"
+local ctrlkey  = "Control"
 local shiftkey = "Shift"
 
+-- Define mouse button
+local leftclick  = 1
+local midclick   = 2
+local rightclick = 3
+local prevclick  = 4
+local nextclick  = 5
+
 local keys = {}
+
+keys.modkey   = modkey
+keys.altkey   = altkey
+keys.ctrlkey  = ctrlkey
+keys.shiftkey = shiftkey
+
+keys.leftclick  = leftclick
+keys.midclick   = midclick
+keys.rightclick = rightclick
+keys.prevclick  = prevclick
+keys.nextclick  = nextclick
+
 
 -- ========================================
 -- Movement functions
@@ -144,50 +163,6 @@ keys.clientbuttons = gears.table.join(
       c:emit_signal("request::activate", "mouse_click", {raise = true})
       awful.mouse.client.resize(c)
     end
-  )
-)
-
-keys.taglist_buttons = gears.table.join(
-  awful.button(
-    {}, 1,
-    function (t) t:view_only() end
-  ),
-
-  awful.button(
-    { modkey }, 1,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
-      end
-    end
-  ),
-
-  awful.button(
-    {}, 3,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
-      end
-    end
-  ),
-
-  awful.button(
-    { modkey }, 3,
-    function (t)
-      if client.focus then
-        client.focus:move_to_tag(t)
-      end
-    end
-  ),
-
-  awful.button(
-    { }, 4,
-    function (t) awful.tag.viewprev(t.screen) end
-  ),
-
-  awful.button(
-    { }, 5,
-    function (t) awful.tag.viewnext(t.screen) end
   )
 )
 

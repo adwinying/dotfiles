@@ -3,11 +3,8 @@
 -- Theme config
 --
 
-local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
-
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
+local dpi = require("beautiful").xresources.apply_dpi
+local themes_path = require("gears.filesystem").get_themes_dir()
 
 local theme = {}
 
@@ -60,10 +57,17 @@ theme.topbar_padding  = dpi(10)
 theme.topbar_spacing  = dpi(10)
 
 -- Taglist
+theme.taglist_spacing = dpi(10)
+
 theme.taglist_bg_empty    = theme.bg_normal
 theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent   = theme.bg_normal
 theme.taglist_bg_focus    = theme.bg_normal
+
+theme.taglist_icon_empty    = "empty"
+theme.taglist_icon_occupied = "occ"
+theme.taglist_icon_urgent   = "urgent"
+theme.taglist_icon_focus    = "focus"
 
 -- Tasklist
 theme.tasklist_font      = theme.font

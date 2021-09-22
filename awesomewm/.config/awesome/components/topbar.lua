@@ -8,21 +8,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
-local keys = require("keys")
-
 awful.screen.connect_for_each_screen(function (s)
-  s.mypromptbox = awful.widget.prompt()
-
-  s.mytaglist = awful.widget.taglist {
-    screen = s,
-    filter = awful.widget.taglist.filter.all,
-    layout = wibox.layout.fixed.horizontal,
-    -- widget_template = {
-    --   widget = wibox.widget.imagebox,
-    -- },
-    buttons = keys.taglist_buttons,
-  }
-
   s.topbar = wibox({
     screen = s,
     visible = true,
@@ -45,14 +31,16 @@ awful.screen.connect_for_each_screen(function (s)
       {
         layout = wibox.layout.fixed.horizontal,
         spacing = beautiful.topbar_spacing,
-        s.mytaglist,
+        require("widgets.taglist")(s),
         require("widgets.task-list").create(s),
       },
     },
+
     -- Middle widgets
     {
       layout = wibox.layout.fixed.horizontal,
     },
+
     -- Right widgets
     {
       widget = wibox.container.margin,
