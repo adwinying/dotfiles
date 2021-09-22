@@ -126,7 +126,7 @@ awful.rules.rules = rules
 
 
 -- ========================================
--- Misc.
+-- Clients
 -- ========================================
 
 -- Signal function to execute when a new client appears.
@@ -143,8 +143,20 @@ client.connect_signal("manage", function (c)
     -- Prevent clients from being unreachable after screen count changes.
     awful.placement.no_offscreen(c)
   end
+
+  -- Set rounded corners for windows
+  c.shape = function (cr, w, h)
+    gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
+  end
 end)
 
+-- Set border color of focused client
+client.connect_signal("focus", function (c)
+  c.border_color = beautiful.border_focus
+end)
+client.connect_signal("unfocus", function (c)
+  c.border_color = beautiful.border_normal
+end)
 
 -- Focus clients under mouse
 require("awful.autofocus")
@@ -152,6 +164,10 @@ client.connect_signal("mouse::enter", function(c)
   c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
+
+-- ========================================
+-- Misc.
+-- ========================================
 
 -- Reload config when screen geometry change
 screen.connect_signal("property::geometry", awesome.restart)

@@ -44,10 +44,11 @@ theme.fg_minimize = color.darkblue
 -- Borders/Gaps
 theme.useless_gap   = dpi(7)
 theme.screen_margin = theme.useless_gap
-theme.border_width  = dpi(0)
-theme.border_normal = color.black
+theme.border_width  = dpi(1)
+theme.border_radius = dpi(5)
 theme.border_focus  = color.lightblue
 theme.border_marked = color.red
+theme.border_normal = color.black
 
 -- Topbar
 theme.topbar_position = "top"
