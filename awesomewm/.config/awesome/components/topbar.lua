@@ -43,6 +43,7 @@ awful.screen.connect_for_each_screen(function (s)
     -- Middle widgets
     {
       layout = wibox.layout.fixed.horizontal,
+      require("widgets.calendar")(s),
     },
 
     -- Right widgets
@@ -62,7 +63,6 @@ awful.screen.connect_for_each_screen(function (s)
         require("widgets.bluetooth"),
         require("widgets.network")(),
         require("widgets.battery"),
-        require("widgets.calendar").create(s),
         {
           widget = wibox.layout.margin,
           top = dpi(7),

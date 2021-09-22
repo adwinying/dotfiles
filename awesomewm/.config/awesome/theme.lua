@@ -88,6 +88,10 @@ theme.tasklist_fg_normal = theme.fg_normal
 theme.tasklist_fg_focus  = theme.fg_focus
 theme.tasklist_fg_urgent = theme.fg_urgent
 
+-- Calendar
+theme.calendar_padding = dpi(20)
+theme.calendar_spacing = dpi(10)
+
 -- Notification
 theme.notification_max_width = dpi(350)
 
