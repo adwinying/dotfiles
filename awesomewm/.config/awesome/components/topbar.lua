@@ -67,7 +67,7 @@ awful.screen.connect_for_each_screen(function (s)
           widget = wibox.layout.margin,
           top = dpi(7),
           bottom = dpi(7),
-          require("widgets.layout-box"),
+          require("widgets.layout")(s),
         },
       },
     },
