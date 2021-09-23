@@ -38,7 +38,7 @@ local update_widget = function (widget, tag)
   local layout = tag.layout
   local icon_name = "layout_" .. layout.name
 
-  widget.icon.image = beautiful[icon_name]
+  widget.image = beautiful[icon_name]
   widget.tooltip.text = layout.name
 end
 
@@ -46,14 +46,8 @@ end
 -- create widget instance
 local create_widget = function (screen)
   local widget = wibox.widget {
-    widget = wibox.layout.margin,
-    top = dpi(7),
-    bottom = dpi(7),
-    {
-      id = "icon",
-      widget = wibox.widget.imagebox,
-      resize = true,
-    },
+    widget = wibox.widget.imagebox,
+    resize = true,
   }
 
   tag.connect_signal("property::layout", function(t)

@@ -14,8 +14,10 @@ local create_widget = function (widget)
     widget = wibox.container.background,
     {
       widget = wibox.container.margin,
-      left = beautiful.topbar_spacing,
-      right = beautiful.topbar_spacing,
+      top = beautiful.clickable_container_padding_y,
+      bottom = beautiful.clickable_container_padding_y,
+      left = beautiful.clickable_container_padding_x,
+      right = beautiful.clickable_container_padding_x,
       widget,
     },
   }

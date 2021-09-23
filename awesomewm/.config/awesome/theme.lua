@@ -59,8 +59,9 @@ theme.border_marked = color.red
 theme.border_normal = color.black
 
 -- Tooltips
+theme.tooltip_font      = theme.text_font
 theme.tooltip_padding_x = dpi(10)
-theme.tooltip_padding_y = dpi(5)
+theme.tooltip_padding_y = dpi(10)
 
 -- Notification
 theme.notification_max_width    = dpi(350)
@@ -87,6 +88,10 @@ theme.topbar_spacing  = dpi(10)
 -- ========================================
 -- Widgets
 -- ========================================
+
+-- Clickable container
+theme.clickable_container_padding_x = dpi(10)
+theme.clickable_container_padding_y = dpi(7)
 
 -- Taglist
 theme.taglist_spacing = dpi(5)
