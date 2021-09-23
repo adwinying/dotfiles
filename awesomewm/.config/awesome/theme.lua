@@ -127,6 +127,22 @@ theme.calendar_spacing = dpi(10)
 theme.bg_systray = theme.bg_normal
 theme.systray_icon_spacing = dpi(5)
 
+-- Battery
+theme.battery_fg_normal = theme.fg_normal
+theme.battery_fg_urgent = theme.fg_urgent
+
+theme.battery_icon_charging = ""
+theme.battery_icon_low      = ""
+theme.battery_icon_10       = ""
+theme.battery_icon_20       = ""
+theme.battery_icon_30       = ""
+theme.battery_icon_40       = ""
+theme.battery_icon_50       = ""
+theme.battery_icon_60       = ""
+theme.battery_icon_70       = ""
+theme.battery_icon_80       = ""
+theme.battery_icon_90       = ""
+theme.battery_icon_100      = ""
 
 -- Layout
 local themes_path = require("gears.filesystem").get_themes_dir()
