@@ -50,6 +50,10 @@ theme.border_focus  = color.lightblue
 theme.border_marked = color.red
 theme.border_normal = color.black
 
+-- Tooltips
+theme.tooltip_padding_x = dpi(10)
+theme.tooltip_padding_y = dpi(5)
+
 -- Topbar
 theme.topbar_position = "top"
 theme.topbar_height   = dpi(28)
