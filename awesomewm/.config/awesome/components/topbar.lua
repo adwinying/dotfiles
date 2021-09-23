@@ -48,28 +48,17 @@ awful.screen.connect_for_each_screen(function (s)
 
     -- Right widgets
     {
-      widget = wibox.container.margin,
-      left = beautiful.topbar_padding,
-      right = beautiful.topbar_padding,
+      layout = wibox.layout.fixed.horizontal,
       {
-        layout = wibox.layout.fixed.horizontal,
-        spacing = beautiful.topbar_spacing,
-        {
-          widget = wibox.layout.margin,
-          top = dpi(7),
-          bottom = dpi(7),
-          wibox.widget.systray(),
-        },
-        require("widgets.bluetooth"),
-        require("widgets.network")(),
-        require("widgets.battery"),
-        {
-          widget = wibox.layout.margin,
-          top = dpi(7),
-          bottom = dpi(7),
-          require("widgets.layout")(s),
-        },
+        widget = wibox.layout.margin,
+        top = dpi(7),
+        bottom = dpi(7),
+        wibox.widget.systray(),
       },
+      require("widgets.bluetooth"),
+      require("widgets.network")(),
+      require("widgets.battery")(s),
+      require("widgets.layout")(s),
     },
   }
 end)

@@ -19,7 +19,7 @@ end
 local create_widget = function (screen)
   local widget = wibox.widget {
     widget = wibox.widget.textbox,
-    text = "client_name",
+    text = "",
     valign = "center",
     align = "center",
   }

@@ -3,6 +3,7 @@
 -- display currently active layout
 --
 
+local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 local keys = require("keys")
@@ -32,11 +33,18 @@ end
 
 -- create widget instance
 local create_widget = function (screen)
-  local widget = awful.widget.layoutbox(screen)
+  local widget = wibox.widget {
+    widget = wibox.layout.margin,
+    top = dpi(7),
+    bottom = dpi(7),
+    awful.widget.layoutbox(screen),
+  }
 
-  widget:buttons(buttons(screen))
+  local container = require("widgets.clickable_container")(widget)
 
-  return widget
+  container:buttons(buttons(screen))
+
+  return container
 end
 
 return create_widget
