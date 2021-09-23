@@ -20,10 +20,10 @@ apps = {
   filebrowser     = "thunar",
 }
 
--- network interfaces for widgets
+-- network interfaces
 network_interfaces = {
-  "wlp3s0",
-  "enp0s25",
+  wlan = "wlp3s0",
+  lan = "enp0s25",
 }
 
 -- layouts

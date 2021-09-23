@@ -55,7 +55,7 @@ awful.screen.connect_for_each_screen(function (s)
         wibox.widget.systray(),
       },
       require("widgets.bluetooth"),
-      require("widgets.network")(),
+      require("widgets.network")(s),
       require("widgets.battery")(s),
       require("widgets.layout")(s),
     },
