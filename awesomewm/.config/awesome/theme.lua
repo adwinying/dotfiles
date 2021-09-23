@@ -4,6 +4,7 @@
 --
 
 local gears = require("gears")
+local helpers = require("helpers")
 local dpi = require("beautiful").xresources.apply_dpi
 
 local theme = {}
@@ -167,6 +168,12 @@ theme.battery_icon_100      = ""
 theme.layout_tile     = theme.icons_path .. "layouts/tiled.png"
 theme.layout_floating = theme.icons_path .. "layouts/floating.png"
 theme.layout_max      = theme.icons_path .. "layouts/maximized.png"
+
+-- Hotkeys
+theme.hotkeys_bg           = color.black .. "aa"
+theme.hotkeys_border_width = dpi(0)
+theme.hotkeys_shape        = helpers.rrect
+theme.hotkeys_modifiers_fg = color.yellow
 
 
 return theme
