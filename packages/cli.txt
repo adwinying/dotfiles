@@ -1,0 +1,5 @@
+acpi
+htop
+lazygit
+neofetch
+the_silver_searcher

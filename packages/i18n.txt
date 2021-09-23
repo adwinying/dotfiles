@@ -1,0 +1,4 @@
+ibus
+ibus-mozc
+ibus-rime
+rime-pinyin-simp

@@ -1,0 +1,11 @@
+base
+base-devel
+git
+grub
+gvim
+openssh
+stow
+sudo
+tmux
+which
+zsh

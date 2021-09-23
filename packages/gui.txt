@@ -1,0 +1,8 @@
+awesome
+feh
+nordic-theme
+picom-ibhagwan-git
+rofi
+tela-icon-theme
+xorg-server
+xorg-xinit

@@ -1,0 +1,3 @@
+networkmanager
+networkmanager-l2tp
+nm-connection-editor

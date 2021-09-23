@@ -1,0 +1,4 @@
+brave-bin
+discord
+spotify
+spicetify-cli

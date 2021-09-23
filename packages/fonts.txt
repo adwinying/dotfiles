@@ -1,0 +1,4 @@
+nerd-fonts-inconsolata
+noto-fonts-cjk
+noto-fonts-emoji
+otf-inconsolata-powerline-git
