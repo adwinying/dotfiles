@@ -17,7 +17,7 @@ local keys = require("keys")
 -- Config
 -- ========================================
 
--- command t ocheck battery status
+-- command to check battery status
 local command = "acpi -i"
 -- widget refresh interval
 local interval = 60

@@ -1,82 +1,87 @@
---      ██████╗ ██╗     ██╗   ██╗███████╗████████╗ ██████╗  ██████╗ ████████╗██╗  ██╗
---      ██╔══██╗██║     ██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗╚══██╔══╝██║  ██║
---      ██████╔╝██║     ██║   ██║█████╗     ██║   ██║   ██║██║   ██║   ██║   ███████║
---      ██╔══██╗██║     ██║   ██║██╔══╝     ██║   ██║   ██║██║   ██║   ██║   ██╔══██║
---      ██████╔╝███████╗╚██████╔╝███████╗   ██║   ╚██████╔╝╚██████╔╝   ██║   ██║  ██║
---      ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝
-
--- ===================================================================
--- Initialization
--- ===================================================================
-
+--
+-- bluetooth.lua
+-- bluetooth widget
+-- dependencies: bluez, bluez-utils
+--
 
 local awful = require("awful")
-local watch = require("awful.widget.watch")
 local wibox = require("wibox")
-local clickable_container = require("widgets.clickable_container")
 local gears = require("gears")
-local dpi = require("beautiful").xresources.apply_dpi
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
-local PATH_TO_ICONS = os.getenv("HOME") .. "/.config/awesome/icons/bluetooth/"
-local checker
+local keys = require("keys")
+
+-- ========================================
+-- Config
+-- ========================================
+
+-- command to check bluetooth status
+local command = "bluetoothctl --monitor list"
+-- widget refresh interval
+local interval = 60
+-- icons path
+local icons_path = beautiful.icons_path .. "bluetooth/"
 
 
 -- ===================================================================
--- Initialization
+-- Definition
 -- ===================================================================
 
+-- define buttons
+local buttons = function (screen)
+  return gears.table.join(
+    awful.button(
+      {}, keys.leftclick,
+      function() awful.spawn(apps.bluetooth_manager) end
+    )
+  )
+end
 
-local widget = wibox.widget {
-   {
-      id = "icon",
-      widget = wibox.widget.imagebox,
-      resize = true
-   },
-   layout = wibox.layout.align.horizontal
-}
 
-local widget_button = clickable_container(wibox.container.margin(widget, dpi(7), dpi(7), dpi(7), dpi(7)))
-widget_button:buttons(
-   gears.table.join(
-      awful.button({}, 1, nil,
-         function()
-            awful.spawn("blueman-manager")
-         end
-      )
-   )
-)
+-- update widget
+local update_widget = function (widget, stdout)
+  -- Check if there is bluetooth
+  local has_bt = stdout:match("Controller") ~= nil
+  local icon_name
+  local status
 
-awful.tooltip(
-   {
-      objects = {widget_button},
-      mode = "outside",
-      align = "right",
-      timer_function = function()
-         if checker ~= nil then
-            return "Bluetooth is on"
-         else
-            return "Bluetooth is off"
-         end
-      end,
-      preferred_positions = {"right", "left", "top", "bottom"}
-   }
-)
+  if has_bt then
+    icon_name = "bluetooth.svg"
+    status = "on"
+  else
+    icon_name = "bluetooth-off.svg"
+    status = "off"
+  end
 
-local last_bluetooth_check = os.time()
-watch("bluetoothctl --monitor list", 5,
-   function(_, stdout)
-      -- Check if there  bluetooth
-      checker = stdout:match("Controller") -- If 'Controller' string is detected on stdout
-      local widget_icon_nme
-      if (checker ~= nil) then
-         widget_icon_name = "bluetooth"
-      else
-         widget_icon_name = "bluetooth-off"
-      end
-      widget.icon:set_image(PATH_TO_ICONS .. widget_icon_name .. ".svg")
-      collectgarbage("collect")
-   end,
-   widget
-)
+  widget.image = icons_path .. icon_name
+  widget.tooltip.text = "Bluetooth is " .. status
 
-return widget_button
+  collectgarbage("collect")
+end
+
+
+-- create widget instance
+local create_widget = function (screen)
+  local widget = wibox.widget {
+    image = icons_path .. "bluetooth.svg",
+    widget = wibox.widget.imagebox,
+  }
+
+  local watched_widget = awful.widget.watch(
+    command,
+    interval,
+    update_widget,
+    widget
+  )
+
+  local container = require("widgets.clickable_container")(watched_widget)
+  container:buttons(buttons(screen))
+
+  widget.tooltip = require("widgets.tooltip")({ container })
+  widget.tooltip.text = "Bluetooth status unknown"
+
+  return container
+end
+
+return create_widget

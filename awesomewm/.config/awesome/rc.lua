@@ -12,12 +12,13 @@ local helpers = require("helpers")
 
 -- define default apps
 apps = {
-  terminal        = "st",
-  launcher        = "rofi -modi drun,run,window,ssh -show drun -theme nord",
-  network_manager = "nm-connection-editor",
-  power_manager   = "xfce4-power-manager",
-  screenshot      = "scrot -e 'mv $f ~/Pictures 2>/dev/null",
-  filebrowser     = "thunar",
+  terminal          = "st",
+  launcher          = "rofi -modi drun,run,window,ssh -show drun -theme nord",
+  network_manager   = "nm-connection-editor",
+  power_manager     = "xfce4-power-manager",
+  bluetooth_manager = "blueman-manager",
+  screenshot        = "scrot -e 'mv $f ~/Pictures 2>/dev/null",
+  filebrowser       = "thunar",
 }
 
 -- network interfaces

@@ -1,3 +1,6 @@
+blueman
+bluez
+bluez-utils
 networkmanager
 networkmanager-l2tp
 nm-connection-editor
