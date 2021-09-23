@@ -4,6 +4,7 @@
 --
 
 local wibox = require("wibox")
+local beautiful = require("beautiful")
 
 -- update currently focused client name
 local update_widget = function (widget)
@@ -20,6 +21,7 @@ local create_widget = function (screen)
   local widget = wibox.widget {
     widget = wibox.widget.textbox,
     text = "",
+    font = beautiful.text_font,
     valign = "center",
     align = "center",
   }

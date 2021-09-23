@@ -24,7 +24,8 @@ local color = {
 }
 
 -- Font
-theme.font = "Inconsolata Nerd Font 11"
+theme.font      = "Inconsolata Nerd Font 11"
+theme.text_font = "Inconsolata for Powerline 11"
 
 -- Background
 theme.bg_normal   = color.black
@@ -52,6 +53,10 @@ theme.border_normal = color.black
 -- Tooltips
 theme.tooltip_padding_x = dpi(10)
 theme.tooltip_padding_y = dpi(5)
+
+-- Notification
+theme.notification_max_width = dpi(350)
+theme.notification_font      = theme.text_font
 
 -- Topbar
 theme.topbar_position = "top"
@@ -94,9 +99,6 @@ theme.tasklist_fg_urgent = theme.fg_urgent
 -- Calendar
 theme.calendar_padding = dpi(20)
 theme.calendar_spacing = dpi(10)
-
--- Notification
-theme.notification_max_width = dpi(350)
 
 -- System tray
 theme.bg_systray = theme.bg_normal
