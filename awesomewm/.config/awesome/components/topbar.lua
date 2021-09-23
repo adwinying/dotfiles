@@ -8,6 +8,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local helpers = require("helpers")
 
 awful.screen.connect_for_each_screen(function (s)
   s.topbar = wibox({
@@ -17,9 +18,7 @@ awful.screen.connect_for_each_screen(function (s)
     y = s.geometry.y + beautiful.topbar_margin * 2,
     width = s.geometry.width - beautiful.topbar_margin * 4,
     height = beautiful.topbar_height,
-    shape = function (cr, w, h)
-      gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
-    end,
+    shape = helpers.rrect,
   })
   s.topbar:struts {
     top = beautiful.topbar_height + beautiful.topbar_margin * 2,

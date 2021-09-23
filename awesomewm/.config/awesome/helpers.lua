@@ -4,6 +4,7 @@
 --
 
 local awful = require("awful")
+local gears = require("gears")
 local beautiful = require("beautiful")
 
 local helpers = {}
@@ -26,6 +27,11 @@ helpers.set_gaps = function (screen, tag)
     topbar.width = screen.geometry.width - beautiful.topbar_margin * 4
     topbar:struts { top = beautiful.topbar_height + beautiful.topbar_margin * 2 }
   end
+end
+
+-- generate rounded rect shape
+helpers.rrect = function (cr, w, h)
+  gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
 end
 
 return helpers

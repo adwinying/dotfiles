@@ -145,9 +145,7 @@ client.connect_signal("manage", function (c)
   end
 
   -- Set rounded corners for windows
-  c.shape = function (cr, w, h)
-    gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
-  end
+  c.shape = helpers.rrect
 end)
 
 -- Set border color of focused client

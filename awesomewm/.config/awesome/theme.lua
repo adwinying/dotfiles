@@ -41,6 +41,14 @@ theme.fg_focus    = color.lightblue
 theme.fg_urgent   = color.red
 theme.fg_minimize = color.darkblue
 
+
+-- ========================================
+-- Common
+-- ========================================
+
+-- Titlebars
+theme.titlebars_enabled = false
+
 -- Borders/Gaps
 theme.useless_gap   = dpi(7)
 theme.screen_margin = theme.useless_gap
@@ -55,8 +63,18 @@ theme.tooltip_padding_x = dpi(10)
 theme.tooltip_padding_y = dpi(5)
 
 -- Notification
-theme.notification_max_width = dpi(350)
-theme.notification_font      = theme.text_font
+theme.notification_max_width    = dpi(350)
+theme.notification_margin       = dpi(15)
+theme.notification_border_width = dpi(0)
+theme.notification_fg           = color.white
+theme.notification_bg           = color.darkblue .. "55"
+theme.notification_bg_critical  = color.red .. "55"
+theme.notification_font         = theme.text_font
+
+
+-- ========================================
+-- Components
+-- ========================================
 
 -- Topbar
 theme.topbar_position = "top"
@@ -64,6 +82,11 @@ theme.topbar_height   = dpi(28)
 theme.topbar_margin   = theme.useless_gap
 theme.topbar_padding  = dpi(12)
 theme.topbar_spacing  = dpi(10)
+
+
+-- ========================================
+-- Widgets
+-- ========================================
 
 -- Taglist
 theme.taglist_spacing = dpi(5)
@@ -73,10 +96,10 @@ theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_bg_urgent   = theme.bg_normal
 theme.taglist_bg_focus    = theme.bg_normal
 
-theme.taglist_fg_empty    = color.white
-theme.taglist_fg_occupied = color.white
-theme.taglist_fg_urgent   = color.red
-theme.taglist_fg_focus    = color.lightblue
+theme.taglist_fg_empty    = theme.fg_normal
+theme.taglist_fg_occupied = theme.fg_normal
+theme.taglist_fg_urgent   = theme.fg_urgent
+theme.taglist_fg_focus    = theme.fg_focus
 
 theme.taglist_icon_empty    = " "
 theme.taglist_icon_occupied = " "
@@ -104,8 +127,6 @@ theme.calendar_spacing = dpi(10)
 theme.bg_systray = theme.bg_normal
 theme.systray_icon_spacing = dpi(5)
 
--- Titlebars
-theme.titlebars_enabled = false
 
 -- Layout
 local themes_path = require("gears.filesystem").get_themes_dir()
