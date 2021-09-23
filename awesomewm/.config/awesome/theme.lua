@@ -3,6 +3,7 @@
 -- Theme config
 --
 
+local gears = require("gears")
 local dpi = require("beautiful").xresources.apply_dpi
 
 local theme = {}
@@ -43,6 +44,18 @@ theme.fg_minimize = color.darkblue
 
 
 -- ========================================
+-- Icons
+-- ========================================
+
+-- Icons path
+theme.icons_path = gears.filesystem.get_configuration_dir() .. "icons/"
+
+-- Define the icon theme for application icons. If not set then the icons
+-- from /usr/share/icons and /usr/share/icons/hicolor will be used.
+theme.icon_theme = "Tela-dark"
+
+
+-- ========================================
 -- Common
 -- ========================================
 
@@ -67,9 +80,10 @@ theme.tooltip_padding_y = dpi(10)
 theme.notification_max_width    = dpi(350)
 theme.notification_margin       = dpi(15)
 theme.notification_border_width = dpi(0)
+theme.notification_icon_size    = dpi(48)
 theme.notification_fg           = color.white
-theme.notification_bg           = color.darkblue .. "55"
-theme.notification_bg_critical  = color.red .. "55"
+theme.notification_bg           = color.darkblue .. "aa"
+theme.notification_bg_critical  = color.red .. "aa"
 theme.notification_font         = theme.text_font
 
 
@@ -150,19 +164,9 @@ theme.battery_icon_90       = ""
 theme.battery_icon_100      = ""
 
 -- Layout
-local themes_path = require("gears.filesystem").get_themes_dir()
+theme.layout_tile     = theme.icons_path .. "layouts/tiled.png"
+theme.layout_floating = theme.icons_path .. "layouts/floating.png"
+theme.layout_max      = theme.icons_path .. "layouts/maximized.png"
 
-theme.layout_tile     = themes_path.."default/layouts/tilew.png"
-theme.layout_floating = themes_path.."default/layouts/floatingw.png"
-theme.layout_max      = themes_path.."default/layouts/maxw.png"
-
-
--- ========================================
--- Icons
--- ========================================
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
 
 return theme

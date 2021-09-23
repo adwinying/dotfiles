@@ -1,6 +1,7 @@
 --
 -- battery.lua
 -- battery status widget
+-- dependencies: acpi
 --
 
 local awful = require("awful")
@@ -24,13 +25,15 @@ local interval = 60
 local low_battery_threshold = 15
 -- re-notify low battery every x seconds
 local low_battery_reminder_interval = 300
+-- icons path
+local icons_path = beautiful.icons_path .. "battery/"
 
 
 -- ========================================
 -- Definition
 -- ========================================
 
--- define taglist buttons
+-- define buttons
 local buttons = function (screen)
   return gears.table.join(
     awful.button(
@@ -108,10 +111,12 @@ local is_battery_low = function (percentage, status)
     and status ~= "Charging"
 end
 
+
 -- show low battery notification
 local notify_low_battery = function ()
   naughty.notify {
     preset = naughty.config.presets.critical,
+    icon = icons_path .. "battery-outline.svg",
     timeout = 5,
     title = "Low Battery",
     text = "Time to plug in soon!",
@@ -119,25 +124,25 @@ local notify_low_battery = function ()
 end
 
 
--- get battery status markup
-local get_battery_status_markup = function (percentage, status)
-  local icon_name = "battery_icon_low"
-  local icon_color = beautiful.battery_fg_normal
+-- get battery icon
+local get_battery_icon = function (percentage, status)
+  if percentage == nil then return icons_path .. "battery.svg" end
 
-  if precentage ~= nil and is_battery_low(percentage, status) then
-    icon_name = "battery_icon_low"
-    icon_color = beautiful.battery_fg_urgent
-  elseif status == "Charging" or status == "Full" then
-    icon_name = "battery_icon_charging"
-  elseif percentage ~= nil then
-    icon_name = "battery_icon_" .. math.ceil(percentage / 10) * 10
+  local icon_name = "battery"
+
+  local rounded_charge = math.floor(percentage / 10) * 10
+
+  if status == "Charging" or status == "Full" then
+    icon_name = icon_name .. "-charging"
   end
 
-  return string.format(
-    '<span fgcolor="%s">%s</span>',
-    icon_color,
-    beautiful[icon_name]
-  )
+  if rounded_charge == 0 then
+    icon_name = icon_name .. "-outline"
+  elseif rounded_charge ~= 100 then
+    icon_name = icon_name .. "-" .. rounded_charge
+  end
+
+  return icons_path .. icon_name .. ".svg"
 end
 
 
@@ -157,7 +162,7 @@ local update_widget = function (widget, stdout)
     notify_low_battery()
   end
 
-  widget.markup = get_battery_status_markup(percentage, status)
+  widget.image = get_battery_icon(percentage, status)
   widget.tooltip.text = string.gsub(stdout, "\n$", "")
 
   collectgarbage("collect")
@@ -167,8 +172,8 @@ end
 -- create widget instance
 local create_widget = function (screen)
   local widget = wibox.widget {
-    markup = get_battery_status_markup(),
-    widget = wibox.widget.textbox,
+    image = get_battery_icon(),
+    widget = wibox.widget.imagebox,
   }
 
   local watched_widget = awful.widget.watch(
