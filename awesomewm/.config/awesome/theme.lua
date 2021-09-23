@@ -4,7 +4,6 @@
 --
 
 local dpi = require("beautiful").xresources.apply_dpi
-local themes_path = require("gears.filesystem").get_themes_dir()
 
 local theme = {}
 
@@ -106,15 +105,17 @@ theme.systray_icon_spacing = dpi(5)
 -- Titlebars
 theme.titlebars_enabled = false
 
+-- Layout
+local themes_path = require("gears.filesystem").get_themes_dir()
+
+theme.layout_tile     = themes_path.."default/layouts/tilew.png"
+theme.layout_floating = themes_path.."default/layouts/floatingw.png"
+theme.layout_max      = themes_path.."default/layouts/maxw.png"
+
 
 -- ========================================
 -- Icons
 -- ========================================
-
--- Layout icons
-theme.layout_tile     = themes_path.."default/layouts/tilew.png"
-theme.layout_floating = themes_path.."default/layouts/floatingw.png"
-theme.layout_max      = themes_path.."default/layouts/maxw.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

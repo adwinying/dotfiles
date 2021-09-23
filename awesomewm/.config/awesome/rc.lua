@@ -2,8 +2,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
-local gears = require("gears")
-local awful = require("awful")
+local gears   = require("gears")
+local awful   = require("awful")
 local helpers = require("helpers")
 
 -- ========================================
@@ -39,7 +39,7 @@ tags = {
   { name = "web"  , layout = awful.layout.layouts[1] },
   { name = "code" , layout = awful.layout.layouts[1] },
   { name = "chat" , layout = awful.layout.layouts[1] },
-  { name = "music", layout = awful.layout.layouts[1] },
+  { name = "media", layout = awful.layout.layouts[1] },
 }
 
 -- run these apps on start up

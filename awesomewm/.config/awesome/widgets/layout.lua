@@ -7,6 +7,8 @@ local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 local keys = require("keys")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 
 -- define buttons
 local buttons = function (screen)
@@ -31,18 +33,41 @@ local buttons = function (screen)
 end
 
 
+-- update widget
+local update_widget = function (widget, tag)
+  local layout = tag.layout
+  local icon_name = "layout_" .. layout.name
+
+  widget.icon.image = beautiful[icon_name]
+  widget.tooltip.text = layout.name
+end
+
+
 -- create widget instance
 local create_widget = function (screen)
   local widget = wibox.widget {
     widget = wibox.layout.margin,
     top = dpi(7),
     bottom = dpi(7),
-    awful.widget.layoutbox(screen),
+    {
+      id = "icon",
+      widget = wibox.widget.imagebox,
+      resize = true,
+    },
   }
 
-  local container = require("widgets.clickable_container")(widget)
+  tag.connect_signal("property::layout", function(t)
+    update_widget(widget, t)
+  end)
+  tag.connect_signal("property::selected", function(t)
+    update_widget(widget, t)
+  end)
 
+  local container = require("widgets.clickable_container")(widget)
   container:buttons(buttons(screen))
+
+  widget.tooltip = require("widgets.tooltip")({ container })
+  widget.tooltip.text = "Layout unknown"
 
   return container
 end
