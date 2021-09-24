@@ -48,6 +48,7 @@ tags = {
 local run_on_start_up = {
   "picom",
   "feh --bg-scale " .. os.getenv("HOME") .. "/Downloads/bg.jpg",
+  "ibus-daemon -drx",
 }
 
 

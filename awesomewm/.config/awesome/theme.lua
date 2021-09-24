@@ -108,6 +108,9 @@ theme.topbar_spacing  = dpi(10)
 theme.clickable_container_padding_x = dpi(10)
 theme.clickable_container_padding_y = dpi(7)
 
+-- Systray
+theme.systray_icon_spacing = dpi(10)
+
 -- Taglist
 theme.taglist_spacing = dpi(5)
 

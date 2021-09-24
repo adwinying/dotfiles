@@ -48,12 +48,7 @@ awful.screen.connect_for_each_screen(function (s)
     -- Right widgets
     {
       layout = wibox.layout.fixed.horizontal,
-      {
-        widget = wibox.layout.margin,
-        top = dpi(7),
-        bottom = dpi(7),
-        wibox.widget.systray(),
-      },
+      require("widgets.systray")(s),
       require("widgets.bluetooth")(s),
       require("widgets.network")(s),
       require("widgets.battery")(s),
