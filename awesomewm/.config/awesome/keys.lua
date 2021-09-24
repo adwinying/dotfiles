@@ -426,8 +426,28 @@ keys.globalkeys = gears.table.join(
 
   awful.key(
     {}, "Print",
-    function () awful.spawn(apps.screenshot) end,
+    function ()
+      os.execute(apps.screenshot .. "  | xclip -sel clip -t image/png" )
+      naughty.notify {
+        icon = beautiful.icons_path .. "screenshot.svg",
+        title = "Screenshot",
+        text = "Screenshot of screen stored in clipboard.",
+      }
+    end,
     { description = "take a screenshot", group = "hotkeys" }
+  ),
+
+  awful.key(
+    { modkey }, "Print",
+    function ()
+      os.execute(apps.screenshot .. " -s  | xclip -sel clip -t image/png" )
+      naughty.notify {
+        icon = beautiful.icons_path .. "screenshot.svg",
+        title = "Screenshot",
+        text = "Screenshot of selected area stored in clipboard.",
+      }
+    end,
+    { description = "take a screenshot selection", group = "hotkeys" }
   ),
 
 

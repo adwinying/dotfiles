@@ -1,5 +1,6 @@
 awesome
 feh
+maim
 nordic-theme
 pavucontrol
 picom-ibhagwan-git
@@ -7,5 +8,6 @@ pulseaudio
 pulseaudio-alsa
 rofi
 tela-icon-theme
+xclip
 xorg-server
 xorg-xinit

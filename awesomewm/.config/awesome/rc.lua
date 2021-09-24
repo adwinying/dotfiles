@@ -18,7 +18,7 @@ apps = {
   network_manager   = "nm-connection-editor",
   power_manager     = "xfce4-power-manager",
   bluetooth_manager = "blueman-manager",
-  screenshot        = "scrot -e 'mv $f ~/Pictures 2>/dev/null",
+  screenshot        = "maim",
   filebrowser       = "thunar",
 }
 
