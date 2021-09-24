@@ -96,20 +96,25 @@ end
 
 -- create taglist widget instance
 local create_widget = function (screen)
-  return awful.widget.taglist {
-    screen = screen,
-    filter = awful.widget.taglist.filter.all,
-    layout = wibox.layout.fixed.horizontal,
-    spacing = beautiful.taglist_spacing,
-    widget_template = {
-      widget = wibox.widget.textbox,
-      text = "taglist_widget",
-      valign = "center",
-      align = "center",
-      create_callback = update_tag_icon,
-      update_callback = update_tag_icon,
-    },
-    buttons = buttons(screen),
+  return wibox.widget {
+    widget = wibox.container.margin,
+    left = beautiful.clickable_container_padding_x,
+    right = beautiful.clickable_container_padding_x,
+    awful.widget.taglist {
+      screen = screen,
+      filter = awful.widget.taglist.filter.all,
+      layout = wibox.layout.fixed.horizontal,
+      spacing = beautiful.taglist_spacing,
+      widget_template = {
+        widget = wibox.widget.textbox,
+        text = "taglist_widget",
+        valign = "center",
+        align = "center",
+        create_callback = update_tag_icon,
+        update_callback = update_tag_icon,
+      },
+      buttons = buttons(screen),
+    }
   }
 end
 

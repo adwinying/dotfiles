@@ -93,11 +93,10 @@ theme.notification_font         = theme.text_font
 -- ========================================
 
 -- Topbar
-theme.topbar_position = "top"
-theme.topbar_height   = dpi(28)
-theme.topbar_margin   = theme.useless_gap
-theme.topbar_padding  = dpi(12)
-theme.topbar_spacing  = dpi(10)
+theme.topbar_position  = "top"
+theme.topbar_height    = dpi(28)
+theme.topbar_margin    = theme.useless_gap
+theme.topbar_padding_x = dpi(5)
 
 
 -- ========================================

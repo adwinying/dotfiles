@@ -24,36 +24,36 @@ awful.screen.connect_for_each_screen(function (s)
     top = beautiful.topbar_height + beautiful.topbar_margin * 2,
   }
   s.topbar:setup {
-    layout = wibox.layout.align.horizontal,
-    expand = "none",
-    -- Left widgets
+    widget = wibox.container.margin,
+    left = beautiful.topbar_padding_x,
+    right = beautiful.topbar_padding_x,
     {
-      widget = wibox.container.margin,
-      left = beautiful.topbar_padding,
-      right = beautiful.topbar_padding,
+      layout = wibox.layout.align.horizontal,
+      expand = "none",
+
+      -- Left widgets
       {
         layout = wibox.layout.fixed.horizontal,
-        spacing = beautiful.topbar_spacing,
         require("widgets.taglist")(s),
         require("widgets.client_name")(s),
       },
-    },
 
-    -- Middle widgets
-    {
-      layout = wibox.layout.fixed.horizontal,
-      require("widgets.calendar")(s),
-    },
+      -- Middle widgets
+      {
+        layout = wibox.layout.fixed.horizontal,
+        require("widgets.calendar")(s),
+      },
 
-    -- Right widgets
-    {
-      layout = wibox.layout.fixed.horizontal,
-      require("widgets.systray")(s),
-      require("widgets.bluetooth")(s),
-      require("widgets.network")(s),
-      require("widgets.battery")(s),
-      require("widgets.volume")(s),
-      require("widgets.layout")(s),
+      -- Right widgets
+      {
+        layout = wibox.layout.fixed.horizontal,
+        require("widgets.systray")(s),
+        require("widgets.bluetooth")(s),
+        require("widgets.network")(s),
+        require("widgets.battery")(s),
+        require("widgets.volume")(s),
+        require("widgets.layout")(s),
+      },
     },
   }
 end)
