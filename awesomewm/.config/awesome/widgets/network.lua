@@ -17,8 +17,9 @@ local keys = require("keys")
 -- Config
 -- ========================================
 
-local widget_icon_dir = beautiful.icons_path .. "network/"
-local network_mode = nil
+-- Icons path
+local icons_path = beautiful.icons_path .. "network/"
+
 
 -- ========================================
 -- Definition
@@ -34,295 +35,97 @@ local buttons = function (screen)
   )
 end
 
+
+-- update wireless status
+local update_wireless_status = function (widget, interface, healthy, essid, bitrate, strength)
+  local status = ""
+  local strength_level = math.ceil(strength * 0.04)
+  local icon_name = "wifi-strength-" .. strength_level
+
+  if healthy then
+    status = "Connected to internet"
+  else
+    status = "Connected but no internet!"
+    icon_name = icon_name .. "-alert"
+  end
+
+  widget.image = icons_path .. icon_name .. ".svg"
+  widget.tooltip.markup = string.format(
+    "<b>%s</b>"
+    .. "\nESSID: <b>%s</b>"
+    .. "\nInterface: <b>%s</b>"
+    .. "\nStrength: <b>%s%%</b>"
+    .. "\nBitrate: <b>%s</b>",
+    status,
+    essid,
+    interface,
+    strength,
+    bitrate
+  )
+end
+
+
+-- update wired status
+local update_wired_status = function (widget, interface, healthy)
+  local status = ""
+  local icon_name = "wired"
+
+  if healthy then
+    status = "Connected to internet"
+  else
+    status = "Connected but no internet!"
+    icon_name = icon_name .. "-alert"
+  end
+
+  widget.image = icons_path .. icon_name .. ".svg"
+  widget.tooltip.markup = string.format(
+    "<b>%s</b>"
+    .. "\nInterface: <b>%s</b>",
+    status,
+    interface
+  )
+end
+
+
+-- update disconnected status
+local update_disconnected = function (widget, mode)
+  local icon_name = nil
+
+  if mode == "wireless" then
+    icon_name = "wifi-strength-off"
+  elseif mode == "wired" then
+    icon_name = "wired-off"
+  end
+
+  widget.image = icons_path .. icon_name .. ".svg"
+  widget.tooltip.text = "Network is currently disconnected"
+end
+
+-- create widget instance
 local create_widget = function (screen)
-  local update_notify_no_access = true
-  local notify_no_access_quota = 0
-
-  local startup = true
-  local reconnect_startup = true
-  local notify_new_wifi_conn = false
-
   local widget = wibox.widget {
-    image = widget_icon_dir .. 'loading.svg',
+    image = icons_path .. 'loading.svg',
     widget = wibox.widget.imagebox,
   }
+
+  awesome.connect_signal("daemon::network::status::wireless", function(...)
+    update_wireless_status(widget, ...)
+  end)
+  awesome.connect_signal("daemon::network::status::wired", function(...)
+    update_wired_status(widget, ...)
+  end)
+  awesome.connect_signal("daemon::network::disconnected::wireless", function()
+    update_disconnected(widget, "wireless")
+  end)
+  awesome.connect_signal("daemon::network::disconnected::wired", function()
+    update_disconnected(widget, "wired")
+  end)
 
   local container = require("widgets.clickable_container")(widget)
   container:buttons(buttons(screen))
 
-  local network_tooltip = require("widgets.tooltip")({ container })
-
-  local check_internet_health = [=[
-  status_ping=0
-
-  packets="$(ping -q -w2 -c2 example.com | grep -o "100% packet loss")"
-  if [ ! -z "${packets}" ];
-  then
-    status_ping=0
-  else
-    status_ping=1
-  fi
-
-  if [ $status_ping -eq 0 ];
-  then
-    echo 'Connected but no internet'
-  fi
-  ]=]
-
-  -- Awesome/System startup
-  local update_startup = function()
-    if startup then
-      startup = false
-    end
-  end
-
-  -- Consider reconnecting a startup
-  local update_reconnect_startup = function(status)
-    reconnect_startup = status
-  end
-
-  -- Update tooltip
-  local update_tooltip = function(message)
-    network_tooltip:set_markup(message)
-  end
-
-  local network_notify = function(message, title, app_name, icon)
-    naughty.notify({
-      text = message,
-      title = title,
-      app_name = app_name,
-      icon = icon
-    })
-  end
-
-  -- Wireless mode / Update
-  local update_wireless = function()
-
-    network_mode = 'wireless'
-
-    -- Create wireless connection notification
-    local notify_connected = function(essid)
-      local message = 'You are now connected to <b>\"' .. essid .. '\"</b>'
-      local title = 'Connection Established'
-      local app_name = 'System Notification'
-      local icon = widget_icon_dir .. 'connected_notification.svg'
-      network_notify(message, title, app_name, icon)
-    end
-
-    -- Get wifi essid and bitrate
-    local update_wireless_data = function(strength, healthy)
-      awful.spawn.easy_async_with_shell(
-        [[
-        iw dev ]] .. network_interfaces.wlan .. [[ link
-        ]],
-        function(stdout)
-          local essid = stdout:match('SSID: (.-)\n') or 'N/A'
-          local bitrate = stdout:match('tx bitrate: (.+/s)') or 'N/A'
-          local message = 'Connected to: <b>' .. (essid or 'Loading...*') ..
-            '</b>\nWireless Interface: <b>' .. network_interfaces.wlan ..
-            '</b>\nWiFi-Strength: <b>' .. tostring(wifi_strength) .. '%' ..
-            '</b>\nBit rate: <b>' .. tostring(bitrate) .. '</b>'
-
-          if healthy then
-            update_tooltip(message)
-          else
-            update_tooltip('<b>Connected but no internet!</b>\n' .. message)
-          end
-
-          if reconnect_startup or startup then
-            notify_connected(essid)
-            update_reconnect_startup(false)
-          end
-        end
-      )
-    end
-
-    -- Update wifi icon based on wifi strength and health
-    local update_wireless_icon = function(strength)
-      awful.spawn.easy_async_with_shell(
-        check_internet_health,
-        function(stdout)
-          local widget_icon_name = 'wifi-strength'
-          if not stdout:match('Connected but no internet') then
-            if startup or reconnect_startup then
-              awesome.emit_signal('system::network_connected')
-            end
-            widget_icon_name = widget_icon_name .. '-' .. tostring(strength)
-            update_wireless_data(wifi_strength_rounded, true)
-          else
-            widget_icon_name = widget_icon_name .. '-' .. tostring(strength) .. '-alert'
-            update_wireless_data(wifi_strength_rounded, false)
-          end
-          widget:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-        end
-      )
-    end
-    
-    -- Get wifi strength
-    local update_wireless_strength = function()
-      awful.spawn.easy_async_with_shell(
-        [[
-        awk 'NR==3 {printf "%3.0f" ,($3/70)*100}' /proc/net/wireless
-        ]],
-        function(stdout)
-          if not tonumber(stdout) then
-            return
-          end
-          wifi_strength = tonumber(stdout)
-          local wifi_strength_rounded = math.floor(wifi_strength / 25 + 0.5)
-          update_wireless_icon(wifi_strength_rounded)
-        end
-      )
-    end
-
-    update_wireless_strength()
-    update_startup()
-  end
-
-  local update_wired = function()
-
-    network_mode = 'wired'
-
-    local notify_connected = function()
-      local message = 'Connected to internet with <b>\"' .. network_interfaces.lan .. '\"</b>'
-      local title = 'Connection Established'
-      local app_name = 'System Notification'
-      local icon = widget_icon_dir .. 'wired.svg'
-      network_notify(message, title, app_name, icon)
-    end
-
-    awful.spawn.easy_async_with_shell(
-      check_internet_health,
-      function(stdout)
-
-        local widget_icon_name = 'wired'
-        
-        if stdout:match('Connected but no internet') then
-          widget_icon_name = widget_icon_name .. '-alert'
-          update_tooltip(
-            '<b>Connected but no internet!</b>' ..
-            '\nEthernet Interface: <b>' .. network_interfaces.lan .. '</b>'
-          )
-        else
-          update_tooltip('Ethernet Interface: <b>' .. network_interfaces.lan .. '</b>')
-          if startup or reconnect_startup then
-            awesome.emit_signal('system::network_connected')
-            notify_connected()
-            update_startup(false)
-          end
-          update_reconnect_startup(false)
-        end
-        widget:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-      end
-    )
-  end
-
-  local update_disconnected = function()
-
-    local notify_wireless_disconnected = function(essid)
-      local message = 'Wi-Fi network has been disconnected'
-      local title = 'Connection Disconnected'
-      local app_name = 'System Notification'
-      local icon = widget_icon_dir .. 'wifi-strength-off.svg'
-      network_notify(message, title, app_name, icon)
-    end
-
-    local notify_wired_disconnected = function(essid)
-      local message = 'Ethernet network has been disconnected'
-      local title = 'Connection Disconnected'
-      local app_name = 'System Notification'
-      local icon = widget_icon_dir .. 'wired-off.svg'
-      network_notify(message, title, app_name, icon)
-    end
-
-    local widget_icon_name = 'wifi-strength-off'
-
-    if network_mode == 'wireless' then
-      widget_icon_name = 'wifi-strength-off'
-      if not reconnect_startup then
-        update_reconnect_startup(true)
-        notify_wireless_disconnected()
-      end
-    elseif network_mode == 'wired' then
-      widget_icon_name = 'wired-off'
-      if not reconnect_startup then
-        update_reconnect_startup(true)
-        notify_wired_disconnected()
-      end
-    end
-    update_tooltip('Network is currently disconnected')
-    widget:set_image(widget_icon_dir .. widget_icon_name .. '.svg')
-  end
-
-  local check_network_mode = function()
-    awful.spawn.easy_async_with_shell(
-      [=[
-      wireless="]=] .. tostring(network_interfaces.wlan) .. [=["
-      wired="]=] .. tostring(network_interfaces.lan) .. [=["
-      net="/sys/class/net/"
-
-      wired_state="down"
-      wireless_state="down"
-      network_mode=""
-
-      # Check network state based on interface's operstate value
-      function check_network_state() {
-        # Check what interface is up
-        if [[ "${wireless_state}" == "up" ]];
-        then
-          network_mode='wireless'
-        elif [[ "${wired_state}" == "up" ]];
-        then
-          network_mode='wired'
-        else
-          network_mode='No internet connection'
-        fi
-      }
-
-      # Check if network directory exist
-      function check_network_directory() {
-        if [[ -n "${wireless}" && -d "${net}${wireless}" ]];
-        then
-          wireless_state="$(cat "${net}${wireless}/operstate")"
-        fi
-        if [[ -n "${wired}" && -d "${net}${wired}" ]]; then
-          wired_state="$(cat "${net}${wired}/operstate")"
-        fi
-        check_network_state
-      }
-
-      # Start script
-      function print_network_mode() {
-        # Call to check network dir
-        check_network_directory
-        # Print network mode
-        printf "${network_mode}"
-      }
-
-      print_network_mode
-
-      ]=],
-      function(stdout)
-        local mode = stdout:gsub('%\n', '')
-        if stdout:match('No internet connection') then
-          update_disconnected()
-        elseif stdout:match('wireless') then
-          update_wireless()
-        elseif stdout:match('wired') then
-          update_wired()
-        end
-      end
-    )
-  end
-
-  local network_updater = gears.timer {
-    timeout = 5,
-    autostart = true,
-    call_now = true,
-    callback = function()
-      check_network_mode()
-    end  
-  }
+  widget.tooltip = require("widgets.tooltip")({ container })
+  widget.tooltip.text = "Network status unknown"
 
   return container
 end
