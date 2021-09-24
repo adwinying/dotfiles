@@ -1,7 +1,6 @@
 --
 -- battery.lua
 -- battery status widget
--- dependencies: acpi
 --
 
 local awful = require("awful")
@@ -17,10 +16,6 @@ local keys = require("keys")
 -- Config
 -- ========================================
 
--- command to check battery status
-local command = "acpi -i"
--- widget refresh interval
-local interval = 60
 -- notify when battery is below certain amount
 local low_battery_threshold = 15
 -- re-notify low battery every x seconds
@@ -44,49 +39,28 @@ local buttons = function (screen)
 end
 
 
--- parse stdout from command
-local parse_stdout = function(stdout)
-  local battery_info = {}
-  local capacities = {}
-
-  for s in stdout:gmatch("[^\r\n]+") do
-    local status, charge_str, time = string.match(s, ".+: (%a+), (%d?%d?%d)%%,?.*")
-    if status ~= nil then
-      table.insert(battery_info, {status = status, charge = tonumber(charge_str)})
-    else
-      local cap_str = string.match(s, ".+:.+last full capacity (%d+)")
-      table.insert(capacities, tonumber(cap_str))
-    end
-  end
-
-  local result = {}
-  for i = 1, #battery_info, 1 do
-    result[i] = {
-      status = battery_info[i].status,
-      charge = battery_info[i].charge,
-      capacity = capacities[i],
-    }
-  end
-
-  return result
-end
-
-
 -- get battery status
 local get_battery_status = function (batt_stats)
-  local charge = 0
-  local status = "Unknown"
+  local status_count = {}
+  local status_priority = {
+    "Charging",
+    "Full",
+    "Discharging",
+    "Unknown",
+  }
 
   for _, stat in ipairs(batt_stats) do
-    if stat.charge >= charge then
-      -- use most charged battery status
-      -- this is arbitrary, and maybe another metric should be used
-      status = stat.status
-      charge = stat.charge
+    local status = stat.status
+    status_count[status] = (status_count[status] or 0) + 1
+  end
+
+  for _, stat in ipairs(status_priority) do
+    if status_count[stat] ~= nil then
+      return stat
     end
   end
 
-  return status
+  return "Unknown"
 end
 
 
@@ -96,7 +70,7 @@ local get_battery_percentage = function (batt_stats)
   local capacity = 0
 
   for _, stat in ipairs(batt_stats) do
-    charge = charge + stat.charge * stat.capacity
+    charge = charge + stat.percentage * stat.capacity
     capacity = capacity + stat.capacity
   end
 
@@ -148,10 +122,9 @@ end
 
 -- update widget
 local last_battery_check = os.time()
-local update_widget = function (widget, stdout)
-  local batt_stats = parse_stdout(stdout)
-  local percentage = get_battery_percentage(batt_stats)
-  local status = get_battery_status(batt_stats)
+local update_widget = function (widget, stats, summary)
+  local percentage = get_battery_percentage(stats)
+  local status = get_battery_status(stats)
 
   local seconds_since_last_check = os.difftime(os.time(), last_battery_check) 
 
@@ -163,7 +136,7 @@ local update_widget = function (widget, stdout)
   end
 
   widget.image = get_battery_icon(percentage, status)
-  widget.tooltip.text = string.gsub(stdout, "\n$", "")
+  widget.tooltip.text = string.gsub(summary, "\n$", "")
 
   collectgarbage("collect")
 end
@@ -175,15 +148,11 @@ local create_widget = function (screen)
     image = get_battery_icon(),
     widget = wibox.widget.imagebox,
   }
+  awesome.connect_signal("daemon::battery", function(...)
+    update_widget(widget, ...)
+  end)
 
-  local watched_widget = awful.widget.watch(
-    command,
-    interval,
-    update_widget,
-    widget
-  )
-
-  local container = require("widgets.clickable_container")(watched_widget)
+  local container = require("widgets.clickable_container")(widget)
   container:buttons(buttons(screen))
 
   widget.tooltip = require("widgets.tooltip")({ container })

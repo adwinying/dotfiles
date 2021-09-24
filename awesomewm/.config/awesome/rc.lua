@@ -68,6 +68,9 @@ for _, app in ipairs(run_on_start_up) do
   ), false)
 end
 
+-- Start daemons
+require("daemons")
+
 
 -- ========================================
 -- Visualizations
