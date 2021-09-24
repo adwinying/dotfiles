@@ -1,7 +1,6 @@
 --
 -- bluetooth.lua
 -- bluetooth widget
--- dependencies: bluez, bluez-utils
 --
 
 local awful = require("awful")
@@ -16,10 +15,6 @@ local keys = require("keys")
 -- Config
 -- ========================================
 
--- command to check bluetooth status
-local command = "bluetoothctl --monitor list"
--- widget refresh interval
-local interval = 60
 -- icons path
 local icons_path = beautiful.icons_path .. "bluetooth/"
 
@@ -40,13 +35,11 @@ end
 
 
 -- update widget
-local update_widget = function (widget, stdout)
-  -- Check if there is bluetooth
-  local has_bt = stdout:match("Controller") ~= nil
+local update_widget = function (widget, active)
   local icon_name
   local status
 
-  if has_bt then
+  if active then
     icon_name = "bluetooth.svg"
     status = "on"
   else
@@ -56,8 +49,6 @@ local update_widget = function (widget, stdout)
 
   widget.image = icons_path .. icon_name
   widget.tooltip.text = "Bluetooth is " .. status
-
-  collectgarbage("collect")
 end
 
 
@@ -67,15 +58,11 @@ local create_widget = function (screen)
     image = icons_path .. "bluetooth.svg",
     widget = wibox.widget.imagebox,
   }
+  awesome.connect_signal("daemon::bluetooth::status", function (...)
+    update_widget(widget, ...)
+  end)
 
-  local watched_widget = awful.widget.watch(
-    command,
-    interval,
-    update_widget,
-    widget
-  )
-
-  local container = require("widgets.clickable_container")(watched_widget)
+  local container = require("widgets.clickable_container")(widget)
   container:buttons(buttons(screen))
 
   widget.tooltip = require("widgets.tooltip")({ container })
