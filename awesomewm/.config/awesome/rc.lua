@@ -49,6 +49,16 @@ local run_on_start_up = {
   "feh --bg-scale " .. os.getenv("HOME") .. "/Downloads/bg.jpg",
 }
 
+
+-- ========================================
+-- Visualizations
+-- ========================================
+
+-- Load theme vars
+local beautiful = require("beautiful")
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
+
+
 -- ========================================
 -- Initialization
 -- ========================================
@@ -71,18 +81,12 @@ end
 -- Start daemons
 require("daemons")
 
-
--- ========================================
--- Visualizations
--- ========================================
-
--- Load theme vars
-local beautiful = require("beautiful")
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
+-- Load notifications
+require("notifications")
 
 -- Load components
-require("components.notifications")
-require("components.topbar")
+require("components")
+
 
 -- ========================================
 -- Tags
