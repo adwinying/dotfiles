@@ -1,7 +1,10 @@
 awesome
 feh
 nordic-theme
+pavucontrol
 picom-ibhagwan-git
+pulseaudio
+pulseaudio-alsa
 rofi
 tela-icon-theme
 xorg-server

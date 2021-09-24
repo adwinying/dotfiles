@@ -57,6 +57,7 @@ awful.screen.connect_for_each_screen(function (s)
       require("widgets.bluetooth")(s),
       require("widgets.network")(s),
       require("widgets.battery")(s),
+      require("widgets.volume")(s),
       require("widgets.layout")(s),
     },
   }

@@ -14,6 +14,7 @@ local helpers = require("helpers")
 apps = {
   terminal          = "st",
   launcher          = "rofi -modi drun,run,window,ssh -show drun -theme nord",
+  volume_manager    = "pavucontrol",
   network_manager   = "nm-connection-editor",
   power_manager     = "xfce4-power-manager",
   bluetooth_manager = "blueman-manager",

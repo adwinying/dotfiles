@@ -6,3 +6,4 @@
 require("daemons.bluetooth")
 require("daemons.network")
 require("daemons.battery")
+require("daemons.volume")
