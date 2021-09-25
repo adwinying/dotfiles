@@ -6,6 +6,8 @@ local gears   = require("gears")
 local awful   = require("awful")
 local helpers = require("helpers")
 
+local config_dir = gears.filesystem.get_configuration_dir()
+
 -- ========================================
 -- User Config
 -- ========================================
@@ -47,7 +49,7 @@ tags = {
 -- run these apps on start up
 local run_on_start_up = {
   "picom",
-  "feh --bg-scale " .. os.getenv("HOME") .. "/Downloads/bg.jpg",
+  "feh --bg-scale " .. config_dir .. "/wallpapers/pe.jpg",
   "ibus-daemon -drx",
 }
 
@@ -58,7 +60,7 @@ local run_on_start_up = {
 
 -- Load theme vars
 local beautiful = require("beautiful")
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
+beautiful.init(config_dir .. "theme.lua")
 
 
 -- ========================================
