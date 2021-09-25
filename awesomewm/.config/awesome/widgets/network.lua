@@ -38,16 +38,14 @@ end
 
 -- update wireless status
 local update_wireless_status = function (widget, interface, healthy, essid, bitrate, strength)
-  local status = ""
-  local strength_level = math.ceil(strength * 0.04)
-  local icon_name = "wifi-strength-" .. strength_level
+  local status = healthy
+    and "Connected to internet"
+    or  "Connected but no internet!"
 
-  if healthy then
-    status = "Connected to internet"
-  else
-    status = "Connected but no internet!"
-    icon_name = icon_name .. "-alert"
-  end
+  local strength_level = math.ceil(strength * 0.04)
+  local icon_name = healthy
+    and string.format("wifi-strength-%s", strength_level)
+    or  string.format("wifi-strength-%s-alert", strength_level)
 
   widget.image = icons_path .. icon_name .. ".svg"
   widget.tooltip.markup = string.format(
@@ -67,15 +65,13 @@ end
 
 -- update wired status
 local update_wired_status = function (widget, interface, healthy)
-  local status = ""
-  local icon_name = "wired"
+  local status = healthy
+    and "Connected to internet"
+    or "Connected but no internet!"
 
-  if healthy then
-    status = "Connected to internet"
-  else
-    status = "Connected but no internet!"
-    icon_name = icon_name .. "-alert"
-  end
+  local icon_name = healthy
+    and "wired"
+    or "wired-alert"
 
   widget.image = icons_path .. icon_name .. ".svg"
   widget.tooltip.markup = string.format(
