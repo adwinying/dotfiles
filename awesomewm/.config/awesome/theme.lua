@@ -120,11 +120,6 @@ theme.taglist_fg_occupied = theme.fg_normal
 theme.taglist_fg_urgent   = theme.fg_urgent
 theme.taglist_fg_focus    = theme.fg_focus
 
-theme.taglist_icon_empty    = " "
-theme.taglist_icon_occupied = " "
-theme.taglist_icon_urgent   = " "
-theme.taglist_icon_focus    = " "
-
 -- Tasklist
 theme.tasklist_font = theme.font
 
