@@ -37,6 +37,7 @@ function! LoadCocConfig() abort
     \ 'coc-tsserver',
     \ 'coc-flutter',
     \ 'coc-go',
+    \ 'coc-lua',
   \]
 
   " autofix linting for JS

@@ -51,7 +51,8 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for' : [
   \'blade',
   \'svelte',
   \'dart',
-  \'go'
+  \'go',
+  \'lua'
 \] }
 
 
