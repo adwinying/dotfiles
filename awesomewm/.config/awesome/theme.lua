@@ -60,9 +60,6 @@ theme.icon_theme = "Tela-dark"
 -- Common
 -- ========================================
 
--- Titlebars
-theme.titlebars_enabled = false
-
 -- Borders/Gaps
 theme.useless_gap   = dpi(7)
 theme.screen_margin = theme.useless_gap
