@@ -420,6 +420,14 @@ keys.globalkeys = gears.table.join(
   ),
 
   awful.key(
+    { modkey }, "w",
+    function ()
+      awful.spawn.with_shell([[ notify-send "Current Weather" "$(curl "wttr.in?T0")" ]])
+    end,
+    { description = "get current weather", group = "hotkeys" }
+  ),
+
+  awful.key(
     { modkey }, "d",
     function () awful.spawn(apps.launcher) end,
     { description = "application launcher", group = "hotkeys" }
