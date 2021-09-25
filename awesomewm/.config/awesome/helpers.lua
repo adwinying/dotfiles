@@ -9,6 +9,10 @@ local beautiful = require("beautiful")
 
 local helpers = {}
 
+-- ========================================
+-- WM
+-- ========================================
+
 -- When layout is max remove gaps
 helpers.set_gaps = function (screen, tag)
   local layout = tag.layout
@@ -29,9 +33,29 @@ helpers.set_gaps = function (screen, tag)
   end
 end
 
+
 -- generate rounded rect shape
 helpers.rrect = function (cr, w, h)
   gears.shape.rounded_rect(cr, w, h, beautiful.border_radius)
 end
+
+
+-- ========================================
+-- Volume
+-- ========================================
+
+-- change volume
+helpers.change_volume = function (change_by)
+  local cmd = "pactl set-sink-volume @DEFAULT_SINK@ " .. change_by
+  awful.spawn.with_shell(cmd)
+end
+
+
+-- toggle volume mute
+helpers.toggle_volume_mute = function ()
+  local cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  awful.spawn.with_shell(cmd)
+end
+
 
 return helpers

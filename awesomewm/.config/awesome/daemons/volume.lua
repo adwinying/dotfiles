@@ -2,9 +2,7 @@
 -- volume.lua
 -- volume daemon
 -- Dependencies:
---   alsa-utils
 --   pulseaudio
---   pulseaudio-alsa
 --
 -- Signals:
 -- daemon::volume::percentage

@@ -12,13 +12,13 @@ Package list for easy bootstrap
 ### Installing packages from all lists
 
 ```bash
-$ paru -S - < *.txt
+$ paru -S --needed - < *.txt
 ```
 
 ### Installing packages from specified lists
 
 ```bash
-$ paru -S - < list1.txt list2.txt
+$ paru -S --needed - < list1.txt list2.txt
 ```
 
 ### Backing up packages

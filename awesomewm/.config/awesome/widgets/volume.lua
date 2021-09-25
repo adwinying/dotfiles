@@ -7,8 +7,8 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
+local helpers = require("helpers")
 local keys = require("keys")
 
 -- ========================================
@@ -32,15 +32,15 @@ local buttons = function (screen)
     ),
     awful.button(
       {}, keys.rightclick,
-      function() awful.spawn("amixer -D pulse set Master 1+ toggle") end
+      function() helpers.toggle_volume_mute() end
     ),
     awful.button(
       {}, keys.scrolldown,
-      function () awful.spawn("amixer -D pulse set Master 1%+") end
+      function() helpers.change_volume("+1%") end
     ),
     awful.button(
       {}, keys.scrollup,
-      function () awful.spawn("amixer -D pulse set Master 1%-") end
+      function() helpers.change_volume("-1%") end
     )
   )
 end
@@ -49,7 +49,6 @@ end
 -- update widget percentage
 local update_widget_percentage = function (widget, percentage)
   local icon_name
-  local status
 
   if percentage <= 30 then
     icon_name = "volume_low"

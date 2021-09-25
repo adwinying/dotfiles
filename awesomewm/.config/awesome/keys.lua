@@ -8,6 +8,7 @@ local gears = require("gears")
 local naughty = require("naughty")
 local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local helpers = require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -469,17 +470,17 @@ keys.globalkeys = gears.table.join(
   -- Volume/Playback
   awful.key(
     {}, "XF86AudioRaiseVolume",
-    function () awful.spawn("amixer -D pulse set Master 5%+", false) end,
+    function () helpers.change_volume("+5%") end,
     { description = "volume up", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioLowerVolume",
-    function () awful.spawn("amixer -D pulse set Master 5%-", false) end,
+    function () helpers.change_volume("-5%") end,
     { description = "volume down", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioMute",
-    function () awful.spawn("amixer -D pulse set Master 1+ toggle", false) end,
+    function () helpers.toggle_volume_mute() end,
     { description = "toggle mute", group = "hotkeys" }
   ),
   awful.key(
