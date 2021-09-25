@@ -416,7 +416,7 @@ keys.globalkeys = gears.table.join(
   awful.key(
     { modkey }, "Return",
     function () awful.spawn(apps.terminal) end,
-    { description = "open a terminal", group = "hotkeys" }
+    { description = "terminal", group = "hotkeys" }
   ),
 
   awful.key(
@@ -431,6 +431,12 @@ keys.globalkeys = gears.table.join(
     { modkey }, "d",
     function () awful.spawn(apps.launcher) end,
     { description = "application launcher", group = "hotkeys" }
+  ),
+
+  awful.key(
+    { modkey }, "b",
+    function () awful.spawn(apps.web_browser) end,
+    { description = "web browser", group = "hotkeys" }
   ),
 
   awful.key(
