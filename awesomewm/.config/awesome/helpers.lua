@@ -55,6 +55,31 @@ end
 
 
 -- ========================================
+-- Media Controls
+-- ========================================
+
+-- Play/Pause
+helpers.media_play_pause = function ()
+  local cmd = "playerctl play-pause"
+  awful.spawn.with_shell(cmd)
+end
+
+
+-- Previous track
+helpers.media_prev = function ()
+  local cmd = "playerctl previous"
+  awful.spawn.with_shell(cmd)
+end
+
+
+-- Next track
+helpers.media_next = function ()
+  local cmd = "playerctl next"
+  awful.spawn.with_shell(cmd)
+end
+
+
+-- ========================================
 -- Volume
 -- ========================================
 

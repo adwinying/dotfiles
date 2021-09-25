@@ -4,6 +4,7 @@ maim
 nordic-theme
 pavucontrol
 picom-ibhagwan-git
+playerctl
 pulseaudio
 rofi
 tela-icon-theme

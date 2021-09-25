@@ -480,22 +480,22 @@ keys.globalkeys = gears.table.join(
   ),
   awful.key(
     {}, "XF86AudioMute",
-    function () helpers.toggle_volume_mute() end,
+    helpers.toggle_volume_mute,
     { description = "toggle mute", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioNext",
-    function () awful.spawn("mpc next", false) end,
+    helpers.media_next,
     { description = "next track", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioPrev",
-    function () awful.spawn("mpc prev", false) end,
+    helpers.media_prev,
     { description = "previous track", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioPlay",
-    function () awful.spawn("mpc toggle", false) end,
+    helpers.media_play_pause,
     { description = "play/pause music", group = "hotkeys" }
   )
 )
