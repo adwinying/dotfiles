@@ -12,7 +12,7 @@
 --
 
 local awful = require("awful")
-local gears = require("gears")
+local helpers = require("helpers")
 
 -- ========================================
 -- Config
@@ -24,7 +24,7 @@ local monitor_script = [[ bash -c "LANG=C pactl subscribe 2> /dev/null | grep --
 
 -- script to kill monitor script
 -- Kills old pactl subscribe processes
-local kill_monitor_script = "pkill --full --uid " .. os.getenv("USER") .. " ^pactl subscribe"
+local monitor_kill_script = "pkill --full --uid " .. os.getenv("USER") .. " ^pactl subscribe"
 
 -- script to get volume sinks
 -- Gets volume info of the currently active sink
@@ -80,11 +80,9 @@ end
 -- Run once to initialize widgets
 check_volume()
 
--- Kill any existing monitor processes
-awful.spawn.easy_async_with_shell(kill_monitor_script, function ()
-  -- Start monitor process
-  awful.spawn.with_line_callback(monitor_script, {
-    -- Trigger main script when stdout received
-    stdout = check_volume,
-  })
-end)
+-- Start monitoring process
+helpers.start_monitor(
+  monitor_script,
+  monitor_kill_script,
+  { stdout = check_volume }
+)

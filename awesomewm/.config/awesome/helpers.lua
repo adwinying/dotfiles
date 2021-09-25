@@ -41,6 +41,20 @@ end
 
 
 -- ========================================
+-- Scripts
+-- ========================================
+
+-- start a monitoring script and monitor its output
+helpers.start_monitor = function (monitor_script, kill_monitor_script, callbacks )
+  -- First, kill any existing monitor processes
+  awful.spawn.easy_async_with_shell(kill_monitor_script, function ()
+    -- Start monitor process
+    awful.spawn.with_line_callback(monitor_script, callbacks)
+  end)
+end
+
+
+-- ========================================
 -- Volume
 -- ========================================
 
