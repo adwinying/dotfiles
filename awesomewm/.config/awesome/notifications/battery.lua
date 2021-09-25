@@ -42,6 +42,26 @@ local notify_low_battery = function ()
 end
 
 
+-- show charger plugged notification
+local notify_charger_plugged = function ()
+  naughty.notify {
+    icon = icons_path .. "charger-plugged.svg",
+    title = "AC Adapter",
+    text = "AC Adapter plugged in.",
+  }
+end
+
+
+-- show charger unplugged notification
+local notify_charger_unplugged = function ()
+  naughty.notify {
+    icon = icons_path .. "charger-unplugged.svg",
+    title = "AC Adapter",
+    text = "AC Adapter unplugged.",
+  }
+end
+
+
 -- ========================================
 -- Initialization
 -- ========================================
@@ -49,12 +69,20 @@ end
 local last_battery_check = os.time()
 
 awesome.connect_signal("daemon::battery::status", function(_, stat)
-  local seconds_since_last_check = os.difftime(os.time(), last_battery_check) 
+  local seconds_since_last_check = os.difftime(os.time(), last_battery_check)
 
   if is_battery_low(stat.percentage, stat.status)
     and seconds_since_last_check > low_battery_reminder_interval then
     last_battery_check = os.time()
 
     notify_low_battery()
+  end
+end)
+
+awesome.connect_signal("daemon::charger::status", function(plugged)
+  if plugged then
+    notify_charger_plugged()
+  else
+    notify_charger_unplugged()
   end
 end)

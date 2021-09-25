@@ -1,4 +1,5 @@
 acpi
+acpid
 htop
 lazygit
 neofetch

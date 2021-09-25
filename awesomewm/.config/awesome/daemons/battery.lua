@@ -4,6 +4,7 @@
 --
 -- Dependencies:
 --   acpi
+--   acpid
 --
 -- Signals:
 -- daemon::battery::status
@@ -19,9 +20,13 @@
 --   }
 --   summary (string)
 --
+-- daemon::charger::status
+--   plugged (boolean)
+--
 
 local awful = require("awful")
 local gears = require("gears")
+local helpers = require("helpers")
 
 -- ========================================
 -- Config
@@ -33,6 +38,12 @@ local update_interval = 30
 local battery_check_script = "find /sys/class/power_supply/BAT?"
 -- script to get battery status
 local battery_status_script = "acpi -i"
+-- script to check whether system has charger
+local charger_check_script = "find /sys/class/power_supply/*/online"
+-- script to monitor change in charging state
+local charger_monitor_script = [[ bash -c "acpi_listen | grep --line-buffered ac_adapter" ]]
+-- script to kill charger monitor script
+local charger_monitor_kill_script = "pkill --full --uid " .. os.getenv("USER") .. " ^acpi_listen"
 
 
 -- ========================================
@@ -101,16 +112,25 @@ local get_overall_battery_status = function (batt_stats)
 end
 
 
--- Main script
+-- Check battery status
 local check_battery = function ()
   awful.spawn.easy_async_with_shell(battery_status_script, function(stdout)
     local stats = parse_stdout(stdout)
     local overall_stats = get_overall_battery_status(stats)
 
     awesome.emit_signal("daemon::battery::status", stats, overall_stats, stdout)
-
-    collectgarbage("collect")
   end)
+end
+
+
+-- Emit charger status
+local emit_charger_status = function (chargers)
+  return function ()
+    awful.spawn.easy_async_with_shell("cat " .. chargers, function (stdout)
+      local is_plugged = tonumber(stdout) == 1
+      awesome.emit_signal("daemon::charger::status", is_plugged)
+    end)
+  end
 end
 
 
@@ -130,4 +150,20 @@ awful.spawn.easy_async_with_shell(battery_check_script, function (_, __, ___, ex
     call_now = true,
     callback = check_battery,
   }
+end)
+
+
+-- First get charger file path
+awful.spawn.easy_async_with_shell(charger_check_script, function (stdout, __, ___, exit_code)
+  -- If no charger found do nothing
+  if exit_code ~= 0 then return end
+
+  -- Run at least once
+  emit_charger_status(stdout)()
+
+  helpers.start_monitor(
+    charger_monitor_script,
+    charger_monitor_kill_script,
+    { stdout = emit_charger_status(stdout) }
+  )
 end)
