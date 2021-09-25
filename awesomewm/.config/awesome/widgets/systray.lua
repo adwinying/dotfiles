@@ -81,7 +81,7 @@ local create_widget = function (screen)
   button_container:buttons(buttons(screen, wrapper))
 
   systray.visible = false
-  button.tooltip = require("widgets.tooltip")({ container })
+  button.tooltip = require("widgets.tooltip")({ button_container })
   button.tooltip.text = "Show systray"
 
   return wrapper
