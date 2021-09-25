@@ -4,3 +4,4 @@
 --
 
 require("components.topbar")
+require("components.exit_screen")

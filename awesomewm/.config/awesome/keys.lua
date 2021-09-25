@@ -266,15 +266,15 @@ keys.globalkeys = gears.table.join(
   ),
 
   awful.key(
-    { modkey, shiftkey }, "q",
-    awesome.quit,
-    { description = "quit awesome", group = "awesome" }
+    { modkey }, "Escape",
+    function () awesome.emit_signal("exit_screen::show") end,
+    { description = "show exit screen", group = "awesome" }
   ),
 
   awful.key(
     {}, "XF86PowerOff",
-    function () awesome.emit_signal("show_exit_screen") end,
-    { description = "toggle exit screen", group = "awesome" }
+    function () awesome.emit_signal("exit_screen::show") end,
+    { description = "show exit screen", group = "awesome" }
   ),
 
 

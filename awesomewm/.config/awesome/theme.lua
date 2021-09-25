@@ -25,6 +25,23 @@ local color = {
   black     = "#000000",
 }
 
+
+-- ========================================
+-- Icons
+-- ========================================
+
+-- Icons path
+theme.icons_path = gears.filesystem.get_configuration_dir() .. "icons/"
+
+-- Define the icon theme for application icons. If not set then the icons
+-- from /usr/share/icons and /usr/share/icons/hicolor will be used.
+theme.icon_theme = "Tela-dark"
+
+
+-- ========================================
+-- Common
+-- ========================================
+
 -- Font
 theme.font      = "Inconsolata Nerd Font 11"
 theme.text_font = "Inconsolata for Powerline 11"
@@ -42,23 +59,6 @@ theme.fg_normal   = color.white
 theme.fg_focus    = color.lightblue
 theme.fg_urgent   = color.red
 theme.fg_minimize = color.darkblue
-
-
--- ========================================
--- Icons
--- ========================================
-
--- Icons path
-theme.icons_path = gears.filesystem.get_configuration_dir() .. "icons/"
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "Tela-dark"
-
-
--- ========================================
--- Common
--- ========================================
 
 -- Borders/Gaps
 theme.useless_gap   = dpi(7)
@@ -94,6 +94,13 @@ theme.topbar_position  = "top"
 theme.topbar_height    = dpi(28)
 theme.topbar_margin    = theme.useless_gap
 theme.topbar_padding_x = dpi(5)
+
+
+-- Exit screen
+theme.exit_screen_bg              = theme.bg_normal .. "88"
+theme.exit_screen_button_spacing  = dpi(48)
+theme.exit_screen_caption_spacing = dpi(8)
+theme.exit_screen_icon_size       = dpi(48)
 
 
 -- ========================================
