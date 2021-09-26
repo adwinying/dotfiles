@@ -20,7 +20,7 @@ local helpers = require("helpers")
 
 -- script to monitor volume events
 -- Sleeps until pactl detects an event (volume up/down/toggle mute)
-local monitor_script = [[ bash -c "LANG=C pactl subscribe 2> /dev/null | grep --line-buffered \"Event 'change' on sink #\"" ]]
+local monitor_script = [[ pactl subscribe 2> /dev/null | grep --line-buffered "Event 'change' on sink #" ]]
 
 -- script to kill monitor script
 -- Kills old pactl subscribe processes

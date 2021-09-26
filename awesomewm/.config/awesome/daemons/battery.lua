@@ -41,7 +41,7 @@ local battery_status_script = "acpi -i"
 -- script to check whether system has charger
 local charger_check_script = "find /sys/class/power_supply/*/online"
 -- script to monitor change in charging state
-local charger_monitor_script = [[ bash -c "acpi_listen | grep --line-buffered ac_adapter" ]]
+local charger_monitor_script = "acpi_listen | grep --line-buffered ac_adapter"
 -- script to kill charger monitor script
 local charger_monitor_kill_script = "pkill --full --uid " .. os.getenv("USER") .. " ^acpi_listen"
 
