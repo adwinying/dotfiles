@@ -258,7 +258,7 @@ keys.globalkeys = gears.table.join(
   -- Awesome General
   -- ========================================
   awful.key(
-    { modkey }, "s",
+    { modkey, shiftkey }, "/",
     hotkeys_popup.show_help,
     { description = "show help", group = "awesome" }
   ),
@@ -471,6 +471,20 @@ keys.globalkeys = gears.table.join(
     end,
     { description = "take a screenshot selection", group = "hotkeys" }
   ),
+
+  awful.key(
+    { modkey, shiftkey }, "Print",
+    function ()
+      os.execute("sleep 5 | " .. Apps.screenshot .. "  | xclip -sel clip -t image/png" )
+      naughty.notify {
+        icon = beautiful.icons_path .. "screenshot.svg",
+        title = "Screenshot",
+        text = "Screenshot of screen stored in clipboard.",
+      }
+    end,
+    { description = "take a screenshot after 5 secs", group = "hotkeys" }
+  ),
+
 
 
   -- ========================================
