@@ -69,54 +69,84 @@ local keybindings = {
   Escape = commands.cancel,
 }
 
--- map mousebinds to function
-local mousebindings = gears.table.join(
-  -- Middle click - Hide exit_screen
-  awful.button({}, keys.midclick, commands.cancel),
-
-  -- Right click - Hide exit_screen
-  awful.button({}, keys.rightclick, commands.cancel)
-)
-
 
 -- ========================================
 -- Logic
 -- ========================================
 
-local exit_screen = {}
+-- Define a new class
+local ExitScreen = {}
+ExitScreen.__index = ExitScreen
 
--- Activate keybindings
-local activate_keybindings = function ()
-  exit_screen.screen_grabber = awful.keygrabber.run(function(_, key, event)
-    if event == "release" then return end
 
-    local cmd = keybindings[key]
+-- Class constructor
+function ExitScreen:new (screen)
+  -- create new class instance
+  local exit_screen = {}
+  setmetatable(exit_screen, ExitScreen)
 
-    if cmd ~= nil then cmd() end
-  end)
+  -- screen instance
+  exit_screen.screen = screen
+  -- screen grabber instance
+  exit_screen.screen_grabber = nil
+
+  -- create widget components
+  exit_screen.widget = exit_screen:create_widget()
+  exit_screen:init_signals()
+
+  return exit_screen
 end
 
 
--- Deactivate keybindings
-local deactivate_keybindings = function ()
-  awful.keygrabber.stop(exit_screen.screen_grabber)
-end
+-- create the widget
+function ExitScreen:create_widget ()
+  -- Build buttons
+  local button_widgets = {}
+  for i, button in ipairs(buttons) do
+    button_widgets[i] = self:create_button(
+      button.caption,
+      button.icon,
+      commands[button.name]
+    )
+  end
 
+  local widget = wibox {
+    screen  = self.screen,
+    x       = self.screen.geometry.x,
+    y       = self.screen.geometry.y,
+    height  = self.screen.geometry.height,
+    width   = self.screen.geometry.width,
+    visible = false,
+    ontop   = true,
+    type    = "splash",
+    bg      = beautiful.exit_screen_bg,
+  }
 
--- Show exit screen
-local show_exit_screen = function ()
-  exit_screen.widget.visible = true
-end
+  widget:setup {
+    layout = wibox.layout.align.vertical,
+    expand = "none",
+    nil,
+    {
+      layout = wibox.layout.align.horizontal,
+      expand = "none",
+      nil,
+      {
+        layout = wibox.layout.fixed.horizontal,
+        spacing = beautiful.exit_screen_button_spacing,
+        table.unpack(button_widgets),
+      },
+    },
+  }
 
+  -- Define mouse bindings
+  widget:buttons(self.get_mousebindings())
 
--- Hide exit screen
-local hide_exit_screen = function ()
-  exit_screen.widget.visible = false
+  return widget
 end
 
 
 -- build button widget
-local build_button_widget = function (name, icon, cmd)
+function ExitScreen:create_button (name, icon, cmd)
   local button = wibox.widget {
     layout = wibox.layout.fixed.vertical,
     spacing = beautiful.exit_screen_caption_spacing,
@@ -147,71 +177,70 @@ local build_button_widget = function (name, icon, cmd)
 end
 
 
+-- Init signals
+function ExitScreen:init_signals ()
+  -- show the exit screen when signal is broadcasted
+  awesome.connect_signal("exit_screen::show", function()
+    if (awful.screen.focused() ~= self.screen) then return end
+
+    self:show()
+    self:activate_keybindings()
+  end)
+
+  -- hide the exit screen when signal is broadcasted
+  awesome.connect_signal("exit_screen::hide", function()
+    self:hide()
+    self:deactivate_keybindings()
+  end)
+end
+
+
+-- Get mousebindings
+function ExitScreen:get_mousebindings ()
+  return gears.table.join(
+    -- Middle click - Hide exit_screen
+    awful.button({}, keys.midclick, commands.cancel),
+
+    -- Right click - Hide exit_screen
+    awful.button({}, keys.rightclick, commands.cancel)
+  )
+end
+
+
+-- Activate keybindings
+function ExitScreen:activate_keybindings ()
+  self.screen_grabber = awful.keygrabber.run(function(_, key, event)
+    if event == "release" then return end
+
+    local cmd = keybindings[key]
+
+    if cmd ~= nil then cmd() end
+  end)
+end
+
+
+-- Deactivate keybindings
+function ExitScreen:deactivate_keybindings ()
+  awful.keygrabber.stop(self.screen_grabber)
+end
+
+
+-- Show exit screen
+function ExitScreen:show ()
+  self.widget.visible = true
+end
+
+
+-- Hide exit screen
+function ExitScreen:hide ()
+  self.widget.visible = false
+end
+
+
 -- ========================================
 -- Initialization
 -- ========================================
 
-local screen_geometry = awful.screen.focused().geometry
-
--- Create the widget
-exit_screen.widget = wibox {
-  x = screen_geometry.x,
-  y = screen_geometry.y,
-  visible = false,
-  ontop = true,
-  type = "splash",
-  height = screen_geometry.height,
-  width = screen_geometry.width,
-  bg = beautiful.exit_screen_bg,
-}
-
--- Build buttons
-exit_screen.buttons = {}
-
-for i, button in ipairs(buttons) do
-  exit_screen.buttons[i] = build_button_widget(
-    button.caption,
-    button.icon,
-    commands[button.name]
-  )
-end
-
--- Item placement
-exit_screen.widget:setup {
-  layout = wibox.layout.align.vertical,
-  expand = "none",
-  nil,
-  {
-    nil,
-    {
-      layout = wibox.layout.fixed.horizontal,
-      spacing = beautiful.exit_screen_button_spacing,
-      table.unpack(exit_screen.buttons),
-      -- build_button_widget("Poweroff", "exit_screen_poweroff", commands.poweroff),
-      -- build_button_widget("Reboot", "exit_screen_reboot",  commands.reboot),
-      -- build_button_widget("Suspend", "exit_screen_suspend", commands.suspend),
-      -- build_button_widget("Logout", "exit_screen_logout", commands.logout),
-      -- build_button_widget("Lock", "exit_screen_lock", commands.lock),
-      -- build_button_widget("Cancel", "exit_screen_cancel", commands.cancel),
-    },
-    nil,
-    expand = "none",
-    layout = wibox.layout.align.horizontal
-  },
-  nil,
-}
-
--- Define mouse bindings
-exit_screen.widget:buttons(mousebindings)
-
--- show the exit screen when signal is broadcasted
-awesome.connect_signal("exit_screen::show", function()
-  show_exit_screen()
-  activate_keybindings()
-end)
-
--- hide the exit screen when signal is broadcasted
-awesome.connect_signal("exit_screen::hide", function()
-  hide_exit_screen()
-  deactivate_keybindings()
+awful.screen.connect_for_each_screen(function (s)
+  s.exit_screen = ExitScreen:new(s)
 end)
