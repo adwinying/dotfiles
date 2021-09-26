@@ -28,7 +28,7 @@ local buttons = function (screen)
   return gears.table.join(
     awful.button(
       {}, keys.leftclick,
-      function() awful.spawn(apps.volume_manager) end
+      function() awful.spawn(Apps.volume_manager) end
     ),
     awful.button(
       {}, keys.rightclick,

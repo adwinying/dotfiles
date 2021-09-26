@@ -415,7 +415,7 @@ keys.globalkeys = gears.table.join(
   -- ========================================
   awful.key(
     { modkey }, "Return",
-    function () awful.spawn(apps.terminal) end,
+    function () awful.spawn(Apps.terminal) end,
     { description = "terminal", group = "hotkeys" }
   ),
 
@@ -429,20 +429,20 @@ keys.globalkeys = gears.table.join(
 
   awful.key(
     { modkey }, "d",
-    function () awful.spawn(apps.launcher) end,
+    function () awful.spawn(Apps.launcher) end,
     { description = "application launcher", group = "hotkeys" }
   ),
 
   awful.key(
     { modkey }, "b",
-    function () awful.spawn(apps.web_browser) end,
+    function () awful.spawn(Apps.web_browser) end,
     { description = "web browser", group = "hotkeys" }
   ),
 
   awful.key(
     {}, "Print",
     function ()
-      os.execute(apps.screenshot .. "  | xclip -sel clip -t image/png" )
+      os.execute(Apps.screenshot .. "  | xclip -sel clip -t image/png" )
       naughty.notify {
         icon = beautiful.icons_path .. "screenshot.svg",
         title = "Screenshot",
@@ -455,7 +455,7 @@ keys.globalkeys = gears.table.join(
   awful.key(
     { modkey }, "Print",
     function ()
-      os.execute(apps.screenshot .. " -s  | xclip -sel clip -t image/png" )
+      os.execute(Apps.screenshot .. " -s  | xclip -sel clip -t image/png" )
       naughty.notify {
         icon = beautiful.icons_path .. "screenshot.svg",
         title = "Screenshot",
@@ -515,7 +515,9 @@ keys.globalkeys = gears.table.join(
 )
 
 -- Bind all key numbers to tags
-for i, _ in ipairs(tags) do
+for i = 1, #Tags do
+  local tag_name = string.format("#%s: %s", i, Tags[i].name)
+
   keys.globalkeys = gears.table.join(keys.globalkeys,
     -- Switch to tags
     awful.key(
@@ -523,11 +525,10 @@ for i, _ in ipairs(tags) do
       function ()
         local screen = awful.screen.focused()
         local tag = screen.tags[i]
-        if tag then
-          tag:view_only()
-        end
+
+        if tag then tag:view_only() end
       end,
-      { description = "view tag #"..i, group = "tag" }
+      { description = "view tag " .. tag_name, group = "tag" }
     ),
 
     -- Toggle tag display
@@ -540,7 +541,7 @@ for i, _ in ipairs(tags) do
           awful.tag.viewtoggle(tag)
         end
       end,
-      { description = "toggle tag #" .. i, group = "tag" }
+      { description = "toggle tag " .. tag_name, group = "tag" }
     ),
 
     -- Move client to tag.
@@ -554,7 +555,7 @@ for i, _ in ipairs(tags) do
           end
         end
       end,
-      { description = "move focused client to tag #"..i, group = "tag" }
+      { description = "move focused client to tag " .. tag_name, group = "tag" }
     ),
 
     -- Toggle tag on focused client.
@@ -568,7 +569,7 @@ for i, _ in ipairs(tags) do
         end
       end
     end,
-    { description = "toggle focused client on tag #" .. i, group = "tag" }
+    { description = "toggle focused client on tag " .. tag_name, group = "tag" }
     )
   )
 end

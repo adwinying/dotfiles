@@ -13,7 +13,7 @@ local config_dir = gears.filesystem.get_configuration_dir()
 -- ========================================
 
 -- define default apps
-apps = {
+Apps = {
   terminal          = "st",
   launcher          = "rofi -modi drun,run,window,ssh -show drun -theme nord",
   web_browser       = "brave",
@@ -26,7 +26,7 @@ apps = {
 }
 
 -- network interfaces
-network_interfaces = {
+Network_Interfaces = {
   wlan = "wlp3s0",
   lan = "enp0s25",
 }
@@ -39,7 +39,7 @@ awful.layout.layouts = {
 }
 
 -- tag configs
-tags = {
+Tags = {
   { name = "main" , layout = awful.layout.layouts[1] },
   { name = "web"  , layout = awful.layout.layouts[1] },
   { name = "code" , layout = awful.layout.layouts[1] },
@@ -47,8 +47,8 @@ tags = {
   { name = "media", layout = awful.layout.layouts[1] },
 }
 
--- run these apps on start up
-local run_on_start_up = {
+-- run these commands on start up
+local startup_scripts = {
   "picom",
   "feh --bg-scale " .. config_dir .. "/wallpapers/pe.jpg",
   "ibus-daemon -drx",
@@ -69,12 +69,11 @@ beautiful.init(config_dir .. "theme.lua")
 -- ========================================
 
 -- Run all apps listed on start up
-for _, app in ipairs(run_on_start_up) do
+for _, app in ipairs(startup_scripts) do
   local findme = app
   local firstspace = app:find(" ")
-  if firstspace then
-    findme = app:sub(0, firstspace - 1)
-  end
+
+  if firstspace then findme = app:sub(0, firstspace - 1) end
 
   awful.spawn.with_shell(string.format(
     "echo 'pgrep -u $USER -x %s > /dev/null || (%s)' | bash -",
@@ -100,7 +99,7 @@ require("components")
 local tag_names = {}
 local tag_layouts = {}
 
-for i, tag in ipairs(tags) do
+for i, tag in ipairs(Tags) do
   tag_names[i] = tag.name
   tag_layouts[i] = tag.layout
 end

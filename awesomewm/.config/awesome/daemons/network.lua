@@ -43,8 +43,8 @@ local update_interval = 30
 
 -- script to determine network mode
 local network_mode_script = [=[
-wireless="]=] .. tostring(network_interfaces.wlan) .. [=["
-wired="]=] .. tostring(network_interfaces.lan) .. [=["
+wireless="]=] .. tostring(Network_Interfaces.wlan) .. [=["
+wired="]=] .. tostring(Network_Interfaces.lan) .. [=["
 net="/sys/class/net/"
 
 wired_state="down"
@@ -107,7 +107,7 @@ fi
 ]=]
 
 -- script to check wireless status
-local wireless_data_script = "iw dev " .. network_interfaces.wlan .. " link"
+local wireless_data_script = "iw dev " .. Network_Interfaces.wlan .. " link"
 
 -- script to check wireless strength
 local wireless_strength_script = [[awk 'NR==3 {printf "%3.0f" ,($3/70)*100}' /proc/net/wireless]]
@@ -125,7 +125,7 @@ local emit_wireless_status = function()
   awful.spawn.easy_async_with_shell(wireless_data_script, function(data_stdout)
     awful.spawn.easy_async_with_shell(wireless_strength_script, function(strength_stdout)
       awful.spawn.easy_async_with_shell(healthcheck_script, function(health_stdout)
-        local interface = network_interfaces.wlan
+        local interface = Network_Interfaces.wlan
 
         local essid = data_stdout:match("SSID: (.-)\n") or "N/A"
         local bitrate = data_stdout:match("tx bitrate: (.+/s)") or "N/A"
@@ -151,7 +151,7 @@ end
 -- Emit wired connection status
 local emit_wired_status = function()
   awful.spawn.easy_async_with_shell(healthcheck_script, function(stdout)
-    local interface = network_interfaces.lan
+    local interface = Network_Interfaces.lan
     local healthy = not stdout:match("Connected but no internet")
 
     awesome.emit_signal(
@@ -166,7 +166,7 @@ end
 -- Emit wireless connected
 local emit_wireless_connected = function ()
   awful.spawn.easy_async_with_shell(wireless_data_script, function(data_stdout)
-    local interface = network_interfaces.lan
+    local interface = Network_Interfaces.lan
     local essid = data_stdout:match("SSID: (.-)\n") or "N/A"
 
     awesome.emit_signal(
@@ -180,7 +180,7 @@ end
 
 -- Emit wired connected
 local emit_wired_connected = function ()
-  local interface = network_interfaces.lan
+  local interface = Network_Interfaces.lan
 
   awesome.emit_signal(
     "daemon::network::connected::wired",
@@ -196,9 +196,9 @@ local emit_disconnected = function ()
   local interface = ""
 
   if network_mode == "wired" then
-    interface = network_interfaces.lan
+    interface = Network_Interfaces.lan
   else
-    interface = network_interfaces.wlan
+    interface = Network_Interfaces.wlan
   end
 
   awesome.emit_signal(
