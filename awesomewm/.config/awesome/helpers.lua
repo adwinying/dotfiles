@@ -111,7 +111,12 @@ end
 
 -- change volume
 helpers.change_volume = function (change_by)
-  local cmd = "pactl set-sink-volume @DEFAULT_SINK@ " .. change_by
+  local percentage = change_by < 0
+    and string.format("-%s%%", -change_by)
+    or  string.format("+%s%%", change_by)
+
+  local cmd = "pactl set-sink-volume @DEFAULT_SINK@ " .. percentage
+
   awful.spawn.with_shell(cmd)
 end
 

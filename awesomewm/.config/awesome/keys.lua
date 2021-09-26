@@ -505,12 +505,12 @@ keys.globalkeys = gears.table.join(
   -- Volume/Playback
   awful.key(
     {}, "XF86AudioRaiseVolume",
-    function () helpers.change_volume("+5%") end,
+    function () helpers.change_volume(5) end,
     { description = "volume up", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86AudioLowerVolume",
-    function () helpers.change_volume("-5%") end,
+    function () helpers.change_volume(-5) end,
     { description = "volume down", group = "hotkeys" }
   ),
   awful.key(

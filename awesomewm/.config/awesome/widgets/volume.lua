@@ -36,11 +36,11 @@ local buttons = function (screen)
     ),
     awful.button(
       {}, keys.scrolldown,
-      function() helpers.change_volume("+1%") end
+      function() helpers.change_volume(1) end
     ),
     awful.button(
       {}, keys.scrollup,
-      function() helpers.change_volume("-1%") end
+      function() helpers.change_volume(-1) end
     )
   )
 end
