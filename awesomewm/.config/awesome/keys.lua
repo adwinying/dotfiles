@@ -22,11 +22,13 @@ local ctrlkey  = "Control"
 local shiftkey = "Shift"
 
 -- Define mouse button
-local leftclick  = 1
-local midclick   = 2
-local rightclick = 3
-local scrolldown = 4
-local scrollup   = 5
+local leftclick     = 1
+local midclick      = 2
+local rightclick    = 3
+local scrolldown    = 4
+local scrollup      = 5
+local sidedownclick = 8
+local sideupclick   = 9
 
 local keys = {}
 
@@ -35,11 +37,13 @@ keys.altkey   = altkey
 keys.ctrlkey  = ctrlkey
 keys.shiftkey = shiftkey
 
-keys.leftclick  = leftclick
-keys.midclick   = midclick
-keys.rightclick = rightclick
-keys.scrolldown = scrolldown
-keys.scrollup   = scrollup
+keys.leftclick     = leftclick
+keys.midclick      = midclick
+keys.rightclick    = rightclick
+keys.scrolldown    = scrolldown
+keys.scrollup      = scrollup
+keys.sidedownclick = sidedownclick
+keys.sideupclick   = sideupclick
 
 
 -- ========================================
@@ -246,7 +250,7 @@ keys.clientkeys = gears.table.join(
 )
 
 -- ========================================
--- Desktop Keybindings
+-- Global Keybindings
 -- ========================================
 
 keys.globalkeys = gears.table.join(
@@ -275,6 +279,13 @@ keys.globalkeys = gears.table.join(
     {}, "XF86PowerOff",
     function () awesome.emit_signal("exit_screen::show") end,
     { description = "show exit screen", group = "awesome" }
+  ),
+
+    -- Window switcher
+  awful.key(
+    { modkey }, "Tab",
+    function () awful.screen.focused().window_switcher:show() end,
+    {description = "activate window switcher", group = "awesome"}
   ),
 
 
@@ -367,11 +378,7 @@ keys.globalkeys = gears.table.join(
       local c = awful.client.restore()
       -- Focus restored client
       if c then
-        c:emit_signal(
-          "request::activate",
-          "key.unminimize",
-          { raise = true }
-        )
+        c:emit_signal("request::activate", "key.unminimize", { raise = true })
       end
     end,
     { description = "restore minimized", group = "client" }

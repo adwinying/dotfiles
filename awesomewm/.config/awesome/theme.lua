@@ -97,10 +97,23 @@ theme.topbar_padding_x = dpi(5)
 
 
 -- Exit screen
-theme.exit_screen_bg              = theme.bg_normal .. "88"
+theme.exit_screen_bg              = theme.bg_normal .. "aa"
 theme.exit_screen_button_spacing  = dpi(48)
 theme.exit_screen_caption_spacing = dpi(8)
 theme.exit_screen_icon_size       = dpi(48)
+
+
+-- Window switcher
+theme.window_switcher_bg       = theme.bg_normal .. "aa"
+theme.window_switcher_margin_x = dpi(20)
+theme.window_switcher_margin_y = dpi(25)
+theme.window_switcher_width    = dpi(500)
+
+theme.window_switcher_spacing_x = dpi(7)
+theme.window_switcher_spacing_y = dpi(15)
+
+theme.window_switcher_icon_height  = dpi(15)
+theme.window_switcher_icon_width   = dpi(15)
 
 
 -- ========================================
