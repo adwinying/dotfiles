@@ -77,7 +77,7 @@ theme.tooltip_padding_x = dpi(10)
 theme.tooltip_padding_y = dpi(10)
 
 -- Notification
-theme.notification_max_width    = dpi(350)
+theme.notification_width        = dpi(350)
 theme.notification_margin       = dpi(15)
 theme.notification_border_width = dpi(0)
 theme.notification_icon_size    = dpi(48)
