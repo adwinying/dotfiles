@@ -25,6 +25,9 @@ local color = {
   black     = "#000000",
 }
 
+-- Theme font
+local font = "Inconsolata for Powerline"
+
 
 -- ========================================
 -- Icons
@@ -43,8 +46,7 @@ theme.icon_theme = "Tela-dark"
 -- ========================================
 
 -- Font
-theme.font      = "Inconsolata Nerd Font 11"
-theme.text_font = "Inconsolata for Powerline 11"
+theme.font = font .. " 11"
 
 -- Background
 theme.bg_normal   = color.black
@@ -70,7 +72,7 @@ theme.border_marked = color.red
 theme.border_normal = color.black
 
 -- Tooltips
-theme.tooltip_font      = theme.text_font
+theme.tooltip_font      = theme.font
 theme.tooltip_padding_x = dpi(10)
 theme.tooltip_padding_y = dpi(10)
 
@@ -82,7 +84,7 @@ theme.notification_icon_size    = dpi(48)
 theme.notification_fg           = color.white
 theme.notification_bg           = color.darkblue .. "aa"
 theme.notification_bg_critical  = color.red .. "aa"
-theme.notification_font         = theme.text_font
+theme.notification_font         = theme.font
 
 
 -- ========================================
@@ -102,6 +104,25 @@ theme.exit_screen_button_spacing  = dpi(48)
 theme.exit_screen_caption_spacing = dpi(8)
 theme.exit_screen_icon_size       = dpi(48)
 
+
+-- Lock screen
+theme.lock_screen_icons_path = theme.icons_path .. "lock_screen/"
+
+theme.lock_screen_bg        = theme.bg_normal .. "aa"
+theme.lock_screen_width     = dpi(800)
+theme.lock_screen_spacing_x = dpi(10)
+theme.lock_screen_spacing_y = dpi(30)
+
+theme.lock_screen_title_icon      = theme.lock_screen_icons_path .. "lock_screen_padlock.svg"
+theme.lock_screen_title_icon_size = dpi(40)
+theme.lock_screen_title_font      = font .. " 30"
+
+theme.lock_screen_dot_icon    = theme.lock_screen_icons_path .. "lock_screen_dot.svg"
+theme.lock_screen_dot_spacing = dpi(5)
+theme.lock_screen_dot_color   = theme.fg_normal
+theme.lock_screen_dot_size    = dpi(20)
+
+theme.lock_screen_warning_icon = theme.lock_screen_icons_path .. "lock_screen_warning.svg"
 
 -- Window switcher
 theme.window_switcher_bg       = theme.bg_normal .. "aa"

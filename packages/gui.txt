@@ -1,5 +1,6 @@
 awesome
 feh
+lua-pam-git
 maim
 nordic-theme
 pavucontrol

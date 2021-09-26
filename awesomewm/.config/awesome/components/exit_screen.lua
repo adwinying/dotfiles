@@ -49,7 +49,7 @@ local commands = {
 
   lock = function ()
     awesome.emit_signal("exit_screen::hide")
-    awful.spawn.with_shell(Apps.lock)
+    awesome.emit_signal("lock_screen::show")
   end,
 
   cancel = function ()
