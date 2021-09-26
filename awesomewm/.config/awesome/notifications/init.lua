@@ -41,5 +41,6 @@ naughty.config.presets.critical = {
 
 require("notifications.error")
 require("notifications.network")
-require("notifications.battery")
+require("notifications.brightness")
 require("notifications.volume")
+require("notifications.battery")

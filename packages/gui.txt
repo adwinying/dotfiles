@@ -1,5 +1,7 @@
 awesome
 feh
+inotify-tools
+light
 lua-pam-git
 maim
 nordic-theme

@@ -493,12 +493,12 @@ keys.globalkeys = gears.table.join(
   -- Brightness
   awful.key(
     {}, "XF86MonBrightnessUp",
-    function () awful.spawn("xbacklight -inc 10", false) end,
+    function () helpers.change_brightness(5) end,
     { description = "brightness up", group = "hotkeys" }
   ),
   awful.key(
     {}, "XF86MonBrightnessDown",
-    function () awful.spawn("xbacklight -dev 10", false) end,
+    function () helpers.change_brightness(-5) end,
     { description = "brightness down", group = "hotkeys" }
   ),
 

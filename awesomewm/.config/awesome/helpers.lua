@@ -128,4 +128,18 @@ helpers.toggle_volume_mute = function ()
 end
 
 
+-- ========================================
+-- Brightness
+-- ========================================
+
+-- change brightness
+helpers.change_brightness = function (change_by)
+  local cmd = change_by < 0
+    and "light -U " .. -change_by
+    or  "light -A " .. change_by
+
+  awful.spawn.with_shell(cmd)
+end
+
+
 return helpers
