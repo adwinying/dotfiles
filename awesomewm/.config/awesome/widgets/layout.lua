@@ -8,7 +8,6 @@ local awful = require("awful")
 local gears = require("gears")
 local keys = require("keys")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 -- define buttons
 local buttons = function (screen)

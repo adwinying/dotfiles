@@ -7,7 +7,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 
 local keys = require("keys")
 
@@ -20,9 +19,9 @@ local keys = require("keys")
 local icons_path = beautiful.icons_path .. "systray/"
 
 
--- ===================================================================
+-- ========================================
 -- Definition
--- ===================================================================
+-- ========================================
 
 -- update widget
 local update_widget = function (widget)

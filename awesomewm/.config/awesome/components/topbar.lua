@@ -5,9 +5,7 @@
 
 local awful = require("awful")
 local wibox = require("wibox")
-local gears = require("gears")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 
 awful.screen.connect_for_each_screen(function (s)
