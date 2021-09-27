@@ -22,10 +22,6 @@ local helpers = require("helpers")
 -- Subscribe to backlight changes
 local monitor_script = "while (inotifywait -e modify /sys/class/backlight/?*/brightness -qq) do echo; done"
 
--- script to kill monitor script
--- Kills old inotify subscribe processes
-local monitor_kill_script = [[ ps x | grep "inotifywait -e modify /sys/class/backlight" | grep -v grep | awk '{print $1}' | xargs kill ]]
-
 local brightness_script = "light -G"
 
 
@@ -52,8 +48,4 @@ emit_brightness_percentage()
 
 
 -- Start monitoring process
-helpers.start_monitor(
-  monitor_script,
-  monitor_kill_script,
-  { stdout = emit_brightness_percentage }
-)
+helpers.start_monitor(monitor_script, { stdout = emit_brightness_percentage })

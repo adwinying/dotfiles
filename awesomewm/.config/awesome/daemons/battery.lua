@@ -42,8 +42,6 @@ local battery_status_script = "acpi -i"
 local charger_check_script = "find /sys/class/power_supply/*/online"
 -- script to monitor change in charging state
 local charger_monitor_script = "acpi_listen | grep --line-buffered ac_adapter"
--- script to kill charger monitor script
-local charger_monitor_kill_script = "pkill --full --uid " .. os.getenv("USER") .. " ^acpi_listen"
 
 
 -- ========================================
@@ -139,7 +137,7 @@ end
 -- ========================================
 
 -- First get battery file path
-awful.spawn.easy_async_with_shell(battery_check_script, function (_, __, ___, exit_code)
+awful.spawn.easy_async_with_shell(battery_check_script, function (_, _, _, exit_code)
   -- If battery file not found do nothing
   if exit_code ~= 0 then return end
 
@@ -154,7 +152,7 @@ end)
 
 
 -- First get charger file path
-awful.spawn.easy_async_with_shell(charger_check_script, function (stdout, __, ___, exit_code)
+awful.spawn.easy_async_with_shell(charger_check_script, function (stdout, _, _, exit_code)
   -- If no charger found do nothing
   if exit_code ~= 0 then return end
 
@@ -163,7 +161,6 @@ awful.spawn.easy_async_with_shell(charger_check_script, function (stdout, __, __
 
   helpers.start_monitor(
     charger_monitor_script,
-    charger_monitor_kill_script,
     { stdout = emit_charger_status(stdout) }
   )
 end)

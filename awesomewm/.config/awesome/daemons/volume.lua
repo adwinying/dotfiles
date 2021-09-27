@@ -22,10 +22,6 @@ local helpers = require("helpers")
 -- Sleeps until pactl detects an event (volume up/down/toggle mute)
 local monitor_script = [[ pactl subscribe 2> /dev/null | grep --line-buffered "Event 'change' on sink #" ]]
 
--- script to kill monitor script
--- Kills old pactl subscribe processes
-local monitor_kill_script = "pkill --full --uid " .. os.getenv("USER") .. " ^pactl subscribe"
-
 -- script to get volume sinks
 -- Gets volume info of the currently active sink
 -- The currently active sink has a star `*` in front of its index
@@ -83,6 +79,5 @@ check_volume()
 -- Start monitoring process
 helpers.start_monitor(
   monitor_script,
-  monitor_kill_script,
   { stdout = check_volume }
 )

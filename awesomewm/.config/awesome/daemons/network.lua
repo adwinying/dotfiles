@@ -189,7 +189,7 @@ local emit_wired_connected = function ()
 end
 
 
--- Emit network disconnected 
+-- Emit network disconnected
 local emit_disconnected = function ()
   if network_mode == nil then return end
 

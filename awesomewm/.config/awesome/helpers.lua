@@ -65,17 +65,20 @@ end
 -- ========================================
 
 -- start a monitoring script and monitor its output
-helpers.start_monitor = function (monitor_script, kill_monitor_script, callbacks )
+helpers.start_monitor = function (script, callbacks )
+  local monitor_script = string.format(
+    [[ bash -c "%s" ]],
+    string.gsub(script, '"', '\\"')
+  )
+  local kill_monitor_script = string.format(
+    [[ pgrep -f "bash -c %s" | xargs -I{} pkill -P {} ]],
+    string.gsub(script, '"', '\\"')
+  )
+
   -- First, kill any existing monitor processes
   awful.spawn.easy_async_with_shell(kill_monitor_script, function ()
     -- Start monitor process
-    awful.spawn.with_line_callback(
-      string.format(
-        [[ bash -c "%s" ]],
-        string.gsub(monitor_script, '"', '\"')
-      ),
-      callbacks
-    )
+    awful.spawn.with_line_callback(monitor_script, callbacks)
   end)
 end
 
