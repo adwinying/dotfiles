@@ -49,8 +49,17 @@ Tags = {
 
 -- run these commands on start up
 local startup_scripts = {
+  -- Remap modifier keys when pressed alone
+  "xcape -e 'Control_L=Escape;Super_L=Hangul_Hanja;Super_R=Hangul'",
+  -- Other key remappings
+  "xmodmap $HOME/.Xmodmap",
+  -- Faster key repeat response
+  "xset r rate 200 30",
+  -- Compositor
   "picom",
+  -- Set wallpaper
   "feh --bg-scale " .. config_dir .. "/wallpapers/pe.jpg",
+  -- Start ibus
   "ibus-daemon -drx",
 }
 

@@ -11,6 +11,7 @@ playerctl
 pulseaudio
 rofi
 tela-icon-theme
+xcape
 xclip
 xorg-server
 xorg-xinit
