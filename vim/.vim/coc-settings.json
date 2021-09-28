@@ -12,6 +12,12 @@
     "vue",
     "svelte"
   ],
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.workspace.library": {
+    "/usr/lib/lua": true,
+    "/usr/lib/lua-pam/": true,
+    "/usr/share/awesome/lib": true
+  },
   "prettier.semi": false,
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
