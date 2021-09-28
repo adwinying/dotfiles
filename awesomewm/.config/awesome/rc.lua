@@ -70,16 +70,12 @@ beautiful.init(config_dir .. "theme.lua")
 
 -- Run all apps listed on start up
 for _, app in ipairs(startup_scripts) do
-  local findme = app
-  local firstspace = app:find(" ")
-
-  if firstspace then findme = app:sub(0, firstspace - 1) end
-
+  -- Don't spawn startup command if already exists
   awful.spawn.with_shell(string.format(
-    "echo 'pgrep -u $USER -x %s > /dev/null || (%s)' | bash -",
-    findme,
+    [[ %s > /dev/null || (%s) ]],
+    helpers.find_cmd_process_id(app),
     app
-  ), false)
+  ))
 end
 
 -- Start daemons

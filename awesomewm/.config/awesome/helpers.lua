@@ -64,15 +64,36 @@ end
 -- Scripts
 -- ========================================
 
+-- build command to find process id of cmd
+helpers.find_cmd_process_id = function (cmd)
+  -- remove whitespace and escape quotes
+  cmd = cmd:gsub("^%s+", ""):gsub("%s+$", ""):gsub('\\"', '"'):gsub('"', '\\"')
+
+  local str = string.format([[pgrep -u $USER -f "^%s$"]], cmd)
+
+  -- -- debug
+  -- awful.spawn.easy_async_with_shell( str, function (s)
+  --   require("naughty").notify {
+  --     text = s .. ":" .. str,
+  --     timeout = 0
+  --   } end
+  -- )
+
+  return str
+end
+
 -- start a monitoring script and monitor its output
-helpers.start_monitor = function (script, callbacks )
+helpers.start_monitor = function (script, callbacks)
+  -- remove whitespace and escape quotes
+  script = script:gsub("^%s+", ""):gsub("%s+$", ""):gsub('"', '\\"')
+
   local monitor_script = string.format(
     [[ bash -c "%s" ]],
-    string.gsub(script, '"', '\\"')
+    script
   )
   local kill_monitor_script = string.format(
-    [[ pgrep -f "bash -c %s" | xargs -I{} pkill -P {} ]],
-    string.gsub(script, '"', '\\"')
+    [[ %s | xargs -I{} pkill -P {} ]],
+    helpers.find_cmd_process_id(script)
   )
 
   -- First, kill any existing monitor processes
