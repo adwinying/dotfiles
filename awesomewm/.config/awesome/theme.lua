@@ -26,7 +26,7 @@ local color = {
 }
 
 -- Theme font
-local font = "Inconsolata for Powerline"
+local font = "HackGen Console"
 
 
 -- ========================================
@@ -46,7 +46,7 @@ theme.icon_theme = "Tela-dark"
 -- ========================================
 
 -- Font
-theme.font = font .. " 11"
+theme.font = font .. " 10"
 
 -- Background
 theme.bg_normal   = color.black
@@ -115,7 +115,7 @@ theme.lock_screen_spacing_y = dpi(30)
 
 theme.lock_screen_title_icon      = theme.lock_screen_icons_path .. "lock_screen_padlock.svg"
 theme.lock_screen_title_icon_size = dpi(40)
-theme.lock_screen_title_font      = font .. " 30"
+theme.lock_screen_title_font      = font .. " 24"
 
 theme.lock_screen_dot_icon    = theme.lock_screen_icons_path .. "lock_screen_dot.svg"
 theme.lock_screen_dot_spacing = dpi(5)
