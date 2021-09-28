@@ -1,11 +1,11 @@
 configuration {
-	display-drun:    "  Apps";
-	display-run:     "  Packages";
-	display-window:  "缾 Windows";
-	display-ssh:	 "  SSH";
-	sidebar-mode:    true;
-	show-icons:true;
-	font: "Inconsolata Nerd Font 10";
+	display-drun:   " Apps";
+	display-run:    " Packages";
+	display-window: " Windows";
+	display-ssh:    " SSH";
+	sidebar-mode:   true;
+	show-icons:     true;
+	font:           "Inconsolata for Powerline 11";
 }
 
 * {
