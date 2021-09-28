@@ -28,7 +28,7 @@ Apps = {
 -- network interfaces
 Network_Interfaces = {
   wlan = "wlp3s0",
-  lan = "enp0s25",
+  lan = "enp0s3",
 }
 
 -- layouts
@@ -72,8 +72,8 @@ beautiful.init(config_dir .. "theme.lua")
 for _, app in ipairs(startup_scripts) do
   -- Don't spawn startup command if already exists
   awful.spawn.with_shell(string.format(
-    [[ %s > /dev/null || (%s) ]],
-    helpers.find_cmd_process_id(app),
+    [[ pgrep -u $USER -x %s > /dev/null || (%s) ]],
+    helpers.get_main_process_name(app),
     app
   ))
 end

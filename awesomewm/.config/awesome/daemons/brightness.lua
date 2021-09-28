@@ -20,7 +20,7 @@ local helpers = require("helpers")
 
 -- script to monitor volume events
 -- Subscribe to backlight changes
-local monitor_script = "while (inotifywait -e modify /sys/class/backlight/?*/brightness -qq) do echo; done"
+local monitor_script = "inotifywait -mq -e modify /sys/class/backlight/*/brightness"
 
 local brightness_script = "light -G"
 
