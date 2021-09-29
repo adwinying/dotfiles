@@ -1,0 +1,20 @@
+geporting: "off"
+keybinding:
+  commits:
+    moveDownCommit: <c-b>
+    moveUpCommit: <c-g>
+reporting: "off"
+startuppopupversion: 1
+
+customCommands:
+  - key: c
+    command: "git checkout {{.SelectedRemoteBranch.Name}}"
+    context: remoteBranches
+    description: Checkout remote branch
+    loadingText: Checking out remote branch...
+
+  - key: <c-r>
+    command: "git remote prune {{.SelectedRemote.Name}}"
+    context: remoteBranches
+    description: Prune deleted branches
+    loadingText: Pruning remote...

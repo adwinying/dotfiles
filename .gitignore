@@ -4,4 +4,5 @@ vim/.vim/plugged
 vim/.vim/.netrwhist
 tmux/.tmux/plugins
 tmux/.tmux/resurrect
+lazygit/.config/lazygit/state.yml
 Brewfile.lock.json
