@@ -446,6 +446,10 @@ keys.globalkeys = gears.table.join(
     { description = "web browser", group = "hotkeys" }
   ),
 
+
+  -- ========================================
+  -- Screenshot
+  -- ========================================
   awful.key(
     {}, "Print",
     function ()
@@ -485,6 +489,27 @@ keys.globalkeys = gears.table.join(
     { description = "take a screenshot after 5 secs", group = "hotkeys" }
   ),
 
+
+  -- ========================================
+  -- Language
+  -- ========================================
+  awful.key(
+    { ctrlkey }, "space",
+    helpers.switch_language,
+    { description = "switch language", group = "hotkeys" }
+  ),
+
+  awful.key(
+    {}, "Hangul_Hanja",
+    function () helpers.set_language("en") end,
+    { description = "set language to en", group = "hotkeys" }
+  ),
+
+  awful.key(
+    {}, "Hangul",
+    function () helpers.set_language("ja") end,
+    { description = "set language to ja", group = "hotkeys" }
+  ),
 
 
   -- ========================================

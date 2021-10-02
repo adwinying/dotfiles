@@ -46,6 +46,7 @@ awful.screen.connect_for_each_screen(function (s)
       {
         layout = wibox.layout.fixed.horizontal,
         require("widgets.systray")(s),
+        require("widgets.language")(s),
         require("widgets.bluetooth")(s),
         require("widgets.network")(s),
         require("widgets.brightness")(s),

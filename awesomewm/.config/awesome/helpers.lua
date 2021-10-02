@@ -161,4 +161,59 @@ helpers.change_brightness = function (change_by)
 end
 
 
+-- ========================================
+-- Language
+-- ========================================
+
+-- get language map index
+helpers.get_language_map_index = function (key, val)
+  for i, pair in ipairs(Languages) do
+    if pair[key] == val then return i end
+  end
+
+  return nil
+end
+
+
+-- get language from engine name
+helpers.get_language = function (engine)
+  local index = helpers.get_language_map_index("engine", engine)
+
+  return index == nil and "unknown" or Languages[index].lang
+end
+
+
+-- get engine name from Language
+helpers.get_engine = function (language)
+  local index = helpers.get_language_map_index("lang", language)
+
+  return index == nil and "unknown" or Languages[index].engine
+end
+
+
+-- set language
+helpers.set_language = function (language)
+  local engine = helpers.get_engine(language)
+  local set_engine_script = "ibus engine " .. engine
+
+  awful.spawn.easy_async_with_shell(set_engine_script, function ()
+    awesome.emit_signal("daemon::language", language)
+  end)
+end
+
+
+-- switch language
+helpers.switch_language = function ()
+  awful.spawn.easy_async_with_shell("ibus engine", function (stdout)
+    local curr_index = helpers
+      .get_language_map_index("engine", stdout:gsub("%s+", ""))
+
+    local next_index = curr_index == #Languages and 1 or curr_index + 1
+    local next_language = Languages[next_index].lang
+
+    helpers.set_language(next_language)
+  end)
+end
+
+
 return helpers

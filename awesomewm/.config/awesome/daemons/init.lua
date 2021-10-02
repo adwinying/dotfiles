@@ -3,6 +3,7 @@
 -- Initialize daemons
 --
 
+require("daemons.language")
 require("daemons.bluetooth")
 require("daemons.network")
 require("daemons.brightness")

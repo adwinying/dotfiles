@@ -31,6 +31,13 @@ Network_Interfaces = {
   lan = "enp0s3",
 }
 
+-- language mappings
+Languages = {
+  { lang = "en", engine = "xkb:us::eng" },
+  { lang = "ja", engine = "mozc-jp" },
+  { lang = "zh", engine = "rime" },
+}
+
 -- layouts
 awful.layout.layouts = {
   awful.layout.suit.tile,
