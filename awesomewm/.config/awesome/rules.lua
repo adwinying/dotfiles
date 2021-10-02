@@ -62,7 +62,10 @@ local rules = {
         "dialog",
       },
     },
-    properties = { floating = true },
+    properties = {
+      placement = awful.placement.centered,
+      floating = true,
+    },
   },
 
   -- Fullscreen clients
@@ -75,16 +78,16 @@ local rules = {
   --   properties = { fullscreen = true },
   -- },
 
-  -- Switch to tag
-  -- These clients make you switch to their tag when they appear
-  {
-    rule_any = {
-      class = {
-        "Firefox",
-      },
-    },
-    properties = { switchtotag = true },
-  },
+  -- -- Switch to tag
+  -- -- These clients make you switch to their tag when they appear
+  -- {
+  --   rule_any = {
+  --     class = {
+  --       "Brave",
+  --     },
+  --   },
+  --   properties = { switchtotag = true },
+  -- },
 
   -- File chooser dialog
   {
@@ -117,16 +120,16 @@ local rules = {
     },
   },
 
-  -- Set Firefox to always map on the tag named "2" on screen 1.
-  -- {
-  --   rule = {
-  --     class = "Firefox",
-  --   },
-  --   properties = {
-  --     screen = 1,
-  --     tag = "2"
-  --   },
-  -- },
+  -- Set Brave to always map on the tag named "web" on screen 1.
+  {
+    rule = {
+      class = "Brave",
+    },
+    properties = {
+      screen = 1,
+      tag = "web",
+    },
+  },
 }
 
 return rules
