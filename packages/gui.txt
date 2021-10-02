@@ -1,10 +1,11 @@
 awesome
 feh
 inotify-tools
+kvantum-theme-nordic-git
 light
 lua-pam-git
 maim
-nordic-theme
+nordic-darker-theme
 pavucontrol
 picom-ibhagwan-git
 playerctl

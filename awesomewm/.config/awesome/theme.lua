@@ -38,7 +38,7 @@ theme.icons_path = gears.filesystem.get_configuration_dir() .. "icons/"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "Tela-dark"
+theme.icon_theme = "zafiro-icon-theme"
 
 
 -- ========================================
