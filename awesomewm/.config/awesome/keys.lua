@@ -281,11 +281,16 @@ keys.globalkeys = gears.table.join(
     { description = "show exit screen", group = "awesome" }
   ),
 
-    -- Window switcher
   awful.key(
     { modkey }, "Tab",
     function () awful.screen.focused().window_switcher:show() end,
     {description = "activate window switcher", group = "awesome"}
+  ),
+
+  awful.key(
+    { modkey }, "=",
+    function () awesome.emit_signal("widget::systray::toggle") end,
+    {description = "toggle systray", group = "awesome"}
   ),
 
 

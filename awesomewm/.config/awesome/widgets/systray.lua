@@ -37,15 +37,19 @@ local update_widget = function (widget)
 end
 
 
+-- toggle systray visibility
+local toggle_systray = function (widget)
+  widget.show_systray = not widget.show_systray
+  update_widget(widget)
+end
+
+
 -- define buttons
 local buttons = function (screen, widget)
   return gears.table.join(
     awful.button(
       {}, keys.leftclick,
-      function()
-        widget.show_systray = not widget.show_systray
-        update_widget(widget)
-      end
+      function() toggle_systray(widget) end
     )
   )
 end
@@ -82,6 +86,10 @@ local create_widget = function (screen)
   systray.visible = false
   button.tooltip = require("widgets.tooltip")({ button_container })
   button.tooltip.text = "Show systray"
+
+  awesome.connect_signal("widget::systray::toggle", function ()
+    toggle_systray(wrapper)
+  end)
 
   return wrapper
 end
