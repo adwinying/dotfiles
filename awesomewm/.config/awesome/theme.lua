@@ -192,10 +192,15 @@ theme.layout_floating = theme.icons_path .. "layouts/floating.png"
 theme.layout_max      = theme.icons_path .. "layouts/maximized.png"
 
 -- Hotkeys
-theme.hotkeys_bg           = color.black .. "aa"
-theme.hotkeys_border_width = dpi(0)
-theme.hotkeys_shape        = helpers.rrect
-theme.hotkeys_modifiers_fg = color.yellow
+theme.hotkeys_font             = font .. " Bold 10"
+theme.hotkeys_description_font = font .. " 10"
+theme.hotkeys_bg               = color.black .. "aa"
+theme.hotkeys_border_width     = dpi(0)
+theme.hotkeys_shape            = helpers.rrect
+theme.hotkeys_modifiers_fg     = color.yellow
+theme.hotkeys_label_fg         = color.white
+theme.hotkeys_label_bg         = color.darkblue
+theme.hotkeys_group_margin     = dpi(40)
 
 
 return theme
