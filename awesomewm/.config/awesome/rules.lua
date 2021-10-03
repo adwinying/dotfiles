@@ -26,6 +26,19 @@ local rules = {
     }
   },
 
+  -- Pavucontrol & Bluetooth Devices
+  {
+    rule_any = {
+      class = {
+        "Pavucontrol",
+      },
+    },
+    properties = {
+      width = screen_width * 0.30,
+      height = screen_height * 0.50,
+    },
+  },
+
   -- Floating clients.
   {
     rule_any = {
@@ -45,10 +58,12 @@ local rules = {
         "Wpa_gui",
         "veromix",
         "xtightvncviewer",
+        "Pavucontrol",
         "plasmashell",
         "Plasma",
       },
       name = {
+        "Bluetooth Devices",
         "Event Tester",  -- xev.
         "Steam Guard - Computer Authorization Required",
       },
@@ -88,37 +103,6 @@ local rules = {
   --   },
   --   properties = { switchtotag = true },
   -- },
-
-  -- File chooser dialog
-  {
-    rule_any = {
-      role = {
-        "GtkFileChooserDialog",
-      },
-      properties = {
-        floating = true,
-        width = screen_width * 0.55,
-        height = screen_height * 0.65,
-      },
-    },
-  },
-
-  -- Pavucontrol & Bluetooth Devices
-  {
-    rule_any = {
-      class = {
-        "Pavucontrol",
-      },
-      name = {
-        "Bluetooth Devices",
-      },
-      properties = {
-        floating = true,
-        width = screen_width * 0.55,
-        height = screen_height * 0.45,
-      },
-    },
-  },
 
   -- Set Brave to always map on the tag named "web" on screen 1.
   {
