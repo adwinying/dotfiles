@@ -1,3 +1,4 @@
+alacritty
 awesome
 feh
 inotify-tools

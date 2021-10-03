@@ -12,7 +12,7 @@ local dpi = require("beautiful").xresources.apply_dpi
 -- ========================================
 
 -- terminal client name argument
-local terminal_name_arg = "-n"
+local terminal_name_arg = "--class "
 
 -- terminal client instance name
 local client_name = "FloatingTerminal"
@@ -73,7 +73,7 @@ end
 
 -- spawn the floating terminal
 function FloatingTerminal:spawn ()
-  awful.spawn({ self.app, self.arg })
+  awful.spawn(self.app .. " " .. self.arg)
 end
 
 
