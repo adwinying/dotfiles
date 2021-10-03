@@ -482,7 +482,7 @@ keys.globalkeys = gears.table.join(
   awful.key(
     {}, "Print",
     function ()
-      os.execute(Apps.screenshot .. "  | xclip -sel clip -t image/png" )
+      awful.spawn.with_shell(Apps.screenshot .. "  | xclip -sel clip -t image/png" )
       naughty.notify {
         icon = beautiful.icons_path .. "screenshot.svg",
         title = "Screenshot",
@@ -508,11 +508,19 @@ keys.globalkeys = gears.table.join(
   awful.key(
     { modkey, shiftkey }, "Print",
     function ()
-      os.execute("sleep 5 | " .. Apps.screenshot .. "  | xclip -sel clip -t image/png" )
-      naughty.notify {
-        icon = beautiful.icons_path .. "screenshot.svg",
-        title = "Screenshot",
-        text = "Screenshot of screen stored in clipboard.",
+      awful.spawn.with_shell(Apps.screenshot .. " -d 5 | xclip -sel clip -t image/png" )
+
+      gears.timer {
+        timeout = 5,
+        autostart = true,
+        single_shot = true,
+        callback = function ()
+          naughty.notify {
+            icon = beautiful.icons_path .. "screenshot.svg",
+            title = "Screenshot",
+            text = "Screenshot of screen stored in clipboard.",
+          }
+        end
       }
     end,
     { description = "take a screenshot after 5 secs", group = "hotkeys" }
