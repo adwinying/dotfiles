@@ -237,26 +237,6 @@ function Switcher:get_mousebindings ()
   )
 end
 
--- Get screen clients
-function Switcher:get_screen_clients ()
-  local clients = self.screen.clients
-
-  local matcher = function (c)
-    return awful.rules.match(c, {
-      minimized = true,
-      skip_taskbar = false,
-      hidden = false,
-      first_tag = self.screen.selected_tag,
-    })
-  end
-
-  for c in awful.client.iterate(matcher) do
-    table.insert(clients, c)
-  end
-
-  return clients
-end
-
 
 -- Activate keybindings
 function Switcher:activate_keybindings ()
@@ -290,7 +270,7 @@ end
 -- Show window switcher
 function Switcher:show ()
   -- If no available clients then do nothing
-  if #self:get_screen_clients() == 0 then return end
+  if #self.screen.selected_tag:clients() == 0 then return end
 
   -- Update first client
   self.first_client = client.focus
@@ -335,8 +315,6 @@ function Switcher:hide ()
   end
 
   -- Minimize originally minimized clients
-  local s = awful.screen.focused()
-  local clients = s.selected_tag:clients()
   for _, c in pairs(self.minimized_clients) do
     if c and c.valid and not (client.focus and client.focus == c) then
       c.minimized = true
