@@ -378,7 +378,7 @@ keys.globalkeys = gears.table.join(
   ),
 
   awful.key(
-    { modkey, ctrlkey }, "n",
+    { modkey, shiftkey }, "n",
     function ()
       local c = awful.client.restore()
       -- Focus restored client
