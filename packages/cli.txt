@@ -3,5 +3,6 @@ acpid
 htop
 lazygit
 neofetch
+ranger
 the_silver_searcher
 unzip

@@ -13,6 +13,7 @@ pulseaudio
 redshift
 rofi
 thunar
+ueberzug
 xcape
 xclip
 xorg-server
