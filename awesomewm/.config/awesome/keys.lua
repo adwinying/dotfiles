@@ -444,6 +444,12 @@ keys.globalkeys = gears.table.join(
   -- Applications
   -- ========================================
   awful.key(
+    { modkey }, "`",
+    function () awesome.emit_signal("floating_terminal::toggle") end,
+    { description = "toggle floating terminal", group = "hotkeys" }
+  ),
+
+  awful.key(
     { modkey }, "Return",
     function () awful.spawn(Apps.terminal) end,
     { description = "terminal", group = "hotkeys" }
