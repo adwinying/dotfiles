@@ -5,14 +5,14 @@ kvantum-theme-nordic-git
 light
 lua-pam-git
 maim
-nordic-darker-theme
+nordic-theme-git
 pavucontrol
 picom-ibhagwan-git
 playerctl
 pulseaudio
 rofi
-tela-icon-theme
 xcape
 xclip
 xorg-server
 xorg-xinit
+zafiro-icon-theme
