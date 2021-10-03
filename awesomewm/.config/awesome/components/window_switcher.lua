@@ -22,8 +22,7 @@ local switcher_commands = {
 
   search_client = function()
     awesome.emit_signal("window_switcher::hide")
-    local cmd = "rofi -modi drun,run,window,ssh -show window -theme nord"
-    awful.spawn.with_shell(cmd)
+    awful.spawn.with_shell("rofi -show window")
   end,
 }
 

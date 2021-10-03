@@ -15,7 +15,7 @@ local config_dir = gears.filesystem.get_configuration_dir()
 -- define default apps
 Apps = {
   terminal          = "st",
-  launcher          = "rofi -modi drun,run,window,ssh -show drun -theme nord -icon-theme 'zafiro-icon-theme'",
+  launcher          = "rofi -show drun",
   web_browser       = "brave",
   volume_manager    = "pavucontrol",
   network_manager   = "nm-connection-editor",

@@ -1,0 +1,141 @@
+configuration {
+  font:            "HackGen Console 10";
+  icon-theme:      "zafiro-icon-theme";
+  fixed-num-lines: true;
+  show-icons:      true;
+  sidebar-mode:    true;
+  scroll-method:   0;
+  window-format:   "[{w:1}] {t}";
+  click-to-exit:   true;
+
+  modi:           "drun,window,ssh,combi";
+  display-window: "";
+  display-run:    "";
+  display-ssh:    "";
+  display-drun:   "";
+  display-combi:  "";
+}
+
+* {
+  lightblue: #8fbcbb;
+  darkblue : #2e3440;
+  red      : #bf616a;
+  orange   : #d08770;
+  yellow   : #ebcb8b;
+  green    : #a3be8c;
+  white    : #eceff4;
+  black    : #000000;
+}
+
+window {
+  border:           0px;
+  border-radius:    5px;
+  padding:          30px;
+  width:            30%;
+  background-color: #000000aa;
+}
+scrollbar {
+  border:       0px;
+  handle-color: @white;
+  handle-width: 8px;
+  padding:      0;
+}
+
+prompt {
+  spacing:    0;
+  border:     0;
+  text-color: @white;
+  margin: 0 5px 0 0;
+}
+textbox-prompt-colon {
+  expand:     false;
+  str:        "";
+  margin:     0px 5px 0px 0px;
+  text-color: inherit;
+}
+entry {
+  spacing:           0;
+  text-color:        @white;
+  placeholder-color: @lightblue;
+}
+case-indicator {
+  spacing:    0;
+  text-color: @fg;
+}
+inputbar {
+  spacing:    0px;
+  text-color: @fg;
+  margin:     10px 0 5px 10px;
+  children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+listview {
+  lines:        7;
+  columns:      1;
+  fixed-height: 0;
+  border:       0px;
+  spacing:      10px;
+  scrollbar:    false;
+  margin:       20px 0px;
+}
+
+element {
+  border:        0px;
+  border-radius: 5px;
+  padding:       10px;
+}
+element-icon {
+  margin: 0px 5px 0px 0px;
+}
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color:       @white;
+}
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color:       @red;
+}
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color:       @green;
+}
+element selected.normal {
+  background-color: @lightblue;
+  text-color:       @white;
+}
+element selected.urgent {
+  background-color: @red;
+  text-color:       @white;
+}
+element selected.active {
+  background-color: @green;
+  text-color:       @white;
+}
+
+mode-switcher {
+  padding: 0px 5px;
+}
+button {
+  horizontal-align: 0.5;
+  vertical-align:   0.5;
+  background-color: @darkblue;
+  margin:           5px;
+  padding:          5px;
+  text-color:       @white;
+  border:           0px;
+  border-radius:    5px;
+}
+button selected {
+  background-color: @lightblue;
+}
+
+message {
+  border:  0px;
+  padding: 0px 10px;
+}
+textbox {
+  text-color: @white;
+}
