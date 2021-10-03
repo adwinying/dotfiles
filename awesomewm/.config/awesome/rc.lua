@@ -64,6 +64,8 @@ local startup_scripts = {
   "xset r rate 200 30",
   -- Compositor
   "picom",
+  -- Night mode
+  "redshift-gtk",
   -- Set wallpaper
   "feh --bg-scale " .. config_dir .. "/wallpapers/pe.jpg",
   -- Start ibus

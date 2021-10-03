@@ -28,7 +28,8 @@ local buttons = function (screen)
   return gears.table.join(
     awful.button(
       {}, keys.leftclick,
-      function() awful.spawn(Apps.night_mode) end
+      -- Toggle redshift
+      function() awful.spawn.with_shell("pkill -USR1 redshift-gtk") end
     ),
     awful.button(
       {}, keys.rightclick,

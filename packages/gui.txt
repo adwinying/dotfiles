@@ -10,7 +10,9 @@ pavucontrol
 picom-ibhagwan-git
 playerctl
 pulseaudio
+redshift
 rofi
+thunar
 xcape
 xclip
 xorg-server
