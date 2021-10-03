@@ -421,6 +421,24 @@ keys.globalkeys = gears.table.join(
     { description = "select previous", group = "layout" }
   ),
 
+  awful.key(
+    { modkey }, "w",
+    function () awful.layout.set(awful.layout.suit.max) end,
+    { description = "select max layout", group = "layout" }
+  ),
+
+  awful.key(
+    { modkey }, "s",
+    function () awful.layout.set(awful.layout.suit.tile) end,
+    { description = "select tile layout", group = "layout" }
+  ),
+
+  awful.key(
+    { modkey, shiftkey }, "s",
+    function () awful.layout.set(awful.layout.suit.floating) end,
+    { description = "select floating layout", group = "layout" }
+  ),
+
 
   -- ========================================
   -- Applications
@@ -432,7 +450,7 @@ keys.globalkeys = gears.table.join(
   ),
 
   awful.key(
-    { modkey }, "w",
+    { modkey }, "e",
     function ()
       awful.spawn.with_shell([[ notify-send "Current Weather" "$(curl "wttr.in?T0")" ]])
     end,
