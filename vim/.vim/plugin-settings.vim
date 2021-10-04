@@ -42,8 +42,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " # lightline settings
-" show statusline
-set laststatus=2
 " hide default statusline
 set noshowmode
 " set lightline theme

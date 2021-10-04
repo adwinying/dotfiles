@@ -4,8 +4,7 @@
 "
 
 let configs = [
-\  "general",
-\  "ui",
+\  "basic",
 \  "plugins",
 \  "plugin-settings",
 \  "coc",
