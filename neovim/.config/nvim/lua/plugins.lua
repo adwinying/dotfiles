@@ -107,6 +107,15 @@ return packer.startup(function (use)
     config = function() require("configs.matchup") end,
   }
 
+  -- LSP config
+  use {
+    "neovim/nvim-lspconfig",
+    requires = { "kabouzeid/nvim-lspinstall", },
+    after = "cmp-nvim-lsp",
+    setup = function() require("helpers").packer_lazy_load("nvim-lspconfig") end,
+    config = function () require("configs.lspconfig") end,
+  }
+
   -- file finder
   use {
     "nvim-telescope/telescope.nvim",
