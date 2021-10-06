@@ -86,6 +86,13 @@ return packer.startup(function (use)
     after = "vim-repeat",
   }
 
+  -- align blocks of text
+  use {
+    "junegunn/vim-easy-align",
+    event = "BufRead",
+    setup = function () require("mappings.align") end,
+  }
+
   -- comments
   use {
     "terrortylor/nvim-comment",
