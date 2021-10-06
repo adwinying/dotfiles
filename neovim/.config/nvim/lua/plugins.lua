@@ -74,6 +74,18 @@ return packer.startup(function (use)
     setup = function () require("helpers").packer_lazy_load("gitsigns.nvim") end,
   }
 
+  -- . support for plugins
+  use {
+    "tpope/vim-repeat",
+    event = "BufRead",
+  }
+
+  -- surround motions
+  use {
+    "tpope/vim-surround",
+    after = "vim-repeat",
+  }
+
   -- comments
   use {
     "terrortylor/nvim-comment",
