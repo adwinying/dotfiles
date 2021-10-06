@@ -227,14 +227,18 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Remap pane switching
-execute "set <M-j>=\ej"
-execute "set <M-k>=\ek"
-execute "set <M-l>=\el"
-execute "set <M-h>=\eh"
 nnoremap <A-j> :resize +5<CR>
 nnoremap <A-k> :resize -5<CR>
 nnoremap <A-l> :vertical resize -5<CR>
 nnoremap <A-h> :vertical resize +5<CR>
+
+" remap meta keys for resizing for vim only
+if !has('nvim')
+  execute "set <M-j>=\ej"
+  execute "set <M-k>=\ek"
+  execute "set <M-l>=\el"
+  execute "set <M-h>=\eh"
+endif
 
 " J to join lines, K to split lines
 nnoremap K i<CR><esc>
