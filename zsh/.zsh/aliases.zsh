@@ -54,7 +54,6 @@ alias casku='brew upgrade --cask'
 alias caskx='brew uninstall --cask'
 
 # applications
-alias v="vim"
 alias emacs="vim"
 alias dc="docker-compose"
 alias vt="vagrant"
@@ -66,6 +65,11 @@ alias art="php artisan"
 function chpwd() {
   emulate -L zsh
   ls -l
+}
+
+# edit with neovim. If neovim not found use vim
+function v() {
+  nvim "$@" 2> /dev/null || vim "$@"
 }
 
 # git Commit All with Message then Push to remote
