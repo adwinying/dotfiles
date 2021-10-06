@@ -56,4 +56,12 @@ return packer.startup(function (use)
     after = "packer.nvim",
     config = function() require("configs.statusline") end,
   }
+
+  -- Git signs
+  use {
+    "lewis6991/gitsigns.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function () require("configs.gitsigns") end,
+    setup = function () require("helpers").packer_lazy_load("gitsigns.nvim") end,
+  }
 end)
