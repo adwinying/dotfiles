@@ -107,6 +107,30 @@ return packer.startup(function (use)
     config = function() require("configs.matchup") end,
   }
 
+  -- completions
+  use {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    config = function () require("configs.cmp") end,
+  }
+  use {
+    "hrsh7th/cmp-nvim-lsp",
+    module = "cmp_nvim_lsp",
+    after = "nvim-cmp",
+  }
+  use {
+    "hrsh7th/cmp-buffer",
+    after = "nvim-cmp",
+  }
+  use {
+    "hrsh7th/cmp-path",
+    after = "nvim-cmp",
+  }
+  use {
+    "hrsh7th/cmp-nvim-lua",
+    after = "nvim-cmp",
+  }
+
   -- LSP config
   use {
     "neovim/nvim-lspconfig",
