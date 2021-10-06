@@ -2,6 +2,9 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
+local present
+local packer
+
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system {
     "git",
@@ -21,7 +24,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   else
     error(string.format(
       "Couldn't clone packer!\nPacker path: %s\n%s",
-      packer_path,
+      install_path,
       packer
     ))
 
@@ -40,7 +43,7 @@ vim.cmd([[
 
 
 -- load plugins
-local packer = packer or require("packer")
+packer = packer or require("packer")
 
 return packer.startup(function (use)
   -- yo dawg, I heard you like plugin managers
