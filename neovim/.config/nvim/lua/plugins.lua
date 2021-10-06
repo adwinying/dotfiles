@@ -57,6 +57,15 @@ return packer.startup(function (use)
     config = function() require("configs.statusline") end,
   }
 
+  -- Better syntax highlighting
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "0.5-compat",
+    run = ":TSUpdate",
+    event = "BufRead",
+    config = function () require("configs.treesitter") end,
+  }
+
   -- Git signs
   use {
     "lewis6991/gitsigns.nvim",
