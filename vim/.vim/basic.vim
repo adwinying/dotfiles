@@ -9,6 +9,9 @@ set nocompatible
 " Security
 set modelines=1
 
+" Enable mouse
+set mouse=a
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
