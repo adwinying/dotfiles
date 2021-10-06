@@ -106,4 +106,25 @@ return packer.startup(function (use)
     setup = function() require("helpers").packer_lazy_load("vim-matchup") end,
     config = function() require("configs.matchup") end,
   }
+
+  -- file finder
+  use {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    requires = {
+      {
+        "nvim-lua/plenary.nvim",
+      },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+      },
+      {
+        "nvim-telescope/telescope-media-files.nvim",
+        setup = function () require("mappings.telescope_media") end,
+      },
+    },
+    config = function () require("configs.telescope") end,
+    setup = function () require("mappings.telescope") end,
+  }
 end)

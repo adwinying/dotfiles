@@ -4,5 +4,5 @@ htop
 lazygit
 neofetch
 ranger
-the_silver_searcher
+ripgrep
 unzip

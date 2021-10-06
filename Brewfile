@@ -10,6 +10,7 @@ brew "neovim"
 brew "lazygit"
 brew "lazydocker"
 brew "node"
+brew "ripgrep"
 brew "yarn"
 
 cask "font-hackgen"
