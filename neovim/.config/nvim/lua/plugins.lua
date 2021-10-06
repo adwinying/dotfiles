@@ -64,4 +64,11 @@ return packer.startup(function (use)
     config = function () require("configs.gitsigns") end,
     setup = function () require("helpers").packer_lazy_load("gitsigns.nvim") end,
   }
+
+  -- comments
+  use {
+    "terrortylor/nvim-comment",
+    event = "BufRead",
+    config = function () require("configs.comment") end,
+  }
 end)
