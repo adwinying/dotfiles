@@ -140,6 +140,13 @@ return packer.startup(function (use)
     config = function () require("configs.lspconfig") end,
   }
 
+  -- show function signature
+  use {
+    "ray-x/lsp_signature.nvim",
+    after = "nvim-lspconfig",
+    config = function () require("configs.lsp_signature") end,
+  }
+
   -- file finder
   use {
     "nvim-telescope/telescope.nvim",
