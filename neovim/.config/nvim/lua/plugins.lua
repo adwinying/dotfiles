@@ -80,4 +80,11 @@ return packer.startup(function (use)
     event = "BufRead",
     config = function () require("configs.comment") end,
   }
+
+  -- better % support
+  use {
+    "andymass/vim-matchup",
+    setup = function() require("helpers").packer_lazy_load("vim-matchup") end,
+    config = function() require("configs.matchup") end,
+  }
 end)
