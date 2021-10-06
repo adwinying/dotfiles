@@ -2,6 +2,7 @@
 vim/.vim/autoload
 vim/.vim/plugged
 vim/.vim/.netrwhist
+neovim/.config/nvim/plugin
 tmux/.tmux/plugins
 tmux/.tmux/resurrect
 lazygit/.config/lazygit/state.yml
