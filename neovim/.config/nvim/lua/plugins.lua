@@ -49,4 +49,11 @@ return packer.startup(function (use)
     event = "VimEnter",
     setup = function() require("mappings.packer") end,
   }
+
+  -- status bar
+  use {
+    "hoob3rt/lualine.nvim",
+    after = "packer.nvim",
+    config = function() require("configs.statusline") end,
+  }
 end)
