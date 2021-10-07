@@ -67,6 +67,13 @@ return packer.startup(function (use)
     config = function() require("configs.statusline") end,
   }
 
+  -- Preview colors of hexcodes
+  use {
+    "norcalli/nvim-colorizer.lua",
+    event = "BufRead",
+    config = function () require("colorizer").setup() end,
+  }
+
   -- Better syntax highlighting
   use {
     "nvim-treesitter/nvim-treesitter",
