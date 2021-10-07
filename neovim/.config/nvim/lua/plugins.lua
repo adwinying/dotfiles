@@ -53,6 +53,13 @@ return packer.startup(function (use)
     setup = function() require("mappings.packer") end,
   }
 
+  -- -- colorscheme
+  use {
+    "arcticicestudio/nord-vim",
+    after = "packer.nvim",
+    config = function() require("configs.colors") end,
+  }
+
   -- status bar
   use {
     "hoob3rt/lualine.nvim",

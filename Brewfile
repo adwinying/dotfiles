@@ -4,7 +4,7 @@ brew "zsh"
 brew "fzf"
 brew "stow"
 brew "tmux"
-brew "mosh"
+brew "mosh", args: ['HEAD']
 brew "macvim"
 brew "neovim"
 brew "lazygit"

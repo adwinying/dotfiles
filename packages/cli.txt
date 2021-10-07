@@ -2,6 +2,7 @@ acpi
 acpid
 htop
 lazygit
+mosh-git
 neofetch
 ranger
 ripgrep
