@@ -40,7 +40,7 @@ gitsigns.setup {
   },
 
   watch_gitdir = {
-    interval = 100,
+    interval = 1000,
     follow_files = true,
   },
 }
