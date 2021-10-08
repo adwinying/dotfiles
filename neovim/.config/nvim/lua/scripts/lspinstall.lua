@@ -5,9 +5,14 @@ if not present then return end
 -- servers to install
 local servers = {
   "volar",
+  "efm",
   "php",
+  "html",
+  "css",
   "typescript",
+  "tailwindcss",
   "lua",
+  "go",
 }
 
 local install_servers = function ()

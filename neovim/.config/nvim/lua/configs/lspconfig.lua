@@ -34,13 +34,75 @@ local custom_configs = {
 
         workspace = {
           -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+            unpack(vim.api.nvim_get_runtime_file("", true)),
+            "/usr/lib/lua",
+            "/usr/lib/lua-pam",
+            "/usr/share/awesome/lib",
+          },
         },
       },
     }
 
     return config
   end,
+
+  volar = function (config)
+    -- disable formatting feature
+    config.init_options = { documentFormatting = false }
+
+    return config
+  end,
+
+  html = function (config)
+    -- disable formatting feature
+    config.init_options = { documentFormatting = false }
+
+    return config
+  end,
+
+  efm = function (config)
+    -- Super hacky workaround to automate installation of eslint_d
+    -- by using volar's lspinstall script
+    local eslint_d_path = require("lspinstall/util").install_path("volar")
+      .. "/node_modules/.bin/eslint_d"
+
+    -- eslint configs ripped off from here
+    -- https://github.com/martinsione/dotfiles/blob/master/src/.config/nvim/lua/modules/config/nvim-lspconfig/format.lua
+    local eslint = {
+      lintCommand = eslint_d_path .. " -f unix --stdin --stdin-filename ${INPUT}",
+      lintStdin = true,
+      lintIgnoreExitCode = true,
+      lintFormats = { "%f:%l:%c: %m" },
+      formatCommand = eslint_d_path .. " --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+      formatStdin = true,
+    }
+
+    config.init_options = {
+      documentFormatting = true,
+      codeAction = true,
+    }
+
+    config.settings = {
+      languages = {
+        vue             = { eslint },
+        javascript      = { eslint },
+        javascriptreact = { eslint },
+        typescript      = { eslint },
+        typescriptreact = { eslint },
+      },
+    }
+
+    config.filetypes = {
+      "vue",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    }
+
+    return config
+  end
 }
 
 -- Use an on_attach function to only map the following keys
@@ -64,7 +126,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',                       opts)
   buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',                    opts)
   buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>',                            opts)
+  buf_set_keymap('n', 'gy',         '<cmd>lua vim.lsp.buf.type_definition()<CR>',                            opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',                                     opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',                                opts)
   buf_set_keymap('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>',                                 opts)
