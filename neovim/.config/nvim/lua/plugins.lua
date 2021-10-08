@@ -130,6 +130,13 @@ return packer.startup(function (use)
     config = function() require("configs.better_escape") end,
   }
 
+  -- smooth scrolling
+  use {
+    "terryma/vim-smooth-scroll",
+    event = "BufRead",
+    setup = function () require("mappings.smooth_scroll") end,
+  }
+
   -- completions
   use {
     "hrsh7th/nvim-cmp",
