@@ -97,6 +97,12 @@ return packer.startup(function (use)
     event = "BufRead",
   }
 
+  -- comments
+  use {
+    "tpope/vim-commentary",
+    after = "vim-repeat",
+  }
+
   -- surround motions
   use {
     "tpope/vim-surround",
@@ -108,13 +114,6 @@ return packer.startup(function (use)
     "junegunn/vim-easy-align",
     event = "BufRead",
     setup = function () require("mappings.align") end,
-  }
-
-  -- comments
-  use {
-    "terrortylor/nvim-comment",
-    event = "BufRead",
-    config = function () require("configs.comment") end,
   }
 
   -- better % support
