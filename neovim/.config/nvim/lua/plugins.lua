@@ -62,7 +62,7 @@ return packer.startup(function (use)
 
   -- status bar
   use {
-    "hoob3rt/lualine.nvim",
+    "shadmansaleh/lualine.nvim",
     after = "packer.nvim",
     config = function() require("configs.statusline") end,
   }

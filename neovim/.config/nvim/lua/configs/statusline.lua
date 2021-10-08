@@ -7,24 +7,32 @@ lualine.setup {
   options = {
     icons_enabled = false,
     theme = "nord",
-    component_separators = "|",
-    section_separators = "",
-    disabled_filetypes = {}
+    component_separators = { left = "|", right = "|" },
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = {},
+    always_divide_middle = true,
   },
 
   sections = {
     lualine_a = {"mode"},
     lualine_b = {
-      "branch",
+      {
+        "branch",
+        fmt = function (str)
+          return str:len() >= 15 and str:sub(0, 12) .. "..." or str
+        end,
+      },
       {
         "diff",
         colored = true,
         -- all colors are in format #rrggbb
-        color_added = colors.green,
-        color_modified = colors.yellow,
-        color_removed = colors.red,
-        symbols = {added = "+", modified = "~", removed = "-"}
-      }
+        diff_color = {
+          added    = { fg = colors.green },
+          modified = { fg = colors.yellow },
+          removed  = { fg = colors.red },
+        },
+        symbols = {added = "+", modified = "~", removed = "-"},
+      },
     },
     lualine_c = {
       "filename",
@@ -36,16 +44,18 @@ lualine.setup {
         -- displays diagnostics from defined severity
         sections = {"error", "warn", "info", "hint"},
         -- all colors are in format #rrggbb
-        color_error = colors.red,
-        color_warn = colors.yellow,
-        color_info = colors.orange,
-        color_hint = colors.lightblue,
+        diagnostics_color = {
+          error = { fg = colors.red },
+          warn  = { fg = colors.yellow },
+          info  = { fg = colors.orange },
+          hint  = { fg = colors.lightblue },
+        },
         symbols = {error = "E", warn = "W", info = "I", hint = "H"},
       },
     },
     lualine_x = {"encoding", "fileformat", "filetype"},
     lualine_y = {"progress"},
-    lualine_z = {"location"}
+    lualine_z = {"location"},
   },
 
   inactive_sections = {
@@ -54,10 +64,26 @@ lualine.setup {
     lualine_c = {"filename"},
     lualine_x = {"location"},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
 
-  tabline = {},
+  tabline = {
+    lualine_a = {
+      {
+        "tabs",
+        -- maximum width of tabs component
+        max_length = vim.o.columns,
+        -- 0  shows tab_nr
+        -- 1  shows tab_name
+        -- 2  shows tab_nr + tab_name
+        mode = 2,
+        tabs_color = {
+          active   = { bg = colors.lightblue },
+          inactive = { bg = colors.darkblue , fg = colors.white},
+        },
+      },
+    },
+  },
 
   extensions = {},
 }
