@@ -12,9 +12,18 @@ set modelines=1
 " Enable mouse
 set mouse=a
 
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+" Delete comment character when joining commented lines
+set formatoptions+=j
 
 " Leader Shortcut
 let mapleader=","
@@ -125,7 +134,11 @@ endtry
 " Set dark bg
 set background=dark
 
-" Set utf8 as standard encoding and en_US as the standard language
+" Set en_US as the standard language
+let $LANG='en'
+set langmenu=en
+
+" Set utf8 as standard encoding
 set encoding=utf8
 
 " Use Unix as the standard file type
@@ -154,16 +167,17 @@ set writebackup
 " Indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" use spaces instead of tabs
-set expandtab
-
-" auto indent if prev line is indented
-set autoindent
-
 " set default tabs to 2 spaces
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
+" use spaces instead of tabs
+set expandtab
+set smarttab
+
+" auto indent if prev line is indented
+set autoindent
 
 " language specific indentation
 augroup configgroup
@@ -269,6 +283,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
 nnoremap <leader>o :source ~/.vimsession.vim<CR>
 
+" Allow undo when deleting in insert mode
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
@@ -276,8 +294,10 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Return to last edit position when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
+au BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line
