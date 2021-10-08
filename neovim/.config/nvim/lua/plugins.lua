@@ -200,6 +200,13 @@ return packer.startup(function (use)
     config = function () require("configs.lsp_signature") end,
   }
 
+  -- auto insert matching brackets
+  use {
+    "windwp/nvim-autopairs",
+    after = "nvim-cmp",
+    config = function () require("configs.autopairs") end,
+  }
+
   -- file finder
   use {
     "nvim-telescope/telescope.nvim",
