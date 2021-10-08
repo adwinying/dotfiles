@@ -137,6 +137,12 @@ return packer.startup(function (use)
     setup = function () require("mappings.smooth_scroll") end,
   }
 
+  -- tmux integration
+  use {
+    "aserowy/tmux.nvim",
+    config = function() require("configs.tmux") end,
+  }
+
   -- completions
   use {
     "hrsh7th/nvim-cmp",
