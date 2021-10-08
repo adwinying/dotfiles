@@ -109,6 +109,12 @@ return packer.startup(function (use)
     after = "vim-repeat",
   }
 
+  -- advanced substitution
+  use {
+    "tpope/vim-abolish",
+    event = "BufRead",
+  }
+
   -- align blocks of text
   use {
     "junegunn/vim-easy-align",
