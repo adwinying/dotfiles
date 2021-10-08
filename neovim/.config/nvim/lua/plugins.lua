@@ -123,6 +123,13 @@ return packer.startup(function (use)
     config = function() require("configs.matchup") end,
   }
 
+  -- better escape
+  use {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function() require("configs.better_escape") end,
+  }
+
   -- completions
   use {
     "hrsh7th/nvim-cmp",
