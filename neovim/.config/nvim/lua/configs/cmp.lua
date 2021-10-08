@@ -5,12 +5,19 @@ if not present then return end
 vim.opt.completeopt = "menuone,noselect"
 
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+
   formatting = {
     format = function(entry, vim_item)
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        nvim_lua = "[LUA]",
+        luasnip  = "[SNP]",
         buffer   = "[BUF]",
+        nvim_lua = "[LUA]",
         path     = "[PTH]",
       })[entry.source.name]
 
@@ -33,6 +40,7 @@ cmp.setup {
 
   sources = {
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },

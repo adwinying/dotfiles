@@ -143,10 +143,23 @@ return packer.startup(function (use)
     config = function() require("configs.tmux") end,
   }
 
+  -- snippet provider
+  use {
+    "rafamadriz/friendly-snippets",
+    event = "InsertEnter",
+  }
+
+  -- snippet engine
+  use {
+    "L3MON4D3/LuaSnip",
+    after = "friendly-snippets",
+    config = function () require("configs.luasnip") end,
+  }
+
   -- completions
   use {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    after = "LuaSnip",
     config = function () require("configs.cmp") end,
   }
   use {
@@ -164,6 +177,10 @@ return packer.startup(function (use)
   }
   use {
     "hrsh7th/cmp-nvim-lua",
+    after = "nvim-cmp",
+  }
+  use {
+    "saadparwaiz1/cmp_luasnip",
     after = "nvim-cmp",
   }
 
