@@ -13,3 +13,12 @@ if not pcall(require, "libraries.foundation_remapping") then
     "https://raw.githubusercontent.com/hetima/hammerspoon-foundation_remapping/master/foundation_remapping.lua"
   )
 end
+
+-- hyperex
+-- https://github.com/hetima/hammerspoon-hyperex
+if not pcall(require, "libraries.hyperex") then
+  helpers.download_library(
+    "hyperex.lua",
+    "https://raw.githubusercontent.com/hetima/hammerspoon-hyperex/master/hyperex.lua"
+  )
+end
