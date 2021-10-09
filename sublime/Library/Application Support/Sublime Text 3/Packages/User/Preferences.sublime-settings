@@ -3,7 +3,6 @@
 	"font_size": 12,
 	"ignored_packages":
 	[
-		"ConvertToUTF8",
 		"Vintage",
 	],
 	"rulers":
