@@ -29,11 +29,11 @@ colorscheme nord
 
 " # fzf settings
 " set fzf trigger key
-noremap <leader>t :FZF<CR>
+noremap <leader>ff :FZF<CR>
 " set the_silver_searcher trigger key
 " requires the_silver_searcher to be installed:
 " brew install the_silver_searcher
-noremap <leader>f :Ag<CR>
+noremap <leader>fz :Ag<CR>
 
 " # vim-easy-align settings
 " Start interactive EasyAlign in visual mode (e.g. vipga)
