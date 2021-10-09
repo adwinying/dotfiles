@@ -19,6 +19,9 @@ local keybindings = configs.keybindings
 -- Remap hyper_override to hyper key
 remapper:remap(keybindings.hyper_override, keybindings.hyper):register()
 
+-- Trigger escape when control key is pressed alone
+hyperex.new("ctrl"):setEmptyHitKey("escape")
+
 -- Trigger 英数 key when left command key is pressed alone
 hyperex.new("cmd"):setEmptyHitKey(0x66)
 
