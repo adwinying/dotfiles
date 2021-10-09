@@ -8,3 +8,4 @@
 -- =============================================================================
 
 require("keybindings.modifiers")
+require("keybindings.hammerspoon")
