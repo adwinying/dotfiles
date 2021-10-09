@@ -12,7 +12,6 @@ local hyper = require("modules.hyper")
 -- reload configs
 hyper:bind({ "shift" }, "r", function ()
   hs.reload()
-  hs.notify.show("Configs reloaded.", "", "")
 end)
 
 -- toggle console

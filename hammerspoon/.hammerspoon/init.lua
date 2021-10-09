@@ -18,3 +18,6 @@ require("libraries")
 
 -- Load keybindings
 require("keybindings")
+
+-- Show config load success message
+hs.notify.show("Config Initialization Complete", "All ready to go!", "")
