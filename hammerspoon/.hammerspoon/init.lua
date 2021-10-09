@@ -12,3 +12,9 @@
 
 -- Load preferences
 require("preferences")
+
+-- Load libraries
+require("libraries")
+
+-- Load keybindings
+require("keybindings")
