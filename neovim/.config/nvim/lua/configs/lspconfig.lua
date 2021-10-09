@@ -29,7 +29,7 @@ local custom_configs = {
 
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
+          globals = { "vim", "hs" },
         },
 
         workspace = {
@@ -39,6 +39,7 @@ local custom_configs = {
             "/usr/lib/lua",
             "/usr/lib/lua-pam",
             "/usr/share/awesome/lib",
+            "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
           },
         },
       },
