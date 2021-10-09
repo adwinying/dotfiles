@@ -139,7 +139,7 @@ return packer.startup(function (use)
   -- smooth scrolling
   use {
     "terryma/vim-smooth-scroll",
-    event = "BufRead",
+    event = "VimEnter",
     setup = function () require("mappings.smooth_scroll") end,
   }
 
