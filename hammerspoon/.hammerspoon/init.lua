@@ -16,6 +16,9 @@ require("preferences")
 -- Load libraries
 require("libraries")
 
+-- Load modules
+require("modules")
+
 -- Load keybindings
 require("keybindings")
 
