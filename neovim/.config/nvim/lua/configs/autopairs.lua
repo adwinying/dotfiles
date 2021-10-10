@@ -10,7 +10,7 @@ autopairs_cmp.setup {
   -- it will auto insert `(` (map_char) after select function or method item
   map_complete = true,
   -- automatically select the first item
-  auto_select = true,
+  auto_select = false,
   -- use insert confirm behavior instead of replace
   insert = false,
   -- modifies the function or method delimiter by filetypes
