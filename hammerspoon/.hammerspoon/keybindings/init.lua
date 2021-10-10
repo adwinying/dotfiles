@@ -10,3 +10,4 @@
 require("keybindings.modifiers")
 require("keybindings.hammerspoon")
 require("keybindings.apps")
+require("keybindings.wm")

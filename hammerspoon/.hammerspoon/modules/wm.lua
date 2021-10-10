@@ -35,5 +35,10 @@ Hhtwm.defaultLayout = config.default_layout
 -- filters (window rules)
 Hhtwm.filters = config.rules
 
+-- calculate resize step
+Hhtwm.calcResizeStep = function()
+  return 1 / config.resize_step
+end
+
 -- start hhtwm
 Hhtwm.start()

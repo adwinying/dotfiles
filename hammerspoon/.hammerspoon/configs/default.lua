@@ -36,6 +36,9 @@ default_config.wm = {
   -- gap size
   gap_size = 9,
 
+  -- resize step
+  resize_step = 50,
+
   -- available layouts
   enabled_layouts = {
     "main-left",
