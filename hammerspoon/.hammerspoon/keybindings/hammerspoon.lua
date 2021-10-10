@@ -3,6 +3,7 @@
 -- hammerspoon basic keybindings
 --
 
+local helpers = require("helpers")
 local hyper = require("modules.hyper")
 
 -- =============================================================================
@@ -18,4 +19,7 @@ end)
 hyper:bind({ "shift" }, "t", function ()
   hs.console.clearConsole()
   hs.toggleConsole()
+
+  -- focus next available window
+  helpers.get_active_window(function (win) win:focus() end)
 end)
