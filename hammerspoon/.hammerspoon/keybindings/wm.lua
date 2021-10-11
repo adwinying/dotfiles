@@ -37,39 +37,11 @@ end)
 -- =============================================================================
 
 -- move to space #
-for i = 1, 9 do
+for i = 1, 5 do
   hyper:bind({}, tostring(i), function ()
-    local active_screen_uuid   = hs.screen.mainScreen():getUUID()
-    local active_screen_spaces = spaces.layout()[active_screen_uuid]
-
-    spaces.changeToSpace(active_screen_spaces[i])
+    hs.eventtap.keyStroke({ "ctrl" }, tostring(i))
   end)
 end
-
-
--- =============================================================================
--- Screen navigation
--- =============================================================================
-
--- move to left screen
-hyper:bind({ "cmd" }, "h", function ()
-  hs.screen.mainScreen():toWest()
-end)
-
--- move to bottom screen
-hyper:bind({ "cmd" }, "j", function ()
-  hs.screen.mainScreen():toSouth()
-end)
-
--- move to top screen
-hyper:bind({ "cmd" }, "k", function ()
-  hs.screen.mainScreen():toNorth()
-end)
-
--- move to right screen
-hyper:bind({ "cmd" }, "l", function ()
-  hs.screen.mainScreen():toEast()
-end)
 
 
 -- =============================================================================
