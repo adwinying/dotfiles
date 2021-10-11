@@ -40,6 +40,7 @@ end)
 for i = 1, 5 do
   hyper:bind({}, tostring(i), function ()
     hs.eventtap.keyStroke({ "ctrl" }, tostring(i))
+    Hhtwm.tile()
   end)
 end
 
