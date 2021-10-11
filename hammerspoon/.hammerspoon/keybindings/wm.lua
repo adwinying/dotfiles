@@ -57,7 +57,9 @@ end)
 -- cycle next windows in monocle mode
 hyper:bind({}, "j", function ()
   if Hhtwm.getLayout() == "monocle" then
-    local filter = hs.window.filter.new():setCurrentSpace(true)
+    local filter = hs.window.filter.new()
+      :setCurrentSpace(true)
+      :setScreens(hs.screen.mainScreen():id())
     hs.window.switcher.new(filter):next()
   else
     helpers.focus_window("down")
@@ -68,7 +70,9 @@ end)
 -- cycle previous windows in monocle mode
 hyper:bind({}, "k", function ()
   if Hhtwm.getLayout() == "monocle" then
-    local filter = hs.window.filter.new():setCurrentSpace(true)
+    local filter = hs.window.filter.new()
+      :setCurrentSpace(true)
+      :setScreens(hs.screen.mainScreen():id())
     hs.window.switcher.new(filter):previous()
   else
     helpers.focus_window("up")
