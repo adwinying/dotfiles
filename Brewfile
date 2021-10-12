@@ -12,6 +12,7 @@ brew "lazydocker"
 brew "node"
 brew "ripgrep"
 brew "yarn"
+brew "koekeishiya/formulae/yabai"
 
 cask "font-hackgen"
 cask "font-hackgen-nerd"
