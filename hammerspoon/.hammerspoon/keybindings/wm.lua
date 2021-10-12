@@ -6,6 +6,7 @@
 local spaces = require("hs._asm.undocumented.spaces")
 local helpers = require("helpers")
 local hyper = require("modules.hyper")
+local wm = require("modules.wm")
 
 -- =============================================================================
 -- Layouts
@@ -13,23 +14,30 @@ local hyper = require("modules.hyper")
 
 -- select floating layout
 hyper:bind({ "shift" }, "s", function ()
-  Hhtwm.setLayout("floating")
+  wm.api.config("--space mouse layout float")
 end)
 
--- select main-left layout
+-- select bsp layout
 hyper:bind({}, "s", function ()
-  Hhtwm.setLayout("main-left")
+  wm.api.config("--space mouse layout bsp")
 end)
 
--- select main-center layout
-hyper:bind({ "shift" }, "w", function ()
-  Hhtwm.setLayout("main-center")
-end)
-
--- select monocle layout
+-- select stack layout
 hyper:bind({}, "w", function ()
-  Hhtwm.setLayout("monocle")
+  wm.api.config("--space mouse layout stack")
 end)
+
+
+-- =============================================================================
+-- Display navigation
+-- =============================================================================
+
+-- move to display #
+for i = 1, 9 do
+  hyper:bind({ "cmd" }, tostring(i), function ()
+    wm.api.display.focus(nil, i)
+  end)
+end
 
 
 -- =============================================================================
@@ -37,10 +45,9 @@ end)
 -- =============================================================================
 
 -- move to space #
-for i = 1, 5 do
+for i = 1, 9 do
   hyper:bind({}, tostring(i), function ()
-    hs.eventtap.keyStroke({ "ctrl" }, tostring(i))
-    Hhtwm.tile()
+    wm.api.space.focus(nil, i)
   end)
 end
 
@@ -51,38 +58,32 @@ end
 
 -- move to left window
 hyper:bind({}, "h", function ()
-  helpers.focus_window("left")
+  wm.api.window.focus(nil, "west")
 end)
 
 -- move to bottom window
 -- cycle next windows in monocle mode
 hyper:bind({}, "j", function ()
-  if Hhtwm.getLayout() == "monocle" then
-    local filter = hs.window.filter.new()
-      :setCurrentSpace(true)
-      :setScreens(hs.screen.mainScreen():id())
-    hs.window.switcher.new(filter):next()
+  if wm.get_current_layout() == "stack" then
+    wm.api.window.focus(nil, "stack.next")
   else
-    helpers.focus_window("down")
+    wm.api.window.focus(nil, "south")
   end
 end)
 
 -- move to top window
 -- cycle previous windows in monocle mode
 hyper:bind({}, "k", function ()
-  if Hhtwm.getLayout() == "monocle" then
-    local filter = hs.window.filter.new()
-      :setCurrentSpace(true)
-      :setScreens(hs.screen.mainScreen():id())
-    hs.window.switcher.new(filter):previous()
+  if wm.get_current_layout() == "stack" then
+    wm.api.window.focus(nil, "stack.prev")
   else
-    helpers.focus_window("up")
+    wm.api.window.focus(nil, "north")
   end
 end)
 
 -- move to right window
 hyper:bind({}, "l", function ()
-  helpers.focus_window("right")
+  wm.api.window.focus(nil, "east")
 end)
 
 
@@ -92,50 +93,42 @@ end)
 
 -- move window left
 hyper:bind({ "shift" }, "h", function ()
-  helpers.move_window("left")
+  wm.move_window("west")
 end)
 
 -- move window down
 hyper:bind({ "shift" }, "j", function ()
-  helpers.move_window("down")
+  wm.move_window("south")
 end)
 
 -- move window up
 hyper:bind({ "shift" }, "k", function ()
-  helpers.move_window("up")
+  wm.move_window("north")
 end)
 
 -- move window right
 hyper:bind({ "shift" }, "l", function ()
-  helpers.move_window("right")
+  wm.move_window("east")
 end)
 
 -- move window to left screen
 hyper:bind({ "cmd", "shift" }, "h", function ()
-  helpers.get_active_window(function (win)
-    win:moveOneScreenWest()
-  end)
+  wm.api.window.display(nil, "west")
 end)
 
 -- move window to bottom screen
 hyper:bind({ "cmd", "shift" }, "j", function ()
-  helpers.get_active_window(function (win)
-    win:moveOneScreenSouth()
-  end)
+  wm.api.window.display(nil, "south")
 end)
 
 -- move window to top screen
 hyper:bind({ "cmd", "shift" }, "k", function ()
-  helpers.get_active_window(function (win)
-    win:moveOneScreenNorth()
-  end)
+  wm.api.window.display(nil, "north")
 end)
 
 -- move window to right screen
 hyper:bind({ "cmd", "shift" }, "l", function ()
-  helpers.get_active_window(function (win)
-    win:moveOneScreenEast()
-  end)
+  wm.api.window.display(nil, "east")
 end)
 
 
@@ -145,22 +138,22 @@ end)
 
 -- resize window left
 hyper:bind({ "ctrl" }, "h", function ()
-  helpers.resize_window("left")
+  wm.resize_window("west")
 end)
 
 --  resize window down
 hyper:bind({ "ctrl" }, "j", function ()
-  helpers.resize_window("down")
+  wm.resize_window("south")
 end)
 
 --  resize window up
 hyper:bind({ "ctrl" }, "k", function ()
-  helpers.resize_window("up")
+  wm.resize_window("north")
 end)
 
 --  resize window right
 hyper:bind({ "ctrl" }, "l", function ()
-  helpers.resize_window("right")
+  wm.resize_window("east")
 end)
 
 
@@ -170,32 +163,18 @@ end)
 
 -- Toggle float
 hyper:bind({ "ctrl" }, "space", function ()
-  helpers.get_active_window(function (win)
-    Hhtwm.toggleFloat(win)
-
-    if Hhtwm.isFloating(win) then
-      hs.grid.center(win)
-    end
-  end)
+  wm.api.window.toggle(nil, "float")
 end)
 
 -- Toggle full screen
 hyper:bind({}, "f", function ()
-  helpers.get_active_window(function (win)
-    win:toggleFullScreen()
-  end)
+  wm.api.window.toggle(nil, "native-fullscreen")
 end)
 
 -- Minimize window
 hyper:bind({}, "n", function ()
-  helpers.get_active_window(function (win)
-    win:minimize()
-
-    -- focus next available window
-    helpers.get_active_window(function (nextwin)
-      nextwin:focus()
-    end)
-  end)
+  wm.api.window.minimize()
+  helpers.get_active_window(function (win) win:focus() end)
 end)
 
 -- Restore minimized windows
@@ -203,20 +182,17 @@ hyper:bind({ "shift" }, "n", function ()
   for _, win in ipairs(spaces.allWindowsForSpace(spaces.activeSpace())) do
     win:unminimize()
   end
+  helpers.get_active_window(function (win) win:focus() end)
 end)
 
 -- Close
 hyper:bind({ "shift" }, "c", function ()
-  helpers.get_active_window(function (win)
-    win:close()
-  end)
+  wm.api.window.close()
 end)
 
 -- Move window to space #
 for i = 1, 9 do
   hyper:bind({ "shift" }, tostring(i), function ()
-    helpers.get_active_window(function (win)
-      Hhtwm.throwToSpace(win, i)
-    end)
+    wm.api.window.space(nil, i)
   end)
 end
