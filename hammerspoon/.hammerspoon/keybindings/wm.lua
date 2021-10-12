@@ -171,6 +171,11 @@ hyper:bind({}, "f", function ()
   wm.api.window.toggle(nil, "native-fullscreen")
 end)
 
+-- Toggle sticky
+hyper:bind({}, "t", function ()
+  wm.api.window.toggle(nil, "sticky")
+end)
+
 -- Minimize window
 hyper:bind({}, "n", function ()
   wm.api.window.minimize()

@@ -120,6 +120,18 @@ wm.get_current_layout = function ()
   return wm.api.config("--space mouse layout"):gsub("\n", "")
 end
 
+wm.get_current_display = function ()
+  local json = wm.api.query.displays("--display")
+
+  return hs.json.decode(json)
+end
+
+wm.get_current_space = function ()
+  local json = wm.api.query.spaces("--space")
+
+  return hs.json.decode(json)
+end
+
 wm.get_current_window = function ()
   local json = wm.api.query.windows("--window")
 
