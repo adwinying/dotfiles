@@ -15,16 +15,19 @@ local wm = require("modules.wm")
 -- select floating layout
 hyper:bind({ "shift" }, "s", function ()
   wm.api.config("--space mouse layout float")
+  Layouts:update()
 end)
 
 -- select bsp layout
 hyper:bind({}, "s", function ()
   wm.api.config("--space mouse layout bsp")
+  Layouts:update()
 end)
 
 -- select stack layout
 hyper:bind({}, "w", function ()
   wm.api.config("--space mouse layout stack")
+  Layouts:update()
 end)
 
 

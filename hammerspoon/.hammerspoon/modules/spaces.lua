@@ -50,7 +50,7 @@ function Spaces:set_menu ()
   self.menubar:setMenu(menu)
 end
 
-function Spaces:update_active_space (space)
+function Spaces:update(space)
   local display_info = wm.get_current_display() or nil
 
   self.active_display_index = display_info and display_info.index or nil
@@ -61,4 +61,4 @@ function Spaces:update_active_space (space)
   self:set_menu()
 end
 
-Spaces:update_active_space()
+Spaces:update()
