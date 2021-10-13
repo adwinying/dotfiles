@@ -47,4 +47,8 @@ yabai -m config window_gap                   18
 # window rules
 yabai -m rule --add app="Hammerspoon" manage=off sticky=on
 
+# signals
+yabai -m signal --add event=display_changed action="hs -c 'Spaces:update_active_space()'"
+yabai -m signal --add event=space_changed action="hs -c 'Spaces:update_active_space()'"
+
 echo "yabai configuration loaded.."
