@@ -5,7 +5,8 @@ if not present then return end
 -- servers to install
 local servers = {
   "volar",
-  "efm",
+  "emmet",
+  "eslint",
   "php",
   "html",
   "css",

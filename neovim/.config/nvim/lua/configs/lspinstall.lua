@@ -27,3 +27,14 @@ servers.emmet = vim.tbl_extend('error', emmet_config, {
   npm install emmet-ls
   ]]
 })
+
+-- define eslint custom script
+local eslint_config = util.extract_config("eslint")
+eslint_config.default_config.cmd[1] = "./node_modules/.bin/vscode-eslint-language-server"
+
+servers.eslint = vim.tbl_extend('error', eslint_config, {
+  install_script = [[
+  ! test -f package.json && npm init -y --scope=lspinstall || true
+  npm install vscode-langservers-extracted
+  ]]
+})

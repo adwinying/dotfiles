@@ -48,20 +48,6 @@ local custom_configs = {
     return config
   end,
 
-  volar = function (config)
-    -- disable formatting feature
-    config.init_options = { documentFormatting = false }
-
-    return config
-  end,
-
-  html = function (config)
-    -- disable formatting feature
-    config.init_options = { documentFormatting = false }
-
-    return config
-  end,
-
   emmet = function (config)
     config.filetypes = {
       "html",
@@ -73,48 +59,15 @@ local custom_configs = {
     return config
   end,
 
-  efm = function (config)
-    -- Super hacky workaround to automate installation of eslint_d
-    -- by using volar's lspinstall script
-    local eslint_d_path = require("lspinstall/util").install_path("volar")
-      .. "/node_modules/.bin/eslint_d"
-
-    -- eslint configs ripped off from here
-    -- https://github.com/martinsione/dotfiles/blob/master/src/.config/nvim/lua/modules/config/nvim-lspconfig/format.lua
-    local eslint = {
-      lintCommand = eslint_d_path .. " -f unix --stdin --stdin-filename ${INPUT}",
-      lintStdin = true,
-      lintIgnoreExitCode = true,
-      lintFormats = { "%f:%l:%c: %m" },
-      formatCommand = eslint_d_path .. " --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-      formatStdin = true,
-    }
-
-    config.init_options = {
-      documentFormatting = true,
-      codeAction = true,
-    }
-
-    config.settings = {
-      languages = {
-        vue             = { eslint },
-        javascript      = { eslint },
-        javascriptreact = { eslint },
-        typescript      = { eslint },
-        typescriptreact = { eslint },
-      },
-    }
-
+  eslint = function (config)
     config.filetypes = {
+      "javascript", "javascriptreact", "javascript.jsx",
+      "typescript", "typescriptreact", "typescript.tsx",
       "vue",
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
     }
 
     return config
-  end
+  end,
 }
 
 -- Use an on_attach function to only map the following keys
@@ -147,6 +100,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d',         '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',                           opts)
   buf_set_keymap('n', '<leader>cd', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',                         opts)
   buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.buf.formatting()<CR>',                                 opts)
+  -- eslint autofix linting
+  buf_set_keymap('n', '<leader>lk', '<cmd>EslintFixAll<CR>', opts)
 end
 
 -- make config for a server
