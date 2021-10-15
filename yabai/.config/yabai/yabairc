@@ -45,7 +45,8 @@ yabai -m config right_padding                18
 yabai -m config window_gap                   18
 
 # window rules
-yabai -m rule --add app="Hammerspoon" manage=off sticky=on
+yabai -m rule --add app="Hammerspoon"      manage=off sticky=on
+yabai -m rule --add app="システム環境設定" manage=off
 
 # signals
 yabai -m signal --add event=display_changed action="hs -c 'Spaces:update_active_space()'"
