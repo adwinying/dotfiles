@@ -3,7 +3,6 @@
 -- download libraries
 --
 
-local configs = require("configs")
 local helpers = require("helpers")
 
 -- foundation_remapping
