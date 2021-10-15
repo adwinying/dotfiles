@@ -53,7 +53,7 @@ return packer.startup(function (use)
     setup = function() require("mappings.packer") end,
   }
 
-  -- -- colorscheme
+  -- colorscheme
   use {
     "arcticicestudio/nord-vim",
     after = "packer.nvim",
