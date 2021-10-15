@@ -62,6 +62,17 @@ local custom_configs = {
     return config
   end,
 
+  emmet = function (config)
+    config.filetypes = {
+      "html",
+      "css",
+      "vue",
+      "php",
+    }
+
+    return config
+  end,
+
   efm = function (config)
     -- Super hacky workaround to automate installation of eslint_d
     -- by using volar's lspinstall script

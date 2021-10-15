@@ -18,13 +18,8 @@ servers.volar = vim.tbl_extend('error', volar_config, {
 })
 
 -- define emmet custom script
-local emmet_config = {
-  default_config = {
-    cmd = { "./node_modules/.bin/emmet-ls", "--stdio" },
-    filetypes = { 'html', 'css' },
-    root_dir = require'lspconfig'.util.root_pattern(".git", vim.fn.getcwd()),
-  },
-}
+local emmet_config = util.extract_config("emmet_ls")
+emmet_config.default_config.cmd[1] = "./node_modules/.bin/emmet-ls"
 
 servers.emmet = vim.tbl_extend('error', emmet_config, {
   install_script = [[
