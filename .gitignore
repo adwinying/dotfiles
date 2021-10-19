@@ -13,6 +13,7 @@ lazygit/.config/lazygit/state.yml
 
 hammerspoon/.hammerspoon/hs
 hammerspoon/.hammerspoon/Spoons/*
+hammerspoon/.hammerspoon/configs/custom.lua
 hammerspoon/.hammerspoon/libraries/*
 !hammerspoon/.hammerspoon/libraries/hhtwm
 !hammerspoon/.hammerspoon/libraries/init.lua
