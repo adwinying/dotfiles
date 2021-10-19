@@ -54,8 +54,13 @@ function Spaces:update(space)
   local display_info = wm.get_current_display() or nil
 
   self.active_display_index = display_info and display_info.index or nil
-  self.active_space_index = space or wm.get_current_space().index or nil
+  self.active_space_index = space
   self.available_spaces = display_info and display_info.spaces or {}
+
+  if self.active_space_index == nil then
+    local current_space = wm.get_current_space()
+    self.active_space_index = current_space and current_space.index or nil
+  end
 
   self:set_icon()
   self:set_menu()
