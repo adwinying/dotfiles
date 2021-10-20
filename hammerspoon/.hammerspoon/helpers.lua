@@ -8,6 +8,31 @@ local configs = require("configs")
 local M = {}
 
 -- =============================================================================
+-- Tables
+-- =============================================================================
+
+-- sort table by keys
+M.sort_by_keys = function (t, f)
+  local keys = {}
+
+  for n in pairs(t) do table.insert(keys, n) end
+
+  table.sort(keys, f)
+
+  local i = 0
+  local iter = function ()
+    i = i + 1
+    if keys[i] == nil then
+      return nil
+    else
+      return keys[i], t[keys[i]]
+    end
+  end
+
+  return iter
+end
+
+-- =============================================================================
 -- Windows
 -- =============================================================================
 
