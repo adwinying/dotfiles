@@ -1,6 +1,6 @@
 --
--- cheatsheet.lua
--- cheatsheet keybindings
+-- modules.lua
+-- modules-related keybindings
 --
 
 local hyper = require("modules.hyper")
@@ -9,11 +9,12 @@ local hyper = require("modules.hyper")
 -- Definitions
 -- =============================================================================
 
+-- activate expose
+hyper:bind({}, "tab", function ()
+  hs.expose.new(hs.window.filter.defaultCurrentSpace):toggleShow()
+end)
+
 -- activate cheatsheet
 hyper:bind({ "shift" }, "/", function ()
-  if Cheatsheet.is_active then
-    Cheatsheet:hide()
-  else
-    Cheatsheet:show()
-  end
+  Cheatsheet:toggle()
 end)

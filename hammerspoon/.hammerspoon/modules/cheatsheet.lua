@@ -64,9 +64,8 @@ Cheatsheet.descriptions = {
   ["⇧R"]     = { group = "Hammerspoon", description = "Reload configs" },
   ["⇧T"]     = { group = "Hammerspoon", description = "Toggle console" },
 
-  ["TAB"]    = { group = "Expose", description = "Toggle expose" },
-
-  ["⇧/"]     = { group = "Cheatsheet", description = "Toggle cheatsheet" },
+  ["TAB"]    = { group = "Modules", description = "Toggle expose" },
+  ["⇧/"]     = { group = "Modules", description = "Toggle cheatsheet" },
 
   ["RETURN"] = { group = "Apps", description = "Launch or focus terminal" },
   ["B"]      = { group = "Apps", description = "Launch or focus browser" },
@@ -223,6 +222,14 @@ end
 function Cheatsheet:hide ()
   self.webview:hide()
   self.is_active = false
+end
+
+function Cheatsheet:toggle ()
+  if Cheatsheet.is_active then
+    Cheatsheet:hide()
+  else
+    Cheatsheet:show()
+  end
 end
 
 Cheatsheet:init()
