@@ -45,10 +45,10 @@ Cheatsheet.template = [[
       }
       .map-keybinding {
         width: 5rem;
-        font-family: "SF Pro Display", sans-serif;
+        font-family: "Lucida Grande", sans-serif;
       }
       .map-description {
-        width: 12rem;
+        flex: 1;
       }
     </style>
   </head>
