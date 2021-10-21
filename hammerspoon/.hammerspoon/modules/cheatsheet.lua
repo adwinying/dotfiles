@@ -66,6 +66,8 @@ Cheatsheet.descriptions = {
 
   ["TAB"]    = { group = "Expose", description = "Toggle expose" },
 
+  ["⇧/"]     = { group = "Cheatsheet", description = "Toggle cheatsheet" },
+
   ["RETURN"] = { group = "Apps", description = "Launch or focus terminal" },
   ["B"]      = { group = "Apps", description = "Launch or focus browser" },
 
