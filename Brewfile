@@ -2,6 +2,7 @@ tap "homebrew/cask-fonts"
 
 brew "zsh"
 brew "fzf"
+brew "jq"
 brew "stow"
 brew "tmux"
 brew "mosh", args: ['HEAD']

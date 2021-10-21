@@ -49,9 +49,9 @@ yabai -m rule --add app="Hammerspoon"      manage=off sticky=on
 yabai -m rule --add app="システム環境設定" manage=off
 
 # signals
-yabai -m signal --add event=display_changed action="hs -c 'Spaces:update()'"
-yabai -m signal --add event=space_changed   action="hs -c 'Spaces:update()'"
-yabai -m signal --add event=space_changed   action="hs -c 'Layouts:update()'"
+yabai -m signal --add event=display_changed action="hs -c \"Spaces:update(\$(yabai -m query --spaces --space | jq '.index'))\""
+yabai -m signal --add event=space_changed   action="hs -c \"Spaces:update(\$(yabai -m query --spaces --space | jq '.index'))\""
+yabai -m signal --add event=space_changed   action="hs -c \"Layouts:update(\$(yabai -m query --spaces --space | jq '.type'))\""
 yabai -m signal --add event=window_focused  action="hs -c 'Layouts:update()'"
 
 echo "yabai configuration loaded.."
