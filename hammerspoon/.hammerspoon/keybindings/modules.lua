@@ -18,3 +18,8 @@ end)
 hyper:bind({ "shift" }, "/", function ()
   Cheatsheet:toggle()
 end)
+
+-- floating terminal
+hyper:bind({}, "`", function ()
+  FloatingTerm:toggle()
+end)

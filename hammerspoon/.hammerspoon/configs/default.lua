@@ -42,6 +42,21 @@ default_config.wm = {
 }
 
 -- =============================================================================
+-- Floating Terminal
+-- =============================================================================
+
+default_config.floating_terminal = {
+  -- spawn command
+  command = "/usr/local/bin/alacritty --title floatingterm &",
+
+  -- terminal application name
+  name = "alacritty",
+
+  -- window title
+  title = "floatingterm",
+}
+
+-- =============================================================================
 -- Spaces menu bar widget
 -- =============================================================================
 
