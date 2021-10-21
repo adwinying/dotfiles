@@ -59,7 +59,7 @@ function Layouts:update (layout)
     if window == nil then
       self.active_layout = "unknown"
     elseif window.floating == 1 then
-      self.active_layout = "floating"
+      self.active_layout = "float"
     else
       self.active_layout = wm.get_current_space().type
     end

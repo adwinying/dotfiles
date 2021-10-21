@@ -15,19 +15,19 @@ local wm = require("modules.wm")
 -- select floating layout
 hyper:bind({ "shift" }, "s", function ()
   wm.api.config("--space mouse layout float")
-  Layouts:update()
+  Layouts:update("float")
 end)
 
 -- select bsp layout
 hyper:bind({}, "s", function ()
   wm.api.config("--space mouse layout bsp")
-  Layouts:update()
+  Layouts:update("bsp")
 end)
 
 -- select stack layout
 hyper:bind({}, "w", function ()
   wm.api.config("--space mouse layout stack")
-  Layouts:update()
+  Layouts:update("stack")
 end)
 
 
@@ -167,6 +167,7 @@ end)
 -- Toggle float
 hyper:bind({ "ctrl" }, "space", function ()
   wm.api.window.toggle(nil, "float")
+  Layouts:update()
 end)
 
 -- Toggle full screen
