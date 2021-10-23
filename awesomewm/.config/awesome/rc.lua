@@ -1,3 +1,9 @@
+--    ___      _____ ___  ___  __  __ _____      ____  __
+--   /_\ \    / / __/ __|/ _ \|  \/  | __\ \    / /  \/  |
+--  / _ \ \/\/ /| _|\__ \ (_) | |\/| | _| \ \/\/ /| |\/| |
+-- /_/ \_\_/\_/ |___|___/\___/|_|  |_|___| \_/\_/ |_|  |_|
+--
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
