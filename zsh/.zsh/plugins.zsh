@@ -1,6 +1,5 @@
 #
-# _plugins.zsh
-# gotta load plugins first
+# plugins.zsh
 # plugins powered by zinit
 #
 

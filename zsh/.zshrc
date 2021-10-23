@@ -1,6 +1,7 @@
-#
-# Adwin's zsh config
-# inspired by https://github.com/xero/dotfiles
+#  _______ _  _ ___  ___
+# |_  / __| || | _ \/ __|
+#  / /\__ \ __ |   / (__
+# /___|___/_||_|_|_\\___|
 #
 
 # disable software flow control (Enable C-Q/C-S in terminal)
