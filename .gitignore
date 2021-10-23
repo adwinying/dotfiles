@@ -18,4 +18,6 @@ hammerspoon/.hammerspoon/libraries/*
 !hammerspoon/.hammerspoon/libraries/hhtwm
 !hammerspoon/.hammerspoon/libraries/init.lua
 
+ranger/.config/ranger/plugins/*
+!ranger/.config/ranger/plugins/z_jumper.py
 Brewfile.lock.json
