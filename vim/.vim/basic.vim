@@ -195,6 +195,8 @@ augroup END
 let g:netrw_banner = 0
 " Set tree view as default
 let g:netrw_liststyle = 3
+" enable line numbers
+let g:netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
 " toggle display of tree with <Leader> + n
 noremap <leader>n :vsplit .<CR>
 " locate the focused file in tree with <Leader> + j
