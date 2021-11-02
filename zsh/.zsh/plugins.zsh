@@ -6,7 +6,7 @@
 # install zinit if ~/.zinit does not exist
 if [[ ! -d ~/.zinit ]]; then
   mkdir ~/.zinit
-  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+  git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
 fi
 
 # load zinit
@@ -15,7 +15,7 @@ source ~/.zinit/bin/zinit.zsh
 
 # syntax highlighting
 zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
-zinit load zdharma/fast-syntax-highlighting
+zinit load zdharma-continuum/fast-syntax-highlighting
 
 # suggestions on tab
 zinit ice wait lucid blockf
