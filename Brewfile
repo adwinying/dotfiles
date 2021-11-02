@@ -1,4 +1,5 @@
 tap "homebrew/cask-fonts"
+tap "koekeishiya/formulae"
 
 brew "zsh"
 brew "fzf"
