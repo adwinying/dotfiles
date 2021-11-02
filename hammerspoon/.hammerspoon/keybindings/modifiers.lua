@@ -19,6 +19,9 @@ local keybindings = configs.keybindings
 -- Remap hyper_override to hyper key
 remapper:remap(keybindings.hyper_override, keybindings.hyper):register()
 
+-- Remap capslock to ctrl key
+remapper:remap("capslock", "ctrl"):register()
+
 -- Trigger escape when control key is pressed alone
 hyperex.new("ctrl"):setEmptyHitKey("escape")
 
