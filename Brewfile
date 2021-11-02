@@ -31,6 +31,7 @@ cask "discord"
 cask "messenger"
 cask "google-drive"
 cask "notion"
+cask "hammerspoon"
 
 mas "LINE", id: 539883307
 mas "Microsoft Word", id: 462054704
