@@ -20,4 +20,10 @@ hammerspoon/.hammerspoon/libraries/*
 
 ranger/.config/ranger/plugins/*
 !ranger/.config/ranger/plugins/z_jumper.py
+
+sublime/Library/Application Support/Sublime Text 3/Installed Packages/*
+sublime/Library/Application Support/Sublime Text 3/Local/*
+sublime/Library/Application Support/Sublime Text 3/Packages/*
+!sublime/Library/Application Support/Sublime Text 3/Packages/User
+
 Brewfile.lock.json
