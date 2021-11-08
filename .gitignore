@@ -10,6 +10,7 @@ tmux/.tmux/plugins
 tmux/.tmux/resurrect
 
 lazygit/.config/lazygit/state.yml
+lazygit/Library/Application Support/lazygit/state.yml
 
 hammerspoon/.hammerspoon/hs
 hammerspoon/.hammerspoon/Spoons/*

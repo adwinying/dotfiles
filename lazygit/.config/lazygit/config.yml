@@ -1,10 +1,14 @@
 geporting: "off"
+reporting: "off"
+startuppopupversion: 1
+
+gui:
+  showFileTree: false
+
 keybinding:
   commits:
     moveDownCommit: <c-b>
     moveUpCommit: <c-g>
-reporting: "off"
-startuppopupversion: 1
 
 customCommands:
   - key: c
