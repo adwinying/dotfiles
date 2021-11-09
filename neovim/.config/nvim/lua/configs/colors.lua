@@ -1,6 +1,3 @@
--- enable termguicolors
-vim.opt.termguicolors = true
-
 -- disable bg color
 vim.cmd("highlight Normal guibg=NONE")
 vim.cmd("highlight SignColumn guibg=NONE")

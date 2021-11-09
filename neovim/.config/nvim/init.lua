@@ -17,5 +17,8 @@ cmd(string.format(
   fn.stdpath("config")
 ))
 
+-- init neovim-only configs
+require("config")
+
 -- init plugins
 require("plugins")
