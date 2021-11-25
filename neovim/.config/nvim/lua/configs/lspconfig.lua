@@ -102,6 +102,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.buf.formatting()<CR>',                                 opts)
   -- eslint autofix linting
   buf_set_keymap('n', '<leader>lk', '<cmd>EslintFixAll<CR>', opts)
+  -- restart lsp
+  buf_set_keymap('n', '<leader>lr', '<cmd>LspRestart<CR>', opts)
 end
 
 -- make config for a server
