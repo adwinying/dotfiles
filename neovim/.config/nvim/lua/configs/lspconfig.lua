@@ -1,73 +1,20 @@
-local present1, nvim_lsp = pcall(require, "lspconfig")
-local present2, lspinstall = pcall(require, "lspinstall")
+local present1 = pcall(require, "lspconfig")
+local present2, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
 
 if not present1 or not present2 then return end
 
--- servers to manually load
-local servers = {
-}
-
--- define custom configs if required
-local custom_configs = {
-  typescript = function (config)
-    config.filetypes = {
-      "javascript", "javascriptreact", "javascript.jsx",
-      "typescript", "typescriptreact", "typescript.tsx",
-    }
-
-    return config
-  end,
-
-  lua = function (config)
-    config.settings = {
-      Lua = {
-        runtime = {
-          -- LuaJIT in the case of Neovim
-          version = "LuaJIT",
-          path = vim.split(package.path, ';'),
-        },
-
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim", "hs" },
-        },
-
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            unpack(vim.api.nvim_get_runtime_file("", true)),
-            "/usr/lib/lua",
-            "/usr/lib/lua-pam",
-            "/usr/share/awesome/lib",
-            "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
-          },
-        },
-      },
-    }
-
-    return config
-  end,
-
-  emmet = function (config)
-    config.filetypes = {
-      "html",
-      "css",
-      "vue",
-      "php",
-    }
-
-    return config
-  end,
-
-  eslint = function (config)
-    config.filetypes = {
-      "javascript", "javascriptreact", "javascript.jsx",
-      "typescript", "typescriptreact", "typescript.tsx",
-      "vue",
-    }
-
-    return config
-  end,
+-- LSP servers to install
+local lsp_servers = {
+  "volar",
+  "emmet_ls",
+  "eslint",
+  "intelephense",
+  "html",
+  "cssls",
+  "tsserver",
+  "tailwindcss",
+  "sumneko_lua",
+  "gopls",
 }
 
 -- Use an on_attach function to only map the following keys
@@ -106,6 +53,71 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>lr', '<cmd>LspRestart<CR>', opts)
 end
 
+-- define custom configs if required
+local custom_configs = {
+  sumneko_lua = function (config)
+    config.settings = {
+      Lua = {
+        runtime = {
+          -- LuaJIT in the case of Neovim
+          version = "LuaJIT",
+          path = vim.split(package.path, ';'),
+        },
+
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim", "hs" },
+        },
+
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            unpack(vim.api.nvim_get_runtime_file("", true)),
+            "/usr/lib/lua",
+            "/usr/lib/lua-pam",
+            "/usr/share/awesome/lib",
+            "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
+          },
+        },
+      },
+    }
+
+    return config
+  end,
+
+  emmet_ls = function (config)
+    config.filetypes = {
+      "html",
+      "css",
+      "vue",
+      "php",
+    }
+
+    return config
+  end,
+
+  eslint = function (config)
+    config.filetypes = {
+      "javascript", "javascriptreact", "javascript.jsx",
+      "typescript", "typescriptreact", "typescript.tsx",
+      "vue",
+    }
+
+    config.on_attach = function (client, bufnr)
+      -- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
+      -- the resolved capabilities of the eslint server ourselves!
+      client.resolved_capabilities.document_formatting = true
+      on_attach(client, bufnr)
+    end
+
+    config.settings = {
+      format = { enable = true }, -- this will enable formatting
+    }
+
+    return config
+  end,
+}
+
 -- make config for a server
 local make_config = function (server)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -130,32 +142,19 @@ local make_config = function (server)
   return config
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local setup_servers = function ()
-  -- Load custom lspinstall configs
-  require("configs.lspinstall")
+-- Load LSP servers. If not found then install server
+for _, server_name in ipairs(lsp_servers) do
+  local available, server = lsp_installer_servers.get_server(server_name)
 
-  -- Init configs for servers installed by lspinstall
-  lspinstall.setup()
+  if not available then return end
 
-  -- load servers installed by lspinstall
-  for _, server in ipairs(lspinstall.installed_servers()) do
-    table.insert(servers, server)
+  server:on_ready(function ()
+    local opts = make_config(server_name)
+    server:setup(opts)
+  end)
+
+  -- Queue the server to be installed if not installed
+  if not server:is_installed() then
+    server:install()
   end
-
-  for _, server in ipairs(servers) do
-    nvim_lsp[server].setup(make_config(server))
-  end
-end
-
--- Initialize lsp configs
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function ()
-  -- reload installed servers
-  setup_servers()
-  -- this triggers the FileType autocmd that starts the server
-  vim.cmd("bufdo e")
 end

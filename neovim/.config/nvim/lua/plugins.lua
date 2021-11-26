@@ -191,7 +191,7 @@ return packer.startup(function (use)
   -- LSP config
   use {
     "neovim/nvim-lspconfig",
-    requires = { "kabouzeid/nvim-lspinstall", },
+    requires = { "williamboman/nvim-lsp-installer", },
     after = "cmp-nvim-lsp",
     setup = function() require("helpers").packer_lazy_load("nvim-lspconfig") end,
     config = function () require("configs.lspconfig") end,
