@@ -78,8 +78,6 @@ return packer.startup(function (use)
   use {
     "nvim-treesitter/nvim-treesitter",
     branch = "0.5-compat",
-    run = ":TSUpdate",
-    event = "BufRead",
     config = function () require("configs.treesitter") end,
   }
 
@@ -209,7 +207,6 @@ return packer.startup(function (use)
   -- auto insert matching brackets
   use {
     "windwp/nvim-autopairs",
-    after = "nvim-cmp",
     config = function () require("configs.autopairs") end,
   }
 

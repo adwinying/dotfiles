@@ -1,21 +1,5 @@
-local present1, autopairs = pcall(require, "nvim-autopairs")
-local present2, autopairs_cmp = pcall(require, "nvim-autopairs.completion.cmp")
+local present, autopairs = pcall(require, "nvim-autopairs")
 
-if not (present1 or present2) then return end
+if not (present) then return end
 
 autopairs.setup()
-autopairs_cmp.setup {
-  --  map <CR> on insert mode
-  map_cr = true,
-  -- it will auto insert `(` (map_char) after select function or method item
-  map_complete = true,
-  -- automatically select the first item
-  auto_select = false,
-  -- use insert confirm behavior instead of replace
-  insert = false,
-  -- modifies the function or method delimiter by filetypes
-  map_char = {
-    all = '(',
-    tex = '{'
-  }
-}
