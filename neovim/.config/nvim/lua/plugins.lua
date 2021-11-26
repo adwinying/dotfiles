@@ -210,6 +210,12 @@ return packer.startup(function (use)
     config = function () require("configs.autopairs") end,
   }
 
+  -- keybindings at a glance
+  use {
+    "folke/which-key.nvim",
+    config = function () require("configs.whichkey") end,
+  }
+
   -- file finder
   use {
     "nvim-telescope/telescope.nvim",
