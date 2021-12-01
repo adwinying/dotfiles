@@ -215,6 +215,11 @@ return packer.startup(function (use)
     config = function () require("configs.whichkey") end,
   }
 
+  -- github copilot
+  use {
+    "github/copilot.vim",
+  }
+
   -- file finder
   use {
     "nvim-telescope/telescope.nvim",
