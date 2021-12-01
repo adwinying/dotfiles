@@ -77,7 +77,6 @@ return packer.startup(function (use)
   -- Better syntax highlighting
   use {
     "nvim-treesitter/nvim-treesitter",
-    branch = "0.5-compat",
     config = function () require("configs.treesitter") end,
   }
 
