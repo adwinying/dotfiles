@@ -12,6 +12,7 @@ ts_config.setup {
     "typescript",
     "tsx",
     "svelte",
+    "prisma",
 
     "dart",
     "php",
