@@ -15,6 +15,7 @@ local lsp_servers = {
   "tailwindcss",
   "sumneko_lua",
   "gopls",
+  "prismals",
 }
 
 -- Use an on_attach function to only map the following keys
