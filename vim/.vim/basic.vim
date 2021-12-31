@@ -2,6 +2,10 @@
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" set encoding
+set encoding=utf-8
+scriptencoding utf-8
+
 " use vim settings, rather than vi settings
 " must be first, because it changes other options as a side effect
 set nocompatible
