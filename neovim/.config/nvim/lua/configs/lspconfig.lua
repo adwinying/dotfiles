@@ -52,6 +52,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>lk', '<cmd>EslintFixAll<CR>', opts)
   -- restart lsp
   buf_set_keymap('n', '<leader>lr', '<cmd>LspRestart<CR>', opts)
+  -- restart eslint lsp
+  buf_set_keymap('n', '<leader>ler', '<cmd>LspRestart eslint<CR>', opts)
 end
 
 -- define custom configs if required
