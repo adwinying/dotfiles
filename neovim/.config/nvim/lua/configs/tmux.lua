@@ -2,19 +2,6 @@ local present, tmux = pcall(require, "tmux")
 
 if not present then return end
 
--- Sync */+ registers with tmux's buffer
-vim.g.clipboard = {
-  name = "tmuxclipboard",
-  copy = {
-    ["+"] = "tmux load-buffer -",
-    ["*"] = "tmux load-buffer -",
-  },
-  paste = {
-    ["+"] = "tmux save-buffer -",
-    ["*"] = "tmux save-buffer -",
-  },
-}
-
 tmux.setup {
   copy_sync = {
     -- enables copy sync and overwrites all register actions to

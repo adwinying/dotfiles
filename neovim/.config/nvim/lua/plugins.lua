@@ -146,6 +146,12 @@ return packer.startup(function (use)
     config = function() require("configs.tmux") end,
   }
 
+  -- OSC52 (universal clipboard) integration
+  use {
+    "ojroques/vim-oscyank",
+    config = function() require("configs.oscyank") end,
+  }
+
   -- snippet provider
   use {
     "rafamadriz/friendly-snippets",
