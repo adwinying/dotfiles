@@ -19,4 +19,6 @@ xcape
 xclip
 xorg-server
 xorg-xinit
+xrdp
+xorgxrdp-glamor
 zafiro-icon-theme
