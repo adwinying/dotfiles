@@ -16,6 +16,7 @@ local lsp_servers = {
   "sumneko_lua",
   "gopls",
   "prismals",
+  "svelte",
 }
 
 -- Use an on_attach function to only map the following keys
