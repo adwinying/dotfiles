@@ -11,6 +11,7 @@ local hyperex = require("libraries.hyperex")
 local configs = require("configs")
 local keybindings = configs.keybindings
 
+if (not keybindings.enable_modifier_overrides) then return end
 
 -- =============================================================================
 -- Definitions

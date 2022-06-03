@@ -19,6 +19,9 @@ default_config.apps = {
 -- =============================================================================
 
 default_config.keybindings = {
+  -- enable/disable modifer overrides
+  enable_modifier_overrides = true,
+
   -- hyper key
   hyper = "f18",
 
