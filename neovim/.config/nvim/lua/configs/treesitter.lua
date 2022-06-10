@@ -2,6 +2,9 @@ local present, ts_config = pcall(require, "nvim-treesitter.configs")
 
 if not present then return end
 
+-- Automatically set syntax for astro files
+vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
+
 ts_config.setup {
   ensure_installed = {
     "lua",
