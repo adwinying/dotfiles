@@ -9,6 +9,7 @@ local lsp_servers = {
   "emmet_ls",
   "eslint",
   "intelephense",
+  "phpactor",
   "html",
   "cssls",
   "tsserver",
@@ -116,6 +117,15 @@ local custom_configs = {
 
     config.settings = {
       format = { enable = true }, -- this will enable formatting
+    }
+
+    return config
+  end,
+
+  phpactor = function (config)
+    config.init_options = {
+        ["language_server_phpstan.enabled"] = true,
+        ["language_server_psalm.enabled"] = false,
     }
 
     return config
