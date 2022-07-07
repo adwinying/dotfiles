@@ -148,6 +148,11 @@ end
 -- Space
 -- =============================================================================
 
+wm.get_active_space_windows = function ()
+  local json = wm.api.query.windows("--space")
+
+  return hs.json.decode(json)
+end
 
 -- =============================================================================
 -- Window

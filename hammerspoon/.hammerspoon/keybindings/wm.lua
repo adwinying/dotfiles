@@ -3,7 +3,6 @@
 -- Window manager related keybindings
 --
 
-local spaces = require("hs._asm.undocumented.spaces")
 local helpers = require("helpers")
 local hyper = require("modules.hyper")
 local wm = require("modules.wm")
@@ -188,9 +187,15 @@ end)
 
 -- Restore minimized windows
 hyper:bind({ "shift" }, "n", function ()
-  for _, win in ipairs(spaces.allWindowsForSpace(spaces.activeSpace())) do
-    win:unminimize()
+  local space_windows = wm.get_active_space_windows()
+  local minimized_windows = hs.fnutils.filter(space_windows, function (win)
+    return win["is-minimized"]
+  end)
+
+  for _, win in ipairs(minimized_windows) do
+    wm.api.window.deminimize(nil, win.id)
   end
+
   helpers.get_active_window(function (win) win:focus() end)
 end)
 
