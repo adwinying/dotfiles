@@ -3,6 +3,13 @@ local present2, lsp_installer_servers = pcall(require, "nvim-lsp-installer.serve
 
 if not present1 or not present2 then return end
 
+-- LSP global config
+vim.diagnostic.config({
+  float = {
+    source = 'always',
+  },
+})
+
 -- LSP servers to install
 local lsp_servers = {
   "volar",
