@@ -47,6 +47,10 @@ defaults write -g WebKitDeveloperExtras -bool true
 # Dock
 ###############################################################################
 
+# Get rid of dock hide and show delay
+defaults write com.apple.dock autohide-delay -float 0
+defaults delete com.apple.dock autohide-time-modifier
+
 # Hide Recent Apps
 defaults write com.apple.dock show-recents -bool false
 
