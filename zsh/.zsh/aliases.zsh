@@ -4,7 +4,8 @@
 #
 
 # enable aliases with sudo
-alias sudo="sudo "
+# -E preserves user env vars while in sudo mode
+alias sudo="sudo -E  "
 
 # search aliases
 alias sa="alias | grep -i"
