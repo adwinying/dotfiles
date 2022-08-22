@@ -32,6 +32,10 @@ set formatoptions+=j
 " Leader Shortcut
 let mapleader=","
 
+" Source project level localrc.vim file if exists
+if filereadable('localrc.vim')
+  source localrc.vim
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
