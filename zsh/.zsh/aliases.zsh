@@ -63,13 +63,13 @@ alias ldc="lazydocker"
 alias art="php artisan"
 
 # ls after cd
-function chpwd() {
+chpwd() {
   emulate -L zsh
   ls -lh
 }
 
 # edit with neovim. If neovim not found use vim
-function v() {
+v() {
   nvim "$@" 2> /dev/null || vim "$@"
 }
 
@@ -85,4 +85,12 @@ gitcamp() {
 # pip install youtube-dl
 yt() {
   youtube-dl $1 -o - | mpv -;
+}
+
+# scratchpad
+# opens vim for quick editing.
+# contents will be saved to ~/.scratchpad/yyyy-mm-dd_HH:MM:SS.txt
+# and output to stdout
+sp() {
+  ~/.dotfiles/scripts/scratchpad.sh
 }
