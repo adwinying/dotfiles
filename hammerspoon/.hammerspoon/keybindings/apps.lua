@@ -19,3 +19,9 @@ end)
 hyper:bind({}, "b", function ()
   hs.application.launchOrFocus(configs.apps.browser)
 end)
+
+-- scratchpad
+hyper:bind({}, "v", function ()
+  print(string.format("help"))
+  os.execute(configs.apps.scratchpad .. " -e bash -c \"~/.dotfiles/scripts/scratchpad.sh\" &")
+end)
