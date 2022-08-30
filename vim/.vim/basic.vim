@@ -286,12 +286,12 @@ nnoremap <C-T> :tabnew<CR>
 nnoremap <C-X> :tabclose<CR>
 
 " Edit/source vimrc
-nnoremap <leader>ev :tabnew $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ve :tabnew $MYVIMRC<CR>
+nnoremap <leader>vo :source $MYVIMRC<CR>
 
 " Save/load session
-nnoremap <leader>s :mksession! ~/.vimsession.vim<CR>
-nnoremap <leader>o :source ~/.vimsession.vim<CR>
+nnoremap <leader>ss :mksession! ~/.vimsession.vim<CR>
+nnoremap <leader>so :source ~/.vimsession.vim<CR>
 
 " Allow undo when deleting in insert mode
 inoremap <C-U> <C-G>u<C-U>
