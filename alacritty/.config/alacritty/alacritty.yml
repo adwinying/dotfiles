@@ -172,12 +172,6 @@ font:
   #  x: 0
   #  y: 0
 
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
-
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
@@ -232,27 +226,24 @@ colors:
     #  foreground: '#ffffff'
     #  background: '#000000'
 
-    bar:
-      background: '#434c5e'
-      foreground: '#d8dee9'
-
   # Keyboard regex hints
-  #hints:
+  hints:
     # First character in the hint label
     #
     # Allowed values are CellForeground/CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
-    #start:
-    #  foreground: '#1d1f21'
-    #  background: '#e9ff5e'
+    start:
+      foreground: CellBackground
+      background: '#88c0d0'
 
     # All characters after the first one in the hint label
     #
     # Allowed values are CellForeground/CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
-    #end:
-    #  foreground: '#e9ff5e'
-    #  background: '#1d1f21'
+    end:
+      foreground: '#d8dee9'
+      background: '#434c5e'
+
 
   # Line indicator
   #
@@ -263,6 +254,15 @@ colors:
   #line_indicator:
   #  foreground: None
   #  background: None
+
+  # Footer bar
+  #
+  # Color used for the footer bar on the bottom, used by search regex input,
+  # hyperlink URI preview, etc.
+  #
+  footer_bar:
+    background: '#434c5e'
+    foreground: '#d8dee9'
 
   # Selection colors
   #
