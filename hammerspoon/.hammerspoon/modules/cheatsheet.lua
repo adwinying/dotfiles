@@ -70,6 +70,7 @@ Cheatsheet.descriptions = {
 
   ["RETURN"] = { group = "Apps", description = "Launch or focus terminal" },
   ["B"]      = { group = "Apps", description = "Launch or focus browser" },
+  ["V"]      = { group = "Apps", description = "Launch scratchpad" },
 
   ["⇧S"]     = { group = "WM:Layout", description = "Set current space to floating layout" },
   ["S"]      = { group = "WM:Layout", description = "Set current space to bsp layout" },
