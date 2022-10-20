@@ -10,9 +10,8 @@ local default_config = {}
 -- =============================================================================
 
 default_config.apps = {
-  terminal = "iTerm",
+  terminal = "/usr/bin/alacritty",
   browser = "Brave Browser",
-  scratchpad = "/usr/bin/alacritty",
 }
 
 -- =============================================================================
