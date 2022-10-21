@@ -11,7 +11,7 @@ local default_config = {}
 
 default_config.apps = {
   terminal = "/usr/bin/alacritty",
-  browser = "Brave Browser",
+  browser = "Firefox",
 }
 
 -- =============================================================================
