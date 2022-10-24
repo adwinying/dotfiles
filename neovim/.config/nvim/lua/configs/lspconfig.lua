@@ -55,6 +55,7 @@ local lsp_servers = {
   "cssls",
   "tsserver",
   "tailwindcss",
+  "graphql",
   "sumneko_lua",
   "gopls",
   "prismals",
