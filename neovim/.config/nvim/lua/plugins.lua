@@ -195,9 +195,17 @@ return packer.startup(function (use)
 
   -- LSP config
   use {
-    "neovim/nvim-lspconfig",
-    requires = { "williamboman/nvim-lsp-installer", },
+    "williamboman/mason.nvim",
     after = "cmp-nvim-lsp",
+  }
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    after = "mason.nvim",
+    config = function () require("configs.mason") end,
+  }
+  use {
+    "neovim/nvim-lspconfig",
+    after = "mason-lspconfig.nvim",
     setup = function() require("helpers").packer_lazy_load("nvim-lspconfig") end,
     config = function () require("configs.lspconfig") end,
   }

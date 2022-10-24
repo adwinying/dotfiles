@@ -1,7 +1,6 @@
-local present1 = pcall(require, "lspconfig")
-local present2, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
+local present, lspconfig = pcall(require, "lspconfig")
 
-if not present1 or not present2 then return end
+if not present then return end
 
 -- LSP global config
 vim.diagnostic.config({
@@ -141,19 +140,9 @@ local make_config = function (server)
   return config
 end
 
--- Load LSP servers. If not found then install server
+-- Load LSP servers
 for _, server_name in ipairs(lsp_servers) do
-  local available, server = lsp_installer_servers.get_server(server_name)
+  local config = make_config(server_name)
 
-  if not available then return end
-
-  server:on_ready(function ()
-    local opts = make_config(server_name)
-    server:setup(opts)
-  end)
-
-  -- Queue the server to be installed if not installed
-  if not server:is_installed() then
-    server:install()
-  end
+  lspconfig[server_name].setup(config)
 end
