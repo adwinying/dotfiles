@@ -96,9 +96,14 @@ local custom_configs = {
   emmet_ls = function (config)
     config.filetypes = {
       "html",
-      "css",
-      "vue",
       "php",
+      "vue",
+      "typescriptreact",
+      "javascriptreact",
+      "css",
+      "sass",
+      "scss",
+      "less",
     }
 
     return config
