@@ -17,6 +17,7 @@ ts_config.setup {
     "svelte",
     "astro",
     "prisma",
+    "graphql",
 
     "dart",
     "php",
