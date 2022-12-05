@@ -152,62 +152,29 @@ return packer.startup(function (use)
     config = function() require("configs.oscyank") end,
   }
 
-  -- snippet provider
+  -- LSP
   use {
-    "rafamadriz/friendly-snippets",
+    'VonHeikemen/lsp-zero.nvim',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-nvim-lua'},
+
+      -- Snippets
+      {'L3MON4D3/LuaSnip'},
+      {'rafamadriz/friendly-snippets'},
+    },
+    config = function() require("configs.lspzero") end,
     event = "InsertEnter",
-  }
-
-  -- snippet engine
-  use {
-    "L3MON4D3/LuaSnip",
-    after = "friendly-snippets",
-    config = function () require("configs.luasnip") end,
-  }
-
-  -- completions
-  use {
-    "hrsh7th/nvim-cmp",
-    after = "LuaSnip",
-    config = function () require("configs.cmp") end,
-  }
-  use {
-    "hrsh7th/cmp-nvim-lsp",
-    module = "cmp_nvim_lsp",
-    after = "nvim-cmp",
-  }
-  use {
-    "hrsh7th/cmp-buffer",
-    after = "nvim-cmp",
-  }
-  use {
-    "hrsh7th/cmp-path",
-    after = "nvim-cmp",
-  }
-  use {
-    "hrsh7th/cmp-nvim-lua",
-    after = "nvim-cmp",
-  }
-  use {
-    "saadparwaiz1/cmp_luasnip",
-    after = "nvim-cmp",
-  }
-
-  -- LSP config
-  use {
-    "williamboman/mason.nvim",
-    after = "cmp-nvim-lsp",
-  }
-  use {
-    "williamboman/mason-lspconfig.nvim",
-    after = "mason.nvim",
-    config = function () require("configs.mason") end,
-  }
-  use {
-    "neovim/nvim-lspconfig",
-    after = "mason-lspconfig.nvim",
-    setup = function() require("helpers").packer_lazy_load("nvim-lspconfig") end,
-    config = function () require("configs.lspconfig") end,
   }
 
   -- show function signature
