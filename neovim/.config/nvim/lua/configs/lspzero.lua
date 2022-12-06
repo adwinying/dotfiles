@@ -30,8 +30,7 @@ end
 -- cmp custom config
 lsp.setup_nvim_cmp({
   formatting = cmpconfig.formatting,
-
-  mapping = lsp.defaults.cmp_mappings(cmpconfig.custom_keybindings),
+  mapping = cmpconfig.custom_keybindings,
 })
 
 lsp.setup()

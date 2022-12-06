@@ -3,11 +3,14 @@ local present, cmp = pcall(require, "cmp")
 if not present then return end
 
 local custom_keybindings = {
+  ['<CR>'] = cmp.mapping.confirm({select = false}),
+  ['<C-e>'] = cmp.mapping.close(),
+
   ["<C-p>"] = cmp.mapping.select_prev_item(),
   ["<C-n>"] = cmp.mapping.select_next_item(),
 
-  ["<C-d>"] = cmp.mapping.scroll_docs(5),
   ["<C-u>"] = cmp.mapping.scroll_docs(-5),
+  ["<C-d>"] = cmp.mapping.scroll_docs(5),
 
   ["<C-j>"] = function(fallback)
     if require("luasnip").expand_or_jumpable() then
@@ -34,6 +37,9 @@ local custom_keybindings = {
       fallback()
     end
   end,
+
+  ["<Tab>"] = nil,
+  ["<S-Tab>"] = nil,
 }
 
 local formatting = {
