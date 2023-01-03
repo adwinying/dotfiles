@@ -109,7 +109,7 @@ return packer.startup(function (use)
   -- advanced substitution
   use {
     "tpope/vim-abolish",
-    event = "BufRead",
+    event = "VimEnter",
   }
 
   -- align blocks of text
@@ -180,7 +180,7 @@ return packer.startup(function (use)
   -- show function signature
   use {
     "ray-x/lsp_signature.nvim",
-    after = "nvim-lspconfig",
+    after = "lsp-zero.nvim",
     config = function () require("configs.lsp_signature") end,
   }
 
