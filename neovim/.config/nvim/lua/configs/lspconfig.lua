@@ -77,6 +77,7 @@ local keybindings = function (_, bufnr)
   vim.keymap.set('n', '<leader>lk', '<cmd>EslintFixAll<CR>', bufopts)
   -- restart lsp
   vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', bufopts)
+  vim.keymap.set('n', '<leader>li', '<cmd>LspInfo<CR>', bufopts)
 end
 
 return {
