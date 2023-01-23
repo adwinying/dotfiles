@@ -168,6 +168,7 @@ return packer.startup(function (use)
       {'saadparwaiz1/cmp_luasnip'},
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-nvim-lua'},
+      {'hrsh7th/cmp-nvim-lsp-signature-help'},
 
       -- Snippets
       {'L3MON4D3/LuaSnip'},
@@ -175,13 +176,6 @@ return packer.startup(function (use)
     },
     config = function() require("configs.lspzero") end,
     event = "InsertEnter",
-  }
-
-  -- show function signature
-  use {
-    "ray-x/lsp_signature.nvim",
-    after = "lsp-zero.nvim",
-    config = function () require("configs.lsp_signature") end,
   }
 
   -- auto insert matching brackets

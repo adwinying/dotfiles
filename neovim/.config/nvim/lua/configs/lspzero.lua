@@ -31,6 +31,7 @@ end
 lsp.setup_nvim_cmp({
   formatting = cmpconfig.formatting,
   mapping = cmpconfig.custom_keybindings,
+  sources = cmpconfig.sources,
 })
 
 lsp.setup()

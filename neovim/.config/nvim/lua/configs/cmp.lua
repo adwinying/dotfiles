@@ -45,18 +45,29 @@ local custom_keybindings = {
 local formatting = {
   format = function(entry, vim_item)
     vim_item.menu = ({
-      nvim_lsp = "[LSP]",
-      luasnip  = "[SNP]",
-      buffer   = "[BUF]",
-      nvim_lua = "[LUA]",
-      path     = "[PTH]",
+      path                    = "[PTH]",
+      nvim_lsp                = "[LSP]",
+      buffer                  = "[BUF]",
+      luasnip                 = "[SNP]",
+      nvim_lua                = "[LUA]",
+      nvim_lsp_signature_help = "[SIG]",
     })[entry.source.name]
 
     return vim_item
   end,
 }
 
+local sources = {
+  { name = 'path' },
+  { name = 'nvim_lsp', keyword_length = 3 },
+  { name = 'buffer', keyword_length = 3 },
+  { name = 'luasnip', keyword_length = 2 },
+  { name = 'nvim_lua', keyword_length = 3 },
+  { name = 'nvim_lsp_signature_help' },
+}
+
 return {
   custom_keybindings = custom_keybindings,
   formatting = formatting,
+  sources = sources,
 }
