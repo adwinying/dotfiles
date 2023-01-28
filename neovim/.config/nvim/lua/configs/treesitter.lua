@@ -14,6 +14,7 @@ ts_config.setup {
     "javascript",
     "typescript",
     "tsx",
+    "vue",
     "svelte",
     "astro",
     "prisma",
