@@ -69,7 +69,7 @@ return packer.startup(function (use)
 
   -- Preview colors of hexcodes
   use {
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     event = "BufRead",
     config = function () require("colorizer").setup() end,
   }
