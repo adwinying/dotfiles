@@ -70,8 +70,8 @@ return packer.startup(function (use)
   -- Preview colors of hexcodes
   use {
     "NvChad/nvim-colorizer.lua",
-    event = "BufRead",
-    config = function () require("colorizer").setup() end,
+    event = "VimEnter",
+    config = function () require("configs.colorizer") end,
   }
 
   -- Better syntax highlighting
