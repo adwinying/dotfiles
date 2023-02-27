@@ -76,4 +76,13 @@ return {
     "github/copilot.vim",
     event = "VeryLazy",
   },
+
+  -- search/replace in multiple files
+  {
+    "windwp/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>fs", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    },
+  },
 }
