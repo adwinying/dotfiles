@@ -187,3 +187,5 @@ require('lazy').setup({
     config = function () require("configs.telescope") end,
   },
 })
+
+vim.keymap.set("n", "<leader>la", "<CMD>:Lazy<CR>", { noremap = true, silent = true, desc = "Lazy" })
