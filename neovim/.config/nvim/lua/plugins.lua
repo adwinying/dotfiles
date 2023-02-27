@@ -178,6 +178,7 @@ require('lazy').setup({
       { "<leader>f:", ":Telescope command_history <CR>", desc = "Find Command History" },
       { "<leader>fc", ":Telescope commands <CR>", desc = "Find Commands" },
       { "<leader>fm", ":Telescope media_files <CR>", desc = "Find Media Files" },
+      { "<leader>fr", ":Telescope resume <CR>", desc = "Resume" },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
