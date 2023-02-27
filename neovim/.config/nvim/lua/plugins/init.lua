@@ -1,14 +1,5 @@
 return {
 
-  -- Better syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    version = false,
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function () require("configs.treesitter") end,
-  },
-
   -- tmux integration
   {
     "aserowy/tmux.nvim",
