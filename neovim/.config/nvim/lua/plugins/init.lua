@@ -1,12 +1,5 @@
 return {
 
-  -- status bar
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    config = function() require("configs.statusline") end,
-  },
-
   -- Better syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
@@ -14,25 +7,6 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     config = function () require("configs.treesitter") end,
-  },
-
-  -- Git signs
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function () require("configs.gitsigns") end,
-  },
-
-  -- smooth scrolling
-  {
-    "terryma/vim-smooth-scroll",
-    keys = {
-      { "<C-U>", function() vim.api.nvim_command("call smooth_scroll#up(&scroll, 0, 4)") end },
-      { "<C-D>", function() vim.api.nvim_command("call smooth_scroll#down(&scroll, 0, 4)") end },
-      { "<C-B>", function() vim.api.nvim_command("call smooth_scroll#up(&scroll*2, 0, 4)") end },
-      { "<C-F>", function() vim.api.nvim_command("call smooth_scroll#down(&scroll*2, 0, 4)") end },
-    },
   },
 
   -- tmux integration
@@ -73,13 +47,6 @@ return {
       {'rafamadriz/friendly-snippets'},
     },
     config = function() require("configs.lspzero") end,
-  },
-
-  -- keybindings at a glance
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function () require("configs.whichkey") end,
   },
 
   -- github copilot
