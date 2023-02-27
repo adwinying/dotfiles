@@ -17,7 +17,7 @@ local servers = {
   "tsserver",
   "tailwindcss",
   "graphql",
-  "sumneko_lua",
+  "lua_ls",
   "gopls",
   "prismals",
   "svelte",
