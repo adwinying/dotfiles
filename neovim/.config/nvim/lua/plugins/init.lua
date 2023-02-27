@@ -24,42 +24,6 @@ return {
     config = function () require("configs.gitsigns") end,
   },
 
-  -- . support for plugins
-  {
-    "tpope/vim-repeat",
-    event = "VeryLazy",
-    dependencies = {
-      -- comments
-      "tpope/vim-commentary",
-      -- surround motions
-      "tpope/vim-surround",
-      -- advanced substitution
-      "tpope/vim-abolish",
-    }
-  },
-
-  -- align blocks of text
-  {
-    "junegunn/vim-easy-align",
-    keys = {
-      { "ga", "<Plug>(EasyAlign)", mode = { "x", "n" }, noremap = false },
-    },
-  },
-
-  -- better % support
-  {
-    "andymass/vim-matchup",
-    event = "BufReadPre",
-    config = function() require("configs.matchup") end,
-  },
-
-  -- better escape
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function() require("configs.better_escape") end,
-  },
-
   -- smooth scrolling
   {
     "terryma/vim-smooth-scroll",
@@ -109,13 +73,6 @@ return {
       {'rafamadriz/friendly-snippets'},
     },
     config = function() require("configs.lspzero") end,
-  },
-
-  -- auto insert matching brackets
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = function () require("configs.autopairs") end,
   },
 
   -- keybindings at a glance
