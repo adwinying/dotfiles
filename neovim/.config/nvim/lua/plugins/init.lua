@@ -1,24 +1,10 @@
 return {
-  -- colorscheme
-  {
-    "arcticicestudio/nord-vim",
-    lazy = false,
-    prioriy = 1000,
-    config = function() require("configs.colors") end,
-  },
 
   -- status bar
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function() require("configs.statusline") end,
-  },
-
-  -- Preview colors of hexcodes
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function () require("configs.colorizer") end,
   },
 
   -- Better syntax highlighting
