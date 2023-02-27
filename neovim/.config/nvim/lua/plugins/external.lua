@@ -3,7 +3,7 @@ return {
   {
     "aserowy/tmux.nvim",
     event = "VeryLazy",
-    config = {
+    opts = {
       copy_sync = {
         -- enables copy sync and overwrites all register actions to
         -- sync registers *, +, unnamed, and 0 till 9 from tmux in advance

@@ -5,7 +5,7 @@ return {
   {
     "arcticicestudio/nord-vim",
     lazy = false,
-    prioriy = 1000,
+    priority = 1000,
     config = function()
       -- disable bg color
       vim.cmd("highlight Normal guibg=NONE")

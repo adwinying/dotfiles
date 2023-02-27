@@ -5,11 +5,7 @@ return {
     version = false,
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    setup = function()
-      -- Automatically set syntax for astro files
-      vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
-    end,
-    config = {
+    opts = {
       ensure_installed = {
         "lua",
         "vim",
@@ -48,5 +44,11 @@ return {
         enable = true,
       },
     },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+
+      -- Automatically set syntax for astro files
+      vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
+    end,
   },
 }

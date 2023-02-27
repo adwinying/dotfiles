@@ -48,14 +48,14 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = {},
+    opts = {},
   },
 
   -- better escape
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
-    config = {
+    opts = {
       -- a table with mappings to use
       mappings = { "jk" },
       -- the time in which the keys must be hit in ms
@@ -84,5 +84,11 @@ return {
     keys = {
       { "<leader>fs", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
     },
+  },
+
+  -- editorconfig support
+  {
+    "gpanders/editorconfig.nvim",
+    event = "VeryLazy",
   },
 }

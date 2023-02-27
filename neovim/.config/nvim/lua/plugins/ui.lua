@@ -5,7 +5,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    config = {
+    opts = {
       options = {
         icons_enabled = false,
         theme = "nord",
@@ -96,7 +96,7 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = {
+    opts = {
       signs        = {
         add          = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
         change       = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
@@ -155,6 +155,6 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = {},
+    opts = {},
   },
 }
