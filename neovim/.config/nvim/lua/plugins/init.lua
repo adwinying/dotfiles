@@ -21,31 +21,4 @@ return {
     },
     config = function() require("configs.lspzero") end,
   },
-
-  -- file finder
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    version = false,
-    keys = {
-      { "<leader>ff", "<CMD>Telescope find_files <CR>", desc = "Find Files" },
-      { "<leader>fa", "<CMD>Telescope find_files hidden=true <CR>", desc = "Find Files (+ hidden)" },
-      { "<leader>fb", "<CMD>Telescope buffers <CR>", desc = "Find Buffers" },
-      { "<leader>fh", "<CMD>Telescope help_tags <CR>", desc = "Find Help Tags" },
-      { "<leader>fw", "<CMD>Telescope live_grep <CR>", desc = "Grep" },
-      { "<leader>fz", "<CMD>Telescope grep_string <CR>", desc = "Word" },
-      { "<leader>fgc", "<CMD>Telescope git_bcommits <CR>", desc = "Find Git Commits" },
-      { "<leader>fgs", "<CMD>Telescope git_status <CR>", desc = "Find Git Status" },
-      { "<leader>f:", "<CMD>Telescope command_history <CR>", desc = "Find Command History" },
-      { "<leader>fc", "<CMD>Telescope commands <CR>", desc = "Find Commands" },
-      { "<leader>fm", "<CMD>Telescope media_files <CR>", desc = "Find Media Files" },
-      { "<leader>fr", "<CMD>Telescope resume <CR>", desc = "Resume" },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-media-files.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    },
-    config = function () require("configs.telescope") end,
-  },
 }
