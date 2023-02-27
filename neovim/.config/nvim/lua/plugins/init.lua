@@ -1,19 +1,5 @@
 return {
 
-  -- tmux integration
-  {
-    "aserowy/tmux.nvim",
-    event = "VeryLazy",
-    config = function() require("configs.tmux") end,
-  },
-
-  -- OSC52 (universal clipboard) integration
-  {
-    "ojroques/vim-oscyank",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function() require("configs.oscyank") end,
-  },
-
   -- LSP
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -32,18 +18,8 @@ return {
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-nvim-lua'},
       {'hrsh7th/cmp-nvim-lsp-signature-help'},
-
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
     },
     config = function() require("configs.lspzero") end,
-  },
-
-  -- github copilot
-  {
-    "github/copilot.vim",
-    event = "VeryLazy",
   },
 
   -- file finder
