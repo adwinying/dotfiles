@@ -33,22 +33,25 @@ require('lazy').setup({
   -- Preview colors of hexcodes
   {
     "NvChad/nvim-colorizer.lua",
-    event = "BufRead",
+    event = { "BufReadPre", "BufNewFile" },
     config = function () require("configs.colorizer") end,
   },
 
   -- Better syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+    version = false,
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     config = function () require("configs.treesitter") end,
   },
 
   -- Git signs
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function () require("configs.gitsigns") end,
-    setup = function () require("helpers").packer_lazy_load("gitsigns.nvim") end,
   },
 
   -- . support for plugins
@@ -76,7 +79,7 @@ require('lazy').setup({
   -- better % support
   {
     "andymass/vim-matchup",
-    setup = function() require("helpers").packer_lazy_load("vim-matchup") end,
+    event = "BufReadPre",
     config = function() require("configs.matchup") end,
   },
 
@@ -101,18 +104,21 @@ require('lazy').setup({
   -- tmux integration
   {
     "aserowy/tmux.nvim",
+    event = "VeryLazy",
     config = function() require("configs.tmux") end,
   },
 
   -- OSC52 (universal clipboard) integration
   {
     "ojroques/vim-oscyank",
+    event = { "BufReadPost", "BufNewFile" },
     config = function() require("configs.oscyank") end,
   },
 
   -- LSP
   {
     'VonHeikemen/lsp-zero.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},
@@ -133,24 +139,26 @@ require('lazy').setup({
       {'rafamadriz/friendly-snippets'},
     },
     config = function() require("configs.lspzero") end,
-    event = "InsertEnter",
   },
 
   -- auto insert matching brackets
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     config = function () require("configs.autopairs") end,
   },
 
   -- keybindings at a glance
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     config = function () require("configs.whichkey") end,
   },
 
   -- github copilot
   {
     "github/copilot.vim",
+    event = "VeryLazy",
   },
 
   -- file finder
