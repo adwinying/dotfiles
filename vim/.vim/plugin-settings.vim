@@ -45,16 +45,10 @@ nmap ga <Plug>(EasyAlign)
 " hide default statusline
 set noshowmode
 " set lightline theme
-let g:lightline = {
-\   'colorscheme': 'nord',
-\}
+let g:lightline = { 'colorscheme': 'nord' }
 
 " # vim-smooth-scroll settings
 noremap <silent> <C-U> :call smooth_scroll#up(&scroll, 0, 4)<CR>
 noremap <silent> <C-D> :call smooth_scroll#down(&scroll, 0, 4)<CR>
 noremap <silent> <C-B> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <C-F> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-" # flutter settings
-" flutter lint command
-autocmd FileType dart nnoremap <leader>ll :!flutter format %<CR>

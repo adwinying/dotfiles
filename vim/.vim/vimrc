@@ -7,7 +7,6 @@ let configs = [
 \  "basic",
 \  "plugins",
 \  "plugin-settings",
-\  "coc",
 \]
 
 for file in configs
