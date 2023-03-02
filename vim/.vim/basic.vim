@@ -363,3 +363,8 @@ function! VisualSelection(direction, extra_filter) range
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
+
+function! LoadPlugins()
+  execute "source ~/.vim/plugins.vim"
+  execute "source ~/.vim/plugin-settings.vim"
+endfunction
