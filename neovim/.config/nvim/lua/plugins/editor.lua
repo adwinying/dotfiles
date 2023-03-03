@@ -73,8 +73,17 @@ return {
 
   -- github copilot
   {
-    "github/copilot.vim",
-    event = "VeryLazy",
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-l>",
+        },
+      },
+    }
   },
 
   -- search/replace in multiple files
