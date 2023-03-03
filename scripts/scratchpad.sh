@@ -3,6 +3,11 @@ DIR=~/.scratchpad
 FILE="$(date "+%Y-%m-%d_%H:%M:%S").txt"
 FPATH=$DIR/$FILE
 
+# source .localrc if available
+if [[ -s "$HOME/.localrc" ]]; then
+  source "$HOME/.localrc"
+fi
+
 # use neovim if available; else use vim
 if command -v nvim &> /dev/null
 then
