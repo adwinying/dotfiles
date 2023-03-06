@@ -12,7 +12,7 @@ local hyper = require("modules.hyper")
 
 -- terminal
 hyper:bind({}, "return", function ()
-  hs.application.launchOrFocus(configs.apps.terminal)
+  hs.execute('open -na ' .. configs.apps.terminal)
 end)
 
 -- browser

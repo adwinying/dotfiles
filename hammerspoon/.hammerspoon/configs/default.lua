@@ -10,7 +10,7 @@ local default_config = {}
 -- =============================================================================
 
 default_config.apps = {
-  terminal = "/usr/bin/alacritty",
+  terminal = "Alacritty",
   browser = "Firefox",
 }
 
