@@ -49,7 +49,7 @@ end
 -- move to space #
 for i = 1, 9 do
   hyper:bind({}, tostring(i), function ()
-    wm.api.space.focus(nil, i)
+    hs.eventtap.keyStroke({ "ctrl", "alt", "cmd", "shift" }, tostring(i))
   end)
 end
 
