@@ -12,6 +12,7 @@ local default_config = {}
 default_config.apps = {
   terminal = "Alacritty",
   browser = "Firefox",
+  scratchpad_path = "/usr/local/bin/alacritty",
 }
 
 -- =============================================================================

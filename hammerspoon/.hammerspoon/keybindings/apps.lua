@@ -22,5 +22,5 @@ end)
 
 -- scratchpad
 hyper:bind({}, "v", function ()
-  os.execute(configs.apps.terminal .. " -e bash -c \"~/.dotfiles/scripts/scratchpad.sh\" &")
+  os.execute(configs.apps.scratchpad_path .. " -e bash -c \"~/.dotfiles/scripts/scratchpad.sh\" &")
 end)
