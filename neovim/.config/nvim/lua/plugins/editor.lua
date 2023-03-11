@@ -56,9 +56,11 @@ return {
 
   -- auto insert matching brackets
   {
-    "windwp/nvim-autopairs",
+    "echasnovski/mini.pairs",
     event = "InsertEnter",
-    opts = {},
+    config = function(_, opts)
+      require("mini.pairs").setup(opts)
+    end,
   },
 
   -- better escape
