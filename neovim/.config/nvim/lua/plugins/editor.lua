@@ -38,10 +38,11 @@ return {
 
   -- align blocks of text
   {
-    "junegunn/vim-easy-align",
-    keys = {
-      { "ga", "<Plug>(EasyAlign)", mode = { "x", "n" }, noremap = false },
-    },
+    "echasnovski/mini.align",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function(_, opts)
+      require("mini.align").setup(opts)
+    end,
   },
 
   -- better % support
