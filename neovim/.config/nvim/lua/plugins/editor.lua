@@ -1,22 +1,8 @@
 return {
-  -- surround motions
-  {
-    "tpope/vim-surround",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "tpope/vim-repeat" },
-  },
-
   -- advanced substitution
   {
     "tpope/vim-abolish",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "tpope/vim-repeat" },
-  },
-
-  -- . support for plugins
-  {
-    "tpope/vim-repeat",
-    event = "VeryLazy",
   },
 
   -- comments
@@ -36,12 +22,47 @@ return {
     end,
   },
 
+  -- surround motions
+  {
+    "echasnovski/mini.surround",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      mappings = {
+        add = 'ys',
+        delete = 'ds',
+        find = '',
+        find_left = '',
+        highlight = '',
+        replace = 'cs',
+        update_n_lines = '',
+
+        -- Add this only if you don't want to use extended mappings
+        suffix_last = '',
+        suffix_next = '',
+      },
+      search_method = 'cover_or_next',
+    },
+    config = function(_, opts)
+      require("mini.surround").setup(opts)
+      vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+    end,
+  },
+
   -- align blocks of text
   {
     "echasnovski/mini.align",
     event = { "BufReadPost", "BufNewFile" },
     config = function(_, opts)
       require("mini.align").setup(opts)
+    end,
+  },
+
+  -- auto insert matching brackets
+  {
+    "echasnovski/mini.pairs",
+    event = "InsertEnter",
+    config = function(_, opts)
+      require("mini.pairs").setup(opts)
     end,
   },
 
@@ -52,15 +73,6 @@ return {
     config = function()
       vim.g.matchup_surround_enabled = 1
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
-  },
-
-  -- auto insert matching brackets
-  {
-    "echasnovski/mini.pairs",
-    event = "InsertEnter",
-    config = function(_, opts)
-      require("mini.pairs").setup(opts)
     end,
   },
 
