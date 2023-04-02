@@ -14,24 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
-require("lazy").setup("plugins", {
-  ui = {
-    icons = {
-      cmd = "⌘",
-      config = "🛠",
-      event = "📅",
-      ft = "📂",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      source = "📄",
-      start = "🚀",
-      task = "📌",
-      lazy = "💤 ",
-    },
-  },
-})
+require("lazy").setup("plugins")
 
 -- define keymap
 vim.keymap.set("n", "<leader>la", "<CMD>Lazy<CR>", { noremap = true, silent = true, desc = "Lazy" })
