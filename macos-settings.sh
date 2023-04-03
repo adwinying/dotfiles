@@ -178,6 +178,14 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ###############################################################################
+# Alacritty
+###############################################################################
+
+# Enable thin fonts
+defaults write org.alacritty AppleFontSmoothing -int 0 && \
+defaults write alacritty AppleFontSmoothing -int 0
+
+###############################################################################
 # Cleanup
 ###############################################################################
 
