@@ -119,10 +119,4 @@ return {
       { "<leader>fs", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
     },
   },
-
-  -- editorconfig support
-  {
-    "gpanders/editorconfig.nvim",
-    event = "VeryLazy",
-  },
 }
