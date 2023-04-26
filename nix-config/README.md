@@ -13,6 +13,43 @@ Personal nix config.
 
 ## Usage
 
+### 💿 From a live install
+
+1. Partition disks (following is an example)
+
+```bash
+$ sudo -i
+$ cfdisk
+
+# select partition type: gpt
+# create the following partitions:
+# - 512M, EFI System Partition
+# - 63.5G, ext4
+
+# format partitions
+$ mkfs.fat -F 32 -n boot /dev/vda1
+$ mkfs.ext4 -L nixos /dev/vda2
+```
+
+2. Mount partitions
+
+```bash
+$ mount /dev/disk/by-label/nixos /mnt
+$ mkdir /mnt/boot
+$ mount /dev/disk/by-label/boot /mnt/boot
+```
+
+3. Bootstrap
+
+```bash
+# nix stable does not support non-flake inputs yet
+$ nix-env -iA nixos.nixUnstable
+
+$ nixos-install --flake github:adwinying/dotfiles?dir=nix-config#hostname
+```
+
+### From an existing nixOS install
+
 1. Clone this repo
 
 ```bash
@@ -23,11 +60,6 @@ $ git clone https://github.com/adwinying/dotfiles ~/.dotfiles
 
 ```bash
 $ cd ~/.dotfiles/nix-config
-
-# If running from live install environment:
-$ nixos-install --flake .#hostname
-
-# If running from existing nixOS install:
 $ sudo nixos-rebuild switch --flake .#hostname
 ```
 
