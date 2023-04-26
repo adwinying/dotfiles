@@ -8,8 +8,10 @@ in {
   imports = [
     # zsh
     ({
-      home.packages = [
-        pkgs.zsh
+      home.packages = with pkgs; [
+        jq
+        file
+        zsh
       ];
       home.file = {
         ".zsh".source = "${dotfiles}/zsh/.zsh";
