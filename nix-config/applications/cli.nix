@@ -39,7 +39,7 @@ in {
         cargo
         rustc
         nodejs
-        neovim
+        unstable.neovim # get the latest and greatest version
       ];
       xdg.configFile.nvim.source = "${dotfiles}/neovim/.config/nvim";
     })

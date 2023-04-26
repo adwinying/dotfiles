@@ -5,6 +5,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
 
+    # Nixpkgs (bleeding edge)
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

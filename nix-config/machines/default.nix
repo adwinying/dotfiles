@@ -25,6 +25,15 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+
+      # When applied, the unstable nixpkgs set (declared in the flake inputs)
+      # will be accessible through 'pkgs.unstable'
+      (final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
     ];
     # Configure your nixpkgs instance
     config = {
