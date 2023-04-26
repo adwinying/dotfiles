@@ -37,10 +37,7 @@ bindkey -M vicmd 'j' history-substring-search-down \
 zinit load zsh-users/zsh-history-substring-search
 
 # cli fuzzy finder
-zinit ice wait lucid depth"1" multisrc"shell/{completion,key-bindings}.zsh"
-zinit load junegunn/fzf
-zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit pack"binary" for fzf
 
 # fuzzy navigation
 zinit ice wait lucid
