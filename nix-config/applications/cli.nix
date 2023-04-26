@@ -15,7 +15,16 @@ in {
       ];
       home.file = {
         ".zsh".source = "${dotfiles}/zsh/.zsh";
-        ".zshrc".source = "${dotfiles}/zsh/.zshrc";
+        ".zshrc".text = let
+          localPath = "/home/${username}/.dotfiles";
+          remotePath = "https://github.com/adwinying/dotfiles.git";
+        in ''
+          if [[ ! -d ${localPath} ]]; then
+            ${pkgs.git}/bin/git clone ${remotePath} ${localPath}
+          fi
+
+          source ${localPath}/zsh/.zshrc
+        '';
         ".zshenv".source = "${dotfiles}/zsh/.zshenv";
       };
     })
