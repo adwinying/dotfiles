@@ -21,10 +21,10 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      macdev = nixpkgs.lib.nixosSystem {
+      workdev = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          hostname = "macdev";
+          hostname = "workdev";
           username = "adwin";
           system   = "aarch64-linux";
         };

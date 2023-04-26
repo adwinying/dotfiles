@@ -1,5 +1,5 @@
 #
-# macdev-specific configs
+# workdev-specific configs
 #
 
 { inputs, lib, config, pkgs, ... }: {
