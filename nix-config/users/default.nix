@@ -1,13 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, username, applications, ... }: {
-  imports = applications ++ [
+{ inputs, lib, config, pkgs, username, profiles, ... }: {
+  imports = profiles ++ [
     # Import user-specific configs
     ./${username}
 
-    # Import common applications configs here
-    ../applications/cli.nix
+    # Import profiles here
+    ../profiles/cli.nix
   ];
 
   nixpkgs = {

@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   home-manager.extraSpecialArgs = {
-    # Import user applications for this machine
-    applications = [];
+    # Import user profiles for this machine
+    profiles = [];
   };
 }

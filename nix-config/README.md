@@ -9,7 +9,7 @@ Personal nix config.
 | `machines`      | Contains machine configs (hardware, system settings/packages). `default.nix` contains shared configs between all machines. |
 | `modules`       | Contains system configs for a certain feature that is only used by some machines.                                          |
 | `users`         | Contains user (`home-manager`) configs. (ie. `machines`, but for user).                                                    |
-| `applications`  | Contains user configs for a group of related packages. (ie. `modules`, but for user)                                       |
+| `profiles`      | Contains user configs for a group of related packages. (ie. `modules`, but for user)                                       |
 
 ## Usage
 
@@ -69,3 +69,4 @@ $ sudo nixos-rebuild switch --flake .#hostname
 - Multi machine configs: https://github.com/wimpysworld/nix-config
 - Directory structure: https://github.com/gianarb/dotfiles/tree/main/nixos
 - macOS configs : https://github.com/mitchellh/nixos-config
+- profile directory: https://github.com/davidak/nixos-config/tree/master/profiles
