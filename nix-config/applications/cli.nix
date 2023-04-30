@@ -83,6 +83,7 @@ in {
   # misc.
   home.packages = with pkgs; [
     mosh
+    lazydocker
     neofetch
     ripgrep
     unzip
