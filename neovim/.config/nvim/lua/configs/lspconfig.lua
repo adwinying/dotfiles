@@ -19,6 +19,7 @@ local servers = {
   "lua_ls",
   "prismals",
   "svelte",
+  "nil_ls",
 }
 
 -- LSP custom configs (optional)
