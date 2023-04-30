@@ -67,6 +67,14 @@ in {
       programs.git.userName = "Adwin Ying";
     })
 
+    # direnv
+    ({
+      home.packages = [ pkgs.direnv ];
+      home.file = {
+        ".localrc/direnv".text = "eval \"$(direnv hook zsh)\"";
+      };
+    })
+
     # ranger
     ({
       home.packages = [ pkgs.ranger ];
