@@ -3,11 +3,9 @@
 #
 
 { inputs, lib, config, pkgs, hostname, username, system, ... }: {
-  # You can import other NixOS modules here
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
-    ./${hostname}/hardware-configuration.nix
-    ./${hostname}/configuration.nix
+    ../machines/${hostname}/hardware-configuration.nix
 
     # Import home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager

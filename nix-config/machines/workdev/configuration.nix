@@ -5,6 +5,7 @@
 { inputs, lib, config, pkgs, ... }: {
   # Import system modules for this machine
   imports = [
+    ../../modules/base.nix
     ../../modules/docker.nix
     ../../modules/tailscale.nix
   ];

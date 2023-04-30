@@ -31,7 +31,7 @@
           username = "adwin";
           system   = "aarch64-linux";
         };
-        modules = [ ./machines ];
+        modules = [ ./machines/workdev/configuration.nix ];
       };
 
       bootes = nixpkgs.lib.nixosSystem {
@@ -41,7 +41,7 @@
           username = "adwin";
           system   = "aarch64-linux";
         };
-        modules = [ ./machines ];
+        modules = [ ./machines/bootes/configuration.nix ];
       };
     };
   };
