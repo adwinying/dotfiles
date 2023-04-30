@@ -33,6 +33,16 @@
         };
         modules = [ ./machines ];
       };
+
+      bootes = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          hostname = "bootes";
+          username = "adwin";
+          system   = "aarch64-linux";
+        };
+        modules = [ ./machines ];
+      };
     };
   };
 }
