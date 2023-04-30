@@ -23,25 +23,22 @@
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      workdev = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          hostname = "workdev";
-          username = "adwin";
-          system   = "aarch64-linux";
-        };
-        modules = [ ./machines/workdev/configuration.nix ];
+    nixosConfigurations = let
+      mkMachineConfig = { hostname, ... }@attrs: nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs ; } // attrs;
+        modules = [ ./machines/${hostname}/configuration.nix ];
+      };
+    in {
+      workdev = mkMachineConfig {
+        hostname = "workdev";
+        username = "adwin";
+        system   = "aarch64-linux";
       };
 
-      bootes = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          hostname = "bootes";
-          username = "adwin";
-          system   = "aarch64-linux";
-        };
-        modules = [ ./machines/bootes/configuration.nix ];
+      bootes = mkMachineConfig {
+        hostname = "bootes";
+        username = "adwin";
+        system   = "aarch64-linux";
       };
     };
   };
