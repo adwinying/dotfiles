@@ -2,14 +2,6 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
 { inputs, lib, config, pkgs, username, profiles, ... }: {
-  imports = profiles ++ [
-    # Import user-specific configs
-    ./${username}
-
-    # Import profiles here
-    ../profiles/cli.nix
-  ];
-
   nixpkgs = {
     # You can add overlays here
     overlays = [

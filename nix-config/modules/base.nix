@@ -106,7 +106,7 @@
     };
     users = {
       # Import your home-manager configuration
-      ${username} = import ../users;
+      ${username} = import ../users/${username}.nix;
     };
   };
 

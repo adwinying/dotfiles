@@ -1,6 +1,0 @@
-#
-# adwin-specific user configs
-#
-
-{ ... }: {
-}
