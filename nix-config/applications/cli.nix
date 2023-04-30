@@ -72,11 +72,16 @@ in {
       home.packages = [ pkgs.ranger ];
       xdg.configFile.ranger.source = "${dotfiles}/ranger/.config/ranger";
     })
+
+    # btop
+    ({
+      home.packages = [ pkgs.btop ];
+      xdg.configFile.btop.source = "${dotfiles}/btop/.config/btop";
+    })
   ];
 
   # misc.
   home.packages = with pkgs; [
-    htop
     mosh
     neofetch
     ripgrep
