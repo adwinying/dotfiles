@@ -9,6 +9,8 @@ neovim/.config/nvim/plugin
 tmux/.tmux/plugins
 tmux/.tmux/resurrect
 
+btop/.config/btop/btop.log
+
 lazygit/.config/lazygit/state.yml
 lazygit/Library/Application Support/lazygit/state.yml
 
