@@ -57,7 +57,13 @@ HOSTNAME() {
 
 # Show current directory
 CURR_DIR() {
-  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%~${COLOR_ACCENT}]"
+  if [[ -n $DIRENV_DIR ]]; then
+    direnv_label="(direnv) "
+  else
+    direnv_label=""
+  fi
+
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}$direnv_label%~${COLOR_ACCENT}]"
 }
 
 # git prompt
