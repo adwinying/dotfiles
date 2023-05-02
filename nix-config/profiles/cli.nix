@@ -46,8 +46,8 @@ in {
         gnumake
         gcc
         cargo
-        rustc
         nodejs
+        unstable.rustc
         unstable.neovim # get the latest and greatest version
       ];
       xdg.configFile.nvim.source = "${dotfiles}/neovim/.config/nvim";
