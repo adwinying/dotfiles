@@ -60,6 +60,7 @@ $ git clone https://github.com/adwinying/dotfiles ~/.dotfiles
 
 ```bash
 $ cd ~/.dotfiles/nix-config
+$ nix shell --experimental-features 'nix-command flakes' nixpkgs#nixos-rebuild
 $ sudo nixos-rebuild switch --flake .#hostname
 ```
 
