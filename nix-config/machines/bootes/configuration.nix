@@ -19,11 +19,8 @@
   boot.loader.grub.device = "nodev";
   boot.initrd.kernelModules = [ "nvme" ];
 
-  # Open ports 3000s and 8000s for development
-  networking.firewall.allowedTCPPortRanges = [
-    { from = 3000; to = 3999; }
-    { from = 8000; to = 8999; }
-  ];
+  # No need firewall as this machine is not public facing
+  networking.firewall.enable = false;
 
   home-manager.extraSpecialArgs = {
     # Import user profiles for this machine
