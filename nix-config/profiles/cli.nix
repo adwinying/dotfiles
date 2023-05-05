@@ -95,5 +95,6 @@ in {
     neofetch
     ripgrep
     unzip
+    bitwarden-cli
   ];
 }
