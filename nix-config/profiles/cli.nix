@@ -90,6 +90,7 @@ in {
 
   # misc.
   home.packages = with pkgs; [
+    stow
     mosh
     lazydocker
     neofetch
