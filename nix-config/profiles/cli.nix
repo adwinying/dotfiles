@@ -2,7 +2,7 @@
 # programs/configs for the terminal
 #
 
-{ pkgs, dotfiles, username, ... }: {
+{ pkgs, dotfiles, secrets, username, ... }: {
   imports = [
     # zsh
     ({
@@ -71,6 +71,14 @@
       programs.git.userName = "Adwin Ying";
     })
 
+    # ssh
+    ({
+      home.file = {
+        ".ssh/id_ed25519".source = "${secrets}/id_ed25519";
+        ".ssh/id_ed25519.pub".source = "${secrets}/id_ed25519.pub";
+      };
+    })
+
     # direnv
     ({
       home.packages = [ pkgs.direnv ];
@@ -108,7 +116,6 @@
   in [
     rebuildHost
     bootstrapSecrets
-    stow
     mosh
     lazydocker
     neofetch

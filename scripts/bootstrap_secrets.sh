@@ -16,7 +16,7 @@ CWD=$(realpath -e $(dirname $0))
 HOSTNAME=$(hostname)
 SECRET_NOTE_NAME="secrets.$HOSTNAME"
 SECRETS_DIR="$CWD/../secrets/$HOSTNAME"
-OUTPUT_DIR="$HOME/.secrets/$HOSTNAME"
+OUTPUT_DIR="$HOME/.secrets"
 
 # Get all secrets for host
 SECRETS=$($CWD/get_secrets.sh "$SECRET_NOTE_NAME")
@@ -52,11 +52,6 @@ for file in $(grep -H -r -E -o '%.[^%]+%' .); do
   # Replace secret name with secret value
   sed -i "s/%$secret_name%/$secret_value/g" $file_path
 done
-
-# Symlink secret files
-pushd $(dirname $OUTPUT_DIR)
-stow -v --no-folding $HOSTNAME
-popd
 
 # Return to original directory
 popd
