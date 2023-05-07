@@ -2,9 +2,7 @@
 # programs/configs for GUI environment
 #
 
-{ pkgs, config, username, ... }: let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
-in {
+{ pkgs, dotfiles, ... }: {
   imports = [
     # awesome
     ({

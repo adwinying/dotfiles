@@ -2,9 +2,7 @@
 # programs/configs for the terminal
 #
 
-{ pkgs, config, username, ... }: let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
-in {
+{ pkgs, dotfiles, username, ... }: {
   imports = [
     # zsh
     ({

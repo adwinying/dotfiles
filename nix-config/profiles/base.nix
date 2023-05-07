@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, username, profiles, ... }: {
+{ inputs, config, username, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -43,6 +43,12 @@
       EDITOR = "nvim";
       PAGER = "less -FirSwX";
     };
+  };
+
+  # Define shared vars for all modules
+  _module.args = {
+    dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
+    secrets = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.secrets";
   };
 
   # Enable home-manager
