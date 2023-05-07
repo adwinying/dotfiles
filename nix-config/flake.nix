@@ -35,6 +35,12 @@
         system   = "aarch64-linux";
       };
 
+      tunnel = mkMachineConfig {
+        hostname = "tunnel";
+        username = "adwin";
+        system   = "aarch64-linux";
+      };
+
       bootes = mkMachineConfig {
         hostname = "bootes";
         username = "adwin";
