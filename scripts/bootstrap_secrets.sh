@@ -37,7 +37,7 @@ pushd $OUTPUT_DIR
 for file in $(grep -H -r -E -o '%.[^%]+%' .); do
   file_path=$(echo $file | cut -d ':' -f 1)
   secret_name=$(echo $file | cut -d '%' -f 2)
-  secret_value=$(echo $SECRETS | jq -r ".$secret_name" | sed ':a;N;$!ba;s/\n/\\n/g')
+  secret_value=$(echo $SECRETS | jq -r ".$secret_name" | sed 's|/|\\/|g' | sed ':a;N;$!ba;s/\n/\\n/g' )
 
   echo "file_path: $file_path"
   echo "secret_name: $secret_name"
