@@ -17,6 +17,7 @@
     sshAuthorizedKeys.flake = false;
 
     # TODO: Add any other flake you might need
+    # flake-utils.url = "github:numtide/flake-utils";
     # hardware.url = "github:nixos/nixos-hardware";
   };
 
