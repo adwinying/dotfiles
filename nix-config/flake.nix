@@ -42,6 +42,12 @@
         system   = "aarch64-linux";
       };
 
+      nas = mkMachineConfig {
+        hostname = "nas";
+        username = "adwin";
+        system   = "x86_64-linux";
+      };
+
       bootes = mkMachineConfig {
         hostname = "bootes";
         username = "adwin";
