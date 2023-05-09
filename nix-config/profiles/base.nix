@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, config, username, ... }: {
+{ inputs, config, pkgs, username, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -56,6 +56,53 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  # Nix convenience scripts
+  home.packages = with pkgs; let
+    dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
+
+    syncAllHosts = writeShellScriptBin "sync-all-hosts" ''
+      pushd ${dotfiles}/nix-config
+
+      HOSTS=$(nix eval .#nixosConfigurations --apply 'pkgs: builtins.concatStringsSep " " (builtins.attrNames pkgs)' | xargs)
+
+      for host in $HOSTS; do
+        echo "Syncing $host:"
+
+        # Check host accessible via SSH
+        IS_HOST_ACTIVE=$(ssh -o ConnectTimeout=5 $host exit &> /dev/null)
+
+        # Skip if host is not accessible
+        if [[ $? -ne 0 ]]; then
+          echo "Host $host is not accessible via SSH; skipping..."
+          continue
+        fi
+
+        # Run sync script on host via SSH
+        ssh $host "cd ~/.dotfiles && git pull && rebuild-host && bootstrap-secrets"
+      done
+
+      popd
+
+      echo "Done!"
+    '';
+
+    rebuildHost = writeShellScriptBin "rebuild-host" ''
+      sudo nixos-rebuild switch --flake $HOME/.dotfiles/nix-config#
+    '';
+
+    bootstrapSecrets = writeShellScriptBin "bootstrap-secrets" ''
+      if [[ -z "$BW_SESSION" ]]; then
+        export BW_SESSION=$(bw unlock --raw)
+      fi
+
+      ${dotfiles}/scripts/bootstrap_secrets.sh
+    '';
+  in [
+    syncAllHosts
+    rebuildHost
+    bootstrapSecrets
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.11";

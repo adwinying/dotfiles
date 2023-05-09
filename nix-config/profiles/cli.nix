@@ -101,21 +101,7 @@
   ];
 
   # misc.
-  home.packages = with pkgs; let
-    rebuildHost = writeShellScriptBin "rebuild-host" ''
-      sudo nixos-rebuild switch --flake $HOME/.dotfiles/nix-config#
-    '';
-
-    bootstrapSecrets = writeShellScriptBin "bootstrap-secrets" ''
-      if [[ -z "$BW_SESSION" ]]; then
-        export BW_SESSION=$(bw unlock --raw)
-      fi
-
-      ${dotfiles}/scripts/bootstrap_secrets.sh
-    '';
-  in [
-    rebuildHost
-    bootstrapSecrets
+  home.packages = with pkgs; [
     mosh
     lazydocker
     neofetch
