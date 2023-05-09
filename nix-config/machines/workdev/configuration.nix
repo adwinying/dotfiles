@@ -2,7 +2,7 @@
 # workdev-specific configs
 #
 
-{ inputs, lib, config, pkgs, ... }: {
+{ ... }: {
   # Import system modules for this machine
   imports = [
     ../../modules/base.nix
@@ -16,8 +16,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  home-manager.extraSpecialArgs = {
-    # Import user profiles for this machine
-    profiles = [];
-  };
+  # Import user profiles for this machine
+  home-manager.extraSpecialArgs.profiles = [];
 }

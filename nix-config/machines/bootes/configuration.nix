@@ -2,7 +2,7 @@
 # workdev-specific configs
 #
 
-{ inputs, lib, config, pkgs, ... }: {
+{ ... }: {
   # Import system modules for this machine
   imports = [
     ../../modules/base.nix
@@ -22,8 +22,6 @@
   # No need firewall as this machine is not public facing
   networking.firewall.enable = false;
 
-  home-manager.extraSpecialArgs = {
-    # Import user profiles for this machine
-    profiles = [];
-  };
+  # Import user profiles for this machine
+  home-manager.extraSpecialArgs.profiles = [];
 }
