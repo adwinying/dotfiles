@@ -23,5 +23,7 @@
   networking.firewall.enable = false;
 
   # Import user profiles for this machine
-  home-manager.extraSpecialArgs.profiles = [];
+  home-manager.extraSpecialArgs.profiles = [
+    ../../profiles/dev.nix
+  ];
 }
