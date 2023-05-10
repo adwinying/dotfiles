@@ -44,6 +44,16 @@
       };
     })
 
+    # vim
+    ({
+      home.packages = [
+        pkgs.vim
+      ];
+      home.file = {
+        ".vim".source = "${dotfiles}/vim/.vim";
+      };
+    })
+
     # neovim
     ({
       home.packages = with pkgs; [
