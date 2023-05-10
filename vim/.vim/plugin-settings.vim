@@ -23,6 +23,12 @@ nmap <leader>gdm :Gdiff master<CR>
 " launch difftool (against master)
 nmap <leader>gdt :Git difftool --name-status master<CR>
 
+" # lightline settings
+" hide default statusline
+set noshowmode
+" set lightline theme
+let g:lightline = { 'colorscheme': 'nord' }
+
 " # nord-vim settings
 " set colorscheme
 colorscheme nord
@@ -40,12 +46,6 @@ noremap <leader>fz :Ag<CR>
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" # lightline settings
-" hide default statusline
-set noshowmode
-" set lightline theme
-let g:lightline = { 'colorscheme': 'nord' }
 
 " # vim-smooth-scroll settings
 noremap <silent> <C-U> :call smooth_scroll#up(&scroll, 0, 4)<CR>
