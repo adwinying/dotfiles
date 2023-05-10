@@ -6,3 +6,8 @@
 "
 
 execute "source ~/.vim/basic.vim"
+
+if !empty(glob('~/.vim/autoload/plug.vim')) && !has('nvim')
+  execute "source ~/.vim/plugins.vim"
+  execute "source ~/.vim/plugin-settings.vim"
+endif
