@@ -78,9 +78,13 @@
 
     # direnv
     ({
-      home.packages = [ pkgs.direnv ];
+      home.packages = with pkgs; [
+        direnv
+        nix-direnv
+      ];
       home.file = {
         ".localrc/direnv".text = "eval \"$(direnv hook zsh)\"";
+        ".config/direnv/direnvrc".text = "source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
       };
     })
 
