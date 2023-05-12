@@ -42,9 +42,6 @@ $ mount /dev/disk/by-label/boot /mnt/boot
 3. Bootstrap
 
 ```bash
-# nix stable does not support non-flake inputs yet
-$ nix-env -iA nixos.nixUnstable
-
 $ nixos-install --flake github:adwinying/dotfiles?dir=nix-config#hostname
 ```
 
