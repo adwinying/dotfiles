@@ -16,6 +16,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # No need firewall as this machine is not public facing
+  networking.firewall.enable = false;
+
   # Import user profiles for this machine
   home-manager.extraSpecialArgs.profiles = [
     ../../profiles/dev.nix
