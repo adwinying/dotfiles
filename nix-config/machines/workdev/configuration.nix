@@ -8,6 +8,7 @@
     ../../modules/base.nix
     ../../modules/docker.nix
     ../../modules/tailscale.nix
+    ../../modules/xserver.nix
   ];
 
   # Import overlays for this machine
@@ -19,8 +20,13 @@
   # No need firewall as this machine is not public facing
   networking.firewall.enable = false;
 
+  # Enable QEMU's guest agent
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+
   # Import user profiles for this machine
   home-manager.extraSpecialArgs.profiles = [
     ../../profiles/dev.nix
+    ../../profiles/gui.nix
   ];
 }

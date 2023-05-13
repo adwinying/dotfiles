@@ -34,7 +34,7 @@ Apps = {
 -- network interfaces
 Network_Interfaces = {
   wlan = "wlo1",
-  lan = "enp42s0",
+  lan = "enp0s1",
 }
 
 -- language mappings
