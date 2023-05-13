@@ -83,7 +83,10 @@
         nix-direnv
       ];
       home.file = {
-        ".localrc/direnv".text = "eval \"$(direnv hook zsh)\"";
+        ".localrc/direnv".text = ''
+          export DIRENV_LOG_FORMAT=
+          eval "$(direnv hook zsh)"
+        '';
         ".config/direnv/direnvrc".text = "source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc";
       };
     })
