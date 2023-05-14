@@ -2,7 +2,7 @@
 # programs/configs for the terminal
 #
 
-{ pkgs, dotfiles, secrets, username, ... }: {
+{ pkgs, config, dotfiles, secrets, ... }: {
   imports = [
     # zsh
     ({
@@ -14,7 +14,7 @@
       home.file = {
         ".zsh".source = "${dotfiles}/zsh/.zsh";
         ".zshrc".text = let
-          localPath = "/home/${username}/.dotfiles";
+          localPath = "${config.home.homeDirectory}/.dotfiles";
           remotePath = "https://github.com/adwinying/dotfiles.git";
         in ''
           if [[ ! -d ${localPath} ]]; then
@@ -23,7 +23,7 @@
 
           source ${localPath}/zsh/.zshrc
 
-          if [[ ! -d /home/${username}/.secrets ]]; then
+          if [[ ! -d ${config.home.homeDirectory}/.secrets ]]; then
             echo "WARNING: ~/.secrets directory not found. Some applications may not work properly."
             echo "Run \`bootstrap-secrets\` to bootstrap this machine's secrets."
             echo "Create ~/.secrets directory to supress this message."
@@ -106,6 +106,8 @@
 
   # misc.
   home.packages = with pkgs; [
+    gnused
+    gawk
     mosh
     lazydocker
     neofetch

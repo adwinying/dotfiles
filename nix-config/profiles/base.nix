@@ -46,9 +46,9 @@
   };
 
   # Define shared vars for all modules
-  _module.args = {
-    dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
-    secrets = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.secrets";
+  _module.args = with config.lib.file; {
+    dotfiles = mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles";
+    secrets = mkOutOfStoreSymlink "${config.home.homeDirectory}/.secrets";
   };
 
   # Enable home-manager
@@ -59,7 +59,7 @@
 
   # Nix convenience scripts
   home.packages = with pkgs; let
-    dotfiles = config.lib.file.mkOutOfStoreSymlink "/home/${username}/.dotfiles";
+    dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles";
 
     syncAllHosts = writeShellScriptBin "sync-all-hosts" ''
       pushd ${dotfiles}/nix-config

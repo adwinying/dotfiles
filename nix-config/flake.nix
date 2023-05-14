@@ -54,5 +54,29 @@
         system   = "aarch64-linux";
       };
     };
+
+    # Home manager configuration entrypoint
+    # nixOS configs already configures home-manager
+    # so this is only for non-NixOS systems
+    homeConfigurations = let
+      mkUserConfig = { system, username, profiles, ... }@attrs:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit inputs; } // attrs;
+          modules = [ ./users/adwin.nix ] ++ profiles;
+        };
+    in {
+      docker-x86_64  = mkUserConfig {
+        username = "root";
+        system   = "x86_64-linux";
+        profiles = [ ./profiles/container.nix ];
+      };
+
+      docker-aarch64 = mkUserConfig {
+        username = "root";
+        system   = "aarch64-linux";
+        profiles = [ ./profiles/container.nix ];
+      };
+    };
   };
 }

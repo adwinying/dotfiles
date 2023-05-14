@@ -2,7 +2,7 @@
 # adwin-specific user configs
 #
 
-{ profiles, ... }: {
+{ profiles ? [], ... }: {
   # Import profiles here
   imports = profiles ++ [
     ../profiles/base.nix
