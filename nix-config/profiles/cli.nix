@@ -8,6 +8,8 @@
     ({
       home.packages = with pkgs; [
         jq
+        gettext
+        bitwarden-cli
         file
         zsh
       ];
@@ -113,6 +115,5 @@
     neofetch
     ripgrep
     unzip
-    bitwarden-cli
   ];
 }

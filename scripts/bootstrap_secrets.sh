@@ -1,16 +1,19 @@
-#! /bin/sh
+#!/bin/sh
 
 # This script is used to generate files containing secrets for a particular
-# host.
-# It is intended to be run on the host itself, and will generate the files in
-# ~/.secrets.
+# host. It is intended to be run on the host itself.
+#
 # The secrets are obtained from a bitwarden vault, and the bitwarden CLI must
-# be installed and configured.
+# be installed and configured. The secrets are stored in a secret note, which
+# contains all secrets for a given host in JSON format. This JSON string will
+# be parsed, traversed recursively and each property containing a string be
+# exported into a shell variable.
+#
+# The script will then make a copy of the secrets directory to ~/.secrets, and
+# will replace all instances of $secret_name in the files with the value of the
+# corresponding shell variable using envsubst.
 
-set -e
-
-RED="\033[0;31m"
-NOCOLOR="\033[0m"
+set -eu
 
 CWD=$(realpath -e $(dirname $0))
 HOSTNAME=$(hostname)
@@ -20,6 +23,31 @@ OUTPUT_DIR="$HOME/.secrets"
 
 # Get all secrets for host
 SECRETS=$($CWD/get_secrets.sh "$SECRET_NOTE_NAME")
+
+# Parse JSON string and export variables
+export_secrets() {
+  local json=$1
+  local prefix=${2:-}
+
+  for key in $(jq -r 'keys[]' <<< $json); do
+    local value=$(jq -r ".$key" <<< $json)
+
+    if [ -n "$prefix" ]; then
+      newkey="${prefix^^}__${key^^}"
+    else
+      newkey="${key^^}"
+    fi
+
+    if [ "$(jq . <<< $value > /dev/null 2>&1 && \
+      jq 'type == "object"' <<< $value)" = "true" ]; then
+      export_secrets "$value" "$newkey"
+    else
+      export "$newkey"="$value"
+    fi
+  done
+}
+
+export_secrets "$SECRETS"
 
 # Remove secrets directory if it exists
 if [ -d $OUTPUT_DIR ]; then
@@ -31,27 +59,18 @@ mkdir -p $(dirname $OUTPUT_DIR)
 cp -r $SECRETS_DIR $OUTPUT_DIR
 
 # Temporarily change to output directory
-pushd $OUTPUT_DIR
+pushd $OUTPUT_DIR > /dev/null
 
-# Get all instances of %.+% in files
-for file in $(grep -H -r -E -o '%.[^%]+%' .); do
-  file_path=$(echo $file | cut -d ':' -f 1)
-  secret_name=$(echo $file | cut -d '%' -f 2)
-  secret_value=$(echo $SECRETS | jq -r ".$secret_name" | sed 's|/|\\/|g' | sed ':a;N;$!ba;s/\n/\\n/g' )
-
-  echo "file_path: $file_path"
-  echo "secret_name: $secret_name"
-
-  # If secret value is empty, exit
-  if [ -z "$secret_value" ]; then
-    echo -e "${RED}ERROR:${NOCOLOR} Secret value for $secret_name is empty"
-    rm -rf $OUTPUT_DIR
-    exit 1
-  fi
-
-  # Replace secret name with secret value
-  sed -i "s/%$secret_name%/$secret_value/g" $file_path
+# Recursively loop through all files in output directory and replace all
+# instances of $secret_name with the value of the corresponding shell variable
+for file in $(find . -type f); do
+  echo "Bootstrapping: $file"
+  envsubst < $file > $file.tmp
+  cat $file.tmp > $file
+  rm $file.tmp
 done
 
 # Return to original directory
-popd
+popd > /dev/null
+
+echo "Done."
