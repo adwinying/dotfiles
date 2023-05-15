@@ -24,8 +24,8 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
-  # Import user profiles for this machine
-  home-manager.extraSpecialArgs.profiles = [
+  # Import addtional user profiles for this machine
+  _module.args.profiles = [
     ../../profiles/dev.nix
     ../../profiles/gui.nix
   ];

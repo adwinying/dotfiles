@@ -2,7 +2,7 @@
 # Common machine configs
 #
 
-{ inputs, lib, config, pkgs, hostname, username, system, ... }: {
+{ inputs, lib, config, pkgs, hostname, username, system, profiles, ... }: {
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
     ../machines/${hostname}/hardware-configuration.nix
@@ -112,13 +112,16 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
 
+  # home-manager
   home-manager = {
     extraSpecialArgs = {
       inherit inputs username;
     };
     users = {
-      # Import your home-manager configuration
-      ${username} = import ../users/${username}.nix;
+      ${username}.imports = [
+        ../profiles/base.nix
+        ../profiles/cli.nix
+      ] ++ profiles;
     };
   };
 

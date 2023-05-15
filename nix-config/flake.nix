@@ -63,7 +63,10 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = { inherit inputs; } // attrs;
-          modules = [ ./users/adwin.nix ] ++ profiles;
+          modules = [
+            ./profiles/base.nix
+            ./profiles/cli.nix
+          ] ++ profiles;
         };
     in {
       docker-x86_64  = mkUserConfig {

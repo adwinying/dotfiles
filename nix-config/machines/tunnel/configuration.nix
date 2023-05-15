@@ -53,6 +53,6 @@
   # Enable SSH port forwarding outside localhost
   services.openssh.gatewayPorts = "clientspecified";
 
-  # Import user profiles for this machine
-  home-manager.extraSpecialArgs.profiles = [];
+  # Import addtional user profiles for this machine
+  _module.args.profiles = [];
 }

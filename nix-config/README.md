@@ -4,12 +4,11 @@ Personal nix config.
 
 ## Directories
 
-| Name            | Description                                                                          |
-| --------------- | ------------------------------------------------------------------------------------ |
-| `machines`      | Contains machine configs (hardware, system settings/packages).                       |
-| `modules`       | Contains system configs for a certain feature that is only used by some machines.    |
-| `users`         | Contains user (`home-manager`) configs. (ie. `machines`, but for user).              |
-| `profiles`      | Contains user configs for a group of related packages. (ie. `modules`, but for user) |
+| Name       | Description                                                                          |
+| ---------- | ------------------------------------------------------------------------------------ |
+| `machines` | Contains machine configs (hardware, system settings/packages).                       |
+| `modules`  | Contains system configs for a certain feature that is only used by some machines.    |
+| `profiles` | Contains user configs for a group of related packages. (ie. `modules`, but for user) |
 
 ## Usage
 

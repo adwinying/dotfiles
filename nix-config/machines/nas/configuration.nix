@@ -197,8 +197,8 @@
     }
   ];
 
-  # Import user profiles for this machine
-  home-manager.extraSpecialArgs.profiles = [
+  # Import addtional user profiles for this machine
+  _module.args.profiles = [
     ../../profiles/backup.nix
   ];
 }
