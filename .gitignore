@@ -30,3 +30,5 @@ sublime/Library/Application Support/Sublime Text 3/Packages/*
 !sublime/Library/Application Support/Sublime Text 3/Packages/User
 
 Brewfile.lock.json
+
+nix-config/result

@@ -24,6 +24,7 @@
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Live ISOs can be built using `nix build .#nixosConfigurations.live-[arch].config.system.build.isoImage`
     nixosConfigurations = let
       mkMachineConfig = { hostname, ... }@attrs: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; } // attrs;
@@ -51,6 +52,18 @@
       bootes = mkMachineConfig {
         hostname = "bootes";
         username = "adwin";
+        system   = "aarch64-linux";
+      };
+
+      live-x86_64 = mkMachineConfig {
+        hostname = "live";
+        username = "nixos";
+        system   = "x86_64-linux";
+      };
+
+      live-aarch64 = mkMachineConfig {
+        hostname = "live";
+        username = "nixos";
         system   = "aarch64-linux";
       };
     };

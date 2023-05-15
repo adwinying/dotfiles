@@ -73,5 +73,10 @@
       home.packages = [ pkgs.alacritty ];
       xdg.configFile.alacritty.source = "${dotfiles}/alacritty/.config/alacritty";
     })
+
+    # firefox
+    ({
+      home.packages = [ pkgs.firefox ];
+    })
   ];
 }

@@ -12,7 +12,17 @@ Personal nix config.
 
 ## Usage
 
-### 💿 From a live install
+### 💿 Generating a live install ISO
+
+```bash
+# Enable nix experimental features
+$ export NIX_CONFIG="experimental-features = nix-command flakes"
+
+# arch can either be x86_64 or aarch64
+$ nix build github:adwinying/dotfiles?dir=nix-config#nixosConfigurations.live-[arch].config.system.build.isoImage
+```
+
+### 📦 Bootstrapping from a live install
 
 1. Partition disks (following is an example)
 
@@ -44,7 +54,7 @@ $ mount /dev/disk/by-label/boot /mnt/boot
 $ nixos-install --flake github:adwinying/dotfiles?dir=nix-config#hostname
 ```
 
-### From an existing nixOS install
+### 📦 Bootstrapping from an existing nixOS install
 
 1. Clone this repo
 
