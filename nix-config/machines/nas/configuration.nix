@@ -229,5 +229,6 @@
   # Import addtional user profiles for this machine
   _module.args.profiles = [
     ../../profiles/backup.nix
+    ../../profiles/docker_update.nix
   ];
 }
