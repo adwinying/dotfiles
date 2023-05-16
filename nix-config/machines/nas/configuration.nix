@@ -6,9 +6,17 @@
   # Import system modules for this machine
   imports = [
     ../../modules/base.nix
+    ../../modules/docker.nix
     ../../modules/wireless.nix
     ../../modules/tailscale.nix
   ];
+
+  # Prevent sleep when laptop lid is closed
+  services.logind.lidSwitch = "ignore";
+
+  # Enable IP forwording
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
   # Import overlays for this machine
   nixpkgs.overlays = [];
@@ -23,10 +31,26 @@
   services.openssh.gatewayPorts = "clientspecified";
 
   # Configure firewall
-  # TODO: confirm this is correct
   networking.firewall = {
-    allowedTCPPorts = [ 22 80 443 32400 ];
-    allowedUDPPorts = [];
+    allowedTCPPorts = [
+      # SSH
+      22
+      # HTTP
+      80
+      # HTTPS
+      443
+      # Home Assistant
+      8123
+      # Plex
+      32400
+      # Homekit
+      21063
+      51827
+    ];
+    allowedUDPPorts = [
+      # mDNS
+      5353
+    ];
   };
 
   # SMTP
@@ -75,6 +99,10 @@
         "dropcacheonclose=true"
         "minfreespace=5G"
         "fsname=mergerfs"
+      ];
+      depends = [
+        "/mnt/disk1"
+        "/mnt/disk2"
       ];
     };
   };
@@ -132,6 +160,7 @@
       };
     };
   };
+  users.users.${username}.extraGroups = [ "acme" ];
 
   # Server Healthcheck (curl endpoint every 3 mins)
   systemd = {
@@ -180,7 +209,7 @@
       user = "root";
       extraArguments = builtins.concatStringsSep " " [
         commonOptions
-        "-R 0.0.0.0:324000:localhost:32400"
+        "-R 0.0.0.0:32400:localhost:32400"
         "adwin@tunnel"
       ];
     }
