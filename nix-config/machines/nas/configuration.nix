@@ -30,6 +30,67 @@
   # Enable SSH port forwarding outside localhost
   services.openssh.gatewayPorts = "clientspecified";
 
+  # Configure caddy
+  services.caddy = {
+    enable = true;
+    virtualHosts = let
+      common = {
+        useACMEHost = "iadw.in";
+      };
+    in {
+      router = common // {
+        hostName = "router.iadw.in";
+        extraConfig = "reverse_proxy 192.168.1.1:80";
+      };
+
+      transmission = common // {
+        hostName = "transmission.iadw.in";
+        extraConfig = "reverse_proxy localhost:9091";
+      };
+
+      prowlarr = common // {
+        hostName = "prowlarr.iadw.in";
+        extraConfig = "reverse_proxy localhost:9696";
+      };
+
+      sonarr = common // {
+        hostName = "sonarr.iadw.in";
+        extraConfig = "reverse_proxy localhost:8989";
+      };
+
+      radarr = common // {
+        hostName = "radarr.iadw.in";
+        extraConfig = "reverse_proxy localhost:7878";
+      };
+
+      lidarr = common // {
+        hostName = "lidarr.iadw.in";
+        extraConfig = "reverse_proxy localhost:8686";
+      };
+
+      home = common // {
+        hostName = "home.iadw.in";
+        extraConfig = "reverse_proxy localhost:8123";
+      };
+
+      plex = common // {
+        hostName = "plex.iadw.in";
+        extraConfig = "reverse_proxy localhost:32400";
+      };
+
+      egs = common // {
+        hostName = "egs.iadw.in";
+        extraConfig = "reverse_proxy localhost:3000";
+      };
+
+      grafana = common // {
+        hostName = "grafana.iadw.in";
+        extraConfig = "reverse_proxy localhost:3001";
+      };
+    };
+  };
+  users.users.caddy.extraGroups = [ "acme" ];
+
   # Configure firewall
   networking.firewall = {
     allowedTCPPorts = [
@@ -154,7 +215,7 @@
       "iadw.in" = {
         domain = "*.iadw.in";
         email = "admin@iadw.in";
-        group = "wheel";
+        group = "acme";
         dnsProvider = "cloudflare";
         credentialsFile = "/home/${username}/.secrets/acme.env";
       };
