@@ -41,13 +41,12 @@
             export PATH=$PATH:${pkgs.curl}/bin
 
             appdata_dir=/home/${username}/nas-docker/appdata
-            log_path=/home/${username}/backup_appconfig.log
 
             healthcheck_endpoint_path=${secrets}/healthcheck_backup_endpoint
             healthcheck_endpoint_url=$(cat $healthcheck_endpoint_path)
 
-            rclone version
-            kopia snapshot create $appdata_dir >> $log_path 2>&1 && \
+            rclone ls mega:
+            kopia snapshot create $appdata_dir
             curl -fsS --retry 3 $healthcheck_endpoint_url
           '';
         in "${script}/bin/script";
