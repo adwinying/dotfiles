@@ -12,6 +12,14 @@ Personal nix config.
 
 ## Usage
 
+### 🐳 Trying it out on a docker image
+
+The [adwinying/devcontainer](https://github.com/adwinying/devcontainer) repo generates a new docker image once a day via Github Actions:
+
+```bash
+$ docker run --rm -it adwinying/devcontainer
+```
+
 ### 💿 Generating a live install ISO
 
 ```bash
