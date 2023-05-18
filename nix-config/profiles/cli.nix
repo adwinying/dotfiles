@@ -93,6 +93,11 @@
       };
     })
 
+    # process-compose
+    ({
+      home.packages = [ pkgs.unstable.process-compose ];
+    })
+
     # ranger
     ({
       home.packages = [ pkgs.ranger ];
