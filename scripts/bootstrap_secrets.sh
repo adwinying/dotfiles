@@ -18,36 +18,16 @@ set -eu
 CWD=$(realpath -e $(dirname $0))
 HOSTNAME=$(hostname)
 SECRET_NOTE_NAME="secrets.$HOSTNAME"
-SECRETS_DIR="$CWD/../secrets/$HOSTNAME"
+INPUT_DIR="$CWD/../secrets/$HOSTNAME"
 OUTPUT_DIR="$HOME/.secrets"
 
 # Get all secrets for host
-SECRETS=$($CWD/get_secrets.sh "$SECRET_NOTE_NAME")
+SECRETS=$(bw get notes $SECRET_NOTE_NAME)
 
-# Parse JSON string and export variables
-export_secrets() {
-  local json=$1
-  local prefix=${2:-}
-
-  for key in $(jq -r 'keys[]' <<< $json); do
-    local value=$(jq -r ".$key" <<< $json)
-
-    if [ -n "$prefix" ]; then
-      newkey="${prefix^^}__${key^^}"
-    else
-      newkey="${key^^}"
-    fi
-
-    if [ "$(jq . <<< $value > /dev/null 2>&1 && \
-      jq 'type == "object"' <<< $value)" = "true" ]; then
-      export_secrets "$value" "$newkey"
-    else
-      export "$newkey"="$value"
-    fi
-  done
-}
-
-export_secrets "$SECRETS"
+# Expose secrets as shell variables
+set -a
+eval "$SECRETS"
+set +a
 
 # Remove secrets directory if it exists
 if [ -d $OUTPUT_DIR ]; then
@@ -56,7 +36,7 @@ fi
 
 # Make a copy of the secrets directory
 mkdir -p $(dirname $OUTPUT_DIR)
-cp -r $SECRETS_DIR $OUTPUT_DIR
+cp -r $INPUT_DIR $OUTPUT_DIR
 
 # Temporarily change to output directory
 pushd $OUTPUT_DIR > /dev/null
