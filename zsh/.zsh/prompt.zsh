@@ -55,15 +55,18 @@ HOSTNAME() {
   echo "${COLOR_ACCENT}[${COLOR_NORMAL}%m${COLOR_ACCENT}]─"
 }
 
-# Show current directory
-CURR_DIR() {
-  if [[ -n $DIRENV_DIR ]]; then
-    direnv_label="(direnv) "
-  else
-    direnv_label=""
+# Show direnv indicator
+DIRENV() {
+  if [[ -z $DIRENV_DIR ]]; then
+    return
   fi
 
-  echo "${COLOR_ACCENT}[${COLOR_NORMAL}$direnv_label%~${COLOR_ACCENT}]"
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}!!${COLOR_ACCENT}]─"
+}
+
+# Show current directory
+CURR_DIR() {
+  echo "${COLOR_ACCENT}[${COLOR_NORMAL}%~${COLOR_ACCENT}]"
 }
 
 # git prompt
@@ -105,4 +108,4 @@ GIT_PROMPT() {
   echo "${COLOR_ACCENT}─[${COLOR_GIT}"${ref}${stat}"${COLOR_ACCENT}]"
 }
 
-PROMPT='$(HOSTNAME)$(CURR_DIR)$(GIT_PROMPT) » %f'
+PROMPT='$(HOSTNAME)$(DIRENV)$(CURR_DIR)$(GIT_PROMPT) » %f'
