@@ -5,9 +5,8 @@
 #
 # The secrets are obtained from a bitwarden vault, and the bitwarden CLI must
 # be installed and configured. The secrets are stored in a secret note, which
-# contains all secrets for a given host in JSON format. This JSON string will
-# be parsed, traversed recursively and each property containing a string be
-# exported into a shell variable.
+# contains an .env formatted text. This .env file will be eval-ed, which will
+# export all the values as shell variables.
 #
 # The script will then make a copy of the secrets directory to ~/.secrets, and
 # will replace all instances of $secret_name in the files with the value of the
