@@ -42,10 +42,12 @@ $ cfdisk
 # create the following partitions:
 # - 512M, EFI System Partition
 # - 63.5G, ext4
+# - 16G, swap
 
 # format partitions
 $ mkfs.fat -F 32 -n boot /dev/vda1
 $ mkfs.ext4 -L nixos /dev/vda2
+$ mkswap -L swap /dev/vda3
 ```
 
 2. Mount partitions
