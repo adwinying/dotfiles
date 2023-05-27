@@ -2,7 +2,7 @@
 # live environment-specific configs
 #
 
-{ inputs, lib, ... }: {
+{ pkgs, inputs, lib, ... }: {
   # Import system modules for this machine
   imports = [
     (inputs.nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
@@ -12,6 +12,9 @@
     ../../modules/xserver.nix
     ../../modules/wireless.nix
   ];
+
+  # Use the latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Import overlays for this machine
   nixpkgs.overlays = [];
