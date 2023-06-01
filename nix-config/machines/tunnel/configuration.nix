@@ -51,7 +51,7 @@
   };
 
   # Enable SSH port forwarding outside localhost
-  services.openssh.gatewayPorts = "clientspecified";
+  services.openssh.settings.GatewayPorts = "clientspecified";
 
   # Import addtional user profiles for this machine
   _module.args.profiles = [];

@@ -28,7 +28,7 @@
   boot.initrd.kernelModules = [ "nvme" ];
 
   # Enable SSH port forwarding outside localhost
-  services.openssh.gatewayPorts = "clientspecified";
+  services.openssh.settings.GatewayPorts = "clientspecified";
 
   # Configure caddy
   services.caddy = {
