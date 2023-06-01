@@ -95,7 +95,7 @@
 
     # process-compose
     ({
-      home.packages = [ pkgs.unstable.process-compose ];
+      home.packages = [ pkgs.process-compose ];
     })
 
     # ranger
