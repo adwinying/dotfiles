@@ -91,6 +91,21 @@
   };
   users.users.caddy.extraGroups = [ "acme" ];
 
+  # Configure cloudflared
+  services.cloudflared = {
+    enable = true;
+    user = username;
+    tunnels.home = {
+      credentialsFile = "/home/${username}/.secrets/cloudflare_tunnel.json";
+      default = "http_status:404";
+      ingress = {
+        "egs.iadw.in" = "https://nas.iadw.in";
+        "home.iadw.in" = "https://nas.iadw.in";
+        "grafana.iadw.in" = "https://nas.iadw.in";
+      };
+    };
+  };
+
   # Configure firewall
   networking.firewall = {
     allowedTCPPorts = [
