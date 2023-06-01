@@ -84,6 +84,7 @@
       "wheel"
     ];
   };
+  programs.zsh.enable = true;
 
   # Disable password prompt when using sudo
   security.sudo.wheelNeedsPassword = false;
@@ -106,7 +107,7 @@
   services.openssh = {
     enable = true;
     # Forbid root login through SSH.
-    permitRootLogin = "no";
+    settings.PermitRootLogin = "no";
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

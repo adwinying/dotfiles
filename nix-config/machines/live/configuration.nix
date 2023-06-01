@@ -20,7 +20,7 @@
   nixpkgs.overlays = [];
 
   # Fix conflicting options from base.nix
-  services.openssh.permitRootLogin = lib.mkForce "no";
+  services.openssh.settings.permitRootLogin = lib.mkForce "no";
 
   # Make ISO builds faster by using a less efficient compression algorithm
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
