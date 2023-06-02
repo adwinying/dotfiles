@@ -79,6 +79,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     openssh.authorizedKeys.keyFiles = [ inputs.sshAuthorizedKeys ];
+    homeMode = "770";
     # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
     extraGroups = [
       "wheel"
