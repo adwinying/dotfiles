@@ -110,28 +110,35 @@ return {
       linehl       = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff    = false, -- Toggle with `:Gitsigns toggle_word_diff`
 
-      keymaps      = {
-        -- Default keymap options
-        noremap = true,
+      on_attach    = function(buffer)
+        local gs = package.loaded.gitsigns
 
-        ["n ]c"] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'" },
-        ["n [c"] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'" },
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
 
-        ["n <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-        ["v <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-        ["n <leader>hu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-        ["n <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-        ["v <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
-        ["n <leader>hR"] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-        ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-        ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
-        ["n <leader>hS"] = '<cmd>lua require"gitsigns".stage_buffer()<CR>',
-        ["n <leader>hU"] = '<cmd>lua require"gitsigns".reset_buffer_index()<CR>',
+        -- Navigation
+        map('n', ']c', gs.next_hunk, 'Next Hunk')
+        map('n', '[c', gs.prev_hunk, 'Prev Hunk')
 
-        -- Text objects
-        ["o ih"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-        ["x ih"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
-      },
+        -- Actions
+        map('n', '<leader>hs', gs.stage_hunk, 'Stage Hunk')
+        map('n', '<leader>hr', gs.reset_hunk, 'Reset Hunk')
+        map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, 'Stage Hunk')
+        map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, 'Reset Hunk')
+        map('n', '<leader>hS', gs.stage_buffer, 'Stage Buffer')
+        map('n', '<leader>hu', gs.undo_stage_hunk, 'Undo Stage Hunk')
+        map('n', '<leader>hR', gs.reset_buffer, 'Reset Buffer')
+        map('n', '<leader>hp', gs.preview_hunk, 'Preview Hunk')
+        map('n', '<leader>hb', function() gs.blame_line{full=true} end, 'Blame Line')
+        map('n', '<leader>tb', gs.toggle_current_line_blame, 'Toggle Blame')
+        map('n', '<leader>hd', gs.diffthis, 'Diff This')
+        map('n', '<leader>hD', function() gs.diffthis('~') end, 'Diff This ~')
+        map('n', '<leader>td', gs.toggle_deleted, 'Toggle Deleted')
+
+        -- Text object
+        map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'Select Hunk')
+      end,
 
       watch_gitdir = {
         interval = 1000,
