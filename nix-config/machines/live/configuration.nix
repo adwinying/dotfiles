@@ -16,6 +16,9 @@
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Disable zfs since it's broken
+  boot.supportedFilesystems = lib.mkForce [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
+
   # Import overlays for this machine
   nixpkgs.overlays = [];
 

@@ -27,7 +27,7 @@ $ docker run --rm -it adwinying/devcontainer
 $ export NIX_CONFIG="experimental-features = nix-command flakes"
 
 # arch can either be x86_64 or aarch64
-$ nix build github:adwinying/dotfiles?dir=nix-config#nixosConfigurations.live-[arch].config.system.build.isoImage
+$ nix build github:adwinying/dotfiles?dir=nix-config#nixosConfigurations.live-$(uname -m).config.system.build.isoImage
 ```
 
 ### 📦 Bootstrapping from a live install

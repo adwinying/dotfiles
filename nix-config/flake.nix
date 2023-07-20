@@ -24,7 +24,7 @@
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    # Live ISOs can be built using `nix build .#nixosConfigurations.live-[arch].config.system.build.isoImage`
+    # Live ISOs can be built using `nix build .#nixosConfigurations.live-$(uname -m).config.system.build.isoImage`
     nixosConfigurations = let
       mkMachineConfig = { hostname, ... }@attrs: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; } // attrs;
