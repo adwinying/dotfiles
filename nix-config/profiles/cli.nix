@@ -96,6 +96,7 @@
     # process-compose
     ({
       home.packages = [ pkgs.process-compose ];
+      xdg.configFile.process-compose.source = "${dotfiles}/process-compose/.config/process-compose";
     })
 
     # ranger

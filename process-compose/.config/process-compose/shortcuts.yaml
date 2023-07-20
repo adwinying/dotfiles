@@ -1,0 +1,33 @@
+shortcuts:
+  log_follow:
+    toggle_description:
+      false: Follow Off
+      true: Follow On
+    shortcut: Ctrl-T
+  log_screen:
+    toggle_description:
+      false: Half Screen
+      true: Full Screen
+    shortcut: Ctrl-G
+  log_wrap:
+    toggle_description:
+      false: Wrap Off
+      true: Wrap On
+    shortcut: Ctrl-W
+  process_restart:
+    description: Restart
+    shortcut: Ctrl-R
+  process_screen:
+    toggle_description:
+      false: Half Screen
+      true: Full Screen
+    shortcut: F8
+  process_start:
+    description: Start
+    shortcut: Ctrl-K
+  process_stop:
+    description: Stop
+    shortcut: Crtl-X
+  quit:
+    description: Quit
+    shortcut: Ctrl-Q
