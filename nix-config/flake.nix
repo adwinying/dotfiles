@@ -33,7 +33,7 @@
     in {
       workdev = mkMachineConfig {
         hostname = "workdev";
-        username = "adwin";
+        username = "ying.z";
         system   = "aarch64-linux";
       };
 
