@@ -43,6 +43,19 @@ local custom_configs = {
       ["language_server_psalm.enabled"] = false,
     }
   },
+
+  tailwindcss = {
+    settings = {
+      tailwindCSS = {
+        experimental = {
+          classRegex = {
+            { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          },
+        },
+      },
+    },
+  },
 }
 
 -- LSP keybindings
