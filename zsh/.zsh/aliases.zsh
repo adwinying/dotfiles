@@ -62,6 +62,7 @@ alias vt="vagrant"
 alias lg="lazygit"
 alias ldc="lazydocker"
 alias art="php artisan"
+alias ts="tailscale"
 
 # ls after cd
 chpwd() {
