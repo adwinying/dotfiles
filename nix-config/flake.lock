@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1695686713,
+        "narHash": "sha256-rJATx5B/nwlBpt7CJUf85LV27qWPbul5UVV8fu6ABPg=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "e236a1e598a9a59265897948ac9874c364b9555f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1693087214,
@@ -56,6 +76,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sshAuthorizedKeys": "sshAuthorizedKeys"
@@ -64,7 +85,7 @@
     "sshAuthorizedKeys": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-SKFZfzSv01+YWmfZA4TUr0EWes6ACS5NgZZtvqNBQyg=",
+        "narHash": "sha256-o/EOHdzH2lsVhh2uFlxX8o6l+6aNl7RtYpyn8bGZNrg=",
         "type": "file",
         "url": "https://github.com/adwinying.keys"
       },
