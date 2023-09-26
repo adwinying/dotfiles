@@ -57,6 +57,17 @@ local custom_configs = {
       },
     },
   },
+
+  volar = {
+    filetypes = {
+      "typescript",
+      "javascript",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+      "json"
+    }
+  }
 }
 
 -- LSP keybindings
