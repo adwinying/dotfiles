@@ -90,7 +90,11 @@
     '';
 
     rebuildHost = writeShellScriptBin "rebuild-host" ''
-      sudo nixos-rebuild switch --flake $HOME/.dotfiles/nix-config#
+      if [[ $(uname) == "Darwin" ]]; then
+        darwin-rebuild switch --flake $HOME/.dotfiles/nix-config#
+      else
+        sudo nixos-rebuild switch --flake $HOME/.dotfiles/nix-config#
+      fi
     '';
 
     bootstrapSecrets = writeShellScriptBin "bootstrap-secrets" ''
