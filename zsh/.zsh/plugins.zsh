@@ -53,4 +53,4 @@ zinit light lukechilds/zsh-nvm
 zinit ice wait lucid as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 zinit ice wait lucid as"completion"
-zinit snippet https://github.com/docker/compose/tree/master/contrib/completion/zsh/_docker-compose
+zinit snippet https://github.com/docker/compose/tree/v1/contrib/completion/zsh/_docker-compose
