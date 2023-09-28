@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, username, isDarwin, ... }: {
+{ inputs, lib, config, pkgs, username, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -35,9 +35,11 @@
 
   home = {
     inherit username;
-    homeDirectory = lib.mkForce (if isDarwin
-      then "/Users/${username}"
-      else "/home/${username}");
+    homeDirectory = lib.mkForce (
+      if pkgs.stdenv.isDarwin
+        then "/Users/${username}"
+        else "/home/${username}"
+    );
     file.".localrc/sessionvars".text = ''
       export LANG="en_US.UTF-8"
       export LC_CTYPE="en_US.UTF-8"

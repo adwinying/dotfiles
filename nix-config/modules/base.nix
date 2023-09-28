@@ -2,10 +2,7 @@
 # Common machine configs
 #
 
-{ inputs, lib, config, pkgs, hostname, username, system, profiles, isDarwin, ... }: {
-  # Flag to determine whether system is darwin
-  _module.args.isDarwin = builtins.match "^(.+-darwin)$" system == [ system ];
-
+{ inputs, lib, config, pkgs, hostname, username, system, profiles, ... }: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -89,7 +86,7 @@
   # home-manager
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs username isDarwin;
+      inherit inputs username;
     };
     users = {
       ${username}.imports = [
