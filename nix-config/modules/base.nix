@@ -6,11 +6,6 @@
   # Flag to determine whether system is darwin
   _module.args.isDarwin = builtins.match "^(.+-darwin)$" system == [ system ];
 
-  imports = [
-    # Import your generated (nixos-generate-config) hardware configuration
-    ../machines/${hostname}/hardware-configuration.nix
-  ];
-
   nixpkgs = {
     # You can add overlays here
     overlays = [

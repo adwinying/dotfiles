@@ -6,7 +6,9 @@
   # Import system modules for this machine
   imports = [
     (inputs.nixpkgs + "/nixos/modules/virtualisation/lxc-container.nix")
+    ./hardware-configuration.nix
     ../../modules/base.nix
+    ../../modules/linux.nix
     ../../modules/docker.nix
     ../../modules/tailscale.nix
     ../../modules/xserver.nix

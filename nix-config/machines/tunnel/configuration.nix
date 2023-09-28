@@ -5,7 +5,9 @@
 { ... }: {
   # Import system modules for this machine
   imports = [
+    ./hardware-configuration.nix
     ../../modules/base.nix
+    ../../modules/linux.nix
     ../../modules/tailscale.nix
   ];
 

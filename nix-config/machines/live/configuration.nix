@@ -7,6 +7,7 @@
   imports = [
     (inputs.nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
     ../../modules/base.nix
+    ../../modules/linux.nix
     ../../modules/docker.nix
     ../../modules/tailscale.nix
     ../../modules/xserver.nix

@@ -2,7 +2,7 @@
 # Linux-specific configs
 #
 
-{ ... }: {
+{ inputs, pkgs, username, ... }: {
   imports = [
     # Import home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager
