@@ -35,6 +35,9 @@ default_config.keybindings = {
 -- =============================================================================
 
 default_config.wm = {
+  -- compatibility mode. Set to false if scripting additions is loaded
+  compatibility_mode = true,
+
   -- yabai path
   yabai_path = "/usr/local/bin/yabai",
 

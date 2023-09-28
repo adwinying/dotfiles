@@ -6,6 +6,7 @@
 local helpers = require("helpers")
 local hyper = require("modules.hyper")
 local wm = require("modules.wm")
+local config = require("configs").wm
 
 -- =============================================================================
 -- Layouts
@@ -49,7 +50,11 @@ end
 -- move to space #
 for i = 1, 9 do
   hyper:bind({}, tostring(i), function ()
-    hs.eventtap.keyStroke({ "ctrl", "alt", "cmd", "shift" }, tostring(i))
+    if config.compatibility_mode then
+      hs.eventtap.keyStroke({ "ctrl", "alt", "cmd", "shift" }, tostring(i))
+    else
+      wm.api.space.focus(nil, i)
+    end
   end)
 end
 
