@@ -3,5 +3,5 @@
 #
 
 { lib, ... }: {
-  home.homeDirectory = lib.mkForce "/root";
+  home.homeDirectory = "/root";
 }

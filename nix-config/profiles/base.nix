@@ -35,11 +35,6 @@
 
   home = {
     inherit username;
-    homeDirectory = lib.mkForce (
-      if pkgs.stdenv.isDarwin
-        then "/Users/${username}"
-        else "/home/${username}"
-    );
     file.".localrc/sessionvars".text = ''
       export LANG="en_US.UTF-8"
       export LC_CTYPE="en_US.UTF-8"

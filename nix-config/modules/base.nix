@@ -68,6 +68,9 @@
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users.${username} = {
     shell = pkgs.zsh;
+    home = if pkgs.stdenv.isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
     openssh.authorizedKeys.keyFiles = [ inputs.sshAuthorizedKeys ];
   };
   programs.zsh.enable = true;
