@@ -65,9 +65,9 @@
     # git
     ({
       home.packages = [ pkgs.git ];
-      programs.git.enable = true;
-      programs.git.userEmail = "adwinying@gmail.com";
-      programs.git.userName = "Adwin Ying";
+      home.file = {
+        ".gitconfig".source = "${dotfiles}/git/.gitconfig";
+      };
     })
 
     # ssh
