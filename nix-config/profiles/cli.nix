@@ -116,6 +116,7 @@
   home.packages = with pkgs; [
     gnused
     gawk
+    dua
     mosh
     lazydocker
     neofetch
