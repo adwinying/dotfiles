@@ -2,7 +2,7 @@
 # tunnel-specific configs
 #
 
-{ username, ... }: {
+{ lib, username, ... }: {
   # Import system modules for this machine
   imports = [
     ./hardware-configuration.nix
@@ -62,7 +62,7 @@
   services.fail2ban = {
     enable = true;
     jails = {
-      sshd = ''
+      sshd = lib.mkForce ''
         enabled  = true
         port     = 22
         filter   = sshd
