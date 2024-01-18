@@ -17,4 +17,7 @@
       };
     };
   };
+
+  # Allow gtklock to work
+  security.pam.services.gtklock = {};
 }
