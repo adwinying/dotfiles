@@ -65,6 +65,12 @@
         system   = "x86_64-linux";
       };
 
+      thkpad = mkMachineConfig {
+        hostname = "thkpad";
+        username = "adwin";
+        system   = "x86_64-linux";
+      };
+
       live-x86_64 = mkMachineConfig {
         hostname = "live";
         username = "nixos";
