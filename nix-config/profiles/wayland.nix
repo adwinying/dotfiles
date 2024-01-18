@@ -46,6 +46,7 @@
       swaynotificationcenter
     ];
     xdg.configFile.hypr.source = "${dotfiles}/hyprland/.config/hypr";
+    xdg.configFile.waybar.source = "${dotfiles}/waybar/.config/waybar";
     xdg.configFile.swaync.source = "${dotfiles}/swaync/.config/swaync";
   })
 
