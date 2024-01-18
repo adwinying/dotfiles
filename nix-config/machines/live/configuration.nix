@@ -10,7 +10,7 @@
     ../../modules/linux.nix
     ../../modules/docker.nix
     ../../modules/tailscale.nix
-    ../../modules/xserver.nix
+    ../../modules/wayland.nix
     ../../modules/wireless.nix
   ];
 
@@ -31,6 +31,6 @@
 
   # Import addtional user profiles for this machine
   _module.args.profiles = [
-    ../../profiles/gui.nix
+    ../../profiles/wayland.nix
   ];
 }
