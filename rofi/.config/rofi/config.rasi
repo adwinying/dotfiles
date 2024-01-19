@@ -1,6 +1,6 @@
 configuration {
   font:            "HackGen Console 10";
-  icon-theme:      "zafiro-icon-theme";
+  icon-theme:      "Zafiro-icons-Dark";
   fixed-num-lines: true;
   show-icons:      true;
   sidebar-mode:    true;
