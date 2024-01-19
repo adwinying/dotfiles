@@ -60,11 +60,9 @@ entry {
 }
 case-indicator {
   spacing:    0;
-  text-color: @fg;
 }
 inputbar {
   spacing:    0px;
-  text-color: @fg;
   margin:     10px 0 5px 10px;
   children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
