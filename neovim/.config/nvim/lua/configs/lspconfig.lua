@@ -81,7 +81,7 @@ local keybindings = function (_, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<C-m>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<C-b>', vim.lsp.buf.signature_help, bufopts)
 
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
