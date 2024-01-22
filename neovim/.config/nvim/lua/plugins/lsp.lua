@@ -8,6 +8,8 @@ return {
       { 'neovim/nvim-lspconfig' },
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
+      { 'jay-babu/mason-null-ls.nvim' },
+      { 'nvimtools/none-ls.nvim' },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },
@@ -93,6 +95,23 @@ return {
             end
           end
         end,
+      })
+
+      -- null-ls
+      local null_ls = require('null-ls')
+      local mason_null_ls = require('mason-null-ls')
+
+      null_ls.setup()
+      mason_null_ls.setup({
+        ensure_installed = {
+          'eslint_d',
+        },
+
+        on_attach = function(client, bufnr)
+          lsp.build_options('null-ls', {}).on_attach(client, bufnr)
+        end,
+
+        handlers = {},
       })
     end,
   },

@@ -9,7 +9,6 @@ local diagnostic_icons = {
 local servers = {
   "volar",
   "emmet_ls",
-  "eslint",
   "intelephense",
   "html",
   "cssls",
@@ -35,13 +34,6 @@ local custom_configs = {
       "sass",
       "scss",
       "less",
-    }
-  },
-
-  phpactor = {
-    init_options = {
-      ["language_server_phpstan.enabled"] = true,
-      ["language_server_psalm.enabled"] = false,
     }
   },
 
