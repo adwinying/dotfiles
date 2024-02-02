@@ -9,6 +9,7 @@ local diagnostic_icons = {
 local servers = {
   "volar",
   "emmet_ls",
+  "eslint",
   "intelephense",
   "html",
   "cssls",

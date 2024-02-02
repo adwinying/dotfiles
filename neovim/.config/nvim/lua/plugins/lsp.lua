@@ -103,9 +103,7 @@ return {
 
       null_ls.setup()
       mason_null_ls.setup({
-        ensure_installed = {
-          'eslint_d',
-        },
+        ensure_installed = {},
 
         on_attach = function(client, bufnr)
           lsp.build_options('null-ls', {}).on_attach(client, bufnr)
