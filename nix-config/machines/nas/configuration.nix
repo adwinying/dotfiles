@@ -89,6 +89,11 @@
         hostName = "grafana.iadw.in";
         extraConfig = "reverse_proxy localhost:3001";
       };
+
+      kindash = common // {
+        hostName = "kindash.iadw.in";
+        extraConfig = "reverse_proxy localhost:3002";
+      };
     };
   };
   users.users.caddy.extraGroups = [ "acme" ];
