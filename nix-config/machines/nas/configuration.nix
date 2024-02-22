@@ -91,21 +91,6 @@
         extraConfig = "reverse_proxy localhost:8686";
       };
 
-      home = common // {
-        hostName = "home.iadw.in";
-        extraConfig = "reverse_proxy localhost:8123";
-      };
-
-      plex = common // {
-        hostName = "plex.iadw.in";
-        extraConfig = "reverse_proxy localhost:32400";
-      };
-
-      egs = common // {
-        hostName = "egs.iadw.in";
-        extraConfig = "reverse_proxy localhost:3000";
-      };
-
       grafana = common // {
         hostName = "grafana.iadw.in";
         extraConfig = "reverse_proxy localhost:3001";
