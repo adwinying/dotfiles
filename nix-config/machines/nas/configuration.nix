@@ -32,6 +32,12 @@
   # Enable SSH port forwarding outside localhost
   services.openssh.settings.GatewayPorts = "clientspecified";
 
+  # Configure Tailscale
+  services.tailscale = {
+    exitNode = true;
+    advertiseRoutes = "192.168.1.0/24";
+  };
+
   # Configure caddy
   services.caddy = {
     enable = true;
