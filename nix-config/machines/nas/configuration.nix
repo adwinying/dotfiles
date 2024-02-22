@@ -38,7 +38,22 @@
     advertiseRoutes = "192.168.1.0/24";
   };
 
-  # Configure caddy
+  # Let's Encrypt
+  security.acme = {
+    acceptTerms = true;
+    certs = {
+      "iadw.in" = {
+        domain = "*.iadw.in";
+        email = "admin@iadw.in";
+        group = "acme";
+        dnsProvider = "cloudflare";
+        credentialsFile = "/home/${username}/.secrets/acme.env";
+      };
+    };
+  };
+  users.users.${username}.extraGroups = [ "acme" ];
+
+  # Configure caddy for private facing services
   services.caddy = {
     enable = true;
     virtualHosts = let
@@ -103,21 +118,6 @@
     };
   };
   users.users.caddy.extraGroups = [ "acme" ];
-
-  # Configure cloudflared
-  services.cloudflared = {
-    enable = true;
-    user = username;
-    tunnels.home = {
-      credentialsFile = "/home/${username}/.secrets/cloudflare_tunnel.json";
-      default = "http_status:404";
-      ingress = {
-        "egs.iadw.in" = "https://nas.iadw.in";
-        "home.iadw.in" = "https://nas.iadw.in";
-        "grafana.iadw.in" = "https://nas.iadw.in";
-      };
-    };
-  };
 
   # Configure firewall
   networking.firewall = {
@@ -240,21 +240,6 @@
       };
     };
   };
-
-  # Let's Encrypt
-  security.acme = {
-    acceptTerms = true;
-    certs = {
-      "iadw.in" = {
-        domain = "*.iadw.in";
-        email = "admin@iadw.in";
-        group = "acme";
-        dnsProvider = "cloudflare";
-        credentialsFile = "/home/${username}/.secrets/acme.env";
-      };
-    };
-  };
-  users.users.${username}.extraGroups = [ "acme" ];
 
   # Server Healthcheck (curl endpoint every 3 mins)
   systemd = {

@@ -36,7 +36,7 @@
   };
   users.users.${username}.extraGroups = [ "acme" ];
 
-  # Configure caddy
+  # Configure caddy for public facing services
   services.caddy = {
     enable = true;
     virtualHosts = let
@@ -46,7 +46,17 @@
     in {
       plex = common // {
         hostName = "plex.iadw.in";
-        extraConfig = "reverse_proxy localhost:32400";
+        extraConfig = "reverse_proxy nas:32400";
+      };
+
+      home = common // {
+        hostName = "home.iadw.in";
+        extraConfig = "reverse_proxy nas:8123";
+      };
+
+      egs = common // {
+        hostName = "egs.iadw.in";
+        extraConfig = "reverse_proxy nas:3000";
       };
     };
   };
@@ -54,7 +64,7 @@
 
   # Configure firewall
   networking.firewall = {
-    allowedTCPPorts = [ 22 80 443 32400 ];
+    allowedTCPPorts = [ 22 80 443 ];
     allowedUDPPorts = [];
   };
 
