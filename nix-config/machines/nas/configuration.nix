@@ -257,33 +257,18 @@
   };
 
   # Persistent SSH connections
-  services.autossh.sessions = let
-    commonOptions = builtins.concatStringsSep " " [
-      "-N"
-      "-o 'StrictHostKeyChecking no'"
-      "-o 'ServerAliveInterval 60'"
-      "-o 'ServerAliveCountMax 3'"
-      "-p 22"
-      "-i /home/${username}/.secrets/id_ed25519"
-    ];
-  in [
-    {
-      # tunnel:32400 → nas:32400
-      name = "SSH_Portforwarding";
-      user = "root";
-      extraArguments = builtins.concatStringsSep " " [
-        commonOptions
-        "-R 0.0.0.0:32400:localhost:32400"
-        "adwin@tunnel"
-      ];
-    }
-
+  services.autossh.sessions = [
     {
       # bootes:22222 → nas:22
       name = "SSH_Tunnel";
-      user = "root";
+      user = username;
       extraArguments = builtins.concatStringsSep " " [
-        commonOptions
+        "-N"
+        "-o 'StrictHostKeyChecking no'"
+        "-o 'ServerAliveInterval 60'"
+        "-o 'ServerAliveCountMax 3'"
+        "-p 22"
+        "-i /home/${username}/.secrets/id_ed25519"
         "-R 22222:localhost:22"
         "adwin@bootes"
       ];
