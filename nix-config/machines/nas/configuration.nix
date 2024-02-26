@@ -96,6 +96,11 @@
         extraConfig = "reverse_proxy localhost:3001";
       };
 
+      zigbee2mqtt = common // {
+        hostName = "zigbee2mqtt.iadw.in";
+        extraConfig = "reverse_proxy localhost:8081";
+      };
+
       kindash = common // {
         hostName = "kindash.iadw.in";
         extraConfig = "reverse_proxy localhost:3002";
