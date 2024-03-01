@@ -66,6 +66,11 @@
         extraConfig = "reverse_proxy 192.168.1.1:80";
       };
 
+      valetudo = common // {
+        hostName = "valetudo.iadw.in";
+        extraConfig = "reverse_proxy 192.168.5.10:80";
+      };
+
       transmission = common // {
         hostName = "transmission.iadw.in";
         extraConfig = "reverse_proxy localhost:9091";
