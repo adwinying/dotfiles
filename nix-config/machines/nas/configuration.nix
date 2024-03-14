@@ -110,6 +110,11 @@
         hostName = "kindash.iadw.in";
         extraConfig = "reverse_proxy localhost:3002";
       };
+
+      scrutiny = common // {
+        hostName = "scrutiny.iadw.in";
+        extraConfig = "reverse_proxy localhost:8082";
+      };
     };
   };
   users.users.caddy.extraGroups = [ "acme" ];
@@ -188,25 +193,6 @@
         "/mnt/disk1"
         "/mnt/disk2"
       ];
-    };
-  };
-
-  # SMART monitoring
-  services.smartd = {
-    enable = true;
-    autodetect = true;
-    defaults.monitored = builtins.concatStringsSep " " [
-      "-a"
-      "-o on"
-      "-S on"
-      "-n standby,q"
-      "-s (S/../.././02|L/../../6/03)"
-      "-W 4,35,50"
-    ];
-    notifications.mail = {
-      enable = true;
-      sender = "nas@iadw.in";
-      recipient = "admin@iadw.in";
     };
   };
 
