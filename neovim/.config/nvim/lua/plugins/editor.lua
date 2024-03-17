@@ -6,20 +6,22 @@ return {
   },
 
   -- comments
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
+    opts = {
+      enable_autocmd = false,
+    },
+  },
   {
     "echasnovski/mini.comment",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
+      custom_commentstring = function()
+        return require('ts_context_commentstring').calculate_commentstring()
+          or vim.bo.commentstring
+      end,
     },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
-    end,
   },
 
   -- surround motions
