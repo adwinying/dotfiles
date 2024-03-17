@@ -15,6 +15,9 @@
   # Import overlays for this machine
   nixpkgs.overlays = [];
 
+  # Increase file watch limit
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 524288;
+
   # Bootloader configs
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
