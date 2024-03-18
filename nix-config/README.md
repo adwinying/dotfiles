@@ -101,6 +101,31 @@ $ nix flake update
 $ rebuild-host
 ```
 
+### 🚮 Free Up Space
+
+1. Remove old generations
+
+```bash
+# List all generations
+$ nix-env --list-generations
+
+# Remove all but latest generation
+$ nix-env --delete-generatiosn old
+```
+
+2. Remove stray roots
+
+```bash
+$ nix-stray-roots
+$ rm -rf [/path/to/stray/root/dir]
+```
+
+3. Run garbage collection
+
+```
+$ nix-collect-garbage -d
+```
+
 ## Inspiration
 
 - Base templates: https://github.com/Misterio77/nix-starter-configs

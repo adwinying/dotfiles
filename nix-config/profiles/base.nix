@@ -101,10 +101,15 @@
 
       ${dotfiles}/scripts/bootstrap_secrets.sh
     '';
+
+    strayRoots = writeShellScriptBin "nix-stray-roots" ''
+      nix-store --gc --print-roots | egrep -v "^(/nix/var|/run/\w+-system|\{memory|/proc|\{censored)"
+    '';
   in [
     syncAllHosts
     rebuildHost
     bootstrapSecrets
+    strayRoots
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
