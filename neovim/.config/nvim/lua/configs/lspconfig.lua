@@ -20,6 +20,8 @@ local servers = {
   "prismals",
   "svelte",
   "astro",
+  "gopls",
+  "templ",
 }
 
 -- LSP custom configs (optional)
@@ -60,7 +62,7 @@ local custom_configs = {
       "vue",
       "json"
     }
-  }
+  },
 }
 
 -- LSP keybindings

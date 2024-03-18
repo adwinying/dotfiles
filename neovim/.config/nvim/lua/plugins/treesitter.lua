@@ -25,6 +25,7 @@ return {
         "php",
         "go",
         "gomod",
+        "templ",
       },
 
       context_commentstring = {
@@ -53,8 +54,9 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
-      -- Automatically set syntax for astro files
+      -- Automatically set syntax for astro/templ files
       vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
+      vim.cmd "autocmd BufRead,BufEnter *.templ set filetype=templ"
     end,
   },
 }
