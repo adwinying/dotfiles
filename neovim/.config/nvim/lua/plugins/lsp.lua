@@ -10,6 +10,8 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'jay-babu/mason-null-ls.nvim' },
       { 'nvimtools/none-ls.nvim' },
+      { "mfussenegger/nvim-dap" },
+      { "jay-babu/mason-nvim-dap.nvim" },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },
@@ -109,6 +111,12 @@ return {
           lsp.build_options('null-ls', {}).on_attach(client, bufnr)
         end,
 
+        handlers = {},
+      })
+
+      -- nvim-dap
+      require("mason-nvim-dap").setup({
+        ensure_installed = {},
         handlers = {},
       })
     end,

@@ -97,6 +97,16 @@ local keybindings = function (_, bufnr)
   -- restart lsp
   vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', bufopts)
   vim.keymap.set('n', '<leader>li', '<cmd>LspInfo<CR>', bufopts)
+  -- nvim-dap
+  vim.keymap.set('n', '<leader>dg', function() require('dap').continue() end, bufopts)
+  vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end, bufopts)
+  vim.keymap.set('n', '<leader>dso', function() require('dap').step_over() end, bufopts)
+  vim.keymap.set('n', '<leader>dsi', function() require('dap').step_into() end, bufopts)
+  vim.keymap.set('n', '<leader>dui', function()
+    local widgets = require('dap.ui.widgets')
+    local sidebar = widgets.sidebar(widgets.scopes)
+    sidebar.open();
+  end, bufopts)
 end
 
 return {
