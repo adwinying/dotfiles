@@ -35,6 +35,9 @@ default_config.keybindings = {
 -- =============================================================================
 
 default_config.wm = {
+  -- tiling wm to use (yabai|aerospace)
+  mode = "aerospace",
+
   -- compatibility mode. Set to false if scripting additions is loaded
   compatibility_mode = true,
 

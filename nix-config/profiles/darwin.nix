@@ -6,6 +6,11 @@
 
 { dotfiles, ... }: {
   imports = [
+    # aerospace
+    ({
+      xdg.configFile.aerospace.source = "${dotfiles}/aerospace/.config/aerospace";
+    })
+
     # yabai
     ({
       xdg.configFile.yabai.source = "${dotfiles}/yabai/.config/yabai";

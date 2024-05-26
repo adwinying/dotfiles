@@ -14,6 +14,7 @@
         "flux"
         "aldente"
         "the-unarchiver"
+        "nikitabobko/tap/aerospace"
       ];
 
       homebrew.masApps = {

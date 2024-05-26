@@ -5,6 +5,7 @@
 
 local helpers = require("helpers")
 local hyper = require("modules.hyper")
+local config = require("configs")
 
 -- =============================================================================
 -- Definitions
@@ -12,6 +13,10 @@ local hyper = require("modules.hyper")
 
 -- reload configs
 hyper:bind({ "shift" }, "r", function ()
+  if config.wm.mode == "aerospace" then
+    hs.execute("aerospace reload-config")
+  end
+
   hs.reload()
 end)
 
