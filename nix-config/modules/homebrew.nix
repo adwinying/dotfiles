@@ -14,6 +14,7 @@
         "flux"
         "aldente"
         "the-unarchiver"
+        "mac-mouse-fix"
         "nikitabobko/tap/aerospace"
       ];
 
