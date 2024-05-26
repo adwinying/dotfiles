@@ -84,7 +84,7 @@
     NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 
     # mouse tracking speed
-    ".GlobalPreferences"."com.apple.mouse.scaling" = "100.0";
+    ".GlobalPreferences"."com.apple.mouse.scaling" = 100.0;
 
     # autohide dock
     dock.autohide = true;
