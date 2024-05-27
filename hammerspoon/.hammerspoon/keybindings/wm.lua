@@ -73,7 +73,7 @@ end
 -- move to space #
 for i = 1, 9 do
   hyper:bind({}, tostring(i), function ()
-    if config.compatibility_mode then
+    if config.mode == "yabai" and config.compatibility_mode then
       hs.eventtap.keyStroke({ "ctrl", "alt", "cmd", "shift" }, tostring(i))
       return
     end
@@ -107,12 +107,13 @@ end)
 -- move to bottom window
 -- cycle next windows in monocle mode
 hyper:bind({}, "j", function ()
+  if config.mode == "yabai" and wm.get_current_layout() == "stack" then
+    wm.api.window.focus(nil, "stack.next")
+    return
+  end
+
   if config.mode == "yabai" then
-    if wm.get_current_layout() == "stack" then
-      wm.api.window.focus(nil, "stack.next")
-    else
-      wm.api.window.focus(nil, "south")
-    end
+    wm.api.window.focus(nil, "south")
   end
 
   if config.mode == "aerospace" then
@@ -123,12 +124,13 @@ end)
 -- move to top window
 -- cycle previous windows in monocle mode
 hyper:bind({}, "k", function ()
+  if config.mode == "yabai" and wm.get_current_layout() == "stack" then
+    wm.api.window.focus(nil, "stack.prev")
+    return
+  end
+
   if config.mode == "yabai" then
-    if wm.get_current_layout() == "stack" then
-      wm.api.window.focus(nil, "stack.prev")
-    else
-      wm.api.window.focus(nil, "north")
-    end
+    wm.api.window.focus(nil, "north")
   end
 
   if config.mode == "aerospace" then
