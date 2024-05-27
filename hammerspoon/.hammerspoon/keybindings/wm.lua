@@ -16,39 +16,36 @@ local config = require("configs").wm
 hyper:bind({ "shift" }, "s", function ()
   if config.mode == "yabai" then
     wm.api.config("--space mouse layout float")
+    Layouts:update("float")
   end
 
   if config.mode == "aerospace" then
     hs.execute("aerospace enable toggle")
   end
-
-  Layouts:update("float")
 end)
 
 -- select bsp layout
 hyper:bind({}, "s", function ()
   if config.mode == "yabai" then
     wm.api.config("--space mouse layout bsp")
+    Layouts:update("bsp")
   end
 
   if config.mode == "aerospace" then
     hs.execute("aerospace layout h_tiles")
   end
-
-  Layouts:update("bsp")
 end)
 
 -- select stack layout
 hyper:bind({}, "w", function ()
   if config.mode == "yabai" then
     wm.api.config("--space mouse layout stack")
+    Layouts:update("stack")
   end
 
   if config.mode == "aerospace" then
     hs.execute("aerospace layout h_accordion")
   end
-
-  Layouts:update("stack")
 end)
 
 
@@ -300,13 +297,12 @@ end)
 hyper:bind({ "ctrl" }, "space", function ()
   if config.mode == "yabai" then
     wm.api.window.toggle(nil, "float")
+    Layouts:update()
   end
 
   if config.mode == "aerospace" then
     hs.execute("aerospace layout floating tiling")
   end
-
-  Layouts:update()
 end)
 
 -- Toggle full screen

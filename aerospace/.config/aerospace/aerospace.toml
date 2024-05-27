@@ -38,7 +38,7 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 key-mapping.preset = 'qwerty'
 
-exec-on-workspace-change = ['/bin/bash', '-c', '~/.dotfiles/scripts/update_aerospace_space_layout.sh']
+# exec-on-workspace-change = ['/bin/bash', '-c', '~/.dotfiles/scripts/update_aerospace_space_layout.sh']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:

@@ -3,9 +3,15 @@
 -- init modules
 --
 
+local config = require("configs")
+
 require("modules.ipc")
 require("modules.expose")
-require("modules.layouts")
-require("modules.spaces")
+
+if config.wm.mode == "yabai" then
+  require("modules.layouts")
+  require("modules.spaces")
+end
+
 require("modules.cheatsheet")
 require("modules.floating_terminal")
