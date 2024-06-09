@@ -247,8 +247,8 @@ require("lazy").setup({
         end
 
         -- Navigation
-        map('n', ']c', gs.next_hunk, 'Next Hunk')
-        map('n', '[c', gs.prev_hunk, 'Prev Hunk')
+        map('n', ']h', gs.next_hunk, 'Next Hunk')
+        map('n', '[h', gs.prev_hunk, 'Prev Hunk')
 
         -- Actions
         map('n', '<leader>hs', gs.stage_hunk, 'Stage Hunk')
@@ -429,28 +429,14 @@ require("lazy").setup({
   {
     "echasnovski/mini.align",
     event = { "BufReadPost", "BufNewFile" },
-    config = function(_, opts)
-      require("mini.align").setup(opts)
-    end,
+    opts = {},
   },
 
   -- auto insert matching brackets
   {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
-    config = function(_, opts)
-      require("mini.pairs").setup(opts)
-    end,
-  },
-
-  -- better % support
-  {
-    "andymass/vim-matchup",
-    event = "BufReadPre",
-    config = function()
-      vim.g.matchup_surround_enabled = 1
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
+    opts = {},
   },
 
   -- better escape
@@ -482,6 +468,7 @@ require("lazy").setup({
     version = false,
     build = ":TSUpdate",
     event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = {
       ensure_installed = {
         "lua",
@@ -516,6 +503,53 @@ require("lazy").setup({
           node_incremental  = "grn",
           scope_incremental = "grc",
           node_decremental  = "grm",
+        },
+      },
+
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          include_surrounding_whitespace = true,
+          keymaps = {
+            ["am"] = { query = "@function.outer", desc = "method" },
+            ["im"] = { query = "@function.inner", desc = "method" },
+            ["aM"] = { query = "@function.outer", desc = "method" },
+            ["iM"] = { query = "@function.inner", desc = "method" },
+            ["ac"] = { query = "@call.outer", desc = "function call" },
+            ["ic"] = { query = "@call.inner", desc = "function call" },
+            ["aC"] = { query = "@call.outer", desc = "function call" },
+            ["iC"] = { query = "@call.inner", desc = "function call" },
+            ["aa"] = { query = "@parameter.outer", desc = "parameter" },
+            ["ia"] = { query = "@parameter.inner", desc = "parameter" },
+            ["aA"] = { query = "@parameter.outer", desc = "parameter" },
+            ["iA"] = { query = "@parameter.inner", desc = "parameter" },
+          },
+        },
+
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]m"] = { query = "@function.outer", desc = "method start" },
+            ["]c"] = { query = "@call.outer", desc = "function call start" },
+            ["]a"] = { query = "@parameter.outer", desc = "parameter start" },
+          },
+          goto_next_end = {
+            ["]M"] = { query = "@function.outer", desc = "method end" },
+            ["]C"] = { query = "@call.outer", desc = "function call end" },
+            ["]A"] = { query = "@parameter.outer", desc = "parameter end" },
+          },
+          goto_previous_start = {
+            ["[m"] = { query = "@function.outer", desc = "method start" },
+            ["[c"] = { query = "@call.outer", desc = "function call start" },
+            ["[a"] = { query = "@parameter.outer", desc = "parameter start" },
+          },
+          goto_previous_end = {
+            ["[M"] = { query = "@function.outer", desc = "method end" },
+            ["[C"] = { query = "@call.outer", desc = "function call end" },
+            ["[A"] = { query = "@parameter.outer", desc = "parameter end" },
+          },
         },
       },
 
