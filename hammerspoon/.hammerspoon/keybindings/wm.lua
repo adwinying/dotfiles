@@ -20,7 +20,7 @@ hyper:bind({ "shift" }, "s", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace enable toggle")
+    wm.execute_aerospace("enable toggle")
   end
 end)
 
@@ -32,7 +32,7 @@ hyper:bind({}, "s", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace layout h_tiles")
+    wm.execute_aerospace("layout h_tiles")
   end
 end)
 
@@ -44,7 +44,7 @@ hyper:bind({}, "w", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace layout h_accordion")
+    wm.execute_aerospace("layout h_accordion")
   end
 end)
 
@@ -80,7 +80,7 @@ for i = 1, 9 do
     end
 
     if config.mode == "aerospace" then
-      hs.execute(string.format("aerospace workspace %s", i))
+      print(wm.execute_aerospace(string.format("workspace %s", i)))
     end
   end)
 end
@@ -97,7 +97,7 @@ hyper:bind({}, "h", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace focus left")
+    wm.execute_aerospace("focus left")
   end
 end)
 
@@ -114,7 +114,7 @@ hyper:bind({}, "j", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace focus down")
+    wm.execute_aerospace("focus down")
   end
 end)
 
@@ -131,7 +131,7 @@ hyper:bind({}, "k", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace focus up")
+    wm.execute_aerospace("focus up")
   end
 end)
 
@@ -142,7 +142,7 @@ hyper:bind({}, "l", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace focus right")
+    wm.execute_aerospace("focus right")
   end
 end)
 
@@ -158,7 +158,7 @@ hyper:bind({ "shift" }, "h", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move left")
+    wm.execute_aerospace("move left")
   end
 end)
 
@@ -169,7 +169,7 @@ hyper:bind({ "shift" }, "j", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move down")
+    wm.execute_aerospace("move down")
   end
 end)
 
@@ -180,7 +180,7 @@ hyper:bind({ "shift" }, "k", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move up")
+    wm.execute_aerospace("move up")
   end
 end)
 
@@ -191,7 +191,7 @@ hyper:bind({ "shift" }, "l", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move right")
+    wm.execute_aerospace("move right")
   end
 end)
 
@@ -202,7 +202,7 @@ hyper:bind({ "cmd", "shift" }, "h", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move-node-to-monitor left")
+    wm.execute_aerospace("move-node-to-monitor left")
   end
 end)
 
@@ -213,7 +213,7 @@ hyper:bind({ "cmd", "shift" }, "j", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move-node-to-monitor down")
+    wm.execute_aerospace("move-node-to-monitor down")
   end
 end)
 
@@ -224,7 +224,7 @@ hyper:bind({ "cmd", "shift" }, "k", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move-node-to-monitor up")
+    wm.execute_aerospace("move-node-to-monitor up")
   end
 end)
 
@@ -235,7 +235,7 @@ hyper:bind({ "cmd", "shift" }, "l", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace move-node-to-monitor right")
+    wm.execute_aerospace("move-node-to-monitor right")
   end
 end)
 
@@ -251,7 +251,7 @@ hyper:bind({ "ctrl" }, "h", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute(string.format("aerospace resize width -%s", config.resize_step))
+    wm.execute_aerospace(string.format("resize width -%s", config.resize_step))
   end
 end)
 
@@ -262,7 +262,7 @@ hyper:bind({ "ctrl" }, "j", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute(string.format("aerospace resize height -%s", config.resize_step))
+    wm.execute_aerospace(string.format("resize height -%s", config.resize_step))
   end
 end)
 
@@ -273,7 +273,7 @@ hyper:bind({ "ctrl" }, "k", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute(string.format("aerospace resize height +%s", config.resize_step))
+    wm.execute_aerospace(string.format("resize height +%s", config.resize_step))
   end
 end)
 
@@ -284,7 +284,7 @@ hyper:bind({ "ctrl" }, "l", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute(string.format("aerospace resize width +%s", config.resize_step))
+    wm.execute_aerospace(string.format("resize width +%s", config.resize_step))
   end
 end)
 
@@ -301,7 +301,7 @@ hyper:bind({ "ctrl" }, "space", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace layout floating tiling")
+    wm.execute_aerospace("layout floating tiling")
   end
 end)
 
@@ -312,7 +312,7 @@ hyper:bind({}, "f", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace fullscreen")
+    wm.execute_aerospace("fullscreen")
   end
 end)
 
@@ -359,7 +359,7 @@ hyper:bind({ "shift" }, "c", function ()
   end
 
   if config.mode == "aerospace" then
-    hs.execute("aerospace close")
+    wm.execute_aerospace("close")
   end
 end)
 
@@ -371,7 +371,7 @@ for i = 1, 9 do
     end
 
     if config.mode == "aerospace" then
-      hs.execute(string.format("aerospace move-node-to-workspace %s", i))
+      wm.execute_aerospace(string.format("move-node-to-workspace %s", i))
     end
   end)
 end

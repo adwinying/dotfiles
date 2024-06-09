@@ -68,6 +68,12 @@ local wm = {}
 -- APIs
 -- =============================================================================
 
+wm.execute_aerospace = function (cmd)
+  print(string.format("executing: %s %s", config.aerospace_path, cmd))
+
+  return hs.execute(string.format("%s %s", config.aerospace_path, cmd))
+end
+
 wm.execute_cmd = function (cmd)
   print(string.format("executing: %s %s", config.yabai_path, cmd))
 
