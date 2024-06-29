@@ -37,6 +37,14 @@
     usbutils
   ];
 
+  # nix-ld: Allows compiled binaries to run on NixOS
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    systemd
+    zlib
+  ];
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
 }
