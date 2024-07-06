@@ -38,6 +38,7 @@ zinit load zsh-users/zsh-history-substring-search
 
 # cli fuzzy finder
 zinit pack"binary" for fzf
+source <(fzf --zsh)
 
 # fuzzy navigation
 zinit ice wait lucid
