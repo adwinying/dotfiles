@@ -13,9 +13,6 @@
     ../../modules/tailscale.nix
   ];
 
-  # Prevent sleep when laptop lid is closed
-  services.logind.lidSwitch = "ignore";
-
   # Enable IP forwarding
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
