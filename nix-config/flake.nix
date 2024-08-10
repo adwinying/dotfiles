@@ -59,6 +59,12 @@
         system   = "x86_64-linux";
       };
 
+      outpost = mkMachineConfig {
+        hostname = "outpost";
+        username = "adwin";
+        system   = "x86_64-linux";
+      };
+
       nas = mkMachineConfig {
         hostname = "nas";
         username = "adwin";
