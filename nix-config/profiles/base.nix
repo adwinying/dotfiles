@@ -90,7 +90,7 @@
       if [[ $(uname) == "Darwin" ]]; then
         darwin-rebuild switch --flake $HOME/.dotfiles/nix-config#
       else
-        sudo nixos-rebuild switch --flake $HOME/.dotfiles/nix-config#
+        nixos-rebuild switch --flake $HOME/.dotfiles/nix-config# --use-remote-sudo
       fi
     '';
 
