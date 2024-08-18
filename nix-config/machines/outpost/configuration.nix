@@ -15,10 +15,6 @@
   # Import overlays for this machine
   nixpkgs.overlays = [];
 
-  # Enable IP forwarding
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
-
   # Configure Tailscale
   services.tailscale = {
     exitNode = true;

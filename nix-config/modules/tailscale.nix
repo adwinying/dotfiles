@@ -38,18 +38,13 @@ in {
       type = types.nullOr types.str;
       default = "lose-ssh";
     };
-
-    authKey = mkOption {
-      description = "The Tailscale authentication key";
-      type = types.str;
-      example = "tskey-client-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-      default = "$(${pkgs.coreutils}/bin/cat /home/${username}/.secrets/tailscale_auth_key | ${pkgs.findutils}/bin/xargs)?ephemeral=false";
-    };
   };
 
   config = {
-    services.tailscale.enable = true;
-    services.tailscale.package = pkgs.unstable.tailscale;
+    services.tailscale = {
+      enable = true;
+      package = pkgs.unstable.tailscale;
+    };
   };
 
   imports = let
@@ -57,22 +52,10 @@ in {
     osConfigs = if isDarwin
       then ({ homebrew.masApps.Tailscale = 1475387142; })
       else ({
-        networking.firewall.checkReversePath = "loose";
-
-        # create a oneshot job to authenticate to Tailscale
-        systemd.services.tailscale-autoconnect = {
-          description = "Automatic connection to Tailscale";
-
-          # make sure tailscale is running before trying to connect to tailscale
-          after = [ "network-pre.target" "tailscale.service" ];
-          wants = [ "network-pre.target" "tailscale.service" ];
-          wantedBy = [ "multi-user.target" ];
-
-          # set this service as a oneshot job
-          serviceConfig.Type = "oneshot";
-
-          # have the job run this shell script
-          script = let
+        services.tailscale = {
+          useRoutingFeatures = if cfg.exitNode then "both" else "client";
+          authKeyFile = "/home/${username}/.secrets/tailscale_auth_key";
+          extraUpFlags = let
             sshArgs = if cfg.enableSshAgent
               then "--ssh"
               else "";
@@ -91,14 +74,14 @@ in {
             riskArgs = if cfg.acceptRisk == null
               then ""
               else "--accept-risk=${cfg.acceptRisk}";
-            authKeyArgs = "--auth-key=${cfg.authKey} ";
-          in ''
-            # wait for tailscaled to settle
-            sleep 2
-
-            # authenticate with tailscale
-            ${pkgs.unstable.tailscale}/bin/tailscale up ${sshArgs} ${authKeyArgs} ${tagArgs} ${exitNodeArgs} ${outboundSubnetRoutingArgs} ${inboundSubnetRoutingArgs} ${riskArgs}
-          '';
+          in [
+            sshArgs
+            tagArgs
+            exitNodeArgs
+            outboundSubnetRoutingArgs
+            inboundSubnetRoutingArgs
+            riskArgs
+          ];
         };
       });
   in [

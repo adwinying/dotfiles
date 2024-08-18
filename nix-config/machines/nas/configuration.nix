@@ -13,10 +13,6 @@
     ../../modules/tailscale.nix
   ];
 
-  # Enable IP forwarding
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
-
   # Import overlays for this machine
   nixpkgs.overlays = [];
 
