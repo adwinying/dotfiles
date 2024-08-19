@@ -4,11 +4,9 @@
 
 { pkgs, secrets, username, ... }: {
   home.packages = with pkgs; [
-    rclone
     kopia
   ];
 
-  xdg.configFile.rclone.source = "${secrets}/rclone";
   xdg.configFile.kopia.source = "${secrets}/kopia";
 
   # Trigger backup job every day at 6am
@@ -35,7 +33,6 @@
           script = pkgs.writeShellScriptBin "script" ''
             set -eu
 
-            export PATH=$PATH:${pkgs.rclone}/bin
             export PATH=$PATH:${pkgs.kopia}/bin
             export PATH=$PATH:${pkgs.coreutils}/bin
             export PATH=$PATH:${pkgs.curl}/bin
@@ -45,7 +42,6 @@
             healthcheck_endpoint_path=${secrets}/healthcheck_backup_endpoint
             healthcheck_endpoint_url=$(cat $healthcheck_endpoint_path)
 
-            rclone ls mega:
             kopia snapshot create $appdata_dir
             curl -fsS --retry 3 $healthcheck_endpoint_url
           '';
