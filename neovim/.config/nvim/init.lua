@@ -208,6 +208,10 @@ require("lazy").setup({
     'stevearc/oil.nvim',
     -- event = "VeryLazy",
     opts = {
+      keymaps = {
+        ["`"] = false,
+        ["~"] = false,
+      },
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,
