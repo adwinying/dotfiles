@@ -218,7 +218,7 @@ let g:netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
 " toggle display of tree with <Leader> + n
 noremap <leader>n :vsplit .<CR>
 " locate the focused file in tree with <Leader> + j
-noremap <leader>j :vsplit<CR>:Explore<CR>
+noremap <leader>j :vsplit %:h<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

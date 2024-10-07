@@ -203,6 +203,23 @@ require("lazy").setup({
     },
   },
 
+  -- file explorer
+  {
+    'stevearc/oil.nvim',
+    -- event = "VeryLazy",
+    opts = {
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = true,
+      },
+    },
+    setup = function (_, opts)
+      require('oil').setup(opts)
+
+      vim.keymap.set("n", "<leader>j", ":vsplit<CR>:e %:p:h<CR>", { desc = "Explore current dir" })
+    end
+  },
+
   -- smooth scrolling
   {
     "terryma/vim-smooth-scroll",
