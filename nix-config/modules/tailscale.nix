@@ -21,6 +21,12 @@ in {
       default = null;
     };
 
+    acceptDns = mkOption {
+      description = "Accept DNS config from the Tailscale network";
+      type = types.bool;
+      default = true;
+    };
+
     acceptRoutes = mkOption {
       description = "Accept routes from the Tailscale network";
       type = types.bool;
@@ -62,6 +68,9 @@ in {
             exitNodeArgs = if cfg.exitNode
               then "--advertise-exit-node"
               else "";
+            dnsArgs = if cfg.acceptDns
+              then "--accept-dns"
+              else "--accept-dns=false";
             inboundSubnetRoutingArgs = if cfg.acceptRoutes
               then "--accept-routes"
               else "";
@@ -78,6 +87,7 @@ in {
             sshArgs
             tagArgs
             exitNodeArgs
+            dnsArgs
             outboundSubnetRoutingArgs
             inboundSubnetRoutingArgs
             riskArgs
