@@ -108,6 +108,14 @@
     # dock position
     dock.orientation = "left";
 
+    # dock default pinned apps
+    dock.persistent-apps = [
+      "/System/Applications/Launchpad.app"
+      "/Applications/Arc.app"
+      "/System/Applications/Messages.app"
+      "/System/Applications/System\ Preferences.app"
+    ];
+
     # hide recent apps in dock
     dock.show-recents = false;
 
