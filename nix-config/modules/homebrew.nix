@@ -1,5 +1,12 @@
 { ... }: {
-  homebrew.enable = true;
+  homebrew = {
+    enable = true;
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
+    };
+  };
 
   imports = [
     # utils
