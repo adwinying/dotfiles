@@ -18,7 +18,15 @@ if (not keybindings.enable_modifier_overrides) then return end
 -- =============================================================================
 
 -- Remap hyper_override to hyper key
-remapper:remap(keybindings.hyper_override, keybindings.hyper):register()
+local function get_hyper_override ()
+  local hyper_override = keybindings.hyper_override
+  if Display.is_docked and keybindings.hyper_override_docked ~= nil then
+    hyper_override = keybindings.hyper_override_docked
+  end
+
+  return hyper_override
+end
+remapper:remap(get_hyper_override(), keybindings.hyper):register()
 
 -- Remap capslock to ctrl key
 remapper:remap("capslock", "ctrl"):register()

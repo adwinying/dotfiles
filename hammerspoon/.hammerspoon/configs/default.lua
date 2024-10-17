@@ -28,6 +28,9 @@ default_config.keybindings = {
 
   -- key to override hyper with
   hyper_override = "alt",
+
+  -- key to override hyper with when docked
+  hyper_override_docked = nil,
 }
 
 -- =============================================================================
@@ -52,6 +55,15 @@ default_config.wm = {
 
   -- units to resize each time
   resize_step = 50,
+}
+
+-- =============================================================================
+-- Display
+-- =============================================================================
+
+default_config.display = {
+  -- display names
+  dock_display = "DELL U2723QX",
 }
 
 -- =============================================================================
