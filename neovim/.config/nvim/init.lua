@@ -679,7 +679,6 @@ require("lazy").setup({
       -- Neovim now has *more* capabilities. So, we create new capabilities
       -- with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Enable the following language servers
       -- cmd (table): Override the default command used to start the server
@@ -788,126 +787,97 @@ require("lazy").setup({
 
   -- Completion Window
   {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      {
-        'L3MON4D3/LuaSnip',
-        build = 'make install_jsregexp',
-        dependencies = {
-          {
-            'rafamadriz/friendly-snippets',
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
-          },
+    "saghen/blink.cmp",
+    -- lazy loading handled internally
+    lazy = false,
+    -- optional: provides snippets for the snippet source
+    dependencies = "rafamadriz/friendly-snippets",
+    -- use a release tag to download pre-built binaries
+    version = 'v0.4',
+
+    opts = {
+      highlight = {
+        -- sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release, assuming themes add support
+        use_nvim_cmp_as_default = true,
+      },
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'mono',
+      -- experimental auto-brackets support
+      accept = { auto_brackets = { enabled = true } },
+      -- experimental signature help support
+      trigger = { signature_help = { enabled = true } },
+      -- for keymap, all values may be string | string[]
+      -- use an empty table to disable a keymap
+      keymap = {
+        show = '<C-space>',
+        hide = '<C-e>',
+        accept = '<CR>',
+        select_prev = '<C-p>',
+        select_next = '<C-n>',
+        show_documentation = {},
+        hide_documentation = {},
+        scroll_documentation_up = '<C-u>',
+        scroll_documentation_down = '<C-d>',
+        snippet_forward = '<Tab>',
+        snippet_backward = '<S-Tab>',
+      },
+      windows = {
+        autocomplete = {
+          -- Controls how the completion items are selected
+          -- 'preselect' will automatically select the first item in the completion list
+          -- 'manual' will not select any item by default
+          -- 'auto_insert' will not select any item by default, and insert the completion items automatically when selecting them
+          selection = 'auto_insert',
+
+          -- Controls how the completion items are rendered on the popup window
+          -- 'simple' will render the item's kind icon the left alongside the label
+          -- 'reversed' will render the label on the left and the kind icon + name on the right
+          -- 'minimal' will render the label on the left and the kind name on the right
+          -- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
+          draw = 'reversed',
         },
-        opts = {
-          history = true,
-          delete_check_events = "TextChanged",
-        },
-        keys = {
-          {
-            "<tab>",
-            function()
-              return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-            end,
-            expr = true, silent = true, mode = "i",
-          },
-          { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-          { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+        documentation = {
+          -- Controls whether the documentation window will automatically show when selecting a completion item
+          auto_show = true,
+          auto_show_delay_ms = 100,
         },
       },
+      kind_icons = {
+        Text = '[TXT]',
+        Method = '[MTH]',
+        Function = '[FUN]',
+        Constructor = '[CON]',
 
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-    },
-    config = function()
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-      luasnip.config.setup({})
+        Field = '[FLD]',
+        Variable = '[VAR]',
+        Property = '[PRP]',
 
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
+        Class = '[CLS]',
+        Interface = '[INT]',
+        Struct = '[STR]',
+        Module = '[MOD]',
 
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        Unit = '[UNI]',
+        Value = '[VAL]',
+        Enum = '[ENU]',
+        EnumMember = '[ENM]',
 
-        mapping = cmp.mapping.preset.insert {
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),
-          ['<C-e>'] = cmp.mapping.close(),
+        Keyword = '[KEY]',
+        Constant = '[CST]',
 
-          ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-n>"] = cmp.mapping.select_next_item(),
-
-          ["<C-u>"] = cmp.mapping.scroll_docs(-5),
-          ["<C-d>"] = cmp.mapping.scroll_docs(5),
-
-          ["<C-j>"] = function(fallback)
-            if require("luasnip").expand_or_jumpable() then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
-                "<Plug>luasnip-expand-or-jump",
-                true,
-                true,
-                true
-              ), "")
-            else
-              fallback()
-            end
-          end,
-
-          ["<C-k>"] = function(fallback)
-            if require("luasnip").jumpable(-1) then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes(
-                "<Plug>luasnip-jump-prev",
-                true,
-                true,
-                true
-              ), "")
-            else
-              fallback()
-            end
-          end,
-
-          ["<Tab>"] = nil,
-          ["<S-Tab>"] = nil,
-        },
-
-        sources = {
-          { name = 'path' },
-          { name = 'nvim_lsp' },
-          { name = 'buffer' },
-          { name = 'luasnip' },
-          { name = 'nvim_lsp_signature_help' },
-          {
-            name = "lazydev",
-            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-          },
-        },
-
-        formatting = {
-          format = function(entry, vim_item)
-            vim_item.menu = ({
-              path                    = "[PTH]",
-              nvim_lsp                = "[LSP]",
-              buffer                  = "[BUF]",
-              luasnip                 = "[SNP]",
-              nvim_lua                = "[LUA]",
-              nvim_lsp_signature_help = "[SIG]",
-            })[entry.source.name]
-
-            return vim_item
-          end,
-        },
-      })
-    end,
+        Snippet = '[SNP]',
+        Color = '[CLR]',
+        File = '[FIL]',
+        Reference = '[REF]',
+        Folder = '[DIR]',
+        Event = '[EVT]',
+        Operator = '[OPR]',
+        TypeParameter = '[TYP]',
+      },
+    }
   },
 
   -- AI autocomplete
