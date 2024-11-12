@@ -119,7 +119,7 @@
     dua
     mosh
     lazydocker
-    neofetch
+    fastfetch
     ripgrep
     unzip
   ];
