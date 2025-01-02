@@ -123,7 +123,8 @@ $ rm -rf [/path/to/stray/root/dir]
 3. Run garbage collection
 
 ```
-$ nix-collect-garbage -d
+# date flag needed to remove old home-manager generations
+$ nix-collect-garbage --delete-older-than 10d
 ```
 
 ## Inspiration

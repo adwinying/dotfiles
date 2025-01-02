@@ -193,11 +193,11 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    extraConfig = ''
-      guest account = nobody
-      map to guest = bad user
-    '';
-    shares = {
+    settings = {
+      global = {
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
       NAS = {
         comment = "NAS";
         path = "/mnt/storage";
