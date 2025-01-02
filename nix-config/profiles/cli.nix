@@ -122,5 +122,6 @@
     fastfetch
     ripgrep
     unzip
+    tree
   ];
 }
