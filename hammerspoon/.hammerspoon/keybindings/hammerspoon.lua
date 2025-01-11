@@ -17,6 +17,10 @@ hyper:bind({ "shift" }, "r", function ()
     hs.execute("aerospace reload-config")
   end
 
+  if config.wm.mode == "yabai" then
+    hs.execute("pkill yabai")
+  end
+
   hs.reload()
 end)
 
