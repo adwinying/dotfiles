@@ -98,8 +98,8 @@
         modules = [ ./machines/${hostname}/configuration.nix ];
       };
     in {
-      thinc = mkMachineConfig {
-        hostname = "thinc";
+      mayonaca = mkMachineConfig {
+        hostname = "mayonaca";
         username = "adwin";
         system   = "x86_64-darwin";
       };

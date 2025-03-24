@@ -1,5 +1,5 @@
 #
-# thinc-specific configs
+# mayonaca-specific configs
 #
 
 { inputs, ... }: {
