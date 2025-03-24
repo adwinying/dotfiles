@@ -9,7 +9,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Nix-darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home manager
@@ -101,7 +101,7 @@
       mayonaca = mkMachineConfig {
         hostname = "mayonaca";
         username = "adwin";
-        system   = "x86_64-darwin";
+        system   = "aarch64-darwin";
       };
     };
 

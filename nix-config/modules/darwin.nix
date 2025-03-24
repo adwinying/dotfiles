@@ -9,8 +9,7 @@
   ];
 
   # Fonts to install
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     hackgen-font
     hackgen-nf-font
   ];
@@ -113,7 +112,7 @@
       "/System/Applications/Launchpad.app"
       "/Applications/Arc.app"
       "/System/Applications/Messages.app"
-      "/System/Applications/System\ Preferences.app"
+      "/System/Applications/System\ Settings.app"
     ];
 
     # hide recent apps in dock
