@@ -11,10 +11,6 @@
   imports = [
     # utils
     ({
-      homebrew.brews = [
-        { name = "koekeishiya/formulae/yabai"; }
-      ];
-
       homebrew.casks = [
         "hammerspoon"
         "raycast"

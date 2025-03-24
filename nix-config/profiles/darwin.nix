@@ -11,11 +11,6 @@
       xdg.configFile.aerospace.source = "${dotfiles}/aerospace/.config/aerospace";
     })
 
-    # yabai
-    ({
-      xdg.configFile.yabai.source = "${dotfiles}/yabai/.config/yabai";
-    })
-
     # alacritty
     ({
       xdg.configFile.alacritty.source = "${dotfiles}/alacritty/.config/alacritty";
