@@ -12,7 +12,7 @@ local default_config = {}
 default_config.apps = {
   terminal = "Alacritty",
   browser = "Arc",
-  scratchpad_path = "/usr/local/bin/alacritty --title scratchpad",
+  scratchpad_path = "/opt/homebrew/bin/alacritty --title scratchpad",
 }
 
 -- =============================================================================
@@ -45,7 +45,7 @@ default_config.wm = {
   compatibility_mode = true,
 
   -- aerospace path
-  aerospace_path = "/usr/local/bin/aerospace",
+  aerospace_path = "/opt/homebrew/bin/aerospace",
 
   -- yabai path
   yabai_path = "/usr/local/bin/yabai",
@@ -72,7 +72,7 @@ default_config.display = {
 
 default_config.floating_terminal = {
   -- spawn command
-  command = "/usr/local/bin/alacritty --title floatingterm &",
+  command = "/opt/homebrew/bin/alacritty --title floatingterm &",
 
   -- terminal application name
   name = "alacritty",
