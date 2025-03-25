@@ -83,7 +83,7 @@ in {
             riskArgs = if cfg.acceptRisk == null
               then ""
               else "--accept-risk=${cfg.acceptRisk}";
-          in [
+          in builtins.filter (s: s != "") [
             sshArgs
             tagArgs
             exitNodeArgs
