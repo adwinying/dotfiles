@@ -5,9 +5,9 @@
 
 local custom_config = {
   keybindings = {
-    enable_modifier_overrides = false,
+    enable_modifier_overrides = true,
 
-    hyper_override = "capslock",
+    hyper_override = "rctrl",
 
     hyper_override_docked = "lctrl",
   },
