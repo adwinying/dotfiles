@@ -41,6 +41,12 @@
         system   = "aarch64-linux";
       };
 
+      mayodev = mkMachineConfig {
+        hostname = "mayodev";
+        username = "adwin";
+        system   = "aarch64-linux";
+      };
+
       tunnel = mkMachineConfig {
         hostname = "tunnel";
         username = "adwin";
