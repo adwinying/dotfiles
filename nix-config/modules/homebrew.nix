@@ -16,13 +16,16 @@
         "raycast"
         "flux"
         "aldente"
+        "betterdisplay"
         "the-unarchiver"
         "mac-mouse-fix"
+        "tailscale"
         "nikitabobko/tap/aerospace"
       ];
 
       homebrew.masApps = {
         RunCat = 1429033973;
+        ScreenZen = 1541027222;
         "Microsoft Remote Desktop" = 1295203466;
       };
     })
