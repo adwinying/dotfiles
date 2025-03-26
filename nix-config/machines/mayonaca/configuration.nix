@@ -17,5 +17,6 @@
   # Import addtional user profiles for this machine
   _module.args.profiles = [
     ../../profiles/darwin.nix
+    ../../profiles/dev.nix
   ];
 }

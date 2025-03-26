@@ -20,5 +20,10 @@
     ({
       home.file.".hammerspoon".source = "${dotfiles}/hammerspoon/.hammerspoon";
     })
+
+    # lazygit
+    ({
+      home.file."Library/Application\ Support/lazygit".source = "${dotfiles}/lazygit/.config/lazygit";
+    })
   ];
 }
