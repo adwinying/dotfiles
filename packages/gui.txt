@@ -1,6 +1,6 @@
-alacritty
 awesome
 feh
+ghostty
 inotify-tools
 kvantum-theme-nordic-git
 light

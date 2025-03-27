@@ -60,10 +60,10 @@
     xdg.configFile.rofi.source = "${dotfiles}/rofi/.config/rofi";
   })
 
-  # alacritty
+  # ghostty
   ({
-    home.packages = [ pkgs.alacritty ];
-    xdg.configFile.alacritty.source = "${dotfiles}/alacritty/.config/alacritty";
+    home.packages = [ pkgs.ghostty ];
+    xdg.configFile.ghostty.source = "${dotfiles}/ghostty/.config/ghostty";
   })
 
   # firefox

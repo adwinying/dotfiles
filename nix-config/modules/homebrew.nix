@@ -30,7 +30,7 @@
     # dev
     ({
       homebrew.casks = [
-        "alacritty"
+        "ghostty"
         "sublime-text"
         "orbstack"
         "tableplus"

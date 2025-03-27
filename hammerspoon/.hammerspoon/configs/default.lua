@@ -10,9 +10,9 @@ local default_config = {}
 -- =============================================================================
 
 default_config.apps = {
-  terminal = "Alacritty",
+  terminal = "Ghostty",
   browser = "Arc",
-  scratchpad_path = "/opt/homebrew/bin/alacritty --title scratchpad",
+  scratchpad_path = "open -na Ghostty.app --args --title=scratchpad",
 }
 
 -- =============================================================================
@@ -72,10 +72,10 @@ default_config.display = {
 
 default_config.floating_terminal = {
   -- spawn command
-  command = "/opt/homebrew/bin/alacritty --title floatingterm &",
+  command = "open -na Ghostty.app --args --title=floatingterm &",
 
   -- terminal application name
-  name = "alacritty",
+  name = "ghostty",
 
   -- window title
   title = "floatingterm",

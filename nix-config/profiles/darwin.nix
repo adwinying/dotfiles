@@ -11,9 +11,9 @@
       xdg.configFile.aerospace.source = "${dotfiles}/aerospace/.config/aerospace";
     })
 
-    # alacritty
+    # ghostty
     ({
-      xdg.configFile.alacritty.source = "${dotfiles}/alacritty/.config/alacritty";
+      xdg.configFile.ghostty.source = "${dotfiles}/ghostty/.config/ghostty";
     })
 
     # hammerspoon

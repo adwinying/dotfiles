@@ -78,12 +78,12 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'alacritty'
+if.app-id = 'com.mitchellh.ghostty'
 if.window-title-regex-substring = 'floatingterm'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'alacritty'
+if.app-id = 'com.mitchellh.ghostty'
 if.window-title-regex-substring = 'scratchpad'
 run = 'layout floating'
 

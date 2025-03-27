@@ -1,0 +1,18 @@
+theme = nord
+background = #171a20
+background-opacity = 0.9
+
+font-family = HackGen Console NF
+font-size = 14
+font-thicken
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+window-padding-balance = true
+window-padding-x = 15
+window-padding-y = 15
+
+macos-titlebar-style = hidden
+quit-after-last-window-closed = true
