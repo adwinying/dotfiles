@@ -5,6 +5,6 @@ lazygit
 mosh-git
 neofetch
 neovim
-ranger
 ripgrep
 unzip
+yazi

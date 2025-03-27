@@ -99,12 +99,6 @@
       xdg.configFile.process-compose.source = "${dotfiles}/process-compose/.config/process-compose";
     })
 
-    # ranger
-    ({
-      home.packages = [ pkgs.ranger ];
-      xdg.configFile.ranger.source = "${dotfiles}/ranger/.config/ranger";
-    })
-
     # btop
     ({
       home.packages = [ pkgs.btop ];
@@ -117,6 +111,7 @@
     gnused
     gawk
     dua
+    yazi
     mosh
     lazydocker
     fastfetch
