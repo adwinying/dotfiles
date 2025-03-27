@@ -38,11 +38,14 @@ zinit load zsh-users/zsh-history-substring-search
 
 # cli fuzzy finder
 zinit pack"binary" for fzf
-source <(fzf --zsh)
 
 # fuzzy navigation
-zinit ice wait lucid
-zinit load agkozak/zsh-z
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  mv"zoxide*/zoxide -> zoxide" \
+  atload'source <(fzf --zsh); eval "$(zoxide init --cmd cd zsh)"' \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
 
 # nvm
 export NVM_SYMLINK_CURRENT=true
