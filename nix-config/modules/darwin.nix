@@ -112,6 +112,7 @@
       "/System/Applications/Launchpad.app"
       "/Applications/Arc.app"
       "/System/Applications/Messages.app"
+      "/System/Applications/iPhone\ Mirroring.app"
       "/System/Applications/System\ Settings.app"
     ];
 
