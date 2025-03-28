@@ -16,3 +16,30 @@ window-padding-y = 15
 
 macos-titlebar-style = hidden
 quit-after-last-window-closed = true
+
+keybind = alt+a=esc:a
+keybind = alt+b=esc:b
+keybind = alt+c=esc:c
+keybind = alt+d=esc:d
+keybind = alt+e=esc:e
+keybind = alt+f=esc:f
+keybind = alt+g=esc:g
+keybind = alt+h=esc:h
+keybind = alt+i=esc:i
+keybind = alt+j=esc:j
+keybind = alt+k=esc:k
+keybind = alt+l=esc:l
+keybind = alt+m=esc:m
+keybind = alt+n=esc:n
+keybind = alt+o=esc:o
+keybind = alt+p=esc:p
+keybind = alt+q=esc:q
+keybind = alt+r=esc:r
+keybind = alt+s=esc:s
+keybind = alt+t=esc:t
+keybind = alt+u=esc:u
+keybind = alt+v=esc:v
+keybind = alt+w=esc:w
+keybind = alt+x=esc:x
+keybind = alt+y=esc:y
+keybind = alt+z=esc:z
