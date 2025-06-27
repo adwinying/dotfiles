@@ -950,3 +950,53 @@ require("lazy").setup({
 
 -- Define keymap for lazy.nvim
 vim.keymap.set("n", "<leader>la", ":Lazy<CR>", { noremap = true, silent = true, desc = "Lazy" })
+
+-- Launch opencode inside nvim
+local function open_or_create_opencode_buffer()
+  local buffer_name = "opencode"
+  local found_bufnr = nil
+
+  -- Iterate through all existing buffers and find the opencode buffer
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if string.find(vim.api.nvim_buf_get_name(bufnr), buffer_name, 1, true) then
+      found_bufnr = bufnr
+      break
+    end
+  end
+
+  if found_bufnr then
+    -- Iterate through all tabpages and their windows to find where the buffer is
+    local found_winid = -1
+    local found_tabid = -1
+    for _, tabid in ipairs(vim.api.nvim_list_tabpages()) do
+      for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(tabid)) do
+        if vim.api.nvim_win_get_buf(winid) == found_bufnr then
+          found_winid = winid
+          found_tabid = tabid
+          break
+        end
+      end
+      if found_winid ~= -1 then
+        break -- Found the tab, exit outer loop
+      end
+    end
+
+    -- Show buffer if it's already open
+    if found_winid ~= -1 then
+      vim.api.nvim_set_current_tabpage(found_tabid)
+      vim.api.nvim_set_current_win(found_winid)
+      return
+    end
+
+    -- Else open opencode buffer in a vertical split
+    vim.cmd("vsplit")
+    vim.api.nvim_set_current_buf(found_bufnr)
+    return
+  end
+
+  -- Opencode buffer doesn't exist, create a new one
+  vim.cmd("vsplit")
+  vim.cmd("terminal opencode")
+  vim.api.nvim_buf_set_name(0, buffer_name) -- 0 refers to the current buffer
+end
+vim.keymap.set("n", "<leader>oc", open_or_create_opencode_buffer, { desc = "Launch opencode" })
