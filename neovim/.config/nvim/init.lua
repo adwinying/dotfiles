@@ -83,24 +83,24 @@ require("lazy").setup({
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
-    config = function ()
+    config = function()
       require("colorizer").setup({
         filetypes = { "*" },
         user_default_options = {
-          RGB = true, -- #RGB hex codes
-          RRGGBB = true, -- #RRGGBB hex codes
-          names = true, -- "Name" codes like Blue or blue
-          RRGGBBAA = false, -- #RRGGBBAA hex codes
-          AARRGGBB = false, -- 0xAARRGGBB hex codes
-          rgb_fn = true, -- CSS rgb() and rgba() functions
-          hsl_fn = true, -- CSS hsl() and hsla() functions
-          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          RGB = true,          -- #RGB hex codes
+          RRGGBB = true,       -- #RRGGBB hex codes
+          names = true,        -- "Name" codes like Blue or blue
+          RRGGBBAA = false,    -- #RRGGBBAA hex codes
+          AARRGGBB = false,    -- 0xAARRGGBB hex codes
+          rgb_fn = true,       -- CSS rgb() and rgba() functions
+          hsl_fn = true,       -- CSS hsl() and hsla() functions
+          css = true,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
           -- Available modes for `mode`: foreground, background,  virtualtext
           mode = "background", -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = "both", -- Enable tailwind colors
+          tailwind = "both",                               -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
           sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
           virtualtext = "■",
@@ -217,7 +217,7 @@ require("lazy").setup({
         show_hidden = true,
       },
     },
-    setup = function (_, opts)
+    setup = function(_, opts)
       require('oil').setup(opts)
 
       vim.keymap.set("n", "<leader>j", ":vsplit<CR>:e %:p:h<CR>", { desc = "Explore current dir" })
@@ -256,7 +256,7 @@ require("lazy").setup({
         changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
       },
 
-      signcolumn   = true, -- Toggle with `:Gitsigns toggle_signs`
+      signcolumn   = true,  -- Toggle with `:Gitsigns toggle_signs`
       numhl        = false, -- Toggle with `:Gitsigns toggle_numhl`
       linehl       = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff    = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -275,20 +275,20 @@ require("lazy").setup({
         -- Actions
         map('n', '<leader>hs', gs.stage_hunk, 'Stage Hunk')
         map('n', '<leader>hr', gs.reset_hunk, 'Reset Hunk')
-        map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, 'Stage Hunk')
-        map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, 'Reset Hunk')
+        map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'Stage Hunk')
+        map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, 'Reset Hunk')
         map('n', '<leader>hS', gs.stage_buffer, 'Stage Buffer')
         map('n', '<leader>hu', gs.undo_stage_hunk, 'Undo Stage Hunk')
         map('n', '<leader>hR', gs.reset_buffer, 'Reset Buffer')
         map('n', '<leader>hp', gs.preview_hunk, 'Preview Hunk')
-        map('n', '<leader>hb', function() gs.blame_line{full=true} end, 'Blame Line')
+        map('n', '<leader>hb', function() gs.blame_line { full = true } end, 'Blame Line')
         map('n', '<leader>tb', gs.toggle_current_line_blame, 'Toggle Blame')
         map('n', '<leader>hd', gs.diffthis, 'Diff This')
         map('n', '<leader>hD', function() gs.diffthis('~') end, 'Diff This ~')
         map('n', '<leader>td', gs.toggle_deleted, 'Toggle Deleted')
 
         -- Text object
-        map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'Select Hunk')
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'Select Hunk')
       end,
 
       watch_gitdir = {
@@ -324,7 +324,7 @@ require("lazy").setup({
     },
     config = function()
       local telescope = require('telescope')
-  
+
       telescope.setup {
         defaults = {
           mappings = {
@@ -332,7 +332,7 @@ require("lazy").setup({
               ["<esc>"] = require("telescope.actions").close,
             },
           },
-  
+
           layout_config = {
             horizontal = {
               preview_width = 0.55,
@@ -343,22 +343,22 @@ require("lazy").setup({
             preview_cutoff = 120,
           },
         },
-  
+
         extensions = {
           fzf = {
-            fuzzy = true, -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
-  
+
           media_files = {
             filetypes = { "png", "webp", "jpg", "jpeg" },
             find_cmd = "rg",
           },
         },
-  
+
         pickers = {
           grep_string = {
             search = "",
@@ -366,10 +366,10 @@ require("lazy").setup({
           },
         },
       }
-  
+
       -- Load fzf extension
       telescope.load_extension("fzf")
-  
+
       -- Load media_files extension if ueberzug exists
       if vim.fn.executable "ueberzug" == 1 then
         telescope.load_extension("media_files")
@@ -381,8 +381,11 @@ require("lazy").setup({
   {
     "windwp/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      replace_engine = { sed = { cmd = "sed" } }
+    },
     keys = {
-      { "<leader>fs", function () require("spectre").open() end, desc = "Replace in files (Spectre)" },
+      { "<leader>fs", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
     },
   },
 
@@ -401,7 +404,7 @@ require("lazy").setup({
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        config = function ()
+        config = function()
           require('ts_context_commentstring').setup({
             enable_autocmd = false,
           })
@@ -409,12 +412,12 @@ require("lazy").setup({
       },
     },
     event = { "BufReadPost", "BufNewFile" },
-    config = function ()
+    config = function()
       require('mini.comment').setup({
         options = {
           custom_commentstring = function()
             return require('ts_context_commentstring').calculate_commentstring()
-              or vim.bo.commentstring
+                or vim.bo.commentstring
           end,
         },
       })
@@ -467,17 +470,41 @@ require("lazy").setup({
     event = "InsertEnter",
     opts = {
       -- a table with mappings to use
-      mappings = { "jk" },
+      mappings = {
+        -- i for insert
+        i = {
+          j = {
+            -- These can all also be functions
+            k = "<Esc>",
+            j = "<Esc>",
+          },
+        },
+        c = {
+          j = {
+            k = "<C-c>",
+            j = "<C-c>",
+          },
+        },
+        t = {
+          j = {
+            k = "<C-\\><C-n>",
+          },
+        },
+        v = {
+          j = {
+            k = "<Esc>",
+          },
+        },
+        s = {
+          j = {
+            k = "<Esc>",
+          },
+        },
+      },
       -- the time in which the keys must be hit in ms
       timeout = vim.o.timeoutlen,
       -- clear line after escaping if there is only whitespace
       clear_empty_lines = true,
-      -- keys used for escaping, if it is a function will use the result everytime
-      -- example
-      -- keys = function()
-      --   return vim.fn.col '.' - 2 >= 1 and '<esc>l' or '<esc>'
-      -- end,
-      keys = "<Esc>",
     },
   },
 
@@ -579,7 +606,7 @@ require("lazy").setup({
         enable = true,
       },
     },
-    config = function (_, opts)
+    config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
       -- Automatically set syntax for certain filetypes
@@ -597,8 +624,8 @@ require("lazy").setup({
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- Auto install & manage LSP servers
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', config = true },
+      'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
     config = function()
@@ -619,9 +646,9 @@ require("lazy").setup({
           map('<leader>sd', telescope.lsp_document_symbols, 'Document Symbols')
           map('<leader>sw', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
-          map('gK', vim.lsp.buf.hover, 'Hover')
+          map('gK', function() vim.lsp.buf.hover { border = 'rounded' } end, 'Hover')
           map('gD', vim.lsp.buf.declaration, 'Go to Declaration')
-          map('<C-b>', vim.lsp.buf.signature_help, 'Show signature help', 'i')
+          map('<C-b>', function() vim.lsp.buf.signature_help { border = 'rounded' } end, 'Show signature help', 'i')
           map('<leader>rn', vim.lsp.buf.rename, 'Rename')
           map('<leader>ca', vim.lsp.buf.code_action, 'Show Code Actions')
 
@@ -630,27 +657,13 @@ require("lazy").setup({
           map('<leader>cd', vim.diagnostic.setloclist, 'Show Diagnostic List')
 
           map('<leader>ll', function() vim.lsp.buf.format { async = true } end, 'Format')
-          map('<leader>lk', ':EslintFixAll<CR>', 'Fix all ESLint issues')
           map('<leader>lr', ':LspRestart<CR>', 'Restart')
           map('<leader>li', ':LspInfo<CR>', 'Show Info')
 
-          -- Set floating window borders
-          local _border = "single"
-          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-              border = _border
-            }
-          )
-          vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-              border = _border
-            }
-          )
-          vim.diagnostic.config{
-            float={border=_border}
-          }
-          require('lspconfig.ui.windows').default_options = {
-            border = _border
+          -- Vim diagnostics config
+          vim.diagnostic.config {
+            virtual_text = { source = 'always' },
+            float = { border = 'rounded' }
           }
 
           -- The following two autocommands are used to highlight references of
@@ -692,20 +705,12 @@ require("lazy").setup({
         end,
       })
 
-      -- LSP servers and clients are able to communicate to each other what
-      -- features they support. By default, Neovim doesn't support everything
-      -- that is in the LSP specification. When you add nvim-cmp, luasnip, etc.
-      -- Neovim now has *more* capabilities. So, we create new capabilities
-      -- with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-
       -- Enable the following language servers
       -- cmd (table): Override the default command used to start the server
       -- filetypes (table): Override the default list of associated filetypes for the server
       -- capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       -- settings (table): Override the default settings passed when initializing the server.
       local servers = {
-        volar = {},
         emmet_ls = {
           filetypes = {
             "html",
@@ -723,22 +728,62 @@ require("lazy").setup({
         intelephense = {},
         html = {},
         cssls = {},
-        tsserver = {
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = require('mason-registry')
-                  .get_package('vue-language-server'):get_install_path()
-                  .. '/node_modules/@vue/language-server'
-                  .. '/node_modules/@vue/typescript-plugin',
-                languages = {"javascript", "typescript", "vue"},
+        -- ts_ls = {
+        --   filetypes = {
+        --     "javascript",
+        --     "typescript",
+        --     "typescriptreact",
+        --     "javascriptreact",
+        --     "vue",
+        --   },
+        -- },
+        vue_ls = {
+          on_init = function(client)
+            client.handlers['tsserver/request'] = function(_, result, context)
+              local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = 'vtsls' })
+              if #clients == 0 then
+                vim.notify('Could not find `vtsls` lsp client, `vue_ls` would not work without it.', vim.log.levels
+                  .ERROR)
+                return
+              end
+              local ts_client = clients[1]
+
+              local param = unpack(result)
+              local id, command, payload = unpack(param)
+              ts_client:exec_cmd({
+                title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+                command = 'typescript.tsserverRequest',
+                arguments = {
+                  command,
+                  payload,
+                },
+              }, { bufnr = context.bufnr }, function(_, r)
+                local response_data = { { id, r.body } }
+                ---@diagnostic disable-next-line: param-type-mismatch
+                client:notify('tsserver/response', response_data)
+              end)
+            end
+          end,
+        },
+        vtsls = {
+          settings = {
+            vtsls = {
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = vim.fn.stdpath('data')
+                        .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                    languages = { 'vue' },
+                    configNamespace = 'typescript',
+                  },
+                },
               },
             },
           },
           filetypes = {
-            "javascript",
             "typescript",
+            "javascript",
             "typescriptreact",
             "javascriptreact",
             "vue",
@@ -749,7 +794,7 @@ require("lazy").setup({
             tailwindCSS = {
               experimental = {
                 classRegex = {
-                  { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  { "cn\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" },
                   { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
                 },
               },
@@ -785,21 +830,16 @@ require("lazy").setup({
 
       -- Install the above servers and tools with Mason
       require('mason').setup()
+      require('mason-lspconfig').setup()
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed
       })
-      require('mason-lspconfig').setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      })
+      for server_name, server in pairs(servers) do
+        vim.lsp.config(server_name, server)
+        vim.lsp.enable(server_name)
+      end
+
+      -- Add keybinding for Mason
       vim.keymap.set('n', '<leader>lm', ":Mason<CR>", { desc = "Mason" })
     end,
   },
@@ -812,91 +852,108 @@ require("lazy").setup({
     -- optional: provides snippets for the snippet source
     dependencies = "rafamadriz/friendly-snippets",
     -- use a release tag to download pre-built binaries
-    version = 'v0.4',
+    version = '1.*',
 
     opts = {
-      highlight = {
-        -- sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release, assuming themes add support
-        use_nvim_cmp_as_default = true,
-      },
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono',
-      -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
-      -- experimental signature help support
-      trigger = { signature_help = { enabled = true } },
-      -- for keymap, all values may be string | string[]
-      -- use an empty table to disable a keymap
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = {
-        show = '<C-space>',
-        hide = '<C-e>',
-        accept = '<CR>',
-        select_prev = '<C-p>',
-        select_next = '<C-n>',
-        show_documentation = {},
-        hide_documentation = {},
-        scroll_documentation_up = '<C-u>',
-        scroll_documentation_down = '<C-d>',
-        snippet_forward = '<Tab>',
-        snippet_backward = '<S-Tab>',
+        preset = 'enter',
+        ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
       },
-      windows = {
-        autocomplete = {
-          -- Controls how the completion items are selected
-          -- 'preselect' will automatically select the first item in the completion list
-          -- 'manual' will not select any item by default
-          -- 'auto_insert' will not select any item by default, and insert the completion items automatically when selecting them
-          selection = 'auto_insert',
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- Will be removed in a future release
+        use_nvim_cmp_as_default = true,
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono',
+        kind_icons = {
+          Text = '[TXT]',
+          Method = '[MTH]',
+          Function = '[FUN]',
+          Constructor = '[CON]',
 
-          -- Controls how the completion items are rendered on the popup window
-          -- 'simple' will render the item's kind icon the left alongside the label
-          -- 'reversed' will render the label on the left and the kind icon + name on the right
-          -- 'minimal' will render the label on the left and the kind name on the right
-          -- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
-          draw = 'reversed',
+          Field = '[FLD]',
+          Variable = '[VAR]',
+          Property = '[PRP]',
+
+          Class = '[CLS]',
+          Interface = '[INT]',
+          Struct = '[STR]',
+          Module = '[MOD]',
+
+          Unit = '[UNI]',
+          Value = '[VAL]',
+          Enum = '[ENU]',
+          EnumMember = '[ENM]',
+
+          Keyword = '[KEY]',
+          Constant = '[CST]',
+
+          Snippet = '[SNP]',
+          Color = '[CLR]',
+          File = '[FIL]',
+          Reference = '[REF]',
+          Folder = '[DIR]',
+          Event = '[EVT]',
+          Operator = '[OPR]',
+          TypeParameter = '[TYP]',
+        },
+      },
+      completion = {
+        list = {
+          selection = {
+            -- When `true`, inserts the completion item automatically when selecting it
+            -- You may want to bind a key to the `cancel` command (default <C-e>) when using this option,
+            -- which will both undo the selection and hide the completion menu
+            auto_insert = true,
+            -- auto_insert = function(ctx) return vim.bo.filetype ~= 'markdown' end
+          },
         },
         documentation = {
           -- Controls whether the documentation window will automatically show when selecting a completion item
           auto_show = true,
+          -- Delay before showing the documentation window
           auto_show_delay_ms = 100,
+          window = { border = 'rounded' }
+        },
+        menu = {
+          draw = {
+            -- Components to render, grouped by column
+            columns = { { 'label', gap = 1 }, { 'kind_icon' } },
+          }
         },
       },
-      kind_icons = {
-        Text = '[TXT]',
-        Method = '[MTH]',
-        Function = '[FUN]',
-        Constructor = '[CON]',
-
-        Field = '[FLD]',
-        Variable = '[VAR]',
-        Property = '[PRP]',
-
-        Class = '[CLS]',
-        Interface = '[INT]',
-        Struct = '[STR]',
-        Module = '[MOD]',
-
-        Unit = '[UNI]',
-        Value = '[VAL]',
-        Enum = '[ENU]',
-        EnumMember = '[ENM]',
-
-        Keyword = '[KEY]',
-        Constant = '[CST]',
-
-        Snippet = '[SNP]',
-        Color = '[CLR]',
-        File = '[FIL]',
-        Reference = '[REF]',
-        Folder = '[DIR]',
-        Event = '[EVT]',
-        Operator = '[OPR]',
-        TypeParameter = '[TYP]',
+      signature = {
+        enabled = true,
+        window = { border = 'rounded' }
       },
-    }
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+    },
+    opts_extend = { "sources.default" },
   },
 
   -- AI autocomplete
