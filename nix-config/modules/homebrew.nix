@@ -37,6 +37,8 @@
         "sublime-text"
         "orbstack"
         "tableplus"
+        "bambu-studio"
+        "kicad"
       ];
     })
 
@@ -45,6 +47,8 @@
       homebrew.casks = [
         "arc"
         "iina"
+        "moonlight"
+        "parsec"
       ];
     })
   ];
