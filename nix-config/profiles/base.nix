@@ -88,7 +88,7 @@
 
     rebuildHost = writeShellScriptBin "rebuild-host" ''
       if [[ $(uname) == "Darwin" ]]; then
-        darwin-rebuild switch --flake $HOME/.dotfiles/nix-config#
+        sudo darwin-rebuild switch --flake $HOME/.dotfiles/nix-config#
       else
         nixos-rebuild switch --flake $HOME/.dotfiles/nix-config# --use-remote-sudo
       fi

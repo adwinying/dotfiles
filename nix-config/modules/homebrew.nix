@@ -14,7 +14,7 @@
       homebrew.casks = [
         "hammerspoon"
         "raycast"
-        "flux"
+        "flux-app"
         "aldente"
         "betterdisplay"
         "the-unarchiver"

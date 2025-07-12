@@ -2,7 +2,7 @@
 # Darwin-specific configs
 #
 
-{ self, inputs, pkgs, ... }: {
+{ self, inputs, pkgs, username, ... }: {
   imports = [
     # Import home-manager's Nix-darwin module
     inputs.home-manager.darwinModules.home-manager
@@ -28,10 +28,10 @@
   ];
 
   # Enable sudo authentication with TouchID
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Auto upgrade nix package and the daemon service
-  services.nix-daemon.enable = true;
+  # Set primary user
+  system.primaryUser = username;
 
   # System preferences
   system.defaults = {
@@ -152,5 +152,5 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }

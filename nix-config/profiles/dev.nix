@@ -10,7 +10,7 @@
       gcc
       cargo
       nodejs
-      unstable.go_1_22
+      go
       unstable.luajit
       unstable.rustc
       unstable.neovim # get the latest and greatest version
