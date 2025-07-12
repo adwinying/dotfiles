@@ -110,7 +110,7 @@ $ rebuild-host
 $ nix-env --list-generations
 
 # Remove all but latest generation
-$ nix-env --delete-generatiosn old
+$ nix-env --delete-generations old
 ```
 
 2. Remove stray roots
