@@ -634,6 +634,25 @@ require("lazy").setup({
           map('<leader>lr', ':LspRestart<CR>', 'Restart')
           map('<leader>li', ':LspInfo<CR>', 'Show Info')
 
+          -- Set floating window borders
+          local _border = "single"
+          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+            vim.lsp.handlers.hover, {
+              border = _border
+            }
+          )
+          vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+            vim.lsp.handlers.signature_help, {
+              border = _border
+            }
+          )
+          vim.diagnostic.config{
+            float={border=_border}
+          }
+          require('lspconfig.ui.windows').default_options = {
+            border = _border
+          }
+
           -- The following two autocommands are used to highlight references of
           -- the word under your cursor when your cursor rests there for a
           -- little while.
