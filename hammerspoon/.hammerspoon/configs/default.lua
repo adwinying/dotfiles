@@ -23,6 +23,9 @@ default_config.keybindings = {
   -- enable/disable modifer overrides
   enable_modifier_overrides = true,
 
+  -- enable/disable modifer overrides when docked
+  enable_modifier_overrides_docked = false,
+
   -- hyper key
   hyper = "f18",
 

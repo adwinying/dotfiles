@@ -12,6 +12,7 @@ local configs = require("configs")
 local keybindings = configs.keybindings
 
 if (not keybindings.enable_modifier_overrides) then return end
+if (Display.is_docked and not keybindings.enable_modifier_overrides_docked) then return end
 
 -- =============================================================================
 -- Definitions

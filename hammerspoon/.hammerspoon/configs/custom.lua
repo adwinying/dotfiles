@@ -9,7 +9,7 @@ local custom_config = {
 
     hyper_override = "rctrl",
 
-    hyper_override_docked = "lctrl",
+    hyper_override_docked = nil,
   },
 }
 
