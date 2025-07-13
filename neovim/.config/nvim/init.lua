@@ -239,7 +239,11 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      icons = {
+        mappings = false,
+      },
+    },
   },
 
   -- Git signs
