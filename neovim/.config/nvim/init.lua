@@ -755,8 +755,8 @@ require("lazy").setup({
               end
               local ts_client = clients[1]
 
-              local param = unpack(result)
-              local id, command, payload = unpack(param)
+              local param = table.unpack(result)
+              local id, command, payload = table.unpack(param)
               ts_client:exec_cmd({
                 title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
                 command = 'typescript.tsserverRequest',
@@ -819,8 +819,10 @@ require("lazy").setup({
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields`
-              -- warnings diagnostics = { disable = { 'missing-fields' } },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
             },
           },
         },
