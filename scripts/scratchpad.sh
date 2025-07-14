@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env zsh
 DIR=~/.scratchpad
 FILE="$(date "+%Y-%m-%d_%H:%M:%S").txt"
 FPATH=$DIR/$FILE
