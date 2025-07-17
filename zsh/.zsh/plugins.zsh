@@ -47,11 +47,17 @@ zinit ice wait"2" as"command" from"gh-r" lucid \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
-# nvm
-export NVM_SYMLINK_CURRENT=true
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
-zinit light lukechilds/zsh-nvm
+# mise-en-place
+zinit as="command" lucid from="gh-r" for \
+  id-as="usage" \
+  atpull="%atclone" \
+  jdx/usage
+zinit as="command" lucid from="gh-r" for \
+  id-as="mise" mv="mise* -> mise" \
+  atclone="./mise* completion zsh > _mise" \
+  atpull="%atclone" \
+  atload='eval "$(mise activate zsh)"' \
+  jdx/mise
 
 # docker completions
 zinit ice wait lucid as"completion"
