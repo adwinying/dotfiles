@@ -19,7 +19,7 @@
         "betterdisplay"
         "the-unarchiver"
         "mac-mouse-fix"
-        "tailscale"
+        "tailscale-app"
         "nikitabobko/tap/aerospace"
       ];
 

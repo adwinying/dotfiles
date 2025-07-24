@@ -8,7 +8,6 @@
     ../../modules/base.nix
     ../../modules/darwin.nix
     ../../modules/homebrew.nix
-    ../../modules/tailscale.nix
   ];
 
   # Import overlays for this machine

@@ -50,51 +50,39 @@ in {
     services.tailscale = {
       enable = true;
       package = pkgs.unstable.tailscale;
+      useRoutingFeatures = if cfg.exitNode then "both" else "client";
+      authKeyFile = "/home/${username}/.secrets/tailscale_auth_key";
+      extraUpFlags = let
+        sshArgs = if cfg.enableSshAgent
+          then "--ssh"
+          else "";
+        exitNodeArgs = if cfg.exitNode
+          then "--advertise-exit-node"
+          else "";
+        dnsArgs = if cfg.acceptDns
+          then "--accept-dns"
+          else "--accept-dns=false";
+        inboundSubnetRoutingArgs = if cfg.acceptRoutes
+          then "--accept-routes"
+          else "";
+        outboundSubnetRoutingArgs = if cfg.advertiseRoutes == null
+          then ""
+          else "--advertise-routes=${cfg.advertiseRoutes}";
+        tagArgs = if cfg.advertiseTags == null
+          then ""
+          else "--advertise-tags=${cfg.advertiseTags}";
+        riskArgs = if cfg.acceptRisk == null
+          then ""
+          else "--accept-risk=${cfg.acceptRisk}";
+      in builtins.filter (s: s != "") [
+        sshArgs
+        tagArgs
+        exitNodeArgs
+        dnsArgs
+        outboundSubnetRoutingArgs
+        inboundSubnetRoutingArgs
+        riskArgs
+      ];
     };
   };
-
-  imports = let
-    isDarwin = builtins.match "^(.+-darwin)$" system == [ system ];
-    osConfigs = if isDarwin
-      then ({ homebrew.masApps.Tailscale = 1475387142; })
-      else ({
-        services.tailscale = {
-          useRoutingFeatures = if cfg.exitNode then "both" else "client";
-          authKeyFile = "/home/${username}/.secrets/tailscale_auth_key";
-          extraUpFlags = let
-            sshArgs = if cfg.enableSshAgent
-              then "--ssh"
-              else "";
-            exitNodeArgs = if cfg.exitNode
-              then "--advertise-exit-node"
-              else "";
-            dnsArgs = if cfg.acceptDns
-              then "--accept-dns"
-              else "--accept-dns=false";
-            inboundSubnetRoutingArgs = if cfg.acceptRoutes
-              then "--accept-routes"
-              else "";
-            outboundSubnetRoutingArgs = if cfg.advertiseRoutes == null
-              then ""
-              else "--advertise-routes=${cfg.advertiseRoutes}";
-            tagArgs = if cfg.advertiseTags == null
-              then ""
-              else "--advertise-tags=${cfg.advertiseTags}";
-            riskArgs = if cfg.acceptRisk == null
-              then ""
-              else "--accept-risk=${cfg.acceptRisk}";
-          in builtins.filter (s: s != "") [
-            sshArgs
-            tagArgs
-            exitNodeArgs
-            dnsArgs
-            outboundSubnetRoutingArgs
-            inboundSubnetRoutingArgs
-            riskArgs
-          ];
-        };
-      });
-  in [
-    osConfigs
-  ];
 }
