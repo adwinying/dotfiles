@@ -2,6 +2,9 @@ geporting: "off"
 reporting: "off"
 startuppopupversion: 1
 
+git:
+  autoStageResolvedConflicts: false
+
 gui:
   showFileTree: false
 
