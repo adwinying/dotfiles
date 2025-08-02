@@ -80,6 +80,27 @@ $ nix shell --experimental-features 'nix-command flakes' nixpkgs#nixos-rebuild
 $ sudo nixos-rebuild switch --flake .#hostname
 ```
 
+### 📦 Bootstrapping in macOS
+
+1. Clone this repo
+
+```bash
+$ git clone https://github.com/adwinying/dotfiles ~/.dotfiles
+```
+
+2. Install nix
+
+```bash
+$ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+```
+
+3. Bootstrap
+
+```bash
+$ cd ~/.dotfiles/nix-config
+$ sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#hacobell
+```
+
 ### 🚀 Upgrading nixOS
 
 1. Update flake input target branch
