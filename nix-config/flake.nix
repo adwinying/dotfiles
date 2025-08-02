@@ -109,6 +109,12 @@
         username = "adwin";
         system   = "aarch64-darwin";
       };
+
+      hacobell = mkMachineConfig {
+        hostname = "hacobell";
+        username = "z.ying";
+        system   = "aarch64-darwin";
+      };
     };
 
     # Home manager configuration entrypoint
