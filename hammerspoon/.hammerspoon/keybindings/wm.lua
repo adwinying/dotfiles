@@ -59,6 +59,10 @@ for i = 1, 9 do
     if config.mode == "yabai" then
       wm.api.display.focus(nil, i)
     end
+
+    if config.mode == "aerospace" then
+      wm.execute_aerospace(string.format("move-workspace-to-monitor %s", i))
+    end
   end)
 end
 
