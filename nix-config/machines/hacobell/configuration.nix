@@ -21,7 +21,4 @@
 
   # Set your hostname
   # networking.hostName = lib.mkForce "FD4GK2JLYQ";
-
-  # Trust netskope's certs
-  security.pki.certificateFiles = [ "/etc/ssl/certs/netskope-cert-bundle.pem" ];
 }
