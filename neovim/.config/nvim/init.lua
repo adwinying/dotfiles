@@ -827,6 +827,17 @@ require("lazy").setup({
           },
         },
 
+        jdtls = {
+          cmd = {
+            'jdtls',
+            '-configuration',
+            vim.fn.expand'$HOME/.cache/jdtls/config',
+            '-data',
+            vim.fn.expand'$HOME/.cache/jdtls/workspace',
+            ('--jvm-arg=-javaagent:%s'):format(vim.fn.expand'$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar'),
+          },
+        },
+
         gopls = {},
         templ = {},
       }
