@@ -79,7 +79,6 @@
   environment.systemPackages = with pkgs; [
     home-manager
     vim
-    git
     wget
     curl
     less
