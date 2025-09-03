@@ -23,10 +23,6 @@
         "nikitabobko/tap/aerospace"
       ];
 
-      homebrew.brews = [
-        "sst/tap/opencode"
-      ];
-
       homebrew.masApps = {
         RunCat = 1429033973;
         ScreenZen = 1541027222;
