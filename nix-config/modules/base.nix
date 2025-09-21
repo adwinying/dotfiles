@@ -79,6 +79,7 @@
   environment.systemPackages = with pkgs; [
     home-manager
     vim
+    (hiPrio git)
     wget
     curl
     less
