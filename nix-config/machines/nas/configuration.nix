@@ -28,7 +28,7 @@
   # Configure Tailscale
   services.tailscale = {
     exitNode = true;
-    advertiseRoutes = "192.168.1.0/24";
+    advertiseRoutes = "192.168.1.0/24,192.168.5.0/24";
   };
 
   # Let's Encrypt
