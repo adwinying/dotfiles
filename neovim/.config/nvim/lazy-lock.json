@@ -12,6 +12,7 @@
   "mini.align": { "branch": "main", "commit": "cf210e2f270fcc0361ad3580d00053bb66c94cbf" },
   "mini.comment": { "branch": "main", "commit": "51c173dffa17dc14c81169deaeea430bd394ab51" },
   "mini.pairs": { "branch": "main", "commit": "42407ccb80ec59c84e7c91d815f42ed90a8cc093" },
+  "mini.splitjoin": { "branch": "main", "commit": "b0d57bb5d1ed154e5902ae2745f1a320a7642443" },
   "mini.surround": { "branch": "main", "commit": "1a2b59c77a0c4713a5bd8972da322f842f4821b1" },
   "nord-vim": { "branch": "main", "commit": "f13f5dfbb784deddbc1d8195f34dfd9ec73e2295" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "8a9b722257b5e6733c340c36f4bd8693e5f47de3" },

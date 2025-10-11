@@ -407,7 +407,7 @@ require("lazy").setup({
 
   -- comments
   {
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
@@ -433,7 +433,7 @@ require("lazy").setup({
 
   -- surround motions
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       mappings = {
@@ -459,16 +459,37 @@ require("lazy").setup({
 
   -- align blocks of text
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     event = { "BufReadPost", "BufNewFile" },
     opts = {},
   },
 
   -- auto insert matching brackets
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     event = "InsertEnter",
     opts = {},
+  },
+
+  -- split/combine multi params on a single line
+  {
+    "nvim-mini/mini.splitjoin",
+    event = "InsertEnter",
+    config = function(_, opts)
+      local msj = require("mini.splitjoin")
+      local gen_hook = msj.gen_hook
+      local curly = { brackets = { '%b{}' } }
+
+      local add_trailing_separator = gen_hook.add_trailing_separator()
+      local del_trailing_separator = gen_hook.del_trailing_separator()
+      local pad_curlys = gen_hook.pad_brackets(curly)
+
+      local config = opts or {}
+      config.split = { hooks_post = { add_trailing_separator } }
+      config.join = { hooks_post = { del_trailing_separator, pad_curlys } }
+
+      msj.setup(config)
+    end,
   },
 
   -- better escape
@@ -755,8 +776,8 @@ require("lazy").setup({
               end
               local ts_client = clients[1]
 
-              local param = table.unpack(result)
-              local id, command, payload = table.unpack(param)
+              local param = unpack(result)
+              local id, command, payload = unpack(param)
               ts_client:exec_cmd({
                 title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
                 command = 'typescript.tsserverRequest',
@@ -876,8 +897,8 @@ require("lazy").setup({
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
-        php = { 'phpstan' },
+        -- markdown = { 'markdownlint' },
+        -- php = { 'phpstan' },
       }
 
       -- Create autocommand which carries out the actual linting
