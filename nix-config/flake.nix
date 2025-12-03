@@ -3,17 +3,17 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # Nixpkgs (bleeding edge)
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Nix-darwin
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Authorized SSH public keys
@@ -30,9 +30,12 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     # Live ISOs can be built using `nix build .#nixosConfigurations.live-$(uname -m).config.system.build.isoImage`
     nixosConfigurations = let
-      mkMachineConfig = { hostname, ... }@attrs: nixpkgs.lib.nixosSystem {
+      mkMachineConfig = { hostname, system, ... }@attrs: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs ; } // attrs;
-        modules = [ ./machines/${hostname}/configuration.nix ];
+        modules = [
+          ./machines/${hostname}/configuration.nix
+          { nixpkgs.hostPlatform = system; }
+        ];
       };
     in {
       workdev = mkMachineConfig {
@@ -99,9 +102,12 @@
     # Nix-darwin configuration entrypoint
     # Available through 'darwin-rebuild --flake .#your-hostname'
     darwinConfigurations = let
-      mkMachineConfig = { hostname, ... }@attrs: nix-darwin.lib.darwinSystem {
+      mkMachineConfig = { hostname, system, ... }@attrs: nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs ; } // attrs;
-        modules = [ ./machines/${hostname}/configuration.nix ];
+        modules = [
+          ./machines/${hostname}/configuration.nix
+          { nixpkgs.hostPlatform = system; }
+        ];
       };
     in {
       mayonaca = mkMachineConfig {

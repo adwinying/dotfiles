@@ -49,6 +49,7 @@
         "iina"
         "moonlight"
         "parsec"
+        "affinity"
       ];
     })
   ];

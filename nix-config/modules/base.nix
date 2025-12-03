@@ -20,7 +20,7 @@
       # will be accessible through 'pkgs.unstable'
       (final: prev: {
         unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
+          system = final.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       })
@@ -97,7 +97,4 @@
     };
     backupFileExtension = "bak";
   };
-
-  # Set your system kind (needed for flakes)
-  nixpkgs.hostPlatform = system;
 }

@@ -19,7 +19,7 @@
       # will be accessible through 'pkgs.unstable'
       (final: prev: {
         unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
+          system = final.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       })
@@ -90,7 +90,7 @@
       if [[ $(uname) == "Darwin" ]]; then
         sudo darwin-rebuild switch --flake $HOME/.dotfiles/nix-config#
       else
-        nixos-rebuild switch --flake $HOME/.dotfiles/nix-config# --use-remote-sudo
+        nixos-rebuild switch --flake $HOME/.dotfiles/nix-config# --sudo
       fi
     '';
 

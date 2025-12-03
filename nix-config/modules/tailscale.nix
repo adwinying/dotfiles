@@ -1,4 +1,4 @@
-{ lib, pkgs, system, config, username, ... }: let
+{ lib, pkgs, config, username, ... }: let
   cfg = config.services.tailscale;
 in {
   options.services.tailscale = with lib; {
