@@ -8,7 +8,7 @@ font-thicken
 
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,sudo,ssh-terminfo,ssh-env
 
 window-padding-balance = true
 window-padding-x = 15
