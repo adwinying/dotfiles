@@ -1,5 +1,5 @@
 #
-# hacobell-specific configs
+# crefil-specific configs
 #
 
 { inputs, lib, ... }: {
@@ -18,7 +18,4 @@
     ../../profiles/darwin.nix
     ../../profiles/dev.nix
   ];
-
-  # Set your hostname
-  # networking.hostName = lib.mkForce "FD4GK2JLYQ";
 }

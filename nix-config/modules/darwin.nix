@@ -2,7 +2,7 @@
 # Darwin-specific configs
 #
 
-{ self, inputs, pkgs, username, ... }: {
+{ self, inputs, pkgs, username, lib, ... }: {
   imports = [
     # Import home-manager's Nix-darwin module
     inputs.home-manager.darwinModules.home-manager
@@ -153,4 +153,9 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
+
+  # determinate nix's nixd will handle the below settings so we need to disable it
+  nix.enable = false;
+  nix.optimise.automatic = lib.mkForce false;
+  nix.gc.automatic = lib.mkForce false;
 }

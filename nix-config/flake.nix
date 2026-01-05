@@ -116,9 +116,9 @@
         system   = "aarch64-darwin";
       };
 
-      hacobell = mkMachineConfig {
-        hostname = "hacobell";
-        username = "z.ying";
+      crefil = mkMachineConfig {
+        hostname = "crefil";
+        username = "a.ying";
         system   = "aarch64-darwin";
       };
     };
