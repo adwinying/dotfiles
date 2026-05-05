@@ -86,7 +86,7 @@
     "sshAuthorizedKeys": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-XACmkB4t6bTgQ2a1jOyrQCLBfIoX7HMn4+ob0iJtbOs=",
+        "narHash": "sha256-0NDdD/EWIPTkZrqoD2KdeBlK4JmPSkyXyfBBgbLyHVM=",
         "type": "file",
         "url": "https://github.com/adwinying.keys"
       },
