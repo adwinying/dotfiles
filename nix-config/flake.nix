@@ -44,8 +44,8 @@
         system   = "aarch64-linux";
       };
 
-      mayodev = mkMachineConfig {
-        hostname = "mayodev";
+      vm = mkMachineConfig {
+        hostname = "vm";
         username = "adwin";
         system   = "aarch64-linux";
       };
