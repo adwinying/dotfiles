@@ -28,36 +28,20 @@
       theme.package = pkgs.nordic;
       iconTheme.name = "Zafiro-icons-Dark";
       iconTheme.package = pkgs.zafiro-icons;
+      cursorTheme.name = "Adwaita";
+      cursorTheme.package = pkgs.adwaita-icon-theme;
+      font.name = "Noto Sans CJK JP";
     };
   })
 
   # hyprland
   ({
     home.packages = with pkgs; [
-      hyprpaper
-      waybar
-      gtklock
-      wl-clipboard
-      cliphist
-      pavucontrol
-      brightnessctl
-      playerctl
-      libnotify
-      swaynotificationcenter
+      unstable.noctalia-qs
+      unstable.noctalia-shell
     ];
     xdg.configFile.hypr.source = "${dotfiles}/hyprland/.config/hypr";
-    xdg.configFile.waybar.source = "${dotfiles}/waybar/.config/waybar";
-    xdg.configFile.swaync.source = "${dotfiles}/swaync/.config/swaync";
-  })
-
-  # rofi
-  ({
-    home.packages = with pkgs; [
-      rofi-unwrapped
-      rofi-calc
-      rofi-emoji
-    ];
-    xdg.configFile.rofi.source = "${dotfiles}/rofi/.config/rofi";
+    xdg.configFile.noctalia.source = "${dotfiles}/noctalia/.config/noctalia";
   })
 
   # ghostty

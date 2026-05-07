@@ -18,23 +18,21 @@ if wezterm.config_builder then
 end
 
 -- This is where you actually apply your config choices
-config.font = wezterm.font "HackGenNerd Console"
-config.font_size = 14.0
+config.font = wezterm.font "HackGen Console NF"
+config.font_size = 12.0
 
 local scheme = wezterm.get_builtin_color_schemes()['nord']
 scheme.background = '#171a20'
-config.color_schemes = {
-  nord = scheme,
-}
+config.color_schemes = { nord = scheme }
 config.color_scheme = "nord"
 
 config.window_background_opacity = 0.9
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 config.window_padding = {
-  left = 25,
-  right = 25,
-  top = 25,
-  bottom = 25,
+  left = 15,
+  right = 15,
+  top = 15,
+  bottom = 15,
 }
 config.window_close_confirmation = "NeverPrompt"
 
