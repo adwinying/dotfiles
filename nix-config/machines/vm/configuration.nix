@@ -21,6 +21,11 @@
   # No need firewall as this machine is not public facing
   networking.firewall.enable = false;
 
+  # Enable VM guest tools
+  services.spice-vdagentd.enable = true;
+  services.spice-webdavd.enable = true;
+  services.qemuGuest.enable = true;
+
   # Import addtional user profiles for this machine
   _module.args.profiles = [
     ../../profiles/dev.nix
