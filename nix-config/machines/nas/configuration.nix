@@ -31,6 +31,15 @@
     advertiseRoutes = "192.168.1.0/24,192.168.5.0/24";
   };
 
+  # Configure tinyproxy
+  services.tinyproxy = {
+    enable = true;
+    settings = {
+      Listen = "0.0.0.0";
+      Port = 8888;
+    };
+  };
+
   # Let's Encrypt
   security.acme = {
     acceptTerms = true;
