@@ -30,7 +30,9 @@
         group = "acme";
         dnsProvider = "cloudflare";
         dnsResolver = "1.1.1.1:53";
-        credentialsFile = "/home/${username}/.secrets/acme.env";
+        credentialFiles = {
+          CLOUDFLARE_API_KEY_FILE = "/home/${username}/.secrets/acme.env";
+        };
       };
     };
   };

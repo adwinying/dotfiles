@@ -49,7 +49,9 @@
         email = "admin@iadw.in";
         group = "acme";
         dnsProvider = "cloudflare";
-        credentialsFile = "/home/${username}/.secrets/acme.env";
+        credentialFiles = {
+          CLOUDFLARE_API_KEY_FILE = "/home/${username}/.secrets/acme.env";
+        };
       };
     };
   };
