@@ -13,7 +13,8 @@
       go
       unstable.luajit
       unstable.rustc
-      unstable.neovim # get the latest and greatest version
+      unstable.neovim
+      unstable.tree-sitter
     ];
     xdg.configFile.nvim.source = "${dotfiles}/neovim/.config/nvim";
   })
