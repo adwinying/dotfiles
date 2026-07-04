@@ -21,12 +21,14 @@
         "mac-mouse-fix"
         "tailscale-app"
         "nikitabobko/tap/aerospace"
+        "wispr-flow"
       ];
 
       homebrew.masApps = {
         RunCat = 1429033973;
         ScreenZen = 1541027222;
         Windows = 1295203466;
+        Openterface = 6478481082;
       };
     })
 
@@ -46,6 +48,8 @@
     ({
       homebrew.casks = [
         "arc"
+        "zen"
+        "helium-browser"
         "iina"
         "moonlight"
         "parsec"
