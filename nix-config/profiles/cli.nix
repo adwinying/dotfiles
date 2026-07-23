@@ -64,7 +64,10 @@
 
     # git
     ({
-      home.packages = [ pkgs.git ];
+      home.packages = with pkgs; [
+        delta
+        git
+      ];
       home.file = {
         ".gitconfig".source = "${dotfiles}/git/.gitconfig";
       };

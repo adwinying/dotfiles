@@ -5,6 +5,10 @@ startuppopupversion: 1
 gui:
   showFileTree: false
 
+git:
+  pagers:
+    - pager: delta --paging=never
+
 keybinding:
   commits:
     moveDownCommit: <c-b>

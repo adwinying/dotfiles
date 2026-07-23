@@ -7,9 +7,41 @@
 
 [core]
 	editor = vim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	dark = true
+	navigate = true
+	syntax-theme = Nord
+
+	# File header
+	file-style = "#88C0D0" bold
+	file-decoration-style = "#4C566A" ul
+
+	# Hunk header
+	hunk-header-style = "#88C0D0" bold
+	hunk-header-decoration-style = "#4C566A" box
+
+	# Removed / added lines (Nord aurora tints)
+	minus-style = syntax "#4B2F35"
+	minus-emph-style = syntax "#6E3B44"
+	plus-style = syntax "#2F3F33"
+	plus-emph-style = syntax "#43663F"
+	zero-style = syntax
+
+	# Line numbers
+	line-numbers = true
+	line-numbers-left-style = "#4C566A"
+	line-numbers-right-style = "#4C566A"
+	line-numbers-minus-style = "#BF616A"
+	line-numbers-plus-style = "#A3BE8C"
+	line-numbers-zero-style = "#4C566A"
 
 [init]
-	defaultBranch = master
+	defaultBranch = main
 
 [push]
 	autoSetupRemote = true
