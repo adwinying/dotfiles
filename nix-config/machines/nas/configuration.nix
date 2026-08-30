@@ -50,7 +50,7 @@
         group = "acme";
         dnsProvider = "cloudflare";
         credentialFiles = {
-          CLOUDFLARE_API_KEY_FILE = "/home/${username}/.secrets/acme.env";
+          CLOUDFLARE_ZONE_API_TOKEN_FILE = "/home/${username}/.secrets/acme.env";
         };
       };
     };
