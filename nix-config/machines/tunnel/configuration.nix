@@ -31,7 +31,7 @@
         dnsProvider = "cloudflare";
         dnsResolver = "1.1.1.1:53";
         credentialFiles = {
-          CLOUDFLARE_API_KEY_FILE = "/home/${username}/.secrets/acme.env";
+          CLOUDFLARE_DNS_API_TOKEN_FILE = "/home/${username}/.secrets/acme.env";
         };
       };
     };
