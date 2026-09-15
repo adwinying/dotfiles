@@ -41,6 +41,7 @@
         "tableplus"
         "bambu-studio"
         "kicad"
+        "utm"
       ];
     })
 
