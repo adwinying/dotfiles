@@ -43,3 +43,7 @@ keybind = alt+w=esc:w
 keybind = alt+x=esc:x
 keybind = alt+y=esc:y
 keybind = alt+z=esc:z
+keybind = alt+left=text:\x1b\x1b[D
+keybind = alt+right=text:\x1b\x1b[C
+keybind = alt+up=text:\x1b\x1b[A
+keybind = alt+down=text:\x1b\x1b[B
