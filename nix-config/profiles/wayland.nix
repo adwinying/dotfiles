@@ -3,7 +3,7 @@
 # xserver module is required to use this profile
 #
 
-{ lib, pkgs, dotfiles, ... }: lib.mkMerge [
+{ lib, pkgs, config, dotfiles, ... }: lib.mkMerge [
   # fonts
   ({
     home.packages = with pkgs; [
@@ -24,6 +24,7 @@
     };
     gtk = {
       enable = true;
+      git4.theme = config.gtk.theme;
       theme.name = "Nordic-darker";
       theme.package = pkgs.nordic;
       iconTheme.name = "Zafiro-icons-Dark";
@@ -37,8 +38,7 @@
   # hyprland
   ({
     home.packages = with pkgs; [
-      unstable.noctalia-qs
-      unstable.noctalia-shell
+      unstable.noctalia
     ];
     xdg.configFile.hypr.source = "${dotfiles}/hyprland/.config/hypr";
     xdg.configFile.noctalia.source = "${dotfiles}/noctalia/.config/noctalia";

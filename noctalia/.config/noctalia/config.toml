@@ -1,0 +1,104 @@
+[bar.default]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center"
+]
+margin_edge = 14
+margin_ends = 14
+panel_overlap = 0
+radius = 5
+start = [ "launcher", "workspaces", "active_window" ]
+widget_spacing = 10
+
+[desktop_widgets]
+enabled = false
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@Virtual-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@Virtual-1"]
+    box_height = 196.0
+    box_width = 768.0
+    cx = 1280.0
+    cy = 1257.9998779296875
+    output = "Virtual-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@Virtual-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell]
+font_family = "HackGen35 Console NF"
+
+    [shell.panel]
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.screenshot]
+    annotate = true
+
+[theme]
+builtin = "Nord"
+
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/adwin/.dotfiles/awesomewm/.config/awesome/wallpapers"
+fill_mode = "fit"
+
+    [wallpaper.default]
+    path = "/home/adwin/.dotfiles/awesomewm/.config/awesome/wallpapers/pe.jpg"
+
+    [wallpaper.last]
+    path = "/home/adwin/.dotfiles/awesomewm/.config/awesome/wallpapers/pe.jpg"
+
+[widget.active_window]
+display = "text_only"
+title_scroll = "on_hover"
+
+[widget.clock]
+format = "%a %b %d %H:%M"
+
+[widget.launcher]
+custom_image_colorize = true
+
+[widget.media]
+hide_when_no_media = true
+title_scroll = "on_hover"
