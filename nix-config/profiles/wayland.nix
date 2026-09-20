@@ -24,7 +24,7 @@
     };
     gtk = {
       enable = true;
-      git4.theme = config.gtk.theme;
+      gtk4.theme = config.gtk.theme;
       theme.name = "Nordic-darker";
       theme.package = pkgs.nordic;
       iconTheme.name = "Zafiro-icons-Dark";

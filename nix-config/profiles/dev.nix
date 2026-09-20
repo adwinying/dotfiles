@@ -11,6 +11,7 @@
       cargo
       nodejs
       go
+      python3
       unstable.luajit
       unstable.rustc
       unstable.neovim
