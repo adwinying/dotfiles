@@ -115,6 +115,11 @@
         extraConfig = "reverse_proxy localhost:3002";
       };
 
+      deskhud = common // {
+        hostName = "deskhud.iadw.in";
+        extraConfig = "reverse_proxy localhost:3003";
+      };
+
       scrutiny = common // {
         hostName = "scrutiny.iadw.in";
         extraConfig = "reverse_proxy localhost:8082";
