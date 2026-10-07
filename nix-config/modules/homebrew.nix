@@ -22,6 +22,7 @@
         "tailscale-app"
         "nikitabobko/tap/aerospace"
         "wispr-flow"
+        "handy"
       ];
 
       homebrew.masApps = {
@@ -29,6 +30,7 @@
         ScreenZen = 1541027222;
         Windows = 1295203466;
         Openterface = 6478481082;
+        Amphetamine = 937984704;
       };
     })
 
@@ -39,7 +41,10 @@
         "sublime-text"
         "orbstack"
         "tableplus"
+        "t3-code"
+        "hamed-elfayome/claude-usage/claude-usage-tracker"
         "bambu-studio"
+        "shapr3d"
         "kicad"
         "utm"
       ];
@@ -52,6 +57,7 @@
         "zen"
         "helium-browser"
         "iina"
+        "blackhole-16ch"
         "moonlight"
         "parsec"
         "affinity"
