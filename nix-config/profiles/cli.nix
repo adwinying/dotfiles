@@ -111,6 +111,7 @@
 
   # misc.
   home.packages = with pkgs; [
+    coreutils
     gnused
     gawk
     dua
