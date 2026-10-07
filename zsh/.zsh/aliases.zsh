@@ -14,7 +14,7 @@ alias sa="alias | grep -i"
 alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
-alias ls="ls -G"
+alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias la="ll -A"
 alias fk='sudo $(fc -ln -1)'

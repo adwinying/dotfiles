@@ -6,6 +6,9 @@
 # PATHs
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+# mise for non-interactive shells (agents, scripts); interactive shells run `mise activate` in plugins.zsh
+export PATH=$HOME/.zinit/plugins/mise:$HOME/.local/share/mise/shims:$PATH
+
 # set delay to vi mode to 0.1s
 export KEYTIMEOUT=1
 

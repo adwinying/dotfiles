@@ -9,7 +9,8 @@ stty -ixon
 
 # load configs
 source ~/.zsh/plugins.zsh
-source ~/.zsh/aliases.zsh
+# terminal only: agent shells (no tty) get stock commands
+[[ -t 1 ]] && source ~/.zsh/aliases.zsh
 source ~/.zsh/autocompletion.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/keybindings.zsh
