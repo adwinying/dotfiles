@@ -57,6 +57,26 @@
     chromium
   ];
 
+  # Runtime libs for T3's preview browser (prebuilt chrome-headless-shell)
+  programs.nix-ld.libraries = with pkgs; [
+    alsa-lib
+    at-spi2-core
+    dbus
+    expat
+    glib
+    libgbm
+    libx11
+    libxcb
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxkbcommon
+    libxrandr
+    nspr
+    nss
+  ];
+
   # Configure firewall
   networking.firewall = {
     allowedTCPPorts = [
