@@ -43,10 +43,18 @@
   };
   environment.variables.DISPLAY = ":99";
 
+  # CJK fonts so headed Chromium renders Japanese pages instead of tofu
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
+
   # Required by Claude Code's sandbox on Linux
   environment.systemPackages = with pkgs; [
     bubblewrap
     socat
+    # Headed browser for agent-browser; its bundled Chrome can't run on NixOS
+    chromium
   ];
 
   # Configure firewall
