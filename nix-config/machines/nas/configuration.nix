@@ -120,6 +120,11 @@
         extraConfig = "reverse_proxy localhost:3003";
       };
 
+      fs = common // {
+        hostName = "fs.iadw.in";
+        extraConfig = "reverse_proxy localhost:3067";
+      };
+
       llm = common // {
         hostName = "llm.iadw.in";
         extraConfig = "reverse_proxy localhost:8317";
