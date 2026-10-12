@@ -74,6 +74,12 @@
         system   = "x86_64-linux";
       };
 
+      hive = mkMachineConfig {
+        hostname = "hive";
+        username = "adwin";
+        system   = "x86_64-linux";
+      };
+
       nas = mkMachineConfig {
         hostname = "nas";
         username = "adwin";
