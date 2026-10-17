@@ -109,7 +109,7 @@
 
     # dock default pinned apps
     dock.persistent-apps = [
-      "/System/Applications/Launchpad.app"
+      "/System/Applications/Apps.app"
       "/Applications/Arc.app"
       "/System/Applications/Messages.app"
       "/System/Applications/iPhone\ Mirroring.app"
