@@ -58,7 +58,7 @@ inner.horizontal = 18
 inner.vertical =   18
 outer.left =       18
 outer.bottom =     18
-outer.top =        18
+outer.top =        9
 outer.right =      18
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
