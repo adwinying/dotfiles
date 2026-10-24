@@ -283,7 +283,7 @@
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.callPackage ./netmuxd.nix {}}/bin/netmuxd";
+        ExecStart = "${pkgs.callPackage ../../packages/netmuxd.nix {}}/bin/netmuxd";
         Restart = "on-failure";
       };
     };
