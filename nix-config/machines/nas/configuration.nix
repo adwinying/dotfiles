@@ -55,7 +55,14 @@
       };
     };
   };
-  users.users.${username}.extraGroups = [ "acme" ];
+  users.users.${username} = {
+    extraGroups = [ "acme" ];
+
+    # iOS Shortcut key, restricted to starting the iPhone backup
+    openssh.authorizedKeys.keys = [
+      ''command="sudo -n systemctl start --no-block iphone-backup",restrict ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJkS6+hbHt+ZVkvkR98hBD6PAKHWF8YCXYj3JRNML5y Shortcuts on iAdwin''
+    ];
+  };
 
   # Configure caddy for private facing services
   services.caddy = {
@@ -267,6 +274,48 @@
       serviceConfig = {
         Type = "oneshot";
         User = "root";
+      };
+    };
+
+    # usbmuxd replacement that also reaches paired iPhones over Wi-Fi
+    services.netmuxd = {
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.callPackage ./netmuxd.nix {}}/bin/netmuxd";
+        Restart = "on-failure";
+      };
+    };
+
+    # iPhone backup over Wi-Fi, triggered by an iOS Shortcut on charge.
+    # iOS asks for the passcode on every backup, so it can't run on a timer.
+    services.iphone-backup = {
+      requires = [ "netmuxd.service" ];
+      after = [ "netmuxd.service" ];
+      unitConfig.RequiresMountsFor = "/mnt/storage/backup/iphone";
+      script = ''
+        set -eu
+
+        export PATH=$PATH:${pkgs.findutils}/bin
+        export PATH=$PATH:${pkgs.coreutils}/bin
+        export PATH=$PATH:${pkgs.libimobiledevice}/bin
+
+        backup_dir=/mnt/storage/backup/iphone
+        last_success=$backup_dir/.last-success
+
+        # Skip if the last successful backup is under 12 hours old
+        if [ -n "$(find $last_success -mmin -720 2>/dev/null)" ]; then
+          echo "Last backup under 12 hours ago, skipping"
+          exit 0
+        fi
+
+        idevicebackup2 --network backup $backup_dir
+        touch $last_success
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+        User = username;
       };
     };
   };
