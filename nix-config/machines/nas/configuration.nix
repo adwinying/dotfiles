@@ -325,7 +325,7 @@
         backup_dir=/mnt/storage/backup/iphone
         last_success=$backup_dir/.last-success
         snapshot_dir=$backup_dir/snapshots
-        snapshots_to_keep=20
+        snapshots_to_keep=7
 
         # Skip if the last successful backup is under 12 hours old
         if [ -n "$(find $last_success -mmin -720 2>/dev/null)" ]; then
