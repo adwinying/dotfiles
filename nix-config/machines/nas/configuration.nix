@@ -137,6 +137,21 @@
         extraConfig = "reverse_proxy localhost:8317";
       };
 
+      kody = common // {
+        hostName = "kody.iadw.in";
+        extraConfig = "reverse_proxy localhost:8083";
+      };
+
+      kody-apps = common // {
+        hostName = "kapp.iadw.in";
+        extraConfig = "reverse_proxy localhost:8083";
+      };
+
+      chat = common // {
+        hostName = "chat.iadw.in";
+        extraConfig = "reverse_proxy localhost:3004";
+      };
+
       scrutiny = common // {
         hostName = "scrutiny.iadw.in";
         extraConfig = "reverse_proxy localhost:8082";
@@ -300,9 +315,12 @@
         export PATH=$PATH:${pkgs.findutils}/bin
         export PATH=$PATH:${pkgs.coreutils}/bin
         export PATH=$PATH:${pkgs.libimobiledevice}/bin
+        export PATH=$PATH:${pkgs.rsync}/bin
 
         backup_dir=/mnt/storage/backup/iphone
         last_success=$backup_dir/.last-success
+        snapshot_dir=$backup_dir/snapshots
+        snapshots_to_keep=20
 
         # Skip if the last successful backup is under 12 hours old
         if [ -n "$(find $last_success -mmin -720 2>/dev/null)" ]; then
@@ -312,6 +330,14 @@
 
         idevicebackup2 --network backup $backup_dir
         touch $last_success
+
+        # Snapshot the backup, hardlinking files unchanged since the previous snapshot
+        mkdir -p $snapshot_dir
+        previous=$(ls -1d $snapshot_dir/*/ 2>/dev/null | tail -n 1)
+        rsync -a --exclude /snapshots --exclude /.last-success \
+          ''${previous:+--link-dest=$previous} \
+          $backup_dir/ $snapshot_dir/$(date +%Y-%m-%dT%H%M)/
+        ls -1d $snapshot_dir/*/ | head -n -$snapshots_to_keep | xargs -r rm -rf
       '';
       serviceConfig = {
         Type = "oneshot";
