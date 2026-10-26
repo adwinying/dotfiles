@@ -75,9 +75,10 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 1'
 
+# Helium reports disabled window buttons, so AeroSpace mistakes its windows for dialogs and floats them
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = 'move-node-to-workspace 2'
+if.app-id = 'net.imput.helium'
+run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus'
