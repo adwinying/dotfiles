@@ -16,3 +16,4 @@ end
 require("modules.display")
 require("modules.cheatsheet")
 require("modules.floating_terminal")
+require("modules.browser_spaces")

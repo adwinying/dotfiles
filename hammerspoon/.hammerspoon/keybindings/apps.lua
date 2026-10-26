@@ -17,7 +17,7 @@ end)
 
 -- browser
 hyper:bind({}, "b", function ()
-  hs.application.launchOrFocus(configs.apps.browser)
+  BrowserSpaces:focus()
 end)
 
 -- scratchpad

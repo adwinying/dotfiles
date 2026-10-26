@@ -11,7 +11,6 @@ local default_config = {}
 
 default_config.apps = {
   terminal = "Ghostty",
-  browser = "Arc",
   scratchpad_path = "open -na Ghostty.app --args --title=scratchpad",
 }
 
@@ -67,6 +66,28 @@ default_config.wm = {
 default_config.display = {
   -- display names
   dock_display = "DELL U2723QX",
+}
+
+-- =============================================================================
+-- Browser spaces
+-- =============================================================================
+
+default_config.browser_spaces = {
+  -- browser application name and bundle id
+  app_name = "Helium",
+  app_id   = "net.imput.helium",
+
+  -- aerospace workspace holding the windows of inactive spaces
+  parked_workspace = "parked",
+
+  -- modifiers for the space keys (active only while the browser is focused)
+  modifiers = { "ctrl" },
+
+  -- spaces sharing a profile share its logins, history and extensions
+  spaces = {
+    { key = "1", name = "Personal", profile = "Personal", profile_dir = "Default" },
+    { key = "2", name = "Work",     profile = "Work",     profile_dir = "Work" },
+  },
 }
 
 -- =============================================================================
