@@ -137,6 +137,11 @@
         extraConfig = "reverse_proxy localhost:8317";
       };
 
+      kvm = common // {
+        hostName = "kvm.iadw.in";
+        extraConfig = "reverse_proxy pikvm";
+      };
+
       kody = common // {
         hostName = "kody.iadw.in";
         extraConfig = "reverse_proxy localhost:8083";
