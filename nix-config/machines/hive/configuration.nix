@@ -49,12 +49,14 @@
     noto-fonts-cjk-serif
   ];
 
-  # Required by Claude Code's sandbox on Linux
+  # CLI tools and sandbox support for agents
   environment.systemPackages = with pkgs; [
     bubblewrap
     socat
     # Headed browser for agent-browser; its bundled Chrome can't run on NixOS
     chromium
+    openssl
+    ffmpeg
   ];
 
   # Runtime libs for T3's preview browser (prebuilt chrome-headless-shell)
