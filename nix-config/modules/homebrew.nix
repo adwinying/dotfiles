@@ -15,7 +15,6 @@
         "hammerspoon"
         "raycast"
         "flux-app"
-        "aldente"
         "betterdisplay"
         "the-unarchiver"
         "mac-mouse-fix"
