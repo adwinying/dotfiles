@@ -3,6 +3,11 @@
 # environment variables
 #
 
+# unmatched globs and =word pass through literally (agents write bash-style commands)
+setopt no_nomatch no_equals
+# agent shells (non-interactive) also expect bash-style splitting of unquoted $VAR
+[[ -o interactive ]] || setopt sh_word_split
+
 # PATHs
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
