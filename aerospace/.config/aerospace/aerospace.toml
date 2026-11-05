@@ -75,9 +75,11 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'com.apple.MobileSMS'
 run = 'move-node-to-workspace 1'
 
-# Helium reports disabled window buttons, so AeroSpace mistakes its windows for dialogs and floats them
+# Helium reports disabled window buttons, so AeroSpace mistakes its windows for dialogs and floats them.
+# Only browser windows have the " - Helium" title suffix; PiP windows (incl. Meet's) lack it, so they stay floating.
 [[on-window-detected]]
 if.app-id = 'net.imput.helium'
+if.window-title-regex-substring = ' - Helium'
 run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
