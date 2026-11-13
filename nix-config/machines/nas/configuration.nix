@@ -11,6 +11,7 @@
     ../../modules/docker.nix
     ../../modules/wireless.nix
     ../../modules/tailscale.nix
+    ../../modules/backup.nix
   ];
 
   # Import overlays for this machine
@@ -372,7 +373,6 @@
 
   # Import addtional user profiles for this machine
   _module.args.profiles = [
-    ../../profiles/backup.nix
     ../../profiles/docker_update.nix
   ];
 }
