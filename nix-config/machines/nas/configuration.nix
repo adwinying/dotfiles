@@ -158,6 +158,11 @@
         extraConfig = "reverse_proxy localhost:3004";
       };
 
+      threadslop = common // {
+        hostName = "threadslop.iadw.in";
+        extraConfig = "reverse_proxy localhost:3005";
+      };
+
       scrutiny = common // {
         hostName = "scrutiny.iadw.in";
         extraConfig = "reverse_proxy localhost:8082";
