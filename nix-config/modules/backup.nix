@@ -54,11 +54,11 @@ in {
   environment.systemPackages = [ pkgs.kopia ];
   environment.sessionVariables.KOPIA_CONFIG_PATH = kopiaConfig;
 
-  # Every day at 6am
+  # Every day at 6:30am, clear of the weekly Sunday 6:01 LAN link flap
   systemd.timers.backup = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "*-*-* 6:00:00";
+      OnCalendar = "*-*-* 6:30:00";
       Unit = "backup.service";
     };
   };
