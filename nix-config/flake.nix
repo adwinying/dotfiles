@@ -56,12 +56,6 @@
         system   = "aarch64-linux";
       };
 
-      bootes = mkMachineConfig {
-        hostname = "bootes";
-        username = "adwin";
-        system   = "aarch64-linux";
-      };
-
       router = mkMachineConfig {
         hostname = "router";
         username = "adwin";
